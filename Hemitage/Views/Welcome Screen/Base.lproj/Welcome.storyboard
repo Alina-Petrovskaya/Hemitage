@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Hemitage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sky" translatesAutoresizingMaskIntoConstraints="NO" id="BC8-cA-bwA">
+                                <rect key="frame" x="14" y="52" width="386" height="386"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BC8-cA-bwA" secondAttribute="height" multiplier="1:1" id="Gtd-Nr-HCx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcom to Hemitation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR6-Py-zA0">
+                                <rect key="frame" x="85" y="350" width="244" height="83"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We Are Not Looking to Ease Your Problems, We Want to Fix Them" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZU-Ew-NJE">
+                                <rect key="frame" x="72" y="450" width="270" height="41.5"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="my2-Jc-JSv">
+                                <rect key="frame" x="20" y="624" width="374" height="188"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCS-XC-PAD">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="52.5"/>
+                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="14" maxY="0.0"/>
+                                        <state key="normal" title="Sign in with Apple" image="applelogo" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjH-qS-2I9">
+                                        <rect key="frame" x="0.0" y="67.5" width="374" height="53"/>
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="12" maxY="0.0"/>
+                                        <state key="normal" title="Sign in with Facebool" image="FB icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nV-7j-DDg">
+                                        <rect key="frame" x="0.0" y="135.5" width="374" height="52.5"/>
+                                        <color key="backgroundColor" red="0.87450980392156863" green="0.6705882352941176" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="12" maxY="0.0"/>
+                                        <state key="normal" title="Continue with Email" image="envelope.fill" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iR6-Py-zA0" firstAttribute="bottom" secondItem="BC8-cA-bwA" secondAttribute="bottom" constant="-5" id="4eA-4U-RfT"/>
+                            <constraint firstItem="4ZU-Ew-NJE" firstAttribute="top" secondItem="BC8-cA-bwA" secondAttribute="bottom" constant="12" id="FxU-7D-3DY"/>
+                            <constraint firstItem="iR6-Py-zA0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H9l-Hk-YQn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4ZU-Ew-NJE" secondAttribute="trailing" constant="51" id="JUa-i9-FUU"/>
+                            <constraint firstItem="iR6-Py-zA0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="LYi-e7-lZB"/>
+                            <constraint firstItem="4ZU-Ew-NJE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SDf-Xv-Cqf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="my2-Jc-JSv" secondAttribute="bottom" constant="50" id="Um7-7x-bab"/>
+                            <constraint firstItem="my2-Jc-JSv" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.23" id="WGL-0F-DH5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BC8-cA-bwA" secondAttribute="trailing" constant="14" id="WxL-iC-rnZ"/>
+                            <constraint firstItem="BC8-cA-bwA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="YaN-bn-6Rd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="my2-Jc-JSv" secondAttribute="trailing" constant="20" id="e5f-AQ-JlK"/>
+                            <constraint firstItem="BC8-cA-bwA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="pFc-yd-bXq"/>
+                            <constraint firstItem="4ZU-Ew-NJE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="qKp-NH-0RJ"/>
+                            <constraint firstItem="my2-Jc-JSv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vdR-H9-6g4"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iR6-Py-zA0" secondAttribute="trailing" constant="50" id="y2t-N8-FN1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="4ZU-Ew-NJE" id="3lW-35-rCc"/>
+                        <outlet property="welcomLabel" destination="iR6-Py-zA0" id="hPY-kL-Chx"/>
+                        <outletCollection property="signInButtons" destination="XCS-XC-PAD" collectionClass="NSMutableArray" id="LgU-3s-y8G"/>
+                        <outletCollection property="signInButtons" destination="kjH-qS-2I9" collectionClass="NSMutableArray" id="zIX-Pb-2Id"/>
+                        <outletCollection property="signInButtons" destination="7nV-7j-DDg" collectionClass="NSMutableArray" id="AYZ-Nn-TWR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-84.057971014492765" y="87.723214285714278"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="FB icon" width="11" height="20"/>
+        <image name="Sky" width="347" height="347"/>
+        <image name="applelogo" catalog="system" width="103" height="128"/>
+        <image name="envelope.fill" catalog="system" width="128" height="93"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

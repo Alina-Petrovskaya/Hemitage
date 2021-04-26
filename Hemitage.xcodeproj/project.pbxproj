@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74226369F270070A3C6 /* AppDelegate.swift */; };
-		848CF74526369F270070A3C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74426369F270070A3C6 /* SceneDelegate.swift */; };
-		848CF74726369F270070A3C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74626369F270070A3C6 /* ViewController.swift */; };
-		848CF74A26369F270070A3C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74826369F270070A3C6 /* Main.storyboard */; };
+		848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74626369F270070A3C6 /* WelcomeViewController.swift */; };
+		848CF74A26369F270070A3C6 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74826369F270070A3C6 /* Welcome.storyboard */; };
 		848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */; };
 		848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74E26369F2C0070A3C6 /* Assets.xcassets */; };
 		848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF75026369F2C0070A3C6 /* LaunchScreen.storyboard */; };
@@ -20,6 +19,13 @@
 		848CF7902636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
 		848CF7912636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
+		84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDE7322636CECE005D91C8 /* RootViewController.swift */; };
+		84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */; };
+		84DDE7422636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */; };
+		84DDE7432636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */; };
+		84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
+		84DDE7492636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
+		84DDE74A2636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +48,8 @@
 /* Begin PBXFileReference section */
 		848CF73F26369F270070A3C6 /* Hemitage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hemitage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848CF74226369F270070A3C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		848CF74426369F270070A3C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		848CF74626369F270070A3C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		848CF74926369F270070A3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		848CF74626369F270070A3C6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		848CF74926369F270070A3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Welcome.storyboard; sourceTree = "<group>"; };
 		848CF74C26369F270070A3C6 /* Hemitage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hemitage.xcdatamodel; sourceTree = "<group>"; };
 		848CF74E26369F2C0070A3C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		848CF75126369F2C0070A3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +63,9 @@
 		848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		84DDE7312636CD71005D91C8 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-RU"; path = "ru-RU.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		84DDE7322636CECE005D91C8 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		84DDE7472636D509005D91C8 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				848CF74226369F270070A3C6 /* AppDelegate.swift */,
-				848CF74426369F270070A3C6 /* SceneDelegate.swift */,
 				848CF75326369F2C0070A3C6 /* Info.plist */,
 			);
 			path = Settings;
@@ -174,6 +181,8 @@
 		848CF7822636AB850070A3C6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */,
+				84DDE7472636D509005D91C8 /* Inter-Regular.ttf */,
 				848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */,
 			);
 			path = Fonts;
@@ -213,6 +222,7 @@
 		848CF79D2636B49E0070A3C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84DDE7322636CECE005D91C8 /* RootViewController.swift */,
 				848CF79F2636B6F20070A3C6 /* Welcome Screen */,
 				848CF79E2636B6BC0070A3C6 /* Splash */,
 			);
@@ -230,8 +240,8 @@
 		848CF79F2636B6F20070A3C6 /* Welcome Screen */ = {
 			isa = PBXGroup;
 			children = (
-				848CF74826369F270070A3C6 /* Main.storyboard */,
-				848CF74626369F270070A3C6 /* ViewController.swift */,
+				848CF74826369F270070A3C6 /* Welcome.storyboard */,
+				848CF74626369F270070A3C6 /* WelcomeViewController.swift */,
 			);
 			path = "Welcome Screen";
 			sourceTree = "<group>";
@@ -348,11 +358,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
-				848CF74A26369F270070A3C6 /* Main.storyboard in Resources */,
+				848CF74A26369F270070A3C6 /* Welcome.storyboard in Resources */,
+				84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +372,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DDE7422636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
+				84DDE7492636D509005D91C8 /* Inter-Regular.ttf in Resources */,
 				848CF7902636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +382,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DDE7432636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
+				84DDE74A2636D509005D91C8 /* Inter-Regular.ttf in Resources */,
 				848CF7912636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,10 +395,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848CF74726369F270070A3C6 /* ViewController.swift in Sources */,
+				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
+				848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
 				848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */,
-				848CF74526369F270070A3C6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,12 +434,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		848CF74826369F270070A3C6 /* Main.storyboard */ = {
+		848CF74826369F270070A3C6 /* Welcome.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				848CF74926369F270070A3C6 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Welcome.storyboard;
 			sourceTree = "<group>";
 		};
 		848CF75026369F2C0070A3C6 /* LaunchScreen.storyboard */ = {

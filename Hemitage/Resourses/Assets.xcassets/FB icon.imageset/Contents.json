@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Group 150.png",
+      "filename" : "fb+icon+icon-1320194641178775596_512 (2).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 150@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Group 150@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -21,7 +19,6 @@
     "version" : 1
   },
   "properties" : {
-    "localizable" : true,
     "preserves-vector-representation" : true
   }
 }
