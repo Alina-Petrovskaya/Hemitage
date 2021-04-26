@@ -16,6 +16,9 @@
 		848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF75026369F2C0070A3C6 /* LaunchScreen.storyboard */; };
 		848CF75D26369F2C0070A3C6 /* HemitageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF75C26369F2C0070A3C6 /* HemitageTests.swift */; };
 		848CF76826369F2C0070A3C6 /* HemitageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF76726369F2C0070A3C6 /* HemitageUITests.swift */; };
+		848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
+		848CF7902636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
+		848CF7912636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,7 @@
 		848CF76326369F2C0070A3C6 /* HemitageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HemitageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		848CF76726369F2C0070A3C6 /* HemitageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HemitageUITests.swift; sourceTree = "<group>"; };
 		848CF76926369F2C0070A3C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +105,11 @@
 		848CF74126369F270070A3C6 /* Hemitage */ = {
 			isa = PBXGroup;
 			children = (
+				848CF79D2636B49E0070A3C6 /* Views */,
 				848CF7812636AABE0070A3C6 /* Models */,
-				848CF74626369F270070A3C6 /* ViewController.swift */,
-				848CF74826369F270070A3C6 /* Main.storyboard */,
-				848CF75026369F2C0070A3C6 /* LaunchScreen.storyboard */,
-				848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */,
-				848CF7802636A2D60070A3C6 /* Networking */,
+				848CF79A2636B3E00070A3C6 /* Core */,
+				848CF7802636A2D60070A3C6 /* Firebase manager */,
+				848CF7992636B38F0070A3C6 /* CoreData */,
 				848CF77C2636A0510070A3C6 /* Resourses */,
 				848CF77826369FFA0070A3C6 /* Settings */,
 			);
@@ -150,11 +153,11 @@
 			path = Resourses;
 			sourceTree = "<group>";
 		};
-		848CF7802636A2D60070A3C6 /* Networking */ = {
+		848CF7802636A2D60070A3C6 /* Firebase manager */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Networking;
+			path = "Firebase manager";
 			sourceTree = "<group>";
 		};
 		848CF7812636AABE0070A3C6 /* Models */ = {
@@ -167,8 +170,66 @@
 		848CF7822636AB850070A3C6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		848CF7992636B38F0070A3C6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		848CF79A2636B3E00070A3C6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				848CF79C2636B3EE0070A3C6 /* Extensions */,
+				848CF79B2636B3E60070A3C6 /* Protocols */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		848CF79B2636B3E60070A3C6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		848CF79C2636B3EE0070A3C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		848CF79D2636B49E0070A3C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				848CF79F2636B6F20070A3C6 /* Welcome Screen */,
+				848CF79E2636B6BC0070A3C6 /* Splash */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		848CF79E2636B6BC0070A3C6 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				848CF75026369F2C0070A3C6 /* LaunchScreen.storyboard */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		848CF79F2636B6F20070A3C6 /* Welcome Screen */ = {
+			isa = PBXGroup;
+			children = (
+				848CF74826369F270070A3C6 /* Main.storyboard */,
+				848CF74626369F270070A3C6 /* ViewController.swift */,
+			);
+			path = "Welcome Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +337,7 @@
 			files = (
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
+				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 				848CF74A26369F270070A3C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848CF7902636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848CF7912636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
