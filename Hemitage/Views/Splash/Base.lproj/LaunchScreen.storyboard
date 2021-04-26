@@ -1,36 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bzY-s8-g25">
-                                <rect key="frame" x="87" y="318" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash background" translatesAutoresizingMaskIntoConstraints="NO" id="wIy-KR-a32">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="bzY-s8-g25">
+                                <rect key="frame" x="138.33333333333334" y="316.33333333333331" width="113.33333333333334" height="86.666666666666686"/>
+                                <color key="tintColor" red="1" green="0.42033795730000001" blue="0.25421210900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bzY-s8-g25" secondAttribute="height" multiplier="1:0.765" id="1YY-9A-kXt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hemitage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="RWf-YH-BBG">
+                                <rect key="frame" x="126.66666666666669" y="411" width="137" height="35.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="wIy-KR-a32" secondAttribute="bottom" id="AJ1-t2-53X"/>
+                            <constraint firstItem="bzY-s8-g25" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AvL-lR-DIi"/>
+                            <constraint firstItem="RWf-YH-BBG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="EJZ-de-JJe"/>
+                            <constraint firstItem="RWf-YH-BBG" firstAttribute="top" secondItem="bzY-s8-g25" secondAttribute="bottom" constant="8" id="K71-8u-9Lm"/>
+                            <constraint firstItem="bzY-s8-g25" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.85" constant="1" id="NZ8-x1-UnW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RWf-YH-BBG" secondAttribute="trailing" constant="10" id="Y65-T2-YIs"/>
+                            <constraint firstAttribute="trailing" secondItem="wIy-KR-a32" secondAttribute="trailing" id="dwf-Xx-oDH"/>
+                            <constraint firstItem="RWf-YH-BBG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="eoL-lr-BeQ"/>
+                            <constraint firstItem="wIy-KR-a32" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="gTx-2N-j6K"/>
+                            <constraint firstItem="bzY-s8-g25" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.29" id="mX7-cT-w6y"/>
+                            <constraint firstItem="wIy-KR-a32" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="saw-FY-IQm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="50.769230769230766" y="374.64454976303318"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Splash" width="50" height="36"/>
+        <image name="Splash background" width="360" height="640"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
