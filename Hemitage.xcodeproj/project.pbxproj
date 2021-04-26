@@ -101,14 +101,14 @@
 		848CF74126369F270070A3C6 /* Hemitage */ = {
 			isa = PBXGroup;
 			children = (
-				848CF74226369F270070A3C6 /* AppDelegate.swift */,
-				848CF74426369F270070A3C6 /* SceneDelegate.swift */,
+				848CF7812636AABE0070A3C6 /* Models */,
 				848CF74626369F270070A3C6 /* ViewController.swift */,
 				848CF74826369F270070A3C6 /* Main.storyboard */,
-				848CF74E26369F2C0070A3C6 /* Assets.xcassets */,
 				848CF75026369F2C0070A3C6 /* LaunchScreen.storyboard */,
-				848CF75326369F2C0070A3C6 /* Info.plist */,
 				848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */,
+				848CF7802636A2D60070A3C6 /* Networking */,
+				848CF77C2636A0510070A3C6 /* Resourses */,
+				848CF77826369FFA0070A3C6 /* Settings */,
 			);
 			path = Hemitage;
 			sourceTree = "<group>";
@@ -129,6 +129,46 @@
 				848CF76926369F2C0070A3C6 /* Info.plist */,
 			);
 			path = HemitageUITests;
+			sourceTree = "<group>";
+		};
+		848CF77826369FFA0070A3C6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				848CF74226369F270070A3C6 /* AppDelegate.swift */,
+				848CF74426369F270070A3C6 /* SceneDelegate.swift */,
+				848CF75326369F2C0070A3C6 /* Info.plist */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		848CF77C2636A0510070A3C6 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				848CF7822636AB850070A3C6 /* Fonts */,
+				848CF74E26369F2C0070A3C6 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		848CF7802636A2D60070A3C6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		848CF7812636AABE0070A3C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		848CF7822636AB850070A3C6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,7 +482,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G8XDUUWJVM;
-				INFOPLIST_FILE = Hemitage/Info.plist;
+				INFOPLIST_FILE = Hemitage/Settings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,7 +501,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G8XDUUWJVM;
-				INFOPLIST_FILE = Hemitage/Info.plist;
+				INFOPLIST_FILE = Hemitage/Settings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
