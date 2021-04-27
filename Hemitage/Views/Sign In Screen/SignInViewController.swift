@@ -36,7 +36,7 @@ class SignInViewController: UIViewController {
     
     private func prepareLocalizedText() {
         //Labels
-        welcomeLabel.text = NSLocalizedString("welcome_label", comment: "")
+        welcomeLabel.text = NSLocalizedString("welcome_signin_label", comment: "")
         loginLabel.text   = NSLocalizedString("login_label", comment: "")
         
         //TextFields

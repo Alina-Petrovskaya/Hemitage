@@ -25,8 +25,9 @@ class RootViewController: UIViewController {
             return
         }
         
-        //let nVC = UINavigationController(rootViewController: vc)
+       // let nVC = UINavigationController(rootViewController: vc)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
+        //navigationController?.pushViewController(nVC, animated: true)
     }
 }
