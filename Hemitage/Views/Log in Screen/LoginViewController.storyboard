@@ -98,6 +98,17 @@
                                                     <action selector="loginButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4K7-us-H2F"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fop-bA-uhP" userLabel="Back button">
+                                                <rect key="frame" x="20" y="5" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Fop-bA-uhP" secondAttribute="height" multiplier="1:1" id="Lhy-3l-hrU"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="chevron.backward" catalog="system"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mgb-YZ-DFI"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -106,11 +117,13 @@
                                             <constraint firstAttribute="height" constant="800" id="7Em-Kh-yeh"/>
                                             <constraint firstItem="NZF-hv-MB1" firstAttribute="top" secondItem="1Ba-Na-ytw" secondAttribute="bottom" constant="15" id="9ZM-EO-yZu"/>
                                             <constraint firstItem="xx1-tZ-LrD" firstAttribute="leading" secondItem="4dQ-uG-PHY" secondAttribute="leading" constant="20" id="Cln-rT-iot"/>
+                                            <constraint firstItem="Fop-bA-uhP" firstAttribute="top" secondItem="1Ba-Na-ytw" secondAttribute="top" constant="5" id="EoJ-i3-YUF"/>
                                             <constraint firstItem="15v-qk-UpM" firstAttribute="trailing" secondItem="xx1-tZ-LrD" secondAttribute="trailing" id="IFb-X3-Vd8"/>
                                             <constraint firstItem="15v-qk-UpM" firstAttribute="leading" secondItem="xx1-tZ-LrD" secondAttribute="leading" id="Ion-0o-aCr"/>
                                             <constraint firstItem="LgT-km-Tsr" firstAttribute="height" secondItem="15v-qk-UpM" secondAttribute="height" id="Jfh-ZT-CsI"/>
                                             <constraint firstAttribute="trailing" secondItem="1Ba-Na-ytw" secondAttribute="trailing" constant="14" id="N2d-Zq-dXr"/>
                                             <constraint firstItem="zxq-pT-kvU" firstAttribute="centerY" secondItem="fha-s6-6cN" secondAttribute="centerY" id="NYT-1X-Doa"/>
+                                            <constraint firstItem="xx1-tZ-LrD" firstAttribute="leading" secondItem="Fop-bA-uhP" secondAttribute="leading" id="Ocy-mR-Vb0"/>
                                             <constraint firstItem="NZF-hv-MB1" firstAttribute="centerY" secondItem="jOI-gD-WTn" secondAttribute="centerY" id="PSe-Bo-gWr"/>
                                             <constraint firstItem="LgT-km-Tsr" firstAttribute="trailing" secondItem="15v-qk-UpM" secondAttribute="trailing" id="UR0-nm-lfV"/>
                                             <constraint firstItem="jOI-gD-WTn" firstAttribute="leading" secondItem="xx1-tZ-LrD" secondAttribute="leading" id="X6x-pI-InK"/>
@@ -165,11 +178,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.38461538461539" y="115.16587677725119"/>
+            <point key="canvasLocation" x="134.40000000000001" y="114.53201970443351"/>
         </scene>
     </scenes>
     <resources>
         <image name="Sky" width="347" height="347"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
