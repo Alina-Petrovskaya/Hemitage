@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,10 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = RootViewController()
-//        window?.makeKeyAndVisible()
-//        window?.backgroundColor = #colorLiteral(red: 1, green: 0.3683584332, blue: 0.1774078608, alpha: 1)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        FirebaseApp.configure()
+        
+        window?.rootViewController = RootViewController()
+        window?.makeKeyAndVisible()
+        window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return true
     }
 

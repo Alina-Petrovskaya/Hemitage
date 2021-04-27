@@ -1,4 +1,14 @@
 // Welcome screen
-"welcome_label" = "Welcom to \n Hemitation";
+"welcome_label"     = "Welcome to \n Hemitation";
 "description_label" = "We Are Not Looking to Ease Your Problems, We Want to Fix Them";
+
+//Login scereen
+"welcome_label"          = "Hey,\nLog in now";
+"create_account_button"  = "Create Account ";
+"create_ccount_label"    = "If you are new /";
+"email_field"            = "Email";
+"password_field"         = "Password";
+"reset_password_label"   = "Forgot Passcode?";
+"reset_password_button"  = "Reset";
+"login_button"           = "LOG IN";
 

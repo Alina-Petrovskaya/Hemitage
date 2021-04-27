@@ -17,6 +17,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
+        prepareLocalizedText()
     }
 
 
@@ -25,11 +26,9 @@ class WelcomeViewController: UIViewController {
         
     }
     
-    private func prepareScreenText() {
-        welcomLabel.text = NSLocalizedString("welcome_label",
-                                             comment: "")
-        descriptionLabel.text = NSLocalizedString("description_label",
-                                                  comment: "")
+    private func prepareLocalizedText() {
+        welcomLabel.text = NSLocalizedString("welcome_label", comment: "")
+        descriptionLabel.text = NSLocalizedString("description_label", comment: "")
     }
 }
 
