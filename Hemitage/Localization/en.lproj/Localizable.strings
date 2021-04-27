@@ -12,3 +12,11 @@
 "reset_password_button"  = "Reset";
 "login_button"           = "LOG IN";
 
+//SignIn button
+"welcome_label" = "Hey, \nCreate account";
+"login_label" = "Have an account?";
+"login_button" = "Log in";
+"name_text_field" = "Name";
+"email_text_field" = "Email";
+"password_text_field" = "Password";
+"sign_in_button" = "CREATE ACCOUNT";

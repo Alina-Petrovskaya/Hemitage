@@ -19,7 +19,7 @@ class RootViewController: UIViewController {
     }
 
     func goToWelcomeController() {
-        guard let vc = LoginViewController.getNextViewController()
+        guard let vc = SignInViewController.getNextViewController()
         else {
             print("Can't create path to next VCb")
             return
