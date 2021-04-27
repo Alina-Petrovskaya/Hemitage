@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DE2229DD3B38CBEE9579469 /* Pods_Hemitage_HemitageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1081C7998670EFECE87C53 /* Pods_Hemitage_HemitageUITests.framework */; };
+		84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84205E56263832DB005264E8 /* UITextfield+View.swift */; };
 		848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74226369F270070A3C6 /* AppDelegate.swift */; };
 		848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74626369F270070A3C6 /* WelcomeViewController.swift */; };
 		848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74826369F270070A3C6 /* WelcomeViewController.storyboard */; };
@@ -58,6 +59,7 @@
 		1B78CCC1088D24AA6889581E /* Pods-Hemitage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage.debug.xcconfig"; path = "Target Support Files/Pods-Hemitage/Pods-Hemitage.debug.xcconfig"; sourceTree = "<group>"; };
 		55F992CFC66C9E73B0826643 /* Pods_HemitageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HemitageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1081C7998670EFECE87C53 /* Pods_Hemitage_HemitageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hemitage_HemitageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84205E56263832DB005264E8 /* UITextfield+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+View.swift"; sourceTree = "<group>"; };
 		848CF73F26369F270070A3C6 /* Hemitage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hemitage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848CF74226369F270070A3C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848CF74626369F270070A3C6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */,
+				84205E56263832DB005264E8 /* UITextfield+View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -263,8 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				84DDE7322636CECE005D91C8 /* RootViewController.swift */,
-				84EB44E82638021900828222 /* Log in Screen */,
 				848CF79F2636B6F20070A3C6 /* Welcome Screen */,
+				84EB44E82638021900828222 /* Log in Screen */,
 				848CF79E2636B6BC0070A3C6 /* Splash */,
 			);
 			path = Views;
@@ -566,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84EB44EA2638026400828222 /* LoginViewController.swift in Sources */,
+				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,
 				848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */,

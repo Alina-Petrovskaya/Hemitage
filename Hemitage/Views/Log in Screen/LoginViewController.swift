@@ -28,6 +28,10 @@ class LoginViewController: UIViewController {
     
     private func prepareUI() {
         loginButton.layer.cornerRadius = 8
+        emailField.setLeftView(with: "envelope")
+        passwordField.setLeftView(with: "lock")
+        passwordField.setRightButtonForPasswordfield()
+        
     }
     
     private func prepareLocalizedText() {

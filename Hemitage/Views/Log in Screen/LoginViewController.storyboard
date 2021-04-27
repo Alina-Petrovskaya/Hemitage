@@ -49,7 +49,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZF-hv-MB1">
-                                                <rect key="frame" x="120" y="386" width="250" height="28"/>
+                                                <rect key="frame" x="120" y="377" width="96" height="46"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                 <state key="normal" title="Create Account"/>
                                                 <connections>
@@ -57,30 +57,30 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Passcode?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fha-s6-6cN">
-                                                <rect key="frame" x="20" y="589" width="110" height="16"/>
+                                                <rect key="frame" x="20" y="588" width="110" height="16"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                 <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="15v-qk-UpM">
-                                                <rect key="frame" x="20" y="444" width="350" height="50"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="15v-qk-UpM">
+                                                <rect key="frame" x="20" y="443" width="350" height="50"/>
                                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="BVD-mW-t3s"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LgT-km-Tsr">
-                                                <rect key="frame" x="20" y="509" width="350" height="50"/>
+                                                <rect key="frame" x="20" y="508" width="350" height="50"/>
                                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxq-pT-kvU">
-                                                <rect key="frame" x="135" y="583" width="235" height="28"/>
+                                                <rect key="frame" x="135" y="573" width="35" height="46"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                 <state key="normal" title="Reset"/>
                                                 <connections>
@@ -88,7 +88,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzU-Uv-skF">
-                                                <rect key="frame" x="20" y="641" width="350" height="50"/>
+                                                <rect key="frame" x="20" y="639" width="350" height="50"/>
                                                 <color key="backgroundColor" red="0.87450980389999999" green="0.6705882353" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
                                                 <state key="normal" title="LOG IN">
@@ -103,8 +103,8 @@
                                         <constraints>
                                             <constraint firstItem="BzU-Uv-skF" firstAttribute="height" secondItem="15v-qk-UpM" secondAttribute="height" id="3Am-87-FbC"/>
                                             <constraint firstItem="xx1-tZ-LrD" firstAttribute="bottom" secondItem="1Ba-Na-ytw" secondAttribute="bottom" constant="-6" id="3BD-gI-TwU"/>
-                                            <constraint firstItem="zxq-pT-kvU" firstAttribute="trailing" secondItem="xx1-tZ-LrD" secondAttribute="trailing" id="720-wJ-4lB"/>
                                             <constraint firstAttribute="height" constant="800" id="7Em-Kh-yeh"/>
+                                            <constraint firstItem="NZF-hv-MB1" firstAttribute="top" secondItem="1Ba-Na-ytw" secondAttribute="bottom" constant="15" id="9ZM-EO-yZu"/>
                                             <constraint firstItem="xx1-tZ-LrD" firstAttribute="leading" secondItem="4dQ-uG-PHY" secondAttribute="leading" constant="20" id="Cln-rT-iot"/>
                                             <constraint firstItem="15v-qk-UpM" firstAttribute="trailing" secondItem="xx1-tZ-LrD" secondAttribute="trailing" id="IFb-X3-Vd8"/>
                                             <constraint firstItem="15v-qk-UpM" firstAttribute="leading" secondItem="xx1-tZ-LrD" secondAttribute="leading" id="Ion-0o-aCr"/>
@@ -113,12 +113,12 @@
                                             <constraint firstItem="zxq-pT-kvU" firstAttribute="centerY" secondItem="fha-s6-6cN" secondAttribute="centerY" id="NYT-1X-Doa"/>
                                             <constraint firstItem="NZF-hv-MB1" firstAttribute="centerY" secondItem="jOI-gD-WTn" secondAttribute="centerY" id="PSe-Bo-gWr"/>
                                             <constraint firstItem="LgT-km-Tsr" firstAttribute="trailing" secondItem="15v-qk-UpM" secondAttribute="trailing" id="UR0-nm-lfV"/>
-                                            <constraint firstItem="NZF-hv-MB1" firstAttribute="trailing" secondItem="xx1-tZ-LrD" secondAttribute="trailing" id="VMg-Ax-9v9"/>
                                             <constraint firstItem="jOI-gD-WTn" firstAttribute="leading" secondItem="xx1-tZ-LrD" secondAttribute="leading" id="X6x-pI-InK"/>
                                             <constraint firstItem="fha-s6-6cN" firstAttribute="leading" secondItem="xx1-tZ-LrD" secondAttribute="leading" id="YG8-mW-28t"/>
                                             <constraint firstItem="fha-s6-6cN" firstAttribute="top" secondItem="LgT-km-Tsr" secondAttribute="bottom" constant="30" id="Yxk-y1-5Zg"/>
-                                            <constraint firstItem="BzU-Uv-skF" firstAttribute="top" secondItem="zxq-pT-kvU" secondAttribute="bottom" constant="30" id="dHP-U7-fBu"/>
-                                            <constraint firstItem="15v-qk-UpM" firstAttribute="top" secondItem="NZF-hv-MB1" secondAttribute="bottom" constant="30" id="fHp-Xu-PnQ"/>
+                                            <constraint firstItem="BzU-Uv-skF" firstAttribute="top" secondItem="zxq-pT-kvU" secondAttribute="bottom" constant="20" id="dHP-U7-fBu"/>
+                                            <constraint firstItem="15v-qk-UpM" firstAttribute="top" secondItem="NZF-hv-MB1" secondAttribute="bottom" constant="20" id="fHp-Xu-PnQ"/>
+                                            <constraint firstItem="zxq-pT-kvU" firstAttribute="top" secondItem="LgT-km-Tsr" secondAttribute="bottom" constant="15" id="ijY-B9-Rcu"/>
                                             <constraint firstItem="BzU-Uv-skF" firstAttribute="trailing" secondItem="xx1-tZ-LrD" secondAttribute="trailing" id="jKt-cA-AmC"/>
                                             <constraint firstItem="1Ba-Na-ytw" firstAttribute="top" secondItem="4dQ-uG-PHY" secondAttribute="top" id="lzU-xw-8hf"/>
                                             <constraint firstItem="1Ba-Na-ytw" firstAttribute="leading" secondItem="4dQ-uG-PHY" secondAttribute="leading" constant="14" id="m7Y-BG-8zP"/>
