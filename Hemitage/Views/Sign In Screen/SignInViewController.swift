@@ -16,14 +16,16 @@ class SignInViewController: UIViewController {
     @IBOutlet weak private var emailField: UITextField!
     @IBOutlet weak private var passwordField: UITextField!
     @IBOutlet weak private var signInButton: UIButton!
-
+    
+    let viewModel = SignInViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareLocalizedText()
         prepareUI()
     }
     
-
+    
     private func prepareUI() {
         signInButton.layer.cornerRadius = 8
         
@@ -51,13 +53,14 @@ class SignInViewController: UIViewController {
     // MARK: - Actions
     @IBAction func signInTapped(_ sender: UIButton) {
         
-        let viewModel = SignInViewModel(email: emailField.text,
-                                        password: passwordField.text,
-                                        name: nameField.text)
-        viewModel.signIn { result in
+        viewModel.signIn(email: emailField.text,
+                         password: passwordField.text,
+                         name: nameField.text) { result in
+            
             switch result {
             case .success(let result):
                 print(result)
+                
             case .failure(let error):
                 print(error)
             }
