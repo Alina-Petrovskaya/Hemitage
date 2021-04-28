@@ -21,6 +21,12 @@
 		848CF7902636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
 		848CF7912636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
 		849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50E926394D600047340A /* AppDelegate+Navigation.swift */; };
+		849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */; };
+		849A50F426397C250047340A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F326397C250047340A /* LoginViewModel.swift */; };
+		849A50F626397FF10047340A /* SignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F526397FF10047340A /* SignInManager.swift */; };
+		849A50F82639861E0047340A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F72639861E0047340A /* SignInViewModel.swift */; };
+		849A50FA2639874F0047340A /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F92639874F0047340A /* Validation.swift */; };
+		849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50FB26398E4A0047340A /* FirebaseError.swift */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -79,6 +85,12 @@
 		848CF76926369F2C0070A3C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		849A50E926394D600047340A /* AppDelegate+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Navigation.swift"; sourceTree = "<group>"; };
+		849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFireBaseLogInManager.swift; sourceTree = "<group>"; };
+		849A50F326397C250047340A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		849A50F526397FF10047340A /* SignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInManager.swift; sourceTree = "<group>"; };
+		849A50F72639861E0047340A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		849A50F92639874F0047340A /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		849A50FB26398E4A0047340A /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -165,8 +177,8 @@
 				84DDE7222636CCF0005D91C8 /* Localization */,
 				848CF79D2636B49E0070A3C6 /* Views */,
 				848CF7812636AABE0070A3C6 /* Models */,
-				848CF79A2636B3E00070A3C6 /* Core */,
 				848CF7802636A2D60070A3C6 /* Firebase manager */,
+				848CF79A2636B3E00070A3C6 /* Core */,
 				848CF7992636B38F0070A3C6 /* CoreData */,
 				848CF77C2636A0510070A3C6 /* Resourses */,
 				848CF77826369FFA0070A3C6 /* Settings */,
@@ -214,6 +226,10 @@
 		848CF7802636A2D60070A3C6 /* Firebase manager */ = {
 			isa = PBXGroup;
 			children = (
+				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
+				849A50F526397FF10047340A /* SignInManager.swift */,
+				849A50F92639874F0047340A /* Validation.swift */,
+				849A50FB26398E4A0047340A /* FirebaseError.swift */,
 			);
 			path = "Firebase manager";
 			sourceTree = "<group>";
@@ -301,8 +317,9 @@
 		84DB77E826384A8B0094483E /* Sign In Screen */ = {
 			isa = PBXGroup;
 			children = (
-				84DB77E926384AEE0094483E /* SignInViewController.swift */,
 				84DB77EB26384B0A0094483E /* SignInViewController.storyboard */,
+				84DB77E926384AEE0094483E /* SignInViewController.swift */,
+				849A50F72639861E0047340A /* SignInViewModel.swift */,
 			);
 			path = "Sign In Screen";
 			sourceTree = "<group>";
@@ -320,6 +337,7 @@
 			children = (
 				84EB44EB2638027900828222 /* LoginViewController.storyboard */,
 				84EB44E92638026400828222 /* LoginViewController.swift */,
+				849A50F326397C250047340A /* LoginViewModel.swift */,
 			);
 			path = "Log in Screen";
 			sourceTree = "<group>";
@@ -588,13 +606,19 @@
 			files = (
 				84EB44EA2638026400828222 /* LoginViewController.swift in Sources */,
 				849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */,
+				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
+				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
+				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
+				849A50FA2639874F0047340A /* Validation.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,
+				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,
 				848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
 				848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */,
+				849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

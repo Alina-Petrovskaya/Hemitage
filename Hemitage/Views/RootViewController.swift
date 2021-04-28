@@ -10,8 +10,7 @@ import UIKit
 class RootViewController: UIViewController {
     
     enum NextViewController {
-        case loginVC
-        case signInVC
+        case loginVC, signInVC
     }
     
     override func viewDidAppear(_ animated: Bool) {

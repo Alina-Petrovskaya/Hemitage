@@ -51,6 +51,17 @@ class SignInViewController: UIViewController {
     // MARK: - Actions
     @IBAction func signInTapped(_ sender: UIButton) {
         
+        let viewModel = SignInViewModel(email: emailField.text,
+                                        password: passwordField.text,
+                                        name: nameField.text)
+        viewModel.signIn { result in
+            switch result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     
