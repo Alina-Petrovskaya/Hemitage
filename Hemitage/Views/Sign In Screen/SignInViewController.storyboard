@@ -100,7 +100,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="2e5-oU-S3u"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>

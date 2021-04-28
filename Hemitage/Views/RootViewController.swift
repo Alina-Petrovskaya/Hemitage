@@ -8,8 +8,6 @@
 import UIKit
 
 class RootViewController: UIViewController {
-
-    weak var currentController: UIViewController? = nil
     
     enum NextViewController {
         case loginVC
@@ -34,15 +32,15 @@ class RootViewController: UIViewController {
     }
     
     
-    func goToNextController(_ controller: NextViewController) {
+    func goToNextController(_ controller: NextViewController) -> UIViewController? {
         switch controller {
         case .loginVC:
-            guard let vc = LoginViewController.instantiate() else { return }
-            currentController?.navigationController?.pushViewController(vc, animated: true)
+            guard let vc = LoginViewController.instantiate() else { return nil }
+            return vc
             
         case .signInVC:
-            guard let vc = SignInViewController.instantiate() else { return }
-            currentController?.navigationController?.pushViewController(vc, animated: true)
+            guard let vc = SignInViewController.instantiate() else { return nil }
+            return vc
         }
     }
 }

@@ -20,12 +20,6 @@ class WelcomeViewController: UIViewController {
         prepareUI()
         prepareLocalizedText()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        rootController.currentController = self
-    }
-
 
     private func prepareUI() {
         signInButtons.forEach { $0.layer.cornerRadius = 8 }
@@ -38,7 +32,9 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func loginWithEmailTapped(_ sender: UIButton) {
-        rootController.goToNextController(.loginVC)
+        if let vc = rootController.goToNextController(.loginVC) as? LoginViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

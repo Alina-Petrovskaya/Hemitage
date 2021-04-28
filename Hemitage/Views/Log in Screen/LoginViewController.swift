@@ -35,11 +35,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        rootController.currentController = self
-    }
-    
     private func prepareLocalizedText() {
         //Labels
         welcomeLabel.text       = NSLocalizedString("welcome_login_label", comment: "")
@@ -61,7 +56,9 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func createAccountButtonTapped(_ sender: UIButton) {
-        rootController.goToNextController(.signInVC)
+        if let vc = rootController.goToNextController(.signInVC) as? SignInViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func resetPasswordButtonTapped(_ sender: UIButton) {
