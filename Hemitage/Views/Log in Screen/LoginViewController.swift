@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
+    let rootController = AppDelegate.shared.rootViewController
     
     
     override func viewDidLoad() {
@@ -32,6 +33,11 @@ class LoginViewController: UIViewController {
         passwordField.setLeftView(with: "lock")
         passwordField.setRightButtonForPasswordfield()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        rootController.currentController = self
     }
     
     private func prepareLocalizedText() {
@@ -55,7 +61,7 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func createAccountButtonTapped(_ sender: UIButton) {
-        
+        rootController.goToNextController(.signInVC)
     }
     
     @IBAction func resetPasswordButtonTapped(_ sender: UIButton) {
@@ -67,7 +73,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        
+        navigationController?.popViewController(animated: true)
     }
     
 }

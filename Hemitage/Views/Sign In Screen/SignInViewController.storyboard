@@ -59,7 +59,7 @@
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                                 <state key="normal" title="Log in"/>
                                                                 <connections>
-                                                                    <action selector="loginbuttonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sDr-RJ-erj"/>
+                                                                    <action selector="backButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jaw-HL-E3o"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>

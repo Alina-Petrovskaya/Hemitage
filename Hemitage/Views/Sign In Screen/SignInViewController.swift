@@ -19,7 +19,6 @@ class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         prepareLocalizedText()
         prepareUI()
     }
@@ -51,13 +50,11 @@ class SignInViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func signInTapped(_ sender: UIButton) {
-    }
-    
-    
-    @IBAction func loginbuttonTapped(_ sender: UIButton) {
+        
     }
     
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
 }

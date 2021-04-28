@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    static func getNextViewController() -> Self? {
+    static func instantiate() -> Self? {
         let vcName = String(describing: self)
         let stroryBoard = UIStoryboard(name: vcName, bundle: .main)
         let vc = stroryBoard.instantiateViewController(withIdentifier: vcName)

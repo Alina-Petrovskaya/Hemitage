@@ -71,6 +71,9 @@
                                         <state key="normal" title="Continue with Email" image="envelope.fill" catalog="system">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginWithEmailTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cvj-Tg-xjf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
