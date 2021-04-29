@@ -32,6 +32,8 @@
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
+		84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */; };
+		84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -101,6 +103,8 @@
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
+		84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookFirebaseLoginManager.swift; sourceTree = "<group>"; };
+		84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 			children = (
 				848CF74826369F270070A3C6 /* WelcomeViewController.storyboard */,
 				848CF74626369F270070A3C6 /* WelcomeViewController.swift */,
+				84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */,
 			);
 			path = "Welcome Screen";
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 			children = (
 				849A50FF26399CE80047340A /* AuthorizationTypeQualifier.swift */,
 				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
+				84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */,
 				84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */,
 				84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */,
 			);
@@ -652,7 +658,9 @@
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,
 				848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */,
+				84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
+				84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */,
 				848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */,
 				849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */,
 			);

@@ -14,6 +14,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     let rootController = AppDelegate.shared.rootViewController
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,14 @@ class WelcomeViewController: UIViewController {
         if let vc = rootController.goToNextController(.loginVC) as? LoginViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    @IBAction func signinWithAppleTapped(_ sender: UIButton) {
+        
+    }
+    
+    
+    @IBAction func signInWithFBTapped(_ sender: UIButton) {
     }
 }
 

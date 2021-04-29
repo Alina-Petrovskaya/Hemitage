@@ -20,7 +20,7 @@ class AuthorizationTypeQualifier {
         
         switch loginType {
         case .facebook:
-            break
+            loginManager = FacebookFirebaseLoginManager()
             
         case .email:
             guard validateData(email, password) else {

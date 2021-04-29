@@ -12,7 +12,9 @@ target 'Hemitage' do
    pod 'Firebase/Firestore'
    pod 'Firebase/Storage'
 
-
+   #Facebook
+   pod 'FBSDKLoginKit'
+   
   target 'HemitageTests' do
     inherit! :search_paths
     # Pods for testing
