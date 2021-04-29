@@ -8,10 +8,48 @@
 import Foundation
 
 
-protocol LoginManager {
+protocol LoginManagerProtocol {
     func logIn(completion: @escaping (Result<Bool, Error>) -> ())
 }
 
 class AuthorizationTypeQualifier {
+    let validation = Validation()
     
+    func login(email: String? = nil, password: String? = nil, loginType: AuthorizationType, completion: @escaping (LoginStatus) -> ()) {
+        var loginManager: LoginManagerProtocol? = nil
+        
+        switch loginType {
+        case .facebook:
+            break
+            
+        case .email:
+            guard validateData(email, password) else {
+                completion(.failed("Something wrong with filled fields"))
+                return
+            }
+            loginManager = EmailFireBaseLogInManager(email: email!, password: password!)
+            
+        case .apple:
+            break
+        }
+        
+        
+        loginManager?.logIn(completion: { result in
+            switch result {
+            case .success(_):
+                completion(.success)
+                
+            case .failure(let error):
+                completion(.failed(error.localizedDescription))
+            }
+        })
+    }
+    
+    private func validateData(_ email: String?, _ password: String?) -> Bool {
+        if validation.validateEmail(email), validation.validatePassword(password) {
+            return true
+        }
+        
+        return false
+    }
 }

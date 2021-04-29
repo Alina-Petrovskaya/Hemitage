@@ -22,11 +22,11 @@ class KeyboardManager {
         else { return }
         
         let keyBoardHeight = keyboardFrame.size.height
-        keyboardStateChanged?(keyBoardHeight)
+        keyboardStateChanged?(keyBoardHeight + 40.0)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        keyboardStateChanged?(0.0)
+        keyboardStateChanged?(0)
     }
     
     

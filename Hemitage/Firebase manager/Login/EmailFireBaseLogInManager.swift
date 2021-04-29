@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 
 
-class EmailFireBaseLogInManager: LoginManager {
+class EmailFireBaseLogInManager: LoginManagerProtocol {
     let email: String
     let password: String
     
@@ -20,7 +20,12 @@ class EmailFireBaseLogInManager: LoginManager {
     
     
     func logIn(completion: @escaping (Result<Bool, Error>) -> ()) {
-        
-        
+        Auth.auth().signIn(withEmail: email, password: password) { dataResult, error in
+            guard error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            completion(.success(true))
+        }
     }
 }

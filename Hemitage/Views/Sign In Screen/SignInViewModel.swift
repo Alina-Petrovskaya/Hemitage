@@ -13,19 +13,8 @@ class SignInViewModel {
     private let keyBoardManager = KeyboardManager()
     
     init() {
-        var currentHeightOfKeyBoard: CGFloat = 0
         keyBoardManager.keyboardStateChanged = { [weak self] keyboardHeight in
-            
-            print(keyboardHeight)
-            
-            if keyboardHeight != 0, currentHeightOfKeyBoard == 0 {
-                self?.keyBoardCallBack?(keyboardHeight)
-                currentHeightOfKeyBoard = keyboardHeight
-                
-            } else if keyboardHeight == 0, currentHeightOfKeyBoard != 0 {
-                self?.keyBoardCallBack?(keyboardHeight)
-                currentHeightOfKeyBoard = 0
-            }
+            self?.keyBoardCallBack?(keyboardHeight)
         }
     }
 
@@ -42,8 +31,9 @@ class SignInViewModel {
             
            let manager = SignInManager(email: email!, password: password!, name: name!)
             manager.register { completion($0) }
+            
+        } else {
+            completion(.failure(FirebaseError.unableToRegistrateWithFields))
         }
-        
-        completion(.failure(FirebaseError.unableToRegistrateWithFields))
     }
 }

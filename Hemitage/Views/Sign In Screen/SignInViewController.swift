@@ -16,7 +16,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak private var emailField: UITextField!
     @IBOutlet weak private var passwordField: UITextField!
     @IBOutlet weak private var signInButton: UIButton!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let viewModel = SignInViewModel()
     
@@ -48,10 +48,9 @@ class SignInViewController: UIViewController {
         
         viewModel.keyBoardCallBack = { [weak self] keyboardHeight in
             guard let self = self else { return }
-            self.view.frame = CGRect(x: 0,
-                                     y: -keyboardHeight,
-                                     width: self.view.frame.width,
-                                     height: self.view.frame.height)
+            let inset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            self.scrollView.contentInset = inset
+            self.scrollView.scrollIndicatorInsets = inset
         }
     }
     
@@ -75,14 +74,14 @@ class SignInViewController: UIViewController {
         
         viewModel.signIn(email: emailField.text,
                          password: passwordField.text,
-                         name: nameField.text) { result in
+                         name: nameField.text) { [weak self] result in
             
             switch result {
             case .success(let result):
                 print(result)
                 
             case .failure(let error):
-                print(error)
+                self?.showErrorAlert(with: error.localizedDescription)
             }
         }
     }
@@ -95,7 +94,16 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
+        if nameField.isFirstResponder {
+            emailField.becomeFirstResponder()
+            
+        } else if emailField.isFirstResponder {
+            passwordField.becomeFirstResponder()
+            
+        } else {
+            view.endEditing(true)
+        }
+        
         return true
     }
 }

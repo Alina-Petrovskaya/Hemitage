@@ -82,7 +82,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="UR6-Mz-RSJ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="name"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="F6n-DE-a53">
                                                                 <rect key="frame" x="0.0" y="65" width="374" height="50"/>
@@ -91,7 +91,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="FKa-r5-iN2"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-Ot-aoY">
                                                                 <rect key="frame" x="0.0" y="130" width="374" height="50"/>
@@ -177,6 +177,7 @@
                         <outlet property="loginLabel" destination="tKa-Mb-e5x" id="n6i-s6-V36"/>
                         <outlet property="nameField" destination="zcn-jx-h4J" id="QKn-pV-WBF"/>
                         <outlet property="passwordField" destination="g9g-Ot-aoY" id="eOn-qu-Qaw"/>
+                        <outlet property="scrollView" destination="Tii-yy-R90" id="Ok9-gf-MP5"/>
                         <outlet property="signInButton" destination="uP1-0I-IXP" id="xGW-Bw-1ti"/>
                         <outlet property="welcomeLabel" destination="aNX-T0-CmH" id="rgt-Jg-GJ9"/>
                     </connections>

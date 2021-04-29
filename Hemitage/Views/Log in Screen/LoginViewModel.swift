@@ -7,18 +7,35 @@
 
 import Foundation
 
-class LoginViewModel {
-    var email: String?
-    var password: String?
+@objc protocol LoginViewModelProtocol: AnyObject {
+    @objc var loginResult: Bool { get }
+    @objc var errorMessage: String? { get }
+    @objc func login(email: String?, password: String?, autorizationType: AuthorizationType)
+}
+
+class LoginViewModel: NSObject, LoginViewModelProtocol {
+    @objc dynamic private(set) var loginResult: Bool = false
+    @objc dynamic private(set) var errorMessage: String?
+    private var autorizationQualifier = AuthorizationTypeQualifier()
+    
+    private var loginStatus: LoginStatus = .notActive {
+        didSet {
+            switch loginStatus {
+            case .notActive:
+                break
+            case .success:
+                loginResult = true
+                
+            case .failed(let error):
+                errorMessage = error
+            }
+        }
+    }
     
     
-    init(email: String?, password: String?) {
-        self.email    = email
-        self.password = password
-//
-//        var loginManager: LoginManager = EmailFireBaseLogInManager(email: email, password: password)
-//        _ = loginManager.logIn(completion: { result in
-//            switch result
-//        })
+    @objc func login(email: String?, password: String?, autorizationType: AuthorizationType) {
+        autorizationQualifier.login(email: email, password: password, loginType: autorizationType) { [weak self] status in
+            self?.loginStatus = status
+        }
     }
 }

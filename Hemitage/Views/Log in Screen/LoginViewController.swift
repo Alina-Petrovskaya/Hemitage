@@ -17,8 +17,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetPasswordLabel: UILabel!
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    private let rootController = AppDelegate.shared.rootViewController
+    private var kvoResultOfLogin: NSKeyValueObservation?
+    private var kvoErrorMessage: NSKeyValueObservation?
+    private let loginViewModel: NSObject & LoginViewModelProtocol = LoginViewModel()
     
-    let rootController = AppDelegate.shared.rootViewController
     
     
     override func viewDidLoad() {
@@ -27,12 +30,25 @@ class LoginViewController: UIViewController {
         prepareLocalizedText()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        observe(viewModel: loginViewModel)
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        kvoResultOfLogin?.invalidate()
+        kvoErrorMessage?.invalidate()
+    }
+    
     private func prepareUI() {
         loginButton.layer.cornerRadius = 8
+        
         emailField.setLeftView(with: "envelope")
         passwordField.setLeftView(with: "lock")
         passwordField.setRightButtonForPasswordfield()
-        
     }
     
     private func prepareLocalizedText() {
@@ -40,7 +56,7 @@ class LoginViewController: UIViewController {
         welcomeLabel.text       = NSLocalizedString("welcome_login_label", comment: "")
         createAccountLabel.text = NSLocalizedString("create_ccount_label", comment: "")
         resetPasswordLabel.text = NSLocalizedString("reset_password_label", comment: "")
-       
+        
         
         //TextFields
         emailField.placeholder    = NSLocalizedString("email_field", comment: "")
@@ -54,7 +70,6 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @IBAction func createAccountButtonTapped(_ sender: UIButton) {
         if let vc = rootController.goToNextController(.signInVC) as? SignInViewController {
             navigationController?.pushViewController(vc, animated: true)
@@ -66,11 +81,27 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        
+        loginViewModel.login(email: emailField.text,
+                             password: passwordField.text,
+                             autorizationType: .email)
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
+    
+    func observe<T: NSObject & LoginViewModelProtocol>(viewModel: T) {
+        kvoResultOfLogin = viewModel.observe(\.loginResult, options: .new, changeHandler: { _, result in
+            guard result.newValue != nil else { return }
+            print("success loged in with result")
+        })
+        
+        kvoErrorMessage = viewModel.observe(\.errorMessage, options: .new, changeHandler: { [weak self] _, error in
+            guard let errorMessage = error.newValue,
+                  let message = errorMessage else { return }
+            
+            self?.showErrorAlert(with: message)
+        })
+    }
 }

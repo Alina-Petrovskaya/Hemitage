@@ -21,13 +21,17 @@ class SignInManager {
     }
     
     func register(completion: @escaping (Result<Bool, Error>) -> ()) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            guard error == nil, result != nil else {
+        Auth.auth().createUser(withEmail: email, password: password) { _, error in
+            guard error == nil else {
                 completion(.failure(error!))
                 return
             }
             
             completion(.success(true))
         }
+    }
+    
+    private func savePrivateDataIntoIntoRealtimeDataBase() {
+        
     }
 }
