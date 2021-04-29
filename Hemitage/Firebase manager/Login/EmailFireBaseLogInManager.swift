@@ -8,9 +8,6 @@
 import Foundation
 import FirebaseAuth
 
-protocol LoginManager {
-    func logIn(completion: @escaping (Result<Bool, Error>) -> ())
-}
 
 class EmailFireBaseLogInManager: LoginManager {
     let email: String

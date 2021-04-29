@@ -17,12 +17,23 @@ class SignInViewController: UIViewController {
     @IBOutlet weak private var passwordField: UITextField!
     @IBOutlet weak private var signInButton: UIButton!
     
+    
     let viewModel = SignInViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameField.delegate     = self
+        emailField.delegate    = self
+        passwordField.delegate = self
+        
         prepareLocalizedText()
         prepareUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nameField.becomeFirstResponder()
     }
     
     
@@ -33,6 +44,15 @@ class SignInViewController: UIViewController {
         passwordField.setLeftView(with: "lock")
         nameField.setLeftView(with: "person")
         passwordField.setRightButtonForPasswordfield()
+        
+        
+        viewModel.keyBoardCallBack = { [weak self] keyboardHeight in
+            guard let self = self else { return }
+            self.view.frame = CGRect(x: 0,
+                                     y: -keyboardHeight,
+                                     width: self.view.frame.width,
+                                     height: self.view.frame.height)
+        }
     }
     
     private func prepareLocalizedText() {
@@ -70,5 +90,12 @@ class SignInViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }

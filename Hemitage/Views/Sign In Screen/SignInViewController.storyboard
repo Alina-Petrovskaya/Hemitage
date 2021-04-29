@@ -82,7 +82,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="UR6-Mz-RSJ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="name"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="F6n-DE-a53">
                                                                 <rect key="frame" x="0.0" y="65" width="374" height="50"/>
@@ -91,7 +91,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="FKa-r5-iN2"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-Ot-aoY">
                                                                 <rect key="frame" x="0.0" y="130" width="374" height="50"/>
@@ -100,7 +100,7 @@
                                                                     <constraint firstAttribute="height" constant="50" id="2e5-oU-S3u"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="continue" secureTextEntry="YES"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>

@@ -5,9 +5,29 @@
 //  Created by Alina Petrovskaya on 28.04.2021.
 //
 
-import Foundation
+import UIKit
 
 class SignInViewModel {
+    
+    var keyBoardCallBack: ((CGFloat) -> ())?
+    private let keyBoardManager = KeyboardManager()
+    
+    init() {
+        var currentHeightOfKeyBoard: CGFloat = 0
+        keyBoardManager.keyboardStateChanged = { [weak self] keyboardHeight in
+            
+            print(keyboardHeight)
+            
+            if keyboardHeight != 0, currentHeightOfKeyBoard == 0 {
+                self?.keyBoardCallBack?(keyboardHeight)
+                currentHeightOfKeyBoard = keyboardHeight
+                
+            } else if keyboardHeight == 0, currentHeightOfKeyBoard != 0 {
+                self?.keyBoardCallBack?(keyboardHeight)
+                currentHeightOfKeyBoard = 0
+            }
+        }
+    }
 
     func signIn(email: String?,
                 password: String?,
