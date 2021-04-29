@@ -17,11 +17,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetPasswordLabel: UILabel!
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     private let rootController = AppDelegate.shared.rootViewController
-    private var kvoResultOfLogin: NSKeyValueObservation?
-    private var kvoErrorMessage: NSKeyValueObservation?
+    @objc dynamic private var kvoResultOfLogin: NSKeyValueObservation?
+    @objc dynamic private var kvoErrorMessage: NSKeyValueObservation?
+    @objc dynamic private var kvoKeyboardHeight: NSKeyValueObservation?
     private let loginViewModel: NSObject & LoginViewModelProtocol = LoginViewModel()
-    
     
     
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class LoginViewController: UIViewController {
         super.viewDidDisappear(animated)
         kvoResultOfLogin?.invalidate()
         kvoErrorMessage?.invalidate()
+        kvoKeyboardHeight?.invalidate()
     }
     
     private func prepareUI() {
@@ -102,6 +104,14 @@ class LoginViewController: UIViewController {
                   let message = errorMessage else { return }
             
             self?.showErrorAlert(with: message)
+        })
+        
+        kvoKeyboardHeight = viewModel.observe(\.keyboardHeight, options: .new, changeHandler: { [weak self] _, heightInformation in
+            guard let height = heightInformation.newValue else { return }
+            
+            let inset = UIEdgeInsets(top: 0, left: 0, bottom: CGFloat(height), right: 0)
+            self?.scrollView.contentInset = inset
+            self?.scrollView.scrollIndicatorInsets = inset
         })
     }
 }

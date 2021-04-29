@@ -47,10 +47,9 @@ class SignInViewController: UIViewController {
         
         
         viewModel.keyBoardCallBack = { [weak self] keyboardHeight in
-            guard let self = self else { return }
             let inset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-            self.scrollView.contentInset = inset
-            self.scrollView.scrollIndicatorInsets = inset
+            self?.scrollView.contentInset = inset
+            self?.scrollView.scrollIndicatorInsets = inset
         }
     }
     

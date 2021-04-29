@@ -199,6 +199,7 @@
                         <outlet property="passwordField" destination="LgT-km-Tsr" id="MjV-wv-ggt"/>
                         <outlet property="resetPasswordButton" destination="zxq-pT-kvU" id="fsr-oS-J9C"/>
                         <outlet property="resetPasswordLabel" destination="fha-s6-6cN" id="Ycg-cR-FpX"/>
+                        <outlet property="scrollView" destination="HSc-NI-yuv" id="rSj-ZD-mhq"/>
                         <outlet property="welcomeLabel" destination="xx1-tZ-LrD" id="Ayt-pe-6Bp"/>
                     </connections>
                 </viewController>
