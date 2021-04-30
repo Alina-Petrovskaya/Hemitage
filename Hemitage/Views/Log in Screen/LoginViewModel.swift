@@ -6,14 +6,6 @@
 //
 
 import Foundation
-
-@objc protocol LoginViewModelProtocol: AnyObject {
-    @objc var loginResult: Bool { get }
-    @objc var errorMessage: String? { get }
-    @objc var keyboardHeight: Float { get }
-    @objc func login(email: String?, password: String?, autorizationType: AuthorizationType)
-}
-
 class LoginViewModel: NSObject, LoginViewModelProtocol {
     
     @objc dynamic private(set) var loginResult: Bool = false

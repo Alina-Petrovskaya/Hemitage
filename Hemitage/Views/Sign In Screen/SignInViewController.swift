@@ -31,12 +31,6 @@ class SignInViewController: UIViewController {
         prepareUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        nameField.becomeFirstResponder()
-    }
-    
-    
     private func prepareUI() {
         signInButton.layer.cornerRadius = 8
         
@@ -102,7 +96,6 @@ extension SignInViewController: UITextFieldDelegate {
         } else {
             view.endEditing(true)
         }
-        
         return true
     }
 }

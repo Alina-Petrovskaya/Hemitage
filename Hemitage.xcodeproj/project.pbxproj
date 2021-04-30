@@ -34,6 +34,10 @@
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
 		84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */; };
 		84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */; };
+		84D7F78D263AF8E9004B2DB0 /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */; };
+		84D7F78F263AFD60004B2DB0 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */; };
+		84D7F791263BE4F9004B2DB0 /* AppleFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */; };
+		84D7F794263BF712004B2DB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F793263BF712004B2DB0 /* GoogleService-Info.plist */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -45,7 +49,6 @@
 		84DDE7492636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
 		84DDE74A2636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
 		84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */; };
-		84EB44E72637FA6B00828222 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44E62637FA6B00828222 /* GoogleService-Info.plist */; };
 		84EB44EA2638026400828222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E92638026400828222 /* LoginViewController.swift */; };
 		84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44EB2638027900828222 /* LoginViewController.storyboard */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
@@ -105,6 +108,11 @@
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
 		84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookFirebaseLoginManager.swift; sourceTree = "<group>"; };
 		84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelProtocol.swift; sourceTree = "<group>"; };
+		84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleFirebaseLoginManager.swift; sourceTree = "<group>"; };
+		84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hemitage.entitlements; sourceTree = "<group>"; };
+		84D7F793263BF712004B2DB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -113,7 +121,6 @@
 		84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		84DDE7472636D509005D91C8 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
-		84EB44E62637FA6B00828222 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84EB44E92638026400828222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84EB44EB2638027900828222 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +195,7 @@
 		848CF74126369F270070A3C6 /* Hemitage */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */,
 				848CF7812636AABE0070A3C6 /* Models */,
 				84DDE7222636CCF0005D91C8 /* Localization */,
 				848CF79D2636B49E0070A3C6 /* Views */,
@@ -222,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				848CF74226369F270070A3C6 /* AppDelegate.swift */,
-				84EB44E62637FA6B00828222 /* GoogleService-Info.plist */,
+				84D7F793263BF712004B2DB0 /* GoogleService-Info.plist */,
 				848CF75326369F2C0070A3C6 /* Info.plist */,
 			);
 			path = Settings;
@@ -342,11 +350,14 @@
 		849A50FE26399B6D0047340A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */,
 				849A50FF26399CE80047340A /* AuthorizationTypeQualifier.swift */,
-				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
+				84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */,
 				84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */,
+				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
 				84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */,
 				84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */,
+				84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -401,6 +412,7 @@
 				848CF73C26369F270070A3C6 /* Frameworks */,
 				848CF73D26369F270070A3C6 /* Resources */,
 				1701AB6C1C5CB809C3E2E73C /* [CP] Embed Pods Frameworks */,
+				D78F27C661DF0FC4A0E532E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,6 +451,7 @@
 				848CF76026369F2C0070A3C6 /* Frameworks */,
 				848CF76126369F2C0070A3C6 /* Resources */,
 				C6A5AAC93B08188DAAC45938 /* [CP] Embed Pods Frameworks */,
+				035440A80BAA5342FAD6F08F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -501,11 +514,11 @@
 				84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */,
 				84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */,
 				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
-				84EB44E72637FA6B00828222 /* GoogleService-Info.plist in Resources */,
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
+				84D7F794263BF712004B2DB0 /* GoogleService-Info.plist in Resources */,
 				848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */,
 				84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */,
 			);
@@ -534,6 +547,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		035440A80BAA5342FAD6F08F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1701AB6C1C5CB809C3E2E73C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -612,6 +642,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D78F27C661DF0FC4A0E532E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F1E79DDFFDF31AF09FB40E64 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -653,14 +700,17 @@
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
 				849A50FA2639874F0047340A /* Validation.swift in Sources */,
+				84D7F78F263AFD60004B2DB0 /* AuthorizationViewController.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,
 				848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */,
+				84D7F791263BE4F9004B2DB0 /* AppleFirebaseLoginManager.swift in Sources */,
 				84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
 				84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */,
+				84D7F78D263AF8E9004B2DB0 /* LoginViewModelProtocol.swift in Sources */,
 				848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */,
 				849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */,
 			);
@@ -850,14 +900,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Hemitage/Hemitage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G8XDUUWJVM;
+				DEVELOPMENT_TEAM = 2X76T92HD6;
 				INFOPLIST_FILE = Hemitage/Settings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = alina.p.Hemitage;
+				PRODUCT_BUNDLE_IDENTIFIER = olga.k.Hemitage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -870,14 +921,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Hemitage/Hemitage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G8XDUUWJVM;
+				DEVELOPMENT_TEAM = 2X76T92HD6;
 				INFOPLIST_FILE = Hemitage/Settings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = alina.p.Hemitage;
+				PRODUCT_BUNDLE_IDENTIFIER = olga.k.Hemitage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

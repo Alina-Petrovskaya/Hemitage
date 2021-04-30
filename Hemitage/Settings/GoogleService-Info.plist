@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>439284444871-li7lilfaqbm8ospom9k0ldfbbdgnd91l.apps.googleusercontent.com</string>
+	<string>439284444871-5ilqbb56ha1frbv1fl6tn0s13gu31nkv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.439284444871-li7lilfaqbm8ospom9k0ldfbbdgnd91l</string>
+	<string>com.googleusercontent.apps.439284444871-5ilqbb56ha1frbv1fl6tn0s13gu31nkv</string>
 	<key>API_KEY</key>
 	<string>AIzaSyB05onmoOTX3rHq5invFCK_DsZZvZ_qip0</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>alina.p.Hemitage</string>
+	<string>olga.k.Hemitage</string>
 	<key>PROJECT_ID</key>
 	<string>hemitage-60f4a</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:439284444871:ios:65ee873b59172be3c998e2</string>
+	<string>1:439284444871:ios:f24efa39e5d94cabc998e2</string>
+	<key>DATABASE_URL</key>
+	<string>https://hemitage-60f4a-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

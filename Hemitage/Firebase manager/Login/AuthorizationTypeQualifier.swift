@@ -30,7 +30,7 @@ class AuthorizationTypeQualifier {
             loginManager = EmailFireBaseLogInManager(email: email!, password: password!)
             
         case .apple:
-            break
+            loginManager = AppleFirebaseLoginManager()
         }
         
         

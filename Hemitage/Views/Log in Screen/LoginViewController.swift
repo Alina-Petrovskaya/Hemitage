@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: AuthorizationViewController {
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var createAccountButton: UIButton!
@@ -18,17 +18,25 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    private let rootController = AppDelegate.shared.rootViewController
-    @objc dynamic private var kvoResultOfLogin: NSKeyValueObservation?
-    @objc dynamic private var kvoErrorMessage: NSKeyValueObservation?
-    @objc dynamic private var kvoKeyboardHeight: NSKeyValueObservation?
     private let loginViewModel: NSObject & LoginViewModelProtocol = LoginViewModel()
     
+    override var keyboardHeight: CGFloat? {
+        didSet {
+            guard let height = keyboardHeight else { return }
+           
+            let inset = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
+            scrollView.contentInset = inset
+            scrollView.scrollIndicatorInsets = inset
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
         prepareLocalizedText()
+        
+        emailField.delegate    = self
+        passwordField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,13 +44,6 @@ class LoginViewController: UIViewController {
         
         observe(viewModel: loginViewModel)
         
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        kvoResultOfLogin?.invalidate()
-        kvoErrorMessage?.invalidate()
-        kvoKeyboardHeight?.invalidate()
     }
     
     private func prepareUI() {
@@ -91,27 +92,17 @@ class LoginViewController: UIViewController {
     @IBAction func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-    
-    
-    func observe<T: NSObject & LoginViewModelProtocol>(viewModel: T) {
-        kvoResultOfLogin = viewModel.observe(\.loginResult, options: .new, changeHandler: { _, result in
-            guard result.newValue != nil else { return }
-            print("success loged in with result")
-        })
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        kvoErrorMessage = viewModel.observe(\.errorMessage, options: .new, changeHandler: { [weak self] _, error in
-            guard let errorMessage = error.newValue,
-                  let message = errorMessage else { return }
+        if emailField.isFirstResponder {
+            passwordField.becomeFirstResponder()
             
-            self?.showErrorAlert(with: message)
-        })
-        
-        kvoKeyboardHeight = viewModel.observe(\.keyboardHeight, options: .new, changeHandler: { [weak self] _, heightInformation in
-            guard let height = heightInformation.newValue else { return }
-            
-            let inset = UIEdgeInsets(top: 0, left: 0, bottom: CGFloat(height), right: 0)
-            self?.scrollView.contentInset = inset
-            self?.scrollView.scrollIndicatorInsets = inset
-        })
+        } else {
+            view.endEditing(true)
+        }
+        return true
     }
 }

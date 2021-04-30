@@ -7,19 +7,21 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: AuthorizationViewController {
     
     @IBOutlet var signInButtons: [UIButton]!
     @IBOutlet weak var welcomLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    let rootController = AppDelegate.shared.rootViewController
+    private let welcomeViewModel: NSObject & LoginViewModelProtocol = WelcomeViewModel()
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
         prepareLocalizedText()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        observe(viewModel: welcomeViewModel)
     }
 
     private func prepareUI() {
@@ -39,11 +41,12 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func signinWithAppleTapped(_ sender: UIButton) {
-        
+        welcomeViewModel.login(email: nil, password: nil, autorizationType: .apple)
     }
     
     
     @IBAction func signInWithFBTapped(_ sender: UIButton) {
+        welcomeViewModel.login(email: nil, password: nil, autorizationType: .facebook)
     }
 }
 

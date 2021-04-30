@@ -9,6 +9,7 @@ target 'Hemitage' do
 
   # Firebase
    pod 'Firebase/Auth'
+   pod 'FirebaseUI/OAuth'
    pod 'Firebase/Firestore'
    pod 'Firebase/Storage'
 
