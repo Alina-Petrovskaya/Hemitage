@@ -5,7 +5,7 @@
 //  Created by Alina Petrovskaya on 29.04.2021.
 //
 
-import Foundation
+import UIKit
 
 enum LoginStatus {
     case notActive

@@ -7,42 +7,41 @@
 
 import Foundation
 
-
-protocol LoginManagerProtocol {
-    func logIn(completion: @escaping (Result<Bool, Error>) -> ())
-}
-
-class AuthorizationTypeQualifier {
-    let validation = Validation()
+class AuthorizationTypeQualifier: AuthResultDelegateProtocol {
     
-    func login(email: String? = nil, password: String? = nil, loginType: AuthorizationType, completion: @escaping (LoginStatus) -> ()) {
-        var loginManager: LoginManagerProtocol? = nil
-        
+    let validation = Validation()
+    var callBack: ((LoginStatus) -> ())?
+    var loginManager: LoginManagerProtocol?
+    
+    func login(email: String? = nil, password: String? = nil, loginType: AuthorizationType) {
         switch loginType {
         case .facebook:
             loginManager = FacebookFirebaseLoginManager()
             
         case .email:
             guard validateData(email, password) else {
-                completion(.failed("Something wrong with filled fields"))
+                callBack?(.failed("Something wrong with filled fields"))
                 return
             }
             loginManager = EmailFireBaseLogInManager(email: email!, password: password!)
             
+            
         case .apple:
             loginManager = AppleFirebaseLoginManager()
         }
-        
-        
-        loginManager?.logIn(completion: { result in
-            switch result {
-            case .success(_):
-                completion(.success)
-                
-            case .failure(let error):
-                completion(.failed(error.localizedDescription))
-            }
-        })
+        loginManager?.delegate = self
+        loginManager?.logIn()
+    }
+    
+    
+    func getAuthResult(result: Result<Bool, Error>) {
+        switch result {
+        case .success(_):
+            callBack?(.success)
+            
+        case .failure(let error):
+            callBack?(.failed(error.localizedDescription))
+        }
     }
     
     private func validateData(_ email: String?, _ password: String?) -> Bool {

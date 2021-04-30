@@ -31,8 +31,10 @@ class WelcomeViewModel: NSObject, LoginViewModelProtocol {
     
     
     func login(email: String?, password: String?, autorizationType: AuthorizationType) {
-        autorizationQualifier.login(email: email, password: password, loginType: autorizationType) { [weak self] status in
-            self?.loginStatus = status
+        autorizationQualifier.login(email: email, password: password, loginType: autorizationType)
+        
+        autorizationQualifier.callBack = { [weak self] authStatus in
+            self?.loginStatus = authStatus
         }
     }
 }

@@ -37,7 +37,9 @@
 		84D7F78D263AF8E9004B2DB0 /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */; };
 		84D7F78F263AFD60004B2DB0 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */; };
 		84D7F791263BE4F9004B2DB0 /* AppleFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */; };
-		84D7F794263BF712004B2DB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F793263BF712004B2DB0 /* GoogleService-Info.plist */; };
+		84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */; };
+		84D7F798263C284D004B2DB0 /* AuthResultDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F797263C284C004B2DB0 /* AuthResultDelegateProtocol.swift */; };
+		84D7F79B263C2C26004B2DB0 /* LoginManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F79A263C2C26004B2DB0 /* LoginManagerProtocol.swift */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -112,7 +114,9 @@
 		84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleFirebaseLoginManager.swift; sourceTree = "<group>"; };
 		84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hemitage.entitlements; sourceTree = "<group>"; };
-		84D7F793263BF712004B2DB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84D7F797263C284C004B2DB0 /* AuthResultDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResultDelegateProtocol.swift; sourceTree = "<group>"; };
+		84D7F79A263C2C26004B2DB0 /* LoginManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManagerProtocol.swift; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -230,7 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				848CF74226369F270070A3C6 /* AppDelegate.swift */,
-				84D7F793263BF712004B2DB0 /* GoogleService-Info.plist */,
+				84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */,
 				848CF75326369F2C0070A3C6 /* Info.plist */,
 			);
 			path = Settings;
@@ -350,16 +354,26 @@
 		849A50FE26399B6D0047340A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */,
+				84D7F799263C2C02004B2DB0 /* Protocols */,
 				849A50FF26399CE80047340A /* AuthorizationTypeQualifier.swift */,
 				84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */,
 				84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */,
 				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
 				84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */,
 				84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */,
-				84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */,
+				84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		84D7F799263C2C02004B2DB0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F79A263C2C26004B2DB0 /* LoginManagerProtocol.swift */,
+				84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */,
+				84D7F797263C284C004B2DB0 /* AuthResultDelegateProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		84DB77E826384A8B0094483E /* Sign In Screen */ = {
@@ -518,7 +532,7 @@
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
-				84D7F794263BF712004B2DB0 /* GoogleService-Info.plist in Resources */,
+				84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */,
 				848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */,
 				84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */,
 			);
@@ -694,6 +708,7 @@
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
+				84D7F798263C284D004B2DB0 /* AuthResultDelegateProtocol.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
@@ -701,6 +716,7 @@
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
 				849A50FA2639874F0047340A /* Validation.swift in Sources */,
 				84D7F78F263AFD60004B2DB0 /* AuthorizationViewController.swift in Sources */,
+				84D7F79B263C2C26004B2DB0 /* LoginManagerProtocol.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
@@ -908,7 +924,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = olga.k.Hemitage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.a5.Hemitage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -929,7 +945,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = olga.k.Hemitage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.a5.Hemitage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

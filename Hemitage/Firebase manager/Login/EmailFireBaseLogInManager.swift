@@ -10,6 +10,8 @@ import FirebaseAuth
 
 
 class EmailFireBaseLogInManager: LoginManagerProtocol {
+    var delegate: AuthResultDelegateProtocol?
+    
     let email: String
     let password: String
     
@@ -19,13 +21,15 @@ class EmailFireBaseLogInManager: LoginManagerProtocol {
     }
     
     
-    func logIn(completion: @escaping (Result<Bool, Error>) -> ()) {
-        Auth.auth().signIn(withEmail: email, password: password) { dataResult, error in
+    func logIn() -> () {
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] dataResult, error in
             guard error == nil else {
-                completion(.failure(error!))
+                self?.delegate?.getAuthResult(result: .failure(error!))
                 return
             }
-            completion(.success(true))
+            DispatchQueue.main.async {
+                self?.delegate?.getAuthResult(result: .success(true))
+            }
         }
     }
 }

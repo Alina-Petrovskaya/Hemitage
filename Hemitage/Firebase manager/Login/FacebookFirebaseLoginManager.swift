@@ -12,16 +12,18 @@ import FirebaseAuth
 
 class FacebookFirebaseLoginManager: LoginManagerProtocol {
     
-    func logIn(completion: @escaping (Result<Bool, Error>) -> ()) {
+    var delegate: AuthResultDelegateProtocol?
+    
+    func logIn() -> () {
         
         if AccessToken.current != nil {
             LoginManager().logOut()
         }
         
         let loginManager = LoginManager()
-        loginManager.logIn(permissions: ["email", "public_profile"], from: nil) { result, error in
+        loginManager.logIn(permissions: ["email", "public_profile"], from: nil) { [weak self] result, error in
             guard error == nil else {
-                completion(.failure(error!))
+                self?.delegate?.getAuthResult(result: .failure(error!))
                 return
             }
             
@@ -30,10 +32,10 @@ class FacebookFirebaseLoginManager: LoginManagerProtocol {
             let credential = FacebookAuthProvider.credential(withAccessToken: token)
             Auth.auth().signIn(with: credential) { result, error in
                 guard error == nil else {
-                    completion(.failure(error!))
+                    self?.delegate?.getAuthResult(result: .failure(error!))
                     return
                 }
-                completion(.success(true))
+                self?.delegate?.getAuthResult(result: .success(true))
             }
         }
     }

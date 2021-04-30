@@ -10,6 +10,8 @@ import Foundation
 enum FirebaseError: Error {
     case unableToRegistrateWithFields
     case unableToLogin
+    case unableToCreateNonceForAppleSignIn
+    case unableToGetAppleIdTokenToSignIn
 }
 
 extension FirebaseError: LocalizedError {
@@ -20,6 +22,12 @@ extension FirebaseError: LocalizedError {
             
         case .unableToLogin:
             return "It looks like there is problem with filled fields"
+            
+        case .unableToCreateNonceForAppleSignIn:
+            return "Unable To Create Nonce For Apple Sign In"
+        
+        case .unableToGetAppleIdTokenToSignIn:
+            return "Unable To Get AppleId Token To Sign In"
         }
     }
 }
