@@ -1,5 +1,5 @@
 //
-//  AuthResultDelegateProtocol.swift
+//  AuthResultDelegate.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 30.04.2021.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AuthResultDelegateProtocol {
+protocol AuthResultDelegate {
     func getAuthResult(result: Result<Bool, Error>)
 }

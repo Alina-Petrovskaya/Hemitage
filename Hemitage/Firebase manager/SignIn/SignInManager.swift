@@ -28,11 +28,11 @@ class SignInManager {
             }
             
             completion(.success(true))
-            self?.savePrivateDataIntoIntoRealtimeDataBase()
+            self?.savePrivateDataIntoRealtimeDataBase()
         }
     }
     
-    private func savePrivateDataIntoIntoRealtimeDataBase() {
+    private func savePrivateDataIntoRealtimeDataBase() {
         
     }
 }

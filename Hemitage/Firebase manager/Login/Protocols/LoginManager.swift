@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol LoginManagerProtocol: class {
+protocol LoginManagerProtocol {
+    
     func logIn() -> ()
-    var delegate: AuthResultDelegateProtocol? {get set}
+    
+    var delegate: AuthResultDelegate? {get set}
 }

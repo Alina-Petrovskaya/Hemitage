@@ -25,7 +25,6 @@ extension UITextField {
     }
     
     
-    
     func setRightButtonForPasswordfield() {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 24))
         
@@ -42,6 +41,7 @@ extension UITextField {
         self.rightViewMode = .always
         
     }
+    
     
     @objc private func changeVisibilityOfPassword(sender: UIButton) {
         self.isSecureTextEntry = !self.isSecureTextEntry

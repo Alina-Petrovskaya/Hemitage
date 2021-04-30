@@ -7,12 +7,17 @@
 
 import UIKit
 
-class WelcomeViewController: AuthorizationViewController {
+class WelcomeViewController: UIViewController, AuthObserver {
     
     @IBOutlet var signInButtons: [UIButton]!
     @IBOutlet weak var welcomLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
     private let welcomeViewModel: NSObject & LoginViewModelProtocol = WelcomeViewModel()
+    var kvoResultOfLogin: NSKeyValueObservation?
+    var kvoErrorMessage: NSKeyValueObservation?
+    var kvoKeyboardHeight: NSKeyValueObservation?
+    var keyboardHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +25,18 @@ class WelcomeViewController: AuthorizationViewController {
         prepareLocalizedText()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        observe(viewModel: welcomeViewModel)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        kvoResultOfLogin?.invalidate()
+        kvoErrorMessage?.invalidate()
+        kvoKeyboardHeight?.invalidate()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        observeAuth(viewModel: welcomeViewModel)
+    }
+    
     private func prepareUI() {
         signInButtons.forEach { $0.layer.cornerRadius = 8 }
         navigationController?.navigationBar.isHidden = true
@@ -35,7 +48,7 @@ class WelcomeViewController: AuthorizationViewController {
     }
     
     @IBAction func loginWithEmailTapped(_ sender: UIButton) {
-        if let vc = rootController.goToNextController(.loginVC) as? LoginViewController {
+        if let vc = LoginViewController.instantiate() {
             navigationController?.pushViewController(vc, animated: true)
         }
     }

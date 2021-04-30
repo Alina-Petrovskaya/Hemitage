@@ -8,8 +8,8 @@
 import Foundation
 
 @objc protocol LoginViewModelProtocol: AnyObject {
-    @objc var loginResult: Bool { get }
-    @objc var errorMessage: String? { get }
-    @objc var keyboardHeight: Float { get }
+    @objc dynamic var loginResult: Bool { get }
+    @objc dynamic var errorMessage: String? { get }
+    
     func login(email: String?, password: String?, autorizationType: AuthorizationType)
 }

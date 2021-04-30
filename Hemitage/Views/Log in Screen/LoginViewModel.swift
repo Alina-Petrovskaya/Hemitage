@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class LoginViewModel: NSObject, LoginViewModelProtocol {
+class LoginViewModel: NSObject, LoginViewModelProtocol, KeyboardManagerPorotocol {
     
     @objc dynamic private(set) var loginResult: Bool = false
     @objc dynamic private(set) var errorMessage: String?

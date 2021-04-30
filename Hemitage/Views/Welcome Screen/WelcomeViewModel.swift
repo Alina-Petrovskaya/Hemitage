@@ -11,9 +11,7 @@ class WelcomeViewModel: NSObject, LoginViewModelProtocol {
     
     @objc dynamic private(set) var loginResult: Bool = false
     @objc dynamic private(set) var errorMessage: String?
-    @objc dynamic private(set) var keyboardHeight: Float = 0
     private var autorizationQualifier = AuthorizationTypeQualifier()
-    private let keyBoardManager = KeyboardManager()
     
     private var loginStatus: LoginStatus = .notActive {
         didSet {

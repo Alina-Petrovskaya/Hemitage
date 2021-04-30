@@ -16,9 +16,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak private var emailField: UITextField!
     @IBOutlet weak private var passwordField: UITextField!
     @IBOutlet weak private var signInButton: UIButton!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak private var scrollView: UIScrollView!
     
-    let viewModel = SignInViewModel()
+    private var viewModel: SignInViewModelProtocol = SignInViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

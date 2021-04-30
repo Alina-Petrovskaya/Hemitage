@@ -3,7 +3,7 @@
 "description_label" = "We Are Not Looking to Ease Your \nProblems, We Want to Fix Them";
 
 //Login scereen
-"welcome_login_label"          = "Hey,\nLog in now";
+"welcome_login_label"    = "Hey,\nLog in now";
 "create_account_button"  = "Create Account ";
 "create_ccount_label"    = "If you are new /";
 "email_field"            = "Email";
@@ -14,9 +14,9 @@
 
 //SignIn button
 "welcome_signin_label" = "Hey, \nCreate account";
-"login_label" = "Have an account?";
-"login_button" = "Log in";
-"name_text_field" = "Name";
-"email_text_field" = "Email";
-"password_text_field" = "Password";
-"sign_in_button" = "CREATE ACCOUNT";
+"login_label"          = "Have an account?";
+"login_button"         = "Log in";
+"name_text_field"      = "Name";
+"email_text_field"     = "Email";
+"password_text_field"  = "Password";
+"sign_in_button"       = "CREATE ACCOUNT";

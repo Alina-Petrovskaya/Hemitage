@@ -29,19 +29,4 @@ class RootViewController: UIViewController {
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)
     }
-    
-    
-    func goToNextController(_ controller: NextViewController) -> UIViewController? {
-        switch controller {
-        case .loginVC:
-            guard let vc = LoginViewController.instantiate() else { return nil }
-            return vc
-            
-        case .signInVC:
-            guard let vc = SignInViewController.instantiate() else { return nil }
-            return vc
-        }
-    }
-    
-    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: AuthorizationViewController {
+class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver {
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var createAccountButton: UIButton!
@@ -18,13 +18,16 @@ class LoginViewController: AuthorizationViewController {
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    
     private let loginViewModel: NSObject & LoginViewModelProtocol = LoginViewModel()
     
-    override var keyboardHeight: CGFloat? {
+    var kvoResultOfLogin: NSKeyValueObservation?
+    var kvoErrorMessage: NSKeyValueObservation?
+    var kvoKeyboardHeight: NSKeyValueObservation?
+    
+    var keyboardHeight: CGFloat = 0 {
         didSet {
-            guard let height = keyboardHeight else { return }
-           
-            let inset = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
+            let inset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
             scrollView.contentInset = inset
             scrollView.scrollIndicatorInsets = inset
         }
@@ -42,8 +45,16 @@ class LoginViewController: AuthorizationViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        observe(viewModel: loginViewModel)
+        observeAuth(viewModel: loginViewModel)
+        observeKeyBoard(viewModel: loginViewModel as? NSObject & KeyboardManagerPorotocol)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
+        kvoResultOfLogin?.invalidate()
+        kvoErrorMessage?.invalidate()
+        kvoKeyboardHeight?.invalidate()
     }
     
     private func prepareUI() {
@@ -74,7 +85,7 @@ class LoginViewController: AuthorizationViewController {
     
     // MARK: - Actions
     @IBAction func createAccountButtonTapped(_ sender: UIButton) {
-        if let vc = rootController.goToNextController(.signInVC) as? SignInViewController {
+        if let vc = SignInViewController.instantiate() {
             navigationController?.pushViewController(vc, animated: true)
         }
     }

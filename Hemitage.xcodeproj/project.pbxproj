@@ -35,11 +35,13 @@
 		84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */; };
 		84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */; };
 		84D7F78D263AF8E9004B2DB0 /* LoginViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */; };
-		84D7F78F263AFD60004B2DB0 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */; };
 		84D7F791263BE4F9004B2DB0 /* AppleFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */; };
 		84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */; };
-		84D7F798263C284D004B2DB0 /* AuthResultDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F797263C284C004B2DB0 /* AuthResultDelegateProtocol.swift */; };
-		84D7F79B263C2C26004B2DB0 /* LoginManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F79A263C2C26004B2DB0 /* LoginManagerProtocol.swift */; };
+		84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F797263C284C004B2DB0 /* AuthResultDelegate.swift */; };
+		84D7F79B263C2C26004B2DB0 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F79A263C2C26004B2DB0 /* LoginManager.swift */; };
+		84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F79D263C404D004B2DB0 /* AuthObserver.swift */; };
+		84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */; };
+		84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -111,12 +113,14 @@
 		84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookFirebaseLoginManager.swift; sourceTree = "<group>"; };
 		84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelProtocol.swift; sourceTree = "<group>"; };
-		84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleFirebaseLoginManager.swift; sourceTree = "<group>"; };
 		84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hemitage.entitlements; sourceTree = "<group>"; };
 		84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		84D7F797263C284C004B2DB0 /* AuthResultDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResultDelegateProtocol.swift; sourceTree = "<group>"; };
-		84D7F79A263C2C26004B2DB0 /* LoginManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManagerProtocol.swift; sourceTree = "<group>"; };
+		84D7F797263C284C004B2DB0 /* AuthResultDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResultDelegate.swift; sourceTree = "<group>"; };
+		84D7F79A263C2C26004B2DB0 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		84D7F79D263C404D004B2DB0 /* AuthObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthObserver.swift; sourceTree = "<group>"; };
+		84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardStateObserver.swift; path = Hemitage/Core/Protocols/KeyboardStateObserver.swift; sourceTree = SOURCE_ROOT; };
+		84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerProtocol.swift; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -298,8 +302,10 @@
 		848CF79B2636B3E60070A3C6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */,
+				84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */,
 			);
-			path = Protocols;
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		848CF79C2636B3EE0070A3C6 /* Extensions */ = {
@@ -354,14 +360,11 @@
 		849A50FE26399B6D0047340A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F79F263C4876004B2DB0 /* Auth observer service */,
 				84D7F799263C2C02004B2DB0 /* Protocols */,
-				849A50FF26399CE80047340A /* AuthorizationTypeQualifier.swift */,
-				84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */,
-				84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */,
-				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
+				84D7F79C263C3E2B004B2DB0 /* Auth Strategy service */,
 				84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */,
 				84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */,
-				84D7F78E263AFD60004B2DB0 /* AuthorizationViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -369,11 +372,30 @@
 		84D7F799263C2C02004B2DB0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				84D7F79A263C2C26004B2DB0 /* LoginManagerProtocol.swift */,
-				84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */,
-				84D7F797263C284C004B2DB0 /* AuthResultDelegateProtocol.swift */,
+				84D7F79A263C2C26004B2DB0 /* LoginManager.swift */,
+				84D7F797263C284C004B2DB0 /* AuthResultDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		84D7F79C263C3E2B004B2DB0 /* Auth Strategy service */ = {
+			isa = PBXGroup;
+			children = (
+				849A50FF26399CE80047340A /* AuthorizationTypeQualifier.swift */,
+				84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */,
+				84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */,
+				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
+			);
+			path = "Auth Strategy service";
+			sourceTree = "<group>";
+		};
+		84D7F79F263C4876004B2DB0 /* Auth observer service */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */,
+				84D7F79D263C404D004B2DB0 /* AuthObserver.swift */,
+			);
+			path = "Auth observer service";
 			sourceTree = "<group>";
 		};
 		84DB77E826384A8B0094483E /* Sign In Screen */ = {
@@ -708,16 +730,18 @@
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
-				84D7F798263C284D004B2DB0 /* AuthResultDelegateProtocol.swift in Sources */,
+				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
+				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
+				84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
 				849A50FA2639874F0047340A /* Validation.swift in Sources */,
-				84D7F78F263AFD60004B2DB0 /* AuthorizationViewController.swift in Sources */,
-				84D7F79B263C2C26004B2DB0 /* LoginManagerProtocol.swift in Sources */,
+				84D7F79B263C2C26004B2DB0 /* LoginManager.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,
+				84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,

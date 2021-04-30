@@ -12,7 +12,7 @@ import AuthenticationServices
 
 class AppleFirebaseLoginManager: NSObject, LoginManagerProtocol {
     
-    var delegate: AuthResultDelegateProtocol?
+    var delegate: AuthResultDelegate?
     var currentNonce: String?
     
     func logIn() -> () {

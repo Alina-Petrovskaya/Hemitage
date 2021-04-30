@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AuthorizationTypeQualifier: AuthResultDelegateProtocol {
+class AuthorizationTypeQualifier: AuthResultDelegate {
     
     let validation = Validation()
     var callBack: ((LoginStatus) -> ())?

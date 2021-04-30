@@ -7,8 +7,12 @@
 
 import UIKit
 
-class SignInViewModel {
-    
+protocol SignInViewModelProtocol {
+    var keyBoardCallBack: ((CGFloat) -> ())? { get set }
+    func signIn(email: String?, password: String?, name: String?, completion: @escaping (Result<Bool, Error>) -> ())
+}
+
+class SignInViewModel: SignInViewModelProtocol {
     var keyBoardCallBack: ((CGFloat) -> ())?
     private let keyBoardManager = KeyboardManager()
     

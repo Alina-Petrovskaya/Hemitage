@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIViewController {
+    
     static func instantiate() -> Self? {
         let vcName = String(describing: self)
         let stroryBoard = UIStoryboard(name: vcName, bundle: .main)

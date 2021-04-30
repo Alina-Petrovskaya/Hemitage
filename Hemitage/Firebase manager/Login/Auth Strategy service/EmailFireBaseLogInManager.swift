@@ -10,7 +10,7 @@ import FirebaseAuth
 
 
 class EmailFireBaseLogInManager: LoginManagerProtocol {
-    var delegate: AuthResultDelegateProtocol?
+    var delegate: AuthResultDelegate?
     
     let email: String
     let password: String

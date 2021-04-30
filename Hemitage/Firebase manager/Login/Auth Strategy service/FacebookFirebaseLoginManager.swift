@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class FacebookFirebaseLoginManager: LoginManagerProtocol {
     
-    var delegate: AuthResultDelegateProtocol?
+    var delegate: AuthResultDelegate?
     
     func logIn() -> () {
         
