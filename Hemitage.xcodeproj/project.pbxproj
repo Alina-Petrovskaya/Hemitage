@@ -360,9 +360,9 @@
 		849A50FE26399B6D0047340A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				84D7F79F263C4876004B2DB0 /* Auth observer service */,
+				84D7F79F263C4876004B2DB0 /* AuthObserver */,
 				84D7F799263C2C02004B2DB0 /* Protocols */,
-				84D7F79C263C3E2B004B2DB0 /* Auth Strategy service */,
+				84D7F79C263C3E2B004B2DB0 /* AuthStrategy */,
 				84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */,
 				84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */,
 			);
@@ -378,7 +378,7 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		84D7F79C263C3E2B004B2DB0 /* Auth Strategy service */ = {
+		84D7F79C263C3E2B004B2DB0 /* AuthStrategy */ = {
 			isa = PBXGroup;
 			children = (
 				849A50FF26399CE80047340A /* AuthorizationTypeQualifier.swift */,
@@ -386,16 +386,16 @@
 				84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */,
 				849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */,
 			);
-			path = "Auth Strategy service";
+			path = AuthStrategy;
 			sourceTree = "<group>";
 		};
-		84D7F79F263C4876004B2DB0 /* Auth observer service */ = {
+		84D7F79F263C4876004B2DB0 /* AuthObserver */ = {
 			isa = PBXGroup;
 			children = (
 				84D7F78C263AF8E9004B2DB0 /* LoginViewModelProtocol.swift */,
 				84D7F79D263C404D004B2DB0 /* AuthObserver.swift */,
 			);
-			path = "Auth observer service";
+			path = AuthObserver;
 			sourceTree = "<group>";
 		};
 		84DB77E826384A8B0094483E /* Sign In Screen */ = {
