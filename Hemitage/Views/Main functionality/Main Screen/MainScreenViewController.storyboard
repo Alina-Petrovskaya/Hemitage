@@ -22,6 +22,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QZX-LC-5KD" secondAttribute="height" multiplier="1 : 0.373" id="y6s-KH-v73"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TemplateHeaderView"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>

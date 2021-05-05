@@ -10,7 +10,7 @@ import UIKit
 @IBDesignable
 class TemplateHeaderView: UIView {
     
-    var nibName: String?
+    @IBInspectable var nibName: String?
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -18,17 +18,16 @@ class TemplateHeaderView: UIView {
     @IBOutlet weak var profilePhoto: UIImageView!
     
     // MARK: - Life cycle
-    
     override init(frame: CGRect) {
         
-        nibName = String(describing: TemplateHeaderView.self)
+//        nibName = String(describing: TemplateHeaderView.self)
         super.init(frame: frame)
         
         commonInit()
     }
     
     required init?(coder: NSCoder) {
-        nibName = String(describing: TemplateHeaderView.self)
+//        nibName = String(describing: TemplateHeaderView.self)
         super.init(coder: coder)
         
         commonInit()
