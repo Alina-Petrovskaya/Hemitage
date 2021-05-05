@@ -42,6 +42,10 @@
 		84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F79D263C404D004B2DB0 /* AuthObserver.swift */; };
 		84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */; };
 		84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */; };
+		84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */; };
+		84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */; };
+		84D7F8122642BA26004B2DB0 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8112642BA26004B2DB0 /* HeaderView.xib */; };
+		84D7F8142642C481004B2DB0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8132642C481004B2DB0 /* HeaderView.swift */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -121,6 +125,10 @@
 		84D7F79D263C404D004B2DB0 /* AuthObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthObserver.swift; sourceTree = "<group>"; };
 		84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardStateObserver.swift; path = Hemitage/Core/Protocols/KeyboardStateObserver.swift; sourceTree = SOURCE_ROOT; };
 		84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerProtocol.swift; sourceTree = "<group>"; };
+		84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreenViewController.storyboard; sourceTree = "<group>"; };
+		84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		84D7F8112642BA26004B2DB0 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		84D7F8132642C481004B2DB0 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -323,9 +331,8 @@
 			isa = PBXGroup;
 			children = (
 				84DDE7322636CECE005D91C8 /* RootViewController.swift */,
-				848CF79F2636B6F20070A3C6 /* Welcome Screen */,
-				84EB44E82638021900828222 /* Log in Screen */,
-				84DB77E826384A8B0094483E /* Sign In Screen */,
+				84D7F80B2642B610004B2DB0 /* Main functionality */,
+				84D7F80A2642B5E3004B2DB0 /* Authorization */,
 				848CF79E2636B6BC0070A3C6 /* Splash */,
 			);
 			path = Views;
@@ -396,6 +403,35 @@
 				84D7F79D263C404D004B2DB0 /* AuthObserver.swift */,
 			);
 			path = AuthObserver;
+			sourceTree = "<group>";
+		};
+		84D7F80A2642B5E3004B2DB0 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				848CF79F2636B6F20070A3C6 /* Welcome Screen */,
+				84EB44E82638021900828222 /* Log in Screen */,
+				84DB77E826384A8B0094483E /* Sign In Screen */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		84D7F80B2642B610004B2DB0 /* Main functionality */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */,
+				84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */,
+				84D7F8102642B9A3004B2DB0 /* Header view */,
+			);
+			path = "Main functionality";
+			sourceTree = "<group>";
+		};
+		84D7F8102642B9A3004B2DB0 /* Header view */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F8112642BA26004B2DB0 /* HeaderView.xib */,
+				84D7F8132642C481004B2DB0 /* HeaderView.swift */,
+			);
+			path = "Header view";
 			sourceTree = "<group>";
 		};
 		84DB77E826384A8B0094483E /* Sign In Screen */ = {
@@ -550,11 +586,13 @@
 				84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */,
 				84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */,
 				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
+				84D7F8122642BA26004B2DB0 /* HeaderView.xib in Resources */,
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 				84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */,
+				84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */,
 				848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */,
 				84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */,
 			);
@@ -729,6 +767,7 @@
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
+				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
@@ -742,6 +781,7 @@
 				84D7F79B263C2C26004B2DB0 /* LoginManager.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,
 				84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */,
+				84D7F8142642C481004B2DB0 /* HeaderView.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,

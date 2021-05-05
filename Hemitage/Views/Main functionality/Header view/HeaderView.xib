@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="HeaderView" id="iN0-l3-epB" customClass="HeaderView" customModule="Hemitage" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="158"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sky" translatesAutoresizingMaskIntoConstraints="NO" id="dV3-vS-uOW">
+                    <rect key="frame" x="129.5" y="0.0" width="158" height="158"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="dV3-vS-uOW" secondAttribute="height" multiplier="1:1" id="HZb-va-syw"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tgM-lt-OVq">
+                    <rect key="frame" x="20" y="75" width="377" height="40"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="4yF-Ix-RbH">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="4yF-Ix-RbH" secondAttribute="height" multiplier="1:1" id="9YL-va-ws5"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Hi, Jared" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-ld-74G">
+                            <rect key="frame" x="48" y="0.0" width="105" height="40"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsH-b8-mze" userLabel="Notification View">
+                            <rect key="frame" x="161" y="0.0" width="216" height="40"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z05-2J-kSh" userLabel="Notification Indicator">
+                                    <rect key="frame" x="210" y="1" width="6" height="6"/>
+                                    <color key="backgroundColor" red="0.87450980392156863" green="0.6705882352941176" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="6" id="8XR-1I-XSJ"/>
+                                        <constraint firstAttribute="height" constant="6" id="FUH-hx-xeb"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOr-io-mKl">
+                                    <rect key="frame" x="192" y="8" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="VHJ-b3-ovH"/>
+                                        <constraint firstAttribute="height" constant="24" id="xFw-Il-3fN"/>
+                                    </constraints>
+                                    <state key="normal" image="notification-2-line"/>
+                                    <connections>
+                                        <action selector="notificationsButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="9N2-ZS-spR"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="z05-2J-kSh" secondAttribute="trailing" id="Eh0-op-ure"/>
+                                <constraint firstItem="GOr-io-mKl" firstAttribute="centerY" secondItem="WsH-b8-mze" secondAttribute="centerY" id="Op1-hi-ndE"/>
+                                <constraint firstItem="z05-2J-kSh" firstAttribute="top" secondItem="WsH-b8-mze" secondAttribute="top" constant="1" id="TSz-yI-hQC"/>
+                                <constraint firstAttribute="trailing" secondItem="GOr-io-mKl" secondAttribute="trailing" id="pdC-pD-hz6"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="jWx-EX-W54"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tgM-lt-OVq" secondAttribute="trailing" constant="20" id="5rZ-LY-3p6"/>
+                <constraint firstItem="tgM-lt-OVq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="HAr-0P-ag9"/>
+                <constraint firstItem="dV3-vS-uOW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YFz-9B-W4O"/>
+                <constraint firstItem="dV3-vS-uOW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aH8-N8-2PN"/>
+                <constraint firstAttribute="bottom" secondItem="dV3-vS-uOW" secondAttribute="bottom" id="agb-qe-Xx8"/>
+                <constraint firstItem="tgM-lt-OVq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.2" id="cey-M1-Tlv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="notificationIndicator" destination="z05-2J-kSh" id="sfG-Ar-cnA"/>
+                <outlet property="profilePhoto" destination="4yF-Ix-RbH" id="RjU-FT-Faj"/>
+                <outlet property="welcomeLabel" destination="uYm-ld-74G" id="KHk-Ai-wMc"/>
+            </connections>
+            <point key="canvasLocation" x="139.85507246376812" y="-118.52678571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Sky" width="347" height="347"/>
+        <image name="notification-2-line" width="24" height="24"/>
+        <image name="person" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

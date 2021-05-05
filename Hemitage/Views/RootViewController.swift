@@ -19,7 +19,7 @@ class RootViewController: UIViewController {
     }
     
     private func goToWelcomeController() { // Here we'll deside what controller we'll show
-        guard let vc = WelcomeViewController.instantiate()
+        guard let vc = MainScreenViewController.instantiate()
         else {
             print("Can't create path to Welcome VC")
             return
