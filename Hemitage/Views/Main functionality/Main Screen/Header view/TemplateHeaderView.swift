@@ -10,8 +10,6 @@ import UIKit
 @IBDesignable
 class TemplateHeaderView: UIView {
     
-    @IBInspectable var nibName: String?
-
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var notificationIndicator: UIView!
@@ -19,15 +17,12 @@ class TemplateHeaderView: UIView {
     
     // MARK: - Life cycle
     override init(frame: CGRect) {
-        
-//        nibName = String(describing: TemplateHeaderView.self)
         super.init(frame: frame)
         
         commonInit()
     }
     
     required init?(coder: NSCoder) {
-//        nibName = String(describing: TemplateHeaderView.self)
         super.init(coder: coder)
         
         commonInit()
@@ -35,8 +30,7 @@ class TemplateHeaderView: UIView {
     
     
     private func commonInit() {
-        guard let nibName = nibName else { return }
-        Bundle.main.loadNibNamed(nibName, owner: self)
+        Bundle.main.loadNibNamed(String(describing: TemplateHeaderView.self), owner: self)
         
         updateUI()
     }

@@ -14,9 +14,6 @@
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TemplateHeaderView" customModule="Hemitage" customModuleProvider="target">
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TemplateHeaderView"/>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="CE2-H0-DTq"/>
                 <outlet property="notificationIndicator" destination="z05-2J-kSh" id="Jfg-8Y-WSY"/>
