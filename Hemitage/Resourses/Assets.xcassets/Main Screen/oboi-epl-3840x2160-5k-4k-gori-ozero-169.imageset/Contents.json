@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "oboi-epl-3840x2160-5k-4k-gori-ozero-169.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

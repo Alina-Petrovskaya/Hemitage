@@ -53,6 +53,8 @@
 		84D7F8242643F606004B2DB0 /* MapCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8222643F605004B2DB0 /* MapCollectionViewCell.xib */; };
 		84D7F82726441434004B2DB0 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F82526441434004B2DB0 /* CategoriesCollectionViewCell.swift */; };
 		84D7F82826441434004B2DB0 /* CategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F82626441434004B2DB0 /* CategoriesCollectionViewCell.xib */; };
+		84D7F82B2644184F004B2DB0 /* BlogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8292644184E004B2DB0 /* BlogCollectionViewCell.swift */; };
+		84D7F82C2644184F004B2DB0 /* BlogCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F82A2644184E004B2DB0 /* BlogCollectionViewCell.xib */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -143,6 +145,8 @@
 		84D7F8222643F605004B2DB0 /* MapCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCollectionViewCell.xib; sourceTree = "<group>"; };
 		84D7F82526441434004B2DB0 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		84D7F82626441434004B2DB0 /* CategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
+		84D7F8292644184E004B2DB0 /* BlogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewCell.swift; sourceTree = "<group>"; };
+		84D7F82A2644184E004B2DB0 /* BlogCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogCollectionViewCell.xib; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -499,6 +503,8 @@
 		84D7F8202643F5D0004B2DB0 /* Blog */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F82A2644184E004B2DB0 /* BlogCollectionViewCell.xib */,
+				84D7F8292644184E004B2DB0 /* BlogCollectionViewCell.swift */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
@@ -663,6 +669,7 @@
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
+				84D7F82C2644184F004B2DB0 /* BlogCollectionViewCell.xib in Resources */,
 				84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */,
 				84D7F82826441434004B2DB0 /* CategoriesCollectionViewCell.xib in Resources */,
 				84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */,
@@ -841,6 +848,7 @@
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
 				84D7F8232643F606004B2DB0 /* MapCollectionViewCell.swift in Sources */,
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
+				84D7F82B2644184F004B2DB0 /* BlogCollectionViewCell.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
