@@ -65,10 +65,10 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-AY-Ttm">
+                <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-AY-Ttm">
                     <rect key="frame" x="268" y="15.5" width="56" height="18"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-J2-otx" userLabel="Stop/play">
+                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-J2-otx" userLabel="Stop/play">
                             <rect key="frame" x="0.0" y="2" width="18" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="QYe-J2-otx" secondAttribute="height" multiplier="1:1" id="XR4-f6-BcQ"/>
@@ -79,7 +79,7 @@
                                 <action selector="stopButtonTapped:" destination="-1" eventType="touchUpInside" id="5uv-jb-kIq"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-at-maA" userLabel="Close">
+                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-at-maA" userLabel="Close">
                             <rect key="frame" x="38" y="2" width="18" height="13.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Ysp-at-maA" secondAttribute="height" multiplier="1:1" id="2Zu-gV-5dx"/>

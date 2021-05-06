@@ -51,6 +51,8 @@
 		84D7F81C2643D62C004B2DB0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F81B2643D62C004B2DB0 /* Inter-SemiBold.ttf */; };
 		84D7F8232643F606004B2DB0 /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8212643F605004B2DB0 /* MapCollectionViewCell.swift */; };
 		84D7F8242643F606004B2DB0 /* MapCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8222643F605004B2DB0 /* MapCollectionViewCell.xib */; };
+		84D7F82726441434004B2DB0 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F82526441434004B2DB0 /* CategoriesCollectionViewCell.swift */; };
+		84D7F82826441434004B2DB0 /* CategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F82626441434004B2DB0 /* CategoriesCollectionViewCell.xib */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -139,6 +141,8 @@
 		84D7F81B2643D62C004B2DB0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		84D7F8212643F605004B2DB0 /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
 		84D7F8222643F605004B2DB0 /* MapCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCollectionViewCell.xib; sourceTree = "<group>"; };
+		84D7F82526441434004B2DB0 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		84D7F82626441434004B2DB0 /* CategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -486,6 +490,8 @@
 		84D7F81F2643F5B8004B2DB0 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F82626441434004B2DB0 /* CategoriesCollectionViewCell.xib */,
+				84D7F82526441434004B2DB0 /* CategoriesCollectionViewCell.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -658,6 +664,7 @@
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 				84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */,
+				84D7F82826441434004B2DB0 /* CategoriesCollectionViewCell.xib in Resources */,
 				84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */,
 				848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */,
 				84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */,
@@ -830,6 +837,7 @@
 			files = (
 				84EB44EA2638026400828222 /* LoginViewController.swift in Sources */,
 				849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */,
+				84D7F82726441434004B2DB0 /* CategoriesCollectionViewCell.swift in Sources */,
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
 				84D7F8232643F606004B2DB0 /* MapCollectionViewCell.swift in Sources */,
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
