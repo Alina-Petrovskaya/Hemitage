@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,27 +24,49 @@
                                     <constraint firstAttribute="width" secondItem="QZX-LC-5KD" secondAttribute="height" multiplier="1 : 0.373" id="y6s-KH-v73"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="foX-lO-mHg">
-                                <rect key="frame" x="67" y="287" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LJu-dt-59R">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="wAx-x5-fXc">
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="foX-lO-mHg">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                                        <color key="backgroundColor" systemColor="linkColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LJu-dt-59R">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mr9-P8-JSm" customClass="TemplateSongView" customModule="Hemitage" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="530" width="375" height="59"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="foX-lO-mHg" firstAttribute="top" secondItem="wAx-x5-fXc" secondAttribute="top" id="3Nh-GC-WuV"/>
+                                    <constraint firstAttribute="trailing" secondItem="foX-lO-mHg" secondAttribute="trailing" id="5jg-o3-vZP"/>
+                                    <constraint firstItem="foX-lO-mHg" firstAttribute="leading" secondItem="wAx-x5-fXc" secondAttribute="leading" id="Fnr-GL-kTz"/>
+                                    <constraint firstItem="mr9-P8-JSm" firstAttribute="height" secondItem="wAx-x5-fXc" secondAttribute="width" multiplier="0.157" id="YRW-So-jHN"/>
+                                    <constraint firstItem="mr9-P8-JSm" firstAttribute="top" secondItem="foX-lO-mHg" secondAttribute="bottom" id="lNM-od-zqv"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wAx-x5-fXc" secondAttribute="trailing" id="9FE-I4-SXO"/>
                             <constraint firstItem="QZX-LC-5KD" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="DPR-1U-tAM"/>
                             <constraint firstAttribute="trailing" secondItem="QZX-LC-5KD" secondAttribute="trailing" id="ajY-H2-88A"/>
                             <constraint firstItem="QZX-LC-5KD" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="alW-dM-ALK"/>
+                            <constraint firstItem="wAx-x5-fXc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dPN-UV-puK"/>
+                            <constraint firstItem="wAx-x5-fXc" firstAttribute="top" secondItem="QZX-LC-5KD" secondAttribute="bottom" id="fTx-Fk-pNv"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wAx-x5-fXc" secondAttribute="bottom" id="vHa-pR-fjU"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="home-fill" id="sjh-eW-hz3">
+                        <color key="badgeColor" name="#DFAB9D"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,6 +74,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="home-fill" width="24" height="24"/>
+        <namedColor name="#DFAB9D">
+            <color red="0.87450980392156863" green="0.6705882352941176" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

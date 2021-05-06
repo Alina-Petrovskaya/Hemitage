@@ -3,57 +3,108 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TemplateSongView" customModule="Hemitage" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TemplateSongView" customModule="Hemitage" customModuleProvider="target">
+            <connections>
+                <outlet property="albumSongLabel" destination="lhC-ey-htp" id="foD-hS-3Hy"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="fhN-Ft-Dbg"/>
+                <outlet property="imageSong" destination="8sa-7Q-h6e" id="MDP-9C-uCP"/>
+                <outlet property="nameSongLabel" destination="pNa-IQ-jkS" id="k87-q7-vxX"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
+            <rect key="frame" x="0.0" y="0.0" width="344" height="72"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8sa-7Q-h6e">
-                    <rect key="frame" x="35" y="44" width="55" height="53"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-ey-htp">
-                    <rect key="frame" x="133" y="44" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-IQ-jkS">
-                    <rect key="frame" x="133" y="82" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-at-maA" userLabel="Close">
-                    <rect key="frame" x="327" y="68" width="18" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" image="xmark" catalog="system"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-J2-otx" userLabel="Stop/play">
-                    <rect key="frame" x="243" y="59" width="11" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" image="pause" catalog="system"/>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-2G-cfQ">
+                    <rect key="frame" x="20" y="12" width="250.5" height="48"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Sky" translatesAutoresizingMaskIntoConstraints="NO" id="8sa-7Q-h6e">
+                            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="8sa-7Q-h6e" secondAttribute="height" multiplier="1:1" id="qHD-au-7gL"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-ZB-GHv">
+                            <rect key="frame" x="58" y="0.0" width="192.5" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Rain &amp; Tunder Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-IQ-jkS">
+                                    <rect key="frame" x="0.0" y="0.0" width="192.5" height="25"/>
+                                    <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="13"/>
+                                    <color key="textColor" name="DarkText #18191A"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nature sound Emporium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-ey-htp">
+                                    <rect key="frame" x="0.0" y="25" width="192.5" height="23"/>
+                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                    <color key="textColor" name="GrayText #9B9B9B"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-AY-Ttm">
+                    <rect key="frame" x="280.5" y="17" width="43.5" height="14.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-J2-otx" userLabel="Stop/play">
+                            <rect key="frame" x="0.0" y="0.0" width="11" height="14.5"/>
+                            <color key="tintColor" name="DarkText #18191A"/>
+                            <state key="normal" image="pause" catalog="system"/>
+                            <connections>
+                                <action selector="stopButtonTapped:" destination="-1" eventType="touchUpInside" id="5uv-jb-kIq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-at-maA" userLabel="Close">
+                            <rect key="frame" x="26" y="0.0" width="17.5" height="14.5"/>
+                            <color key="tintColor" name="DarkText #18191A"/>
+                            <state key="normal" image="xmark" catalog="system"/>
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="Hjw-zf-9R2"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="BIg-AY-Ttm" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.2" id="10l-S8-mm2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BIg-AY-Ttm" secondAttribute="trailing" constant="20" id="5Oj-B3-t6y"/>
+                <constraint firstItem="ykG-2G-cfQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="Xao-Hp-XuY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ykG-2G-cfQ" secondAttribute="bottom" constant="12" id="aU0-XP-jya"/>
+                <constraint firstItem="BIg-AY-Ttm" firstAttribute="leading" secondItem="ykG-2G-cfQ" secondAttribute="trailing" constant="10" id="cFD-XP-h7x"/>
+                <constraint firstItem="ykG-2G-cfQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="g0q-s8-SJE"/>
+                <constraint firstItem="BIg-AY-Ttm" firstAttribute="centerY" secondItem="pNa-IQ-jkS" secondAttribute="centerY" id="yk5-D8-9aq"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="137.68115942028987" y="-78.683035714285708"/>
+            <point key="canvasLocation" x="-44.927536231884062" y="-390.40178571428572"/>
         </view>
     </objects>
     <resources>
+        <image name="Sky" width="347" height="347"/>
         <image name="pause" catalog="system" width="88" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="DarkText #18191A">
+            <color red="0.094117647058823528" green="0.098039215686274508" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GrayText #9B9B9B">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
