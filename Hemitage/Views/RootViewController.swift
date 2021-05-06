@@ -18,7 +18,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        // goToWelcomeController()
+        // presentAuthController()
         presentContent()
     }
     
@@ -27,14 +27,15 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         
         mainVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home-fill"), selectedImage: nil)
         
+        
         let navigationController = UINavigationController(rootViewController: mainVC)
         
         
-        let controllers = [mainVC, sVC]
+        let controllers = [mainVC]
         self.viewControllers = controllers
     }
     
-    private func goToWelcomeController() { // Here we'll deside what controller we'll show
+    private func presentAuthController() {
         guard let vc = WelcomeViewController.instantiate()
         else {
             print("Can't create path to Welcome VC")

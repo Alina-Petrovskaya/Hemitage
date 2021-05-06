@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,16 +83,26 @@
                         <constraint firstAttribute="height" constant="40" id="jWx-EX-W54"/>
                     </constraints>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hk-dq-zQT" userLabel="Border">
+                    <rect key="frame" x="0.0" y="157" width="417" height="1"/>
+                    <color key="backgroundColor" name="Border #EEEEEE"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="x3d-YB-PGP"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tgM-lt-OVq" secondAttribute="trailing" constant="20" id="5rZ-LY-3p6"/>
+                <constraint firstAttribute="bottom" secondItem="4hk-dq-zQT" secondAttribute="bottom" id="BmE-gn-xD9"/>
                 <constraint firstItem="tgM-lt-OVq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="HAr-0P-ag9"/>
                 <constraint firstItem="dV3-vS-uOW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YFz-9B-W4O"/>
                 <constraint firstItem="dV3-vS-uOW" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aH8-N8-2PN"/>
                 <constraint firstAttribute="bottom" secondItem="dV3-vS-uOW" secondAttribute="bottom" id="agb-qe-Xx8"/>
                 <constraint firstItem="tgM-lt-OVq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.2" id="cey-M1-Tlv"/>
+                <constraint firstItem="4hk-dq-zQT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oGF-Ia-Mms"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4hk-dq-zQT" secondAttribute="trailing" id="xa2-hF-4B0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139.85507246376812" y="-118.52678571428571"/>
@@ -101,6 +112,9 @@
         <image name="Sky" width="347" height="347"/>
         <image name="notification-2-line" width="24" height="24"/>
         <image name="person" width="24" height="24"/>
+        <namedColor name="Border #EEEEEE">
+            <color red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

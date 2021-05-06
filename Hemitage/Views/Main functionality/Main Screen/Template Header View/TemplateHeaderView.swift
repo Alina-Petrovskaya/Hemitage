@@ -43,17 +43,6 @@ class TemplateHeaderView: UIView {
         profilePhoto.layer.cornerRadius = profilePhoto.frame.size.height / 2
         notificationIndicator.layer.cornerRadius = notificationIndicator.frame.size.height / 2
     }
-    
-    override func draw(_ rect: CGRect) {
-        let linePath = UIBezierPath()
-        linePath.lineWidth = 2
-
-        linePath.move(to: CGPoint(x: 0, y: bounds.height))
-        linePath.addLine(to: CGPoint(x: bounds.width, y: bounds.height))
-
-        UIColor.init(cgColor: #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)).setStroke()
-        linePath.stroke()
-    }
 
     @IBAction func notificationsButtonTapped(_ sender: UIButton) {
         notificationIndicator.isHidden = !notificationIndicator.isHidden

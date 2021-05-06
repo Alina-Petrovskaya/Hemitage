@@ -30,6 +30,13 @@
             <rect key="frame" x="0.0" y="0.0" width="344" height="72"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMy-f8-MEH" userLabel="Border">
+                    <rect key="frame" x="0.0" y="0.0" width="344" height="1"/>
+                    <color key="backgroundColor" name="Border #EEEEEE"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="LTa-Eo-sYd"/>
+                    </constraints>
+                </view>
                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-2G-cfQ">
                     <rect key="frame" x="20" y="12" width="250.5" height="48"/>
                     <subviews>
@@ -59,7 +66,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-AY-Ttm">
-                    <rect key="frame" x="280.5" y="17" width="43.5" height="14.5"/>
+                    <rect key="frame" x="280.5" y="17.5" width="43.5" height="14.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-J2-otx" userLabel="Stop/play">
                             <rect key="frame" x="0.0" y="0.0" width="11" height="14.5"/>
@@ -85,8 +92,11 @@
             <constraints>
                 <constraint firstItem="BIg-AY-Ttm" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.2" id="10l-S8-mm2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BIg-AY-Ttm" secondAttribute="trailing" constant="20" id="5Oj-B3-t6y"/>
+                <constraint firstAttribute="trailing" secondItem="lMy-f8-MEH" secondAttribute="trailing" id="Azb-Ad-JEN"/>
+                <constraint firstItem="lMy-f8-MEH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HIg-0f-j2U"/>
                 <constraint firstItem="ykG-2G-cfQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="Xao-Hp-XuY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ykG-2G-cfQ" secondAttribute="bottom" constant="12" id="aU0-XP-jya"/>
+                <constraint firstItem="lMy-f8-MEH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bbV-En-tch"/>
                 <constraint firstItem="BIg-AY-Ttm" firstAttribute="leading" secondItem="ykG-2G-cfQ" secondAttribute="trailing" constant="10" id="cFD-XP-h7x"/>
                 <constraint firstItem="ykG-2G-cfQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="g0q-s8-SJE"/>
                 <constraint firstItem="BIg-AY-Ttm" firstAttribute="centerY" secondItem="pNa-IQ-jkS" secondAttribute="centerY" id="yk5-D8-9aq"/>
@@ -99,6 +109,9 @@
         <image name="Sky" width="347" height="347"/>
         <image name="pause" catalog="system" width="88" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="Border #EEEEEE">
+            <color red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="DarkText #18191A">
             <color red="0.094117647058823528" green="0.098039215686274508" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
