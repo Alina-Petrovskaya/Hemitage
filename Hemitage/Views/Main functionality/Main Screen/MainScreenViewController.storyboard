@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZX-LC-5KD" customClass="TemplateHeaderView" customModule="Hemitage" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="112.66666666666667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="QZX-LC-5KD" secondAttribute="height" multiplier="1 : 0.373" id="y6s-KH-v73"/>
+                                    <constraint firstAttribute="width" secondItem="QZX-LC-5KD" secondAttribute="height" multiplier="1 : 0.3" id="y6s-KH-v73"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="wAx-x5-fXc">
-                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="112.66666666666669" width="375" height="665.33333333333326"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="foX-lO-mHg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="606.33333333333337"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LJu-dt-59R">
                                             <size key="itemSize" width="128" height="128"/>
@@ -38,15 +38,15 @@
                                         <cells/>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mr9-P8-JSm" customClass="TemplateSongView" customModule="Hemitage" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="530" width="375" height="59"/>
+                                        <rect key="frame" x="0.0" y="606.33333333333337" width="375" height="59"/>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="foX-lO-mHg" firstAttribute="top" secondItem="wAx-x5-fXc" secondAttribute="top" id="3Nh-GC-WuV"/>
-                                    <constraint firstAttribute="trailing" secondItem="foX-lO-mHg" secondAttribute="trailing" id="5jg-o3-vZP"/>
-                                    <constraint firstItem="foX-lO-mHg" firstAttribute="leading" secondItem="wAx-x5-fXc" secondAttribute="leading" id="Fnr-GL-kTz"/>
+                                    <constraint firstItem="mr9-P8-JSm" firstAttribute="top" secondItem="foX-lO-mHg" secondAttribute="bottom" id="Dnj-VG-fCb"/>
+                                    <constraint firstAttribute="trailing" secondItem="foX-lO-mHg" secondAttribute="trailing" id="UI0-kO-FVh"/>
                                     <constraint firstItem="mr9-P8-JSm" firstAttribute="height" secondItem="wAx-x5-fXc" secondAttribute="width" multiplier="0.157" id="YRW-So-jHN"/>
-                                    <constraint firstItem="mr9-P8-JSm" firstAttribute="top" secondItem="foX-lO-mHg" secondAttribute="bottom" id="lNM-od-zqv"/>
+                                    <constraint firstItem="foX-lO-mHg" firstAttribute="top" secondItem="wAx-x5-fXc" secondAttribute="top" id="fsp-3K-08y"/>
+                                    <constraint firstItem="foX-lO-mHg" firstAttribute="leading" secondItem="wAx-x5-fXc" secondAttribute="leading" id="yvz-1W-7wS"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -62,7 +62,11 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wAx-x5-fXc" secondAttribute="bottom" id="vHa-pR-fjU"/>
                         </constraints>
                     </view>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="foX-lO-mHg" id="61G-SW-tOE"/>
+                        <outlet property="headerView" destination="QZX-LC-5KD" id="XJl-vq-ToT"/>
+                        <outlet property="songBottomView" destination="mr9-P8-JSm" id="THw-KT-LZr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

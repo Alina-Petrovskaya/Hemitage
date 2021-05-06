@@ -7,6 +7,7 @@
 
 import UIKit
 
+@IBDesignable
 class TemplateSongView: UIView {
 
     @IBOutlet var contentView: UIView!
