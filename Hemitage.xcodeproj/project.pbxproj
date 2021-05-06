@@ -46,6 +46,8 @@
 		84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */; };
 		84D7F8122642BA26004B2DB0 /* TemplateHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8112642BA26004B2DB0 /* TemplateHeaderView.xib */; };
 		84D7F8142642C481004B2DB0 /* TemplateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8132642C481004B2DB0 /* TemplateHeaderView.swift */; };
+		84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8172643D01E004B2DB0 /* TemplateSongView.xib */; };
+		84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8192643D035004B2DB0 /* TemplateSongView.swift */; };
 		84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB77E926384AEE0094483E /* SignInViewController.swift */; };
 		84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DB77EB26384B0A0094483E /* SignInViewController.storyboard */; };
 		84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE72D2636CD6D005D91C8 /* Localizable.strings */; };
@@ -129,6 +131,8 @@
 		84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		84D7F8112642BA26004B2DB0 /* TemplateHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateHeaderView.xib; sourceTree = "<group>"; };
 		84D7F8132642C481004B2DB0 /* TemplateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateHeaderView.swift; sourceTree = "<group>"; };
+		84D7F8172643D01E004B2DB0 /* TemplateSongView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSongView.xib; sourceTree = "<group>"; };
+		84D7F8192643D035004B2DB0 /* TemplateSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSongView.swift; sourceTree = "<group>"; };
 		84DB77E926384AEE0094483E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84DB77EB26384B0A0094483E /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		84DDE72C2636CD6D005D91C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -419,17 +423,18 @@
 			isa = PBXGroup;
 			children = (
 				84D7F8152642DE02004B2DB0 /* Main Screen */,
+				84D7F8162643CFAF004B2DB0 /* Template Song View */,
 			);
 			path = "Main functionality";
 			sourceTree = "<group>";
 		};
-		84D7F8102642B9A3004B2DB0 /* Header view */ = {
+		84D7F8102642B9A3004B2DB0 /* Template Header View */ = {
 			isa = PBXGroup;
 			children = (
 				84D7F8112642BA26004B2DB0 /* TemplateHeaderView.xib */,
 				84D7F8132642C481004B2DB0 /* TemplateHeaderView.swift */,
 			);
-			path = "Header view";
+			path = "Template Header View";
 			sourceTree = "<group>";
 		};
 		84D7F8152642DE02004B2DB0 /* Main Screen */ = {
@@ -437,9 +442,18 @@
 			children = (
 				84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */,
 				84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */,
-				84D7F8102642B9A3004B2DB0 /* Header view */,
+				84D7F8102642B9A3004B2DB0 /* Template Header View */,
 			);
 			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		84D7F8162643CFAF004B2DB0 /* Template Song View */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F8172643D01E004B2DB0 /* TemplateSongView.xib */,
+				84D7F8192643D035004B2DB0 /* TemplateSongView.swift */,
+			);
+			path = "Template Song View";
 			sourceTree = "<group>";
 		};
 		84DB77E826384A8B0094483E /* Sign In Screen */ = {
@@ -593,6 +607,7 @@
 			files = (
 				84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */,
 				84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */,
+				84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */,
 				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
 				84D7F8122642BA26004B2DB0 /* TemplateHeaderView.xib in Resources */,
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
@@ -801,6 +816,7 @@
 				84D7F78D263AF8E9004B2DB0 /* LoginViewModelProtocol.swift in Sources */,
 				848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */,
 				849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */,
+				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

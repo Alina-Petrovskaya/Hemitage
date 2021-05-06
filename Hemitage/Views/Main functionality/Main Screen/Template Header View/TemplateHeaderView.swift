@@ -31,7 +31,6 @@ class TemplateHeaderView: UIView {
     
     private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: TemplateHeaderView.self), owner: self)
-        
         updateUI()
     }
     
