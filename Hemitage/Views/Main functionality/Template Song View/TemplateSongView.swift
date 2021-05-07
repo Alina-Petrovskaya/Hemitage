@@ -43,8 +43,8 @@ class TemplateSongView: UIView {
     // MARK: - Actions
     @IBAction func stopButtonTapped(_ sender: UIButton) {
         
-        let nameImageForButton = sender.imageView?.image == UIImage(systemName: "pause") ? "play" : "pause"
-        sender.setImage(UIImage(systemName: nameImageForButton), for: .normal)
+        let nameImageForButton = sender.currentBackgroundImage == UIImage(systemName: "pause") ? "play" : "pause"
+        sender.setBackgroundImage(UIImage(systemName: nameImageForButton), for: .normal)
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {

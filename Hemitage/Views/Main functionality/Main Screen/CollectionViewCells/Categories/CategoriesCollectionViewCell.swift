@@ -7,20 +7,21 @@
 
 import UIKit
 
-class CategoriesCollectionViewCell: UICollectionViewCell {
+class CategoriesCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var content: UIView!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        updateUI()
     }
     
     private func updateUI() {
         contentView.layer.cornerRadius = 16
         categoryImage.clipsToBounds    = true
+        categoryImage.frame = content.frame
         categoryName.clipsToBounds     = true
     }
 }

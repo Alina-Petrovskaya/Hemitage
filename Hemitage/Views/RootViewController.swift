@@ -27,10 +27,6 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         
         mainVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home-fill"), selectedImage: nil)
         
-        
-        let navigationController = UINavigationController(rootViewController: mainVC)
-        
-        
         let controllers = [mainVC]
         self.viewControllers = controllers
     }

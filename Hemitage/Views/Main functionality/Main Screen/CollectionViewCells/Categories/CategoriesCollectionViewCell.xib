@@ -61,7 +61,7 @@
             <connections>
                 <outlet property="categoryImage" destination="WnD-jU-gc6" id="y7U-Nh-Knd"/>
                 <outlet property="categoryName" destination="1vH-86-Qtl" id="UBn-uo-6u7"/>
-                <outlet property="contentView" destination="219-EI-g22" id="cGW-bu-5dK"/>
+                <outlet property="content" destination="219-EI-g22" id="cGW-bu-5dK"/>
             </connections>
             <point key="canvasLocation" x="258.69565217391306" y="164.73214285714286"/>
         </collectionViewCell>

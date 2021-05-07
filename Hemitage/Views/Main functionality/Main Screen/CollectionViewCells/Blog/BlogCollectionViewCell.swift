@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BlogCollectionViewCell: UICollectionViewCell {
+class BlogCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     
     @IBOutlet weak var imageBlog: UIImageView!
     @IBOutlet weak var articleName: UILabel!
@@ -17,7 +17,8 @@ class BlogCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        updateUI()
     }
     
     private func updateUI() {
