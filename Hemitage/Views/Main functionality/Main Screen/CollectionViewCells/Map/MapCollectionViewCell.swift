@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
+class MapCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

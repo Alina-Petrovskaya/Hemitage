@@ -29,9 +29,8 @@ class MainScreenViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     
-    let mainScreenDelegate = MainScreenDelegate()
+    var dataSource: MainScreenDatasource?
     
-    var dataSource: UICollectionViewDiffableDataSource<TypeOfSection, Int>! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,77 +41,23 @@ class MainScreenViewController: UIViewController {
     }
     
     private func pripareCollectionView() {
-        
-        collectionView.collectionViewLayout = mainScreenDelegate.createLayout()
-        
-        collectionView.register(UINib(nibName: Constants.shared.mapCell, bundle: .main), forCellWithReuseIdentifier: Constants.shared.mapCell)
-        collectionView.register(UINib(nibName: Constants.shared.categoriesCell, bundle: .main), forCellWithReuseIdentifier: Constants.shared.categoriesCell)
-        collectionView.register(UINib(nibName: Constants.shared.blogCell, bundle: .main), forCellWithReuseIdentifier: Constants.shared.blogCell)
-        
-        setupDataSource()
-        reloadData()
-        
-    }
     
-    private func configure<T: SelfConfiguringCell>(cellType: T.Type, with intValue: Int, for indexPath: IndexPath) -> T {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as? T else {
-            fatalError("Cant create cell with id \( String(describing: cellType) )")
+        collectionView.register(UINib(nibName: String(describing: MapCollectionViewCell.self), bundle: .main),
+                                forCellWithReuseIdentifier: String(describing: MapCollectionViewCell.self))
+        
+        collectionView.register(UINib(nibName: String(describing: CategoriesCollectionViewCell.self),bundle: .main),
+                                forCellWithReuseIdentifier: String(describing: CategoriesCollectionViewCell.self))
+        
+        collectionView.register(UINib(nibName: String(describing: BlogCollectionViewCell.self), bundle: .main),
+                                forCellWithReuseIdentifier: String(describing: BlogCollectionViewCell.self))
+        
+        dataSource = MainScreenDatasource(with: collectionView)
+        
+        if let dataSource = dataSource {
+            collectionView.collectionViewLayout = dataSource.createLayout()
+            
+            dataSource.setupDataSource()
+            dataSource.reloadData()
         }
-        return cell
     }
-    
-    
-    private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<TypeOfSection, Int>()
-        
-        var itemOffset: Int = 0
-        var itemUpperBound: Int? = nil
-        
-        TypeOfSection.allCases.forEach { type in
-            switch type {
-            case .map:
-                itemOffset     = type.columnCount * 0
-                itemUpperBound = itemOffset + 0
-                
-            case .categories:
-                 itemOffset     = type.columnCount * 4
-                 itemUpperBound = itemOffset + 4
-                
-            case .blog:
-                itemOffset     = type.columnCount * 2
-                itemUpperBound = itemOffset + 2
-            }
-            
-            snapshot.appendSections([type])
-            
-            if let itemUpperBound = itemUpperBound {
-                snapshot.appendItems(Array(itemOffset...itemUpperBound))
-            }
-        }
-        
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, intValue in
-            guard let section = TypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
-            
-            switch section {
-            case .map:
-                return self.configure(cellType: MapCollectionViewCell.self, with: intValue, for: indexPath)
-                
-            case .categories:
-                return self.configure(cellType: CategoriesCollectionViewCell.self, with: intValue, for: indexPath)
-                
-            case .blog:
-                return self.configure(cellType: BlogCollectionViewCell.self, with: intValue, for: indexPath)
-            }
-        })
-    }
-    
-    func configure() {
-        
-    }
-    
-    
 }

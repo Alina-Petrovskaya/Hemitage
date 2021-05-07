@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CategoriesCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
+class CategoriesCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var content: UIView!
+    @IBOutlet private weak var content: UIView!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
 
@@ -19,9 +19,12 @@ class CategoriesCollectionViewCell: UICollectionViewCell, SelfConfiguringCell {
     }
     
     private func updateUI() {
-        contentView.layer.cornerRadius = 16
-        categoryImage.clipsToBounds    = true
-        categoryImage.frame = content.frame
-        categoryName.clipsToBounds     = true
+        let cornetRadius: CGFloat = 16.0
+        
+        contentView.layer.cornerRadius   = cornetRadius
+        categoryImage.layer.cornerRadius = cornetRadius
+        categoryName.layer.cornerRadius  = cornetRadius
+        categoryName.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        categoryName.layer.masksToBounds = true
     }
 }

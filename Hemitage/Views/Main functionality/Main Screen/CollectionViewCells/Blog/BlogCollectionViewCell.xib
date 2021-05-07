@@ -37,16 +37,16 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cyt-KX-3bv">
-                        <rect key="frame" x="20" y="242" width="437" height="41.5"/>
+                        <rect key="frame" x="20" y="242" width="437" height="42.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" text="My story of learning meditation from Tibetan monks" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJS-5a-d93">
-                                <rect key="frame" x="0.0" y="0.0" width="364" height="36.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="363.5" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="15"/>
                                 <color key="textColor" name="DarkText #18191A"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="3. 17. 2021 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPQ-Fe-8WC">
-                                <rect key="frame" x="374" y="0.0" width="63" height="15"/>
+                                <rect key="frame" x="373.5" y="0.0" width="63.5" height="14"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" name="GrayText #9B9B9B"/>
                                 <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam..." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDo-9q-1EX">
-                        <rect key="frame" x="20" y="293.5" width="437" height="31.5"/>
+                        <rect key="frame" x="20" y="294.5" width="437" height="30.5"/>
                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                         <color key="textColor" name="DarkText #18191A"/>
                         <nil key="highlightedColor"/>
