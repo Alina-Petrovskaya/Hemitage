@@ -17,7 +17,7 @@ class MainScreenDatasource {
             case .map:
                 return 1
             case .categories:
-                return 3
+                return 2
             case .blog:
                 return 1
             }
@@ -33,9 +33,9 @@ class MainScreenDatasource {
         self.collectionView = collectionView
     }
     
-
-    // MARK: - Setup CollectionView
-     func reloadData() {
+    
+    // MARK: - Manage Data
+    func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<TypeOfSection, Int>()
         
         var itemOffset: Int = 0
@@ -48,8 +48,8 @@ class MainScreenDatasource {
                 itemUpperBound = itemOffset + 0
                 
             case .categories:
-                 itemOffset     = type.columnCount * 4
-                 itemUpperBound = itemOffset + 4
+                itemOffset     = type.columnCount * 4
+                itemUpperBound = itemOffset + 4
                 
             case .blog:
                 itemOffset     = type.columnCount * 2
@@ -67,26 +67,24 @@ class MainScreenDatasource {
     }
     
     
-     func setupDataSource() {
+    func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, intValue in
             guard let section = TypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
             
             switch section {
             case .map:
-                let cell = self.configure(cellType: MapCollectionViewCell.self, with: intValue, for: indexPath)
-                
-                return cell
+                return self.configure(cellType: MapCollectionViewCell.self, with: intValue, for: indexPath)
                 
             case .categories:
-                let cell = self.configure(cellType: CategoriesCollectionViewCell.self, with: intValue, for: indexPath)
-            
-                return cell
+                return self.configure(cellType: CategoriesCollectionViewCell.self, with: intValue, for: indexPath)
                 
             case .blog:
-                let cell = self.configure(cellType: BlogCollectionViewCell.self, with: intValue, for: indexPath)
-                return cell
+               return self.configure(cellType: BlogCollectionViewCell.self, with: intValue, for: indexPath)
             }
         })
+        
+        createHeader(for: dataSource)
+        
     }
     
     private func configure<T: UICollectionViewCell>(cellType: T.Type, with intValue: Int, for indexPath: IndexPath) -> T {
@@ -97,36 +95,73 @@ class MainScreenDatasource {
     }
     
     
-    // MARK: - Layout
+    private func createHeader(for datasource: UICollectionViewDiffableDataSource<TypeOfSection, Int>) {
+        dataSource.supplementaryViewProvider = { collectionView, type, indexPath in
+            guard let section = TypeOfSection(rawValue: indexPath.section) else { return nil }
+            
+            switch section {
+            
+            case .map:
+                break
+                
+            case .categories:
+                guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: headerType.categoriesHeader.rawValue,
+                                                                                          withReuseIdentifier: String(describing: SectionHeader.self),
+                                                                                          for: indexPath) as? SectionHeader else { return nil }
+                sectionHeader.title.text = "Categories"
+                
+                return sectionHeader
+                
+            case .blog:
+                guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: headerType.balogHeader.rawValue,
+                                                                                          withReuseIdentifier: String(describing: SectionHeader.self),
+                                                                                    for: indexPath) as? SectionHeader else { return nil }
+                sectionHeader.title.text = "Blog"
+                sectionHeader.button.isHidden = false
+                
+                return sectionHeader
+            }
+            
+            return nil
+        }
+    }
+    
+    
+    // MARK: - Setup dLayout
     func createLayout() -> UICollectionViewLayout {
-        let layout: UICollectionViewCompositionalLayout = UICollectionViewCompositionalLayout { sectionIndex, _ in
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
             guard let sectionType =  TypeOfSection(rawValue: sectionIndex) else { return nil }
             
             switch sectionType {
             case .map:
-                return self.generateMapLayout()
+                return self.generateMapSection()
+                
             case .categories:
-                return self.generateCategoriesLayout()
+                let section = self.generateCategoriesSection()
+                
+                
+                return section
+                
             case .blog:
-                return self.generateBlogLayout()
+                return self.generateBlogSection()
             }
         }
         
-        let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = 20
         
-        layout.configuration = config
+        layout.configuration = configuration
         return layout
     }
     
     
-    private func generateMapLayout() -> NSCollectionLayoutSection {
+    private func generateMapSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
                                             widthDimension: .fractionalWidth(1),
                                             heightDimension: .estimated(40)))
         
-
+        
         // Group
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
                                                         widthDimension: .fractionalWidth(1),
@@ -137,10 +172,10 @@ class MainScreenDatasource {
         let section = NSCollectionLayoutSection(group: group)
         
         return section
-     }
+    }
     
     
-    private func generateCategoriesLayout() -> NSCollectionLayoutSection {
+    private func generateCategoriesSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
                                             widthDimension: .absolute(150),
@@ -158,26 +193,36 @@ class MainScreenDatasource {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80))
+        
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: String(describing: SectionHeader.self) , alignment: .top)
+        section.boundarySupplementaryItems = [header]
+        
         return section
     }
     
     
     
-    private func generateBlogLayout() -> NSCollectionLayoutSection {
-       // item
-       let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
-                                           widthDimension: .fractionalWidth(1),
-                                           heightDimension: .estimated(40)))
-       
-       // Group
-       let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
-                                                       widthDimension: .fractionalWidth(1),
-                                                       heightDimension: .estimated(40)),
-                                                      subitems: [item])
-       //Section
-       let section = NSCollectionLayoutSection(group: group)
-       
-       return section
+    private func generateBlogSection() -> NSCollectionLayoutSection {
+        // item
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
+                                            widthDimension: .fractionalWidth(1),
+                                            heightDimension: .estimated(40)))
+        
+        // Group
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
+                                                        widthDimension: .fractionalWidth(1),
+                                                        heightDimension: .estimated(40)),
+                                                       subitems: [item])
+        //Section
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80))
+        
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: String(describing: SectionHeader.self) , alignment: .top)
+        section.boundarySupplementaryItems = [header]
+        
+        return section
     }
     
 }

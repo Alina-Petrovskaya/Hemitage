@@ -22,9 +22,15 @@ class BlogCollectionViewCell: UICollectionViewCell {
     }
     
     func preparecontent(image: UIImage?, name: String, articleDate: String, shotDescription: String) {
-        imageBlog.image     = image
+        
         articleName.text    = name
         date.text           = articleDate
         articlePreview.text = shotDescription
+        
+        if image != nil {
+            imageBlog.image = image
+        } else {
+            imageBlog.isHidden = true
+        }
     }
 }

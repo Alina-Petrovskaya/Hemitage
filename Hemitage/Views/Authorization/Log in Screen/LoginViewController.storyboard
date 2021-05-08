@@ -3,6 +3,7 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,9 +38,9 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, Log in now" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xx1-tZ-LrD">
-                                                <rect key="frame" x="20" y="273" width="350" height="83"/>
+                                                <rect key="frame" x="20" y="276.66666666666669" width="350" height="79.333333333333314"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="34"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="DarkText #18191A"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Xat-8l-3t6">
@@ -49,13 +50,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="350" height="16"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you are new /" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOI-gD-WTn">
-                                                                <rect key="frame" x="0.0" y="0.0" width="95" height="16"/>
+                                                                <rect key="frame" x="0.0" y="0.33333333333331439" width="89.333333333333329" height="15.333333333333334"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
-                                                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" name="GrayText #9B9B9B"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZF-hv-MB1">
-                                                                <rect key="frame" x="100" y="-6" width="96" height="28"/>
+                                                                <rect key="frame" x="94.333333333333314" y="-6" width="91" height="28"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                                 <state key="normal" title="Create Account"/>
                                                                 <connections>
@@ -81,7 +82,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="wN2-xc-DKj"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" name="GrayText #9B9B9B"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                             </textField>
@@ -91,7 +92,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="H4F-9d-LL9"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" name="GrayText #9B9B9B"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                             </textField>
@@ -101,13 +102,13 @@
                                                         <rect key="frame" x="0.0" y="191" width="350" height="16"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Passcode?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fha-s6-6cN">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="16"/>
+                                                                <rect key="frame" x="0.0" y="0.33333333333337212" width="106.33333333333333" height="15.333333333333336"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
-                                                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="textColor" name="GrayText #9B9B9B"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxq-pT-kvU">
-                                                                <rect key="frame" x="115" y="-6" width="35" height="28"/>
+                                                                <rect key="frame" x="111.33333333333334" y="-6" width="34" height="28"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                                 <state key="normal" title="Reset"/>
                                                                 <connections>
@@ -145,7 +146,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Fop-bA-uhP" secondAttribute="height" multiplier="1:1" id="7ak-vG-aob"/>
                                                 </constraints>
-                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" name="DarkText #18191A"/>
                                                 <state key="normal" image="chevron.backward" catalog="system"/>
                                                 <connections>
                                                     <action selector="backButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mgb-YZ-DFI"/>
@@ -211,6 +212,12 @@
     <resources>
         <image name="Sky" width="347" height="347"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <namedColor name="DarkText #18191A">
+            <color red="0.093999996781349182" green="0.097999997437000275" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GrayText #9B9B9B">
+            <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

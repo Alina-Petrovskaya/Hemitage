@@ -8,22 +8,7 @@
 import UIKit
 
 class MainScreenViewController: UIViewController {
-    
-    enum TypeOfSection: Int, CaseIterable {
-        case map, categories, blog
         
-        var columnCount: Int {
-            switch self {
-            case .map:
-                return 0
-            case .categories:
-                return 3
-            case .blog:
-                return 1
-            }
-        }
-    }
-    
     @IBOutlet private weak var songBottomView: TemplateSongView!
     @IBOutlet private weak var headerView: TemplateHeaderView!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -50,6 +35,14 @@ class MainScreenViewController: UIViewController {
         
         collectionView.register(UINib(nibName: String(describing: BlogCollectionViewCell.self), bundle: .main),
                                 forCellWithReuseIdentifier: String(describing: BlogCollectionViewCell.self))
+        
+        collectionView.register(SectionHeader.self,
+                                forSupplementaryViewOfKind: headerType.categoriesHeader.rawValue,
+                                withReuseIdentifier: String(describing: SectionHeader.self))
+        
+        collectionView.register(SectionHeader.self,
+                                forSupplementaryViewOfKind: headerType.balogHeader.rawValue,
+                                withReuseIdentifier: String(describing: SectionHeader.self))
         
         dataSource = MainScreenDatasource(with: collectionView)
         
