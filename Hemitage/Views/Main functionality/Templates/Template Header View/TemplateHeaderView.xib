@@ -43,16 +43,16 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Hi, Jared" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-ld-74G">
-                            <rect key="frame" x="48" y="0.0" width="96" height="40"/>
+                            <rect key="frame" x="48" y="0.0" width="96.5" height="40"/>
                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsH-b8-mze" userLabel="Notification View">
-                            <rect key="frame" x="152" y="0.0" width="225" height="40"/>
+                            <rect key="frame" x="152.5" y="0.0" width="224.5" height="40"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z05-2J-kSh" userLabel="Notification Indicator">
-                                    <rect key="frame" x="219" y="1" width="6" height="6"/>
+                                    <rect key="frame" x="218.5" y="1" width="6" height="6"/>
                                     <color key="backgroundColor" red="0.87450980392156863" green="0.6705882352941176" blue="0.61568627450980395" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="6" id="8XR-1I-XSJ"/>
@@ -60,7 +60,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GOr-io-mKl">
-                                    <rect key="frame" x="201" y="8" width="24" height="24"/>
+                                    <rect key="frame" x="200.5" y="8" width="24" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="VHJ-b3-ovH"/>
                                         <constraint firstAttribute="height" constant="24" id="xFw-Il-3fN"/>
@@ -113,7 +113,7 @@
         <image name="notification-2-line" width="24" height="24"/>
         <image name="person" width="24" height="24"/>
         <namedColor name="Border #EEEEEE">
-            <color red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93300002813339233" green="0.93300002813339233" blue="0.93300002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

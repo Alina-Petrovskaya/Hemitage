@@ -91,6 +91,10 @@
                 <constraint firstAttribute="bottom" secondItem="i6h-Gp-SWl" secondAttribute="bottom" priority="999" constant="10" id="ueR-Wf-22h"/>
             </constraints>
             <size key="customSize" width="385" height="277"/>
+            <connections>
+                <outlet property="namberOFOnlineUsers" destination="vtO-69-kk7" id="1o1-TE-Kcf"/>
+                <outlet property="numberOfAllUsers" destination="Srv-1h-w2x" id="fsF-GQ-8Y0"/>
+            </connections>
             <point key="canvasLocation" x="258.69565217391306" y="228.01339285714283"/>
         </collectionViewCell>
     </objects>

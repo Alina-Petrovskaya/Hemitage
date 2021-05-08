@@ -14,7 +14,7 @@ class MainScreenViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     
-    var dataSource: MainScreenDatasource?
+    var dataSource: MainScreenDatasourceManager?
     
     
     override func viewDidLoad() {
@@ -40,11 +40,7 @@ class MainScreenViewController: UIViewController {
                                 forSupplementaryViewOfKind: headerType.categoriesHeader.rawValue,
                                 withReuseIdentifier: String(describing: SectionHeader.self))
         
-        collectionView.register(SectionHeader.self,
-                                forSupplementaryViewOfKind: headerType.balogHeader.rawValue,
-                                withReuseIdentifier: String(describing: SectionHeader.self))
-        
-        dataSource = MainScreenDatasource(with: collectionView)
+        dataSource = MainScreenDatasourceManager(with: collectionView)
         
         if let dataSource = dataSource {
             collectionView.collectionViewLayout = dataSource.createLayout()
