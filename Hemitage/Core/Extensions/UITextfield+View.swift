@@ -21,7 +21,6 @@ extension UITextField {
         
         self.leftView     = view
         self.leftViewMode = .always
-        
     }
     
     
@@ -39,7 +38,6 @@ extension UITextField {
         
         self.rightView     = view
         self.rightViewMode = .always
-        
     }
     
     

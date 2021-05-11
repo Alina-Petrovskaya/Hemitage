@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum headerType: String {
-    case categoriesHeader
-    case balogHeader
-}
-
 class SectionHeader: UICollectionReusableView {
     let title: UILabel = {
         let title = UILabel()
@@ -46,6 +41,7 @@ class SectionHeader: UICollectionReusableView {
     }
     
     private func configureUI() {
+        
         let stakView  = UIStackView(arrangedSubviews: [title, button])
         stakView.axis = .horizontal
         stakView.translatesAutoresizingMaskIntoConstraints = false

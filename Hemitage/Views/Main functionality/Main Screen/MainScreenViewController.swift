@@ -8,6 +8,8 @@
 import UIKit
 
 class MainScreenViewController: UIViewController {
+    
+    
         
     @IBOutlet private weak var songBottomView: TemplateSongView!
     @IBOutlet private weak var headerView: TemplateHeaderView!
@@ -22,11 +24,11 @@ class MainScreenViewController: UIViewController {
         
         navigationController?.navigationBar.isHidden = true
         
-        pripareCollectionView()
+        prepareCollectionView()
     }
     
-    private func pripareCollectionView() {
-    
+    private func prepareCollectionView() {
+        
         collectionView.register(UINib(nibName: String(describing: MapCollectionViewCell.self), bundle: .main),
                                 forCellWithReuseIdentifier: String(describing: MapCollectionViewCell.self))
         
@@ -37,16 +39,16 @@ class MainScreenViewController: UIViewController {
                                 forCellWithReuseIdentifier: String(describing: BlogCollectionViewCell.self))
         
         collectionView.register(SectionHeader.self,
-                                forSupplementaryViewOfKind: headerType.categoriesHeader.rawValue,
+                                forSupplementaryViewOfKind: MainScreenHeaderType.categoriesHeader.rawValue,
                                 withReuseIdentifier: String(describing: SectionHeader.self))
         
         dataSource = MainScreenDatasourceManager(with: collectionView)
+        let layout = LayoutConstructorMainScreen()
         
-        if let dataSource = dataSource {
-            collectionView.collectionViewLayout = dataSource.createLayout()
-            
-            dataSource.setupDataSource()
-            dataSource.reloadData()
-        }
+        collectionView.collectionViewLayout = layout.createLayout()
+        
+        dataSource?.setupDataSource()
+        dataSource?.reloadData()
+        
     }
 }

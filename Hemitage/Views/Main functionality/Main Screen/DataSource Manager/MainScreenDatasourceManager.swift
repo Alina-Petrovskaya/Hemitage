@@ -9,24 +9,11 @@ import UIKit
 
 class MainScreenDatasourceManager {
     
-    enum TypeOfSection: Int, CaseIterable {
-        case map, categories, blog
-        
-        var columnCount: Int {
-            switch self {
-            case .map:
-                return 1
-            case .categories:
-                return 2
-            case .blog:
-                return 1
-            }
-        }
-    }
+   
     
     
     let collectionView: UICollectionView
-    var dataSource: UICollectionViewDiffableDataSource<TypeOfSection, Int>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, Int>! = nil
     
     
     init(with collectionView: UICollectionView) {
@@ -36,12 +23,12 @@ class MainScreenDatasourceManager {
     
     // MARK: - Manage Data
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<TypeOfSection, Int>()
+        var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, Int>()
         
         var itemOffset: Int = 0
         var itemUpperBound: Int? = nil
         
-        TypeOfSection.allCases.forEach { type in
+        MainScreenTypeOfSection.allCases.forEach { type in
             switch type {
             case .map:
                 itemOffset     = type.columnCount * 0
@@ -69,7 +56,7 @@ class MainScreenDatasourceManager {
     
     func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, intValue in
-            guard let section = TypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
+            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
             
             switch section {
             case .map:
@@ -95,9 +82,14 @@ class MainScreenDatasourceManager {
     }
     
     
-    private func createHeader(for datasource: UICollectionViewDiffableDataSource<TypeOfSection, Int>) {
+    private func createHeader(for datasource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, Int>) {
         dataSource.supplementaryViewProvider = { collectionView, type, indexPath in
-            guard let section = TypeOfSection(rawValue: indexPath.section) else { return nil }
+            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section),
+                  let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: MainScreenHeaderType.categoriesHeader.rawValue,
+                                                                                      withReuseIdentifier: String(describing: SectionHeader.self),
+                                                                                      for: indexPath) as? SectionHeader
+            else { return nil }
+            
             
             switch section {
             
@@ -105,17 +97,11 @@ class MainScreenDatasourceManager {
                 break
                 
             case .categories:
-                guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: headerType.categoriesHeader.rawValue,
-                                                                                          withReuseIdentifier: String(describing: SectionHeader.self),
-                                                                                          for: indexPath) as? SectionHeader else { return nil }
                 sectionHeader.title.text = "Categories"
-                
+            
                 return sectionHeader
                 
             case .blog:
-                guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: headerType.categoriesHeader.rawValue,
-                                                                                          withReuseIdentifier: String(describing: SectionHeader.self),
-                                                                                    for: indexPath) as? SectionHeader else { return nil }
                 sectionHeader.title.text = "Blog"
                 sectionHeader.button.isHidden = false
                 
@@ -128,34 +114,7 @@ class MainScreenDatasourceManager {
     
     
     // MARK: - Setup dLayout
-    func createLayout() -> UICollectionViewLayout {
-        
-        let layoutConstructor = LayoutConstructorMainScreen()
-        
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            guard let sectionType =  TypeOfSection(rawValue: sectionIndex) else { return nil }
-            
-            switch sectionType {
-            case .map:
-                return layoutConstructor.generateMapSection()
-                
-            case .categories:
-                let section = layoutConstructor.generateCategoriesSection()
-                
-                
-                return section
-                
-            case .blog:
-                return layoutConstructor.generateBlogSection()
-            }
-        }
-        
-        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        configuration.interSectionSpacing = 20
-        
-        layout.configuration = configuration
-        return layout
-    }
+
 }
 
 

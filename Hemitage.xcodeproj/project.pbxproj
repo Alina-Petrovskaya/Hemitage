@@ -32,6 +32,8 @@
 		849C4E2F2645216F00C26C53 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E2E2645216F00C26C53 /* SelfConfiguringCell.swift */; };
 		849C4E332645723300C26C53 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E322645723300C26C53 /* SectionHeader.swift */; };
 		849C4E352646C90400C26C53 /* LayoutConstructorMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E342646C90400C26C53 /* LayoutConstructorMainScreen.swift */; };
+		849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E5F264A71F900C26C53 /* MainScreenTypeOfSection.swift */; };
+		849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -128,6 +130,8 @@
 		849C4E2E2645216F00C26C53 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		849C4E322645723300C26C53 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		849C4E342646C90400C26C53 /* LayoutConstructorMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstructorMainScreen.swift; sourceTree = "<group>"; };
+		849C4E5F264A71F900C26C53 /* MainScreenTypeOfSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTypeOfSection.swift; sourceTree = "<group>"; };
+		849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderType.swift; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -340,9 +344,9 @@
 		848CF79B2636B3E60070A3C6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				849C4E2E2645216F00C26C53 /* SelfConfiguringCell.swift */,
 				84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */,
 				84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */,
-				849C4E2E2645216F00C26C53 /* SelfConfiguringCell.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -422,6 +426,8 @@
 				84D7F831264427E6004B2DB0 /* MainScreenDatasourceManager.swift */,
 				849C4E342646C90400C26C53 /* LayoutConstructorMainScreen.swift */,
 				849C4E322645723300C26C53 /* SectionHeader.swift */,
+				849C4E5F264A71F900C26C53 /* MainScreenTypeOfSection.swift */,
+				849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */,
 			);
 			path = "DataSource Manager";
 			sourceTree = "<group>";
@@ -892,6 +898,7 @@
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
 				84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
+				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
 				849A50FA2639874F0047340A /* Validation.swift in Sources */,
 				84D7F79B263C2C26004B2DB0 /* LoginManager.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,
@@ -913,6 +920,7 @@
 				849C4E332645723300C26C53 /* SectionHeader.swift in Sources */,
 				84D7F830264424DF004B2DB0 /* Constants.swift in Sources */,
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
+				849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

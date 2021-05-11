@@ -19,11 +19,11 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     }
     
     private func updateUI() {
-        let cornetRadius: CGFloat = 16.0
+        let cornertRadius: CGFloat = 16.0
         
-        contentView.layer.cornerRadius   = cornetRadius
-        categoryImage.layer.cornerRadius = cornetRadius
-        categoryName.layer.cornerRadius  = cornetRadius
+        contentView.layer.cornerRadius   = cornertRadius
+        categoryImage.layer.cornerRadius = cornertRadius
+        categoryName.layer.cornerRadius  = cornertRadius
         categoryName.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         categoryName.layer.masksToBounds = true
     }

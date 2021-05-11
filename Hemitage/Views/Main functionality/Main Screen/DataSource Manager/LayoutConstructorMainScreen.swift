@@ -8,7 +8,37 @@
 import UIKit
 
 struct LayoutConstructorMainScreen {
-    func generateMapSection() -> NSCollectionLayoutSection {
+    
+    func createLayout() -> UICollectionViewLayout {
+        
+        let layoutConstructor = LayoutConstructorMainScreen()
+        
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+            guard let sectionType =  MainScreenTypeOfSection(rawValue: sectionIndex) else { return nil }
+            
+            switch sectionType {
+            case .map:
+                return layoutConstructor.generateMapSection()
+                
+            case .categories:
+                let section = layoutConstructor.generateCategoriesSection()
+                
+                
+                return section
+                
+            case .blog:
+                return layoutConstructor.generateBlogSection()
+            }
+        }
+        
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = 20
+        
+        layout.configuration = configuration
+        return layout
+    }
+    
+    private func generateMapSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
                                             widthDimension: .fractionalWidth(1),
@@ -28,7 +58,7 @@ struct LayoutConstructorMainScreen {
     }
     
     
-     func generateCategoriesSection() -> NSCollectionLayoutSection {
+    private func generateCategoriesSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
                                             widthDimension: .absolute(150),
@@ -51,12 +81,13 @@ struct LayoutConstructorMainScreen {
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: String(describing: SectionHeader.self) , alignment: .top)
         section.boundarySupplementaryItems = [header]
         
+        
         return section
     }
     
     
     
-     func generateBlogSection() -> NSCollectionLayoutSection {
+    private func generateBlogSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
                                             widthDimension: .fractionalWidth(1),

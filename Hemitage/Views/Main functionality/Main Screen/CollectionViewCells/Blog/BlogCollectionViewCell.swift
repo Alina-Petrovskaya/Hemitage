@@ -21,11 +21,11 @@ class BlogCollectionViewCell: UICollectionViewCell {
         imageBlog.layer.cornerRadius = 16
     }
     
-    func preparecontent(image: UIImage?, name: String, articleDate: String, shotDescription: String) {
+    func prepareContent(image: UIImage?, name: String, articleDate: String, shortDescription: String) {
         
         articleName.text    = name
         date.text           = articleDate
-        articlePreview.text = shotDescription
+        articlePreview.text = shortDescription
         
         if image != nil {
             imageBlog.image = image
