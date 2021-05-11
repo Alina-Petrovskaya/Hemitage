@@ -20,35 +20,35 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BlogCollectionViewCell" customModule="Hemitage" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="477" height="353"/>
+            <rect key="frame" x="0.0" y="0.0" width="477" height="391"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="477" height="353"/>
+                <rect key="frame" x="0.0" y="0.0" width="477" height="391"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diQ-op-GdU">
-                        <rect key="frame" x="0.0" y="0.0" width="477" height="353"/>
+                        <rect key="frame" x="0.0" y="0.0" width="477" height="391"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3rQ-rI-UYv">
-                        <rect key="frame" x="20" y="0.0" width="437" height="333"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3rQ-rI-UYv">
+                        <rect key="frame" x="20" y="0.0" width="437" height="371"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stenton-mur-5120x2880-5k-4k-pik-distrikt-velikobritaniya-les-polevie-5363" translatesAutoresizingMaskIntoConstraints="NO" id="20H-Ap-6VL">
-                                <rect key="frame" x="0.0" y="0.0" width="437" height="227"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" image="forest" translatesAutoresizingMaskIntoConstraints="NO" id="20H-Ap-6VL">
+                                <rect key="frame" x="0.0" y="0.0" width="437" height="284"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="20H-Ap-6VL" secondAttribute="height" multiplier="1:0.52" id="H0r-Nd-elY"/>
+                                    <constraint firstAttribute="width" secondItem="20H-Ap-6VL" secondAttribute="height" multiplier="1: 0.65" id="T3W-V8-NyN"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cyt-KX-3bv">
-                                <rect key="frame" x="0.0" y="239" width="437" height="51.5"/>
+                                <rect key="frame" x="0.0" y="296" width="437" height="32.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" text="My story of learning meditation from Tibetan monks" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJS-5a-d93">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="My story of learning meditation from Tibetan monks" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJS-5a-d93">
                                         <rect key="frame" x="0.0" y="0.0" width="363.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="15"/>
                                         <color key="textColor" name="DarkText #18191A"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="3. 17. 2021 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPQ-Fe-8WC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="250" text="3. 17. 2021 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPQ-Fe-8WC">
                                         <rect key="frame" x="373.5" y="0.0" width="63.5" height="14"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                         <color key="textColor" name="GrayText #9B9B9B"/>
@@ -56,8 +56,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam..." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDo-9q-1EX">
-                                <rect key="frame" x="0.0" y="302.5" width="437" height="30.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam..." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDo-9q-1EX">
+                                <rect key="frame" x="0.0" y="340.5" width="437" height="30.5"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                 <color key="textColor" name="DarkText #18191A"/>
                                 <nil key="highlightedColor"/>
@@ -77,18 +77,18 @@
                 <constraint firstItem="3rQ-rI-UYv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="s3I-TO-2D5"/>
                 <constraint firstAttribute="trailing" secondItem="3rQ-rI-UYv" secondAttribute="trailing" constant="20" id="xEA-F4-Wme"/>
             </constraints>
-            <size key="customSize" width="477" height="353"/>
+            <size key="customSize" width="477" height="391"/>
             <connections>
                 <outlet property="articleName" destination="JJS-5a-d93" id="eBE-4N-qZg"/>
                 <outlet property="articlePreview" destination="NDo-9q-1EX" id="G3Q-6l-bA6"/>
                 <outlet property="date" destination="MPQ-Fe-8WC" id="1N5-HC-Bmh"/>
                 <outlet property="imageBlog" destination="20H-Ap-6VL" id="0b6-nn-490"/>
             </connections>
-            <point key="canvasLocation" x="445.6521739130435" y="211.27232142857142"/>
+            <point key="canvasLocation" x="445.6521739130435" y="178.45982142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="stenton-mur-5120x2880-5k-4k-pik-distrikt-velikobritaniya-les-polevie-5363" width="5120" height="2880"/>
+        <image name="forest" width="5120" height="2880"/>
         <namedColor name="DarkText #18191A">
             <color red="0.093999996781349182" green="0.097999997437000275" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -29,9 +29,8 @@
                             <color key="textColor" name="DarkText #18191A"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHs-fa-Usl">
-                            <rect key="frame" x="0.0" y="0.0" width="42" height="87"/>
-                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="13"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHs-fa-Usl">
+                            <rect key="frame" x="0.0" y="0.0" width="53" height="87"/>
                             <state key="normal" title="All see">
                                 <color key="titleColor" name="Main color #DFAB9D"/>
                             </state>

@@ -1,5 +1,5 @@
 //
-//  SongModel.swift
+//  ProfileModel.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 11.05.2021.
@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct SongModel {
-//    let id: UUID
-    let songName: String
-    let singer: String
+struct ProfileModel {
     let imageName: String
+    let name: String
+    let isNewNotificatoins: Bool
 }

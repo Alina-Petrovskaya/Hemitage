@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CategoriesCollectionViewCell: UICollectionViewCell {
-    
+class CategoriesCollectionViewCell: UICollectionViewCell, ContentViewConstructor {
+   
     @IBOutlet private weak var content: UIView!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
@@ -27,4 +27,24 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         categoryName.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         categoryName.layer.masksToBounds = true
     }
+    
+    func updateContent<T> (with data: T) {
+        guard let safeData = data as? MainScreenModel else { return }
+        
+        switch safeData {
+        case .map(_):
+            break
+            
+        case .category(let data):
+            categoryName.text = data.name
+            
+            if data.imageName != "",  let image = UIImage(named: "\(data.imageName)")  {
+                categoryImage.image = image
+            }
+            
+        case .blog(_):
+            break
+        }
+    }
+    
 }

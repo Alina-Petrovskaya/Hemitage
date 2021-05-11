@@ -92,8 +92,8 @@
             </constraints>
             <size key="customSize" width="385" height="277"/>
             <connections>
-                <outlet property="namberOFOnlineUsers" destination="vtO-69-kk7" id="1o1-TE-Kcf"/>
-                <outlet property="numberOfAllUsers" destination="Srv-1h-w2x" id="fsF-GQ-8Y0"/>
+                <outlet property="allUsers" destination="Srv-1h-w2x" id="fsF-GQ-8Y0"/>
+                <outlet property="onlineUsers" destination="vtO-69-kk7" id="1o1-TE-Kcf"/>
             </connections>
             <point key="canvasLocation" x="258.69565217391306" y="228.01339285714283"/>
         </collectionViewCell>

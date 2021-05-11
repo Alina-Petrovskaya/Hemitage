@@ -25,7 +25,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     private func presentContent() {
         guard let mainVC = MainScreenViewController.instantiate() else { return }
         
-        mainVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home-fill"), selectedImage: nil)
+        mainVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home"), selectedImage: UIImage(named: "home-fill"))
         
         let controllers = [mainVC]
         self.viewControllers = controllers

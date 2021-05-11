@@ -14,7 +14,7 @@ class MainScreenViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     
-    var dataSource: MainScreenDatasourceManager?
+    var dataSource: DataSourceManagerMainScreen?
     
     
     override func viewDidLoad() {
@@ -22,11 +22,23 @@ class MainScreenViewController: UIViewController {
         
         navigationController?.navigationBar.isHidden = true
         
+        registerNibs()
         prepareCollectionView()
     }
+   
     
     private func prepareCollectionView() {
+        dataSource = DataSourceManagerMainScreen(with: collectionView)
+        let layout = LayoutConstructorMainScreen()
         
+        collectionView.collectionViewLayout = layout.createLayout()
+        
+        dataSource?.setupDataSource()
+        dataSource?.reloadData()
+        
+    }
+    
+    private func registerNibs() {
         collectionView.register(UINib(nibName: String(describing: MapCollectionViewCell.self), bundle: .main),
                                 forCellWithReuseIdentifier: String(describing: MapCollectionViewCell.self))
         
@@ -39,14 +51,5 @@ class MainScreenViewController: UIViewController {
         collectionView.register(UINib(nibName: String(describing: MainScreenHeaderView.self), bundle: .main),
                                 forSupplementaryViewOfKind: MainScreenHeaderType.header.rawValue,
                                 withReuseIdentifier: String(describing: MainScreenHeaderView.self))
-        
-        dataSource = MainScreenDatasourceManager(with: collectionView)
-        let layout = LayoutConstructorMainScreen()
-        
-        collectionView.collectionViewLayout = layout.createLayout()
-        
-        dataSource?.setupDataSource()
-        dataSource?.reloadData()
-        
     }
 }
