@@ -8,5 +8,5 @@
 import Foundation
 
 enum MainScreenHeaderType: String {
-    case categoriesHeader
+    case header
 }

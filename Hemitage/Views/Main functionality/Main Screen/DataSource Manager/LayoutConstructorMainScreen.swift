@@ -78,7 +78,7 @@ struct LayoutConstructorMainScreen {
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(80))
         
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: String(describing: SectionHeader.self) , alignment: .top)
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: String(describing: MainScreenHeaderView.self) , alignment: .top)
         section.boundarySupplementaryItems = [header]
         
         
@@ -104,7 +104,7 @@ struct LayoutConstructorMainScreen {
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .absolute(80))
         let header     = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-                                                                     elementKind: String(describing: SectionHeader.self),
+                                                                     elementKind: String(describing: MainScreenHeaderView.self),
                                                                      alignment: .top)
         section.boundarySupplementaryItems = [header]
         

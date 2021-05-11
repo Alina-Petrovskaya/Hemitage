@@ -12,7 +12,7 @@ class TemplateHeaderView: UIView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var notificationIndicator: UIView!
+    @IBOutlet weak var notificationIndicator: UIView! 
     @IBOutlet weak var profilePhoto: UIImageView!
     
     // MARK: - Life cycle
@@ -31,11 +31,11 @@ class TemplateHeaderView: UIView {
     
     private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: TemplateHeaderView.self), owner: self)
-        updateUI()
+        configureUI()
     }
     
     
-    private func updateUI() {
+    private func configureUI() {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

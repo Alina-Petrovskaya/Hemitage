@@ -8,9 +8,7 @@
 import UIKit
 
 class MainScreenViewController: UIViewController {
-    
-    
-        
+
     @IBOutlet private weak var songBottomView: TemplateSongView!
     @IBOutlet private weak var headerView: TemplateHeaderView!
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -38,9 +36,9 @@ class MainScreenViewController: UIViewController {
         collectionView.register(UINib(nibName: String(describing: BlogCollectionViewCell.self), bundle: .main),
                                 forCellWithReuseIdentifier: String(describing: BlogCollectionViewCell.self))
         
-        collectionView.register(SectionHeader.self,
-                                forSupplementaryViewOfKind: MainScreenHeaderType.categoriesHeader.rawValue,
-                                withReuseIdentifier: String(describing: SectionHeader.self))
+        collectionView.register(UINib(nibName: String(describing: MainScreenHeaderView.self), bundle: .main),
+                                forSupplementaryViewOfKind: MainScreenHeaderType.header.rawValue,
+                                withReuseIdentifier: String(describing: MainScreenHeaderView.self))
         
         dataSource = MainScreenDatasourceManager(with: collectionView)
         let layout = LayoutConstructorMainScreen()

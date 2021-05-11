@@ -9,9 +9,6 @@ import UIKit
 
 class MainScreenDatasourceManager {
     
-   
-    
-    
     let collectionView: UICollectionView
     var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, Int>! = nil
     
@@ -85,11 +82,10 @@ class MainScreenDatasourceManager {
     private func createHeader(for datasource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, Int>) {
         dataSource.supplementaryViewProvider = { collectionView, type, indexPath in
             guard let section = MainScreenTypeOfSection(rawValue: indexPath.section),
-                  let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: MainScreenHeaderType.categoriesHeader.rawValue,
-                                                                                      withReuseIdentifier: String(describing: SectionHeader.self),
-                                                                                      for: indexPath) as? SectionHeader
+                  let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: MainScreenHeaderType.header.rawValue,
+                                                                                      withReuseIdentifier: String(describing: MainScreenHeaderView.self),
+                                                                                      for: indexPath) as? MainScreenHeaderView
             else { return nil }
-            
             
             switch section {
             
@@ -97,13 +93,13 @@ class MainScreenDatasourceManager {
                 break
                 
             case .categories:
-                sectionHeader.title.text = "Categories"
+                sectionHeader.categoryName.text = "Categories"
             
                 return sectionHeader
                 
             case .blog:
-                sectionHeader.title.text = "Blog"
-                sectionHeader.button.isHidden = false
+                sectionHeader.categoryName.text = "Blog"
+                sectionHeader.categoryButton.isHidden = false
                 
                 return sectionHeader
             }
@@ -111,10 +107,6 @@ class MainScreenDatasourceManager {
             return nil
         }
     }
-    
-    
-    // MARK: - Setup dLayout
-
 }
 
 

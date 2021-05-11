@@ -10,10 +10,11 @@ import UIKit
 @IBDesignable
 class TemplateSongView: UIView {
 
-    @IBOutlet var contentView: UIView!
-    @IBOutlet weak var nameSongLabel: UILabel!
-    @IBOutlet weak var albumSongLabel: UILabel!
-    @IBOutlet weak var imageSong: UIImageView!
+    @IBOutlet private var contentView: UIView!
+    @IBOutlet private weak var singerLabel: UILabel!
+    @IBOutlet private weak var nameSongLabel: UILabel!
+    @IBOutlet private weak var imageSong: UIImageView!
+    @IBOutlet weak var closeButton: UIButton!
     
     // MARK: - Life cycle
     override init(frame: CGRect) {
@@ -29,10 +30,10 @@ class TemplateSongView: UIView {
     
     private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: TemplateSongView.self), owner: self)
-        updateUI()
+        configureUI()
     }
     
-    private func updateUI() {
+    private func configureUI() {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -40,16 +41,20 @@ class TemplateSongView: UIView {
         imageSong.layer.cornerRadius = 8
     }
     
+    func updateUI(with songInformation: SongModel, closebuttonIsHidden: Bool = true) {
+        closeButton.isHidden = closebuttonIsHidden
+        singerLabel.text     = songInformation.singer
+        nameSongLabel.text   = songInformation.songName
+        imageSong.image      = UIImage(named: songInformation.imageName)
+    }
+    
     // MARK: - Actions
     @IBAction func stopButtonTapped(_ sender: UIButton) {
-        let nameImageForButton = sender.currentBackgroundImage == UIImage(systemName: "pause") ? "play" : "pause"
-        sender.setBackgroundImage(UIImage(systemName: nameImageForButton), for: .normal)
+        let nameImageForButton = sender.currentImage == UIImage(systemName: "pause") ? "play" : "pause"
+        sender.setImage(UIImage(systemName: nameImageForButton), for: .normal)
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         //self.isHidden = true
     }
-    
-    
-
 }
