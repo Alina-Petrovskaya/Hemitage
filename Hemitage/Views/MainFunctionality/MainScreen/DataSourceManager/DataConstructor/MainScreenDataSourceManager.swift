@@ -8,18 +8,20 @@
 import UIKit
 
 protocol MainScreenDataSourceManagerProtocol {
+    
     var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>? { get set }
 
     func createHeader(with view: MainScreenHeaderView, at indexPath: IndexPath ) -> MainScreenHeaderView?
     func reloadData()
+    
 }
+
 
 class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     private let dataManager = MainScreenDataManager()
     var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>? = nil
     
     
-    // MARK: - Manage Data
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModelWrapper>()
         

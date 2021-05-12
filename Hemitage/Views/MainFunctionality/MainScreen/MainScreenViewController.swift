@@ -44,10 +44,12 @@ class MainScreenViewController: UIViewController {
                                 withReuseIdentifier: String(describing: MainScreenHeaderView.self))
     }
     
+    
     private func createLayout() {
         let layout = MainScreenLayoutConstructor()
         collectionView.collectionViewLayout = layout.createLayout()
     }
+    
     
     private func prepareViewModel() {
         collectionView.delegate = viewModel.collectionViewDelegate
