@@ -11,10 +11,12 @@ import UIKit
 class TemplateSongView: UIView {
 
     @IBOutlet private var contentView: UIView!
+    @IBOutlet private weak var songNameLabel: UILabel!
     @IBOutlet private weak var singerLabel: UILabel!
-    @IBOutlet private weak var nameSongLabel: UILabel!
     @IBOutlet private weak var imageSong: UIImageView!
     @IBOutlet weak var closeButton: UIButton!
+    
+    var viewModel: some TemplatesViewModelProtocol = ViewModelTemplateSong()
     
     // MARK: - Life cycle
     override init(frame: CGRect) {
@@ -31,6 +33,9 @@ class TemplateSongView: UIView {
     private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: TemplateSongView.self), owner: self)
         configureUI()
+        configureContent()
+        
+        viewModel.getDataForContent()
     }
     
     private func configureUI() {
@@ -41,17 +46,23 @@ class TemplateSongView: UIView {
         imageSong.layer.cornerRadius = 8
     }
     
-    func updateUI(with songInformation: SongModel, closebuttonIsHidden: Bool = true) {
-        closeButton.isHidden = closebuttonIsHidden
-        singerLabel.text     = songInformation.singer
-        nameSongLabel.text   = songInformation.songName
-        imageSong.image      = UIImage(named: songInformation.imageName)
+    private func configureContent() {
+        viewModel.dataModel = { [weak self] data in
+            guard let model = data as? SongModel else { return }
+            self?.songNameLabel.text = model.songName
+            self?.singerLabel.text   = model.singer
+                    
+            if model.imageName != "", let image = UIImage(named: model.imageName) {
+                self?.imageSong.image = image
+            }
+        }
     }
     
     // MARK: - Actions
     @IBAction func stopButtonTapped(_ sender: UIButton) {
         let nameImageForButton = sender.currentImage == UIImage(systemName: "pause") ? "play" : "pause"
         sender.setImage(UIImage(systemName: nameImageForButton), for: .normal)
+        
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {

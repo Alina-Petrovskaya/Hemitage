@@ -7,13 +7,13 @@
 
 import UIKit
 
-class MapCollectionViewCell: UICollectionViewCell, ContentViewConstructor {
+class MapCollectionViewCell: UICollectionViewCell, ConfiguringCell {
 
     @IBOutlet weak var allUsers: UILabel!
     @IBOutlet weak var onlineUsers: UILabel!
     
     func updateContent<T> (with data: T) {
-        guard let safeData = data as? MainScreenModel else { return }
+        guard let safeData = data as? MainScreenModelWrapper else { return }
         
         switch safeData {
         case .map(let data):

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BlogCollectionViewCell: UICollectionViewCell, ContentViewConstructor {
+class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
     @IBOutlet private weak var imageBlog: UIImageView!
     @IBOutlet private weak var articleName: UILabel!
@@ -22,7 +22,7 @@ class BlogCollectionViewCell: UICollectionViewCell, ContentViewConstructor {
     }
     
     func updateContent<T>(with data: T) {
-        guard let safeData = data as? MainScreenModel else { return }
+        guard let safeData = data as? MainScreenModelWrapper else { return }
         
         switch safeData {
         case .map(_):

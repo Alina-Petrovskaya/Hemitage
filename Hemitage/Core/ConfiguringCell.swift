@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ContentViewConstructor {
+protocol ConfiguringCell {
     func updateContent<T> (with data: T) -> ()
 }

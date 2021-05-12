@@ -10,7 +10,7 @@ import UIKit
 class DataSourceManagerMainScreen {
     
     private let collectionView: UICollectionView
-    private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModel>! = nil
+    private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>! = nil
     private let viewModel: MainScreenModelViewProtocol = MainScreenViewModel()
     
     
@@ -22,7 +22,7 @@ class DataSourceManagerMainScreen {
     // MARK: - Manage Data
     
     func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModelWrapper>()
         
         snapshot.appendSections(MainScreenTypeOfSection.allCases)
         
@@ -55,7 +55,7 @@ class DataSourceManagerMainScreen {
         
     }
     
-    private func configure<T: ContentViewConstructor>(cellType: T.Type, with model: MainScreenModel, for indexPath: IndexPath) -> T {
+    private func configure<T: ConfiguringCell>(cellType: T.Type, with model: MainScreenModelWrapper, for indexPath: IndexPath) -> T {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as? T else {
             fatalError("Can't create cell with id \( String(describing: cellType))")
         }
@@ -65,7 +65,7 @@ class DataSourceManagerMainScreen {
     }
     
     
-    private func createHeader(for datasource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModel>) {
+    private func createHeader(for datasource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>) {
         dataSource.supplementaryViewProvider = { [weak self] collectionView, type, indexPath in
             
             guard let section = MainScreenTypeOfSection(rawValue: indexPath.section),

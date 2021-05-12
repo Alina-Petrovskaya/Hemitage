@@ -22,8 +22,8 @@
                 <outlet property="closeButton" destination="Ysp-at-maA" id="W1Q-Ec-T8R"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="fhN-Ft-Dbg"/>
                 <outlet property="imageSong" destination="8sa-7Q-h6e" id="MDP-9C-uCP"/>
-                <outlet property="nameSongLabel" destination="lhC-ey-htp" id="foD-hS-3Hy"/>
-                <outlet property="singerLabel" destination="pNa-IQ-jkS" id="k87-q7-vxX"/>
+                <outlet property="singerLabel" destination="lhC-ey-htp" id="foD-hS-3Hy"/>
+                <outlet property="songNameLabel" destination="pNa-IQ-jkS" id="k87-q7-vxX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

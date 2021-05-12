@@ -21,10 +21,7 @@ struct LayoutConstructorMainScreen {
                 return layoutConstructor.generateMapSection()
                 
             case .categories:
-                let section = layoutConstructor.generateCategoriesSection()
-                
-                
-                return section
+                return layoutConstructor.generateCategoriesSection()
                 
             case .blog:
                 return layoutConstructor.generateBlogSection()
