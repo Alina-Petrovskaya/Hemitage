@@ -1,5 +1,5 @@
 //
-//  DataManagerMainScreen.swift
+//  MainScreenDataManager.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 11.05.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DataManagerMainScreen {
+class MainScreenDataManager {
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
     
     var categoriesdata: [MainScreenModelWrapper] = [

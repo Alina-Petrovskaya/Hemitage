@@ -1,5 +1,5 @@
 //
-//  DataSourceManagerMainScreen.swift
+//  MainScreenDataSourceManager.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 06.05.2021.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class DataSourceManagerMainScreen {
+class MainScreenDataSourceManager {
     
     private let collectionView: UICollectionView
-    private let dataManager = DataManagerMainScreen()
+    private let dataManager = MainScreenDataManager()
     private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>! = nil
     var headerCallBack: (() -> ())?
     

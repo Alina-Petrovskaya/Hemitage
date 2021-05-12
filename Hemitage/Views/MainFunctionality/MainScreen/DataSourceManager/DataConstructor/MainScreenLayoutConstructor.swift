@@ -1,5 +1,5 @@
 //
-//  LayoutConstructorMainScreen.swift
+//  MainScreenLayoutConstructor.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 08.05.2021.
@@ -7,24 +7,21 @@
 
 import UIKit
 
-struct LayoutConstructorMainScreen {
+struct MainScreenLayoutConstructor {
     
     func createLayout() -> UICollectionViewLayout {
-        
-        let layoutConstructor = LayoutConstructorMainScreen()
-        
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
             guard let sectionType =  MainScreenTypeOfSection(rawValue: sectionIndex) else { return nil }
             
             switch sectionType {
             case .map:
-                return layoutConstructor.generateMapSection()
+                return generateMapSection()
                 
             case .categories:
-                return layoutConstructor.generateCategoriesSection()
+                return generateCategoriesSection()
                 
             case .blog:
-                return layoutConstructor.generateBlogSection()
+                return generateBlogSection()
             }
         }
         

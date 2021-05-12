@@ -1,5 +1,5 @@
 //
-//  CollectionViewMainScreenDelegate.swift
+//  MainScreenCollectionViewDelegate.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 12.05.2021.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CollectionViewMainScreenDelegate: NSObject, UICollectionViewDelegate {
+class MainScreenCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
     var callBack: ((MainScreenModelWrapper) -> ())?
     
-    private let dataManager = DataManagerMainScreen()
+    private let dataManager = MainScreenDataManager()
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cellType = MainScreenTypeOfSection(rawValue: indexPath.section) else { return }
