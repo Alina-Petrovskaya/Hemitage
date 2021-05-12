@@ -13,7 +13,7 @@ protocol MainScreenModelViewProtocol {
     func getHeaderView(for view: MainScreenHeaderView, at section: MainScreenTypeOfSection) -> UICollectionReusableView?
 }
 
-class MainScreenViewModel: MainScreenModelViewProtocol {
+class MainScreenDataManager {
     
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
     

@@ -11,7 +11,7 @@ class DataSourceManagerMainScreen {
     
     private let collectionView: UICollectionView
     private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>! = nil
-    private let viewModel: MainScreenModelViewProtocol = MainScreenViewModel()
+    private let dataManager = MainScreenDataManager()
     
     
     init(with collectionView: UICollectionView) {
@@ -28,7 +28,7 @@ class DataSourceManagerMainScreen {
         
         MainScreenTypeOfSection.allCases.forEach { type in
             
-            snapshot.appendItems(viewModel.getSectionContent(for: type), toSection: type)
+            snapshot.appendItems(dataManager.getSectionContent(for: type), toSection: type)
         }
         
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -74,7 +74,7 @@ class DataSourceManagerMainScreen {
                                                                                       for: indexPath) as? MainScreenHeaderView
             else { return nil }
             
-            return self?.viewModel.getHeaderView(for: sectionHeader, at: section)
+            return self?.dataManager.getHeaderView(for: sectionHeader, at: section)
         }
     }
 }

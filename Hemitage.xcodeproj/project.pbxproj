@@ -35,7 +35,7 @@
 		849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */; };
 		849C4E65264A77C000C26C53 /* MainScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C4E64264A77C000C26C53 /* MainScreenHeaderView.xib */; };
 		849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E67264A8D3800C26C53 /* SongModel.swift */; };
-		849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6C264A922A00C26C53 /* MainScreenViewModel.swift */; };
+		849C4E6D264A922A00C26C53 /* MainScreenDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */; };
 		849C4E6F264AA01800C26C53 /* ConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */; };
 		849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E70264ACB8500C26C53 /* ProfileModel.swift */; };
 		849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E72264ACC2200C26C53 /* CategoriesModel.swift */; };
@@ -144,7 +144,7 @@
 		849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderType.swift; sourceTree = "<group>"; };
 		849C4E64264A77C000C26C53 /* MainScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenHeaderView.xib; sourceTree = "<group>"; };
 		849C4E67264A8D3800C26C53 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
-		849C4E6C264A922A00C26C53 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenDataManager.swift; sourceTree = "<group>"; };
 		849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguringCell.swift; sourceTree = "<group>"; };
 		849C4E70264ACB8500C26C53 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		849C4E72264ACC2200C26C53 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				848CF7812636AABE0070A3C6 /* Models */,
 				84DDE7222636CCF0005D91C8 /* Localization */,
 				848CF79D2636B49E0070A3C6 /* Views */,
-				848CF7802636A2D60070A3C6 /* Firebase manager */,
+				848CF7802636A2D60070A3C6 /* FirebaseManager */,
 				848CF79A2636B3E00070A3C6 /* Core */,
 				848CF7992636B38F0070A3C6 /* CoreData */,
 				848CF77C2636A0510070A3C6 /* Resourses */,
@@ -316,7 +316,7 @@
 			path = Resourses;
 			sourceTree = "<group>";
 		};
-		848CF7802636A2D60070A3C6 /* Firebase manager */ = {
+		848CF7802636A2D60070A3C6 /* FirebaseManager */ = {
 			isa = PBXGroup;
 			children = (
 				849A50FE26399B6D0047340A /* Login */,
@@ -324,7 +324,7 @@
 				849A50F92639874F0047340A /* Validation.swift */,
 				849A50FB26398E4A0047340A /* FirebaseError.swift */,
 			);
-			path = "Firebase manager";
+			path = FirebaseManager;
 			sourceTree = "<group>";
 		};
 		848CF7812636AABE0070A3C6 /* Models */ = {
@@ -393,7 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				84DDE7322636CECE005D91C8 /* RootViewController.swift */,
-				84D7F80B2642B610004B2DB0 /* Main functionality */,
+				84D7F80B2642B610004B2DB0 /* MainFunctionality */,
 				84D7F80A2642B5E3004B2DB0 /* Authorization */,
 				848CF79E2636B6BC0070A3C6 /* Splash */,
 			);
@@ -408,14 +408,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		848CF79F2636B6F20070A3C6 /* Welcome Screen */ = {
+		848CF79F2636B6F20070A3C6 /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
 				848CF74826369F270070A3C6 /* WelcomeViewController.storyboard */,
 				848CF74626369F270070A3C6 /* WelcomeViewController.swift */,
 				84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */,
 			);
-			path = "Welcome Screen";
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		849A50FD26399B5F0047340A /* SignIn */ = {
@@ -448,17 +448,15 @@
 			path = SongView;
 			sourceTree = "<group>";
 		};
-		849C4E372646C9E700C26C53 /* DataSource Manager */ = {
+		849C4E372646C9E700C26C53 /* DataSourceManager */ = {
 			isa = PBXGroup;
 			children = (
-				849C4E342646C90400C26C53 /* LayoutConstructorMainScreen.swift */,
-				84D7F831264427E6004B2DB0 /* DataSourceManagerMainScreen.swift */,
-				849C4E6C264A922A00C26C53 /* MainScreenViewModel.swift */,
+				849C4E80264BE3DF00C26C53 /* DataConstructor */,
 				849C4E5F264A71F900C26C53 /* MainScreenTypeOfSection.swift */,
 				849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */,
 				849C4E78264B102800C26C53 /* MainScreenModelWrapper.swift */,
 			);
-			path = "DataSource Manager";
+			path = DataSourceManager;
 			sourceTree = "<group>";
 		};
 		849C4E63264A777000C26C53 /* Templates */ = {
@@ -468,6 +466,16 @@
 				849C4E322645723300C26C53 /* MainScreenHeaderView.swift */,
 			);
 			path = Templates;
+			sourceTree = "<group>";
+		};
+		849C4E80264BE3DF00C26C53 /* DataConstructor */ = {
+			isa = PBXGroup;
+			children = (
+				849C4E342646C90400C26C53 /* LayoutConstructorMainScreen.swift */,
+				84D7F831264427E6004B2DB0 /* DataSourceManagerMainScreen.swift */,
+				849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */,
+			);
+			path = DataConstructor;
 			sourceTree = "<group>";
 		};
 		84D7F799263C2C02004B2DB0 /* Protocols */ = {
@@ -502,49 +510,49 @@
 		84D7F80A2642B5E3004B2DB0 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				848CF79F2636B6F20070A3C6 /* Welcome Screen */,
-				84EB44E82638021900828222 /* Log in Screen */,
-				84DB77E826384A8B0094483E /* Sign In Screen */,
+				848CF79F2636B6F20070A3C6 /* WelcomeScreen */,
+				84EB44E82638021900828222 /* LogInScreen */,
+				84DB77E826384A8B0094483E /* SignInScreen */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
 		};
-		84D7F80B2642B610004B2DB0 /* Main functionality */ = {
+		84D7F80B2642B610004B2DB0 /* MainFunctionality */ = {
 			isa = PBXGroup;
 			children = (
-				84D7F8152642DE02004B2DB0 /* Main Screen */,
+				84D7F8152642DE02004B2DB0 /* MainScreen */,
 				84D7F8162643CFAF004B2DB0 /* Templates */,
 			);
-			path = "Main functionality";
+			path = MainFunctionality;
 			sourceTree = "<group>";
 		};
-		84D7F8102642B9A3004B2DB0 /* Template Header View */ = {
+		84D7F8102642B9A3004B2DB0 /* TemplateHeaderView */ = {
 			isa = PBXGroup;
 			children = (
 				84D7F8112642BA26004B2DB0 /* TemplateHeaderView.xib */,
 				84D7F8132642C481004B2DB0 /* TemplateHeaderView.swift */,
 				849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */,
 			);
-			path = "Template Header View";
+			path = TemplateHeaderView;
 			sourceTree = "<group>";
 		};
-		84D7F8152642DE02004B2DB0 /* Main Screen */ = {
+		84D7F8152642DE02004B2DB0 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
 				84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */,
 				84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */,
-				849C4E372646C9E700C26C53 /* DataSource Manager */,
+				849C4E372646C9E700C26C53 /* DataSourceManager */,
 				84D7F81D2643F536004B2DB0 /* CollectionViewCells */,
 				849C4E63264A777000C26C53 /* Templates */,
 			);
-			path = "Main Screen";
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		84D7F8162643CFAF004B2DB0 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
 				849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */,
-				84D7F8102642B9A3004B2DB0 /* Template Header View */,
+				84D7F8102642B9A3004B2DB0 /* TemplateHeaderView */,
 				849C4E362646C9A400C26C53 /* SongView */,
 			);
 			path = Templates;
@@ -587,14 +595,14 @@
 			path = Blog;
 			sourceTree = "<group>";
 		};
-		84DB77E826384A8B0094483E /* Sign In Screen */ = {
+		84DB77E826384A8B0094483E /* SignInScreen */ = {
 			isa = PBXGroup;
 			children = (
 				84DB77EB26384B0A0094483E /* SignInViewController.storyboard */,
 				84DB77E926384AEE0094483E /* SignInViewController.swift */,
 				849A50F72639861E0047340A /* SignInViewModel.swift */,
 			);
-			path = "Sign In Screen";
+			path = SignInScreen;
 			sourceTree = "<group>";
 		};
 		84DDE7222636CCF0005D91C8 /* Localization */ = {
@@ -605,14 +613,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
-		84EB44E82638021900828222 /* Log in Screen */ = {
+		84EB44E82638021900828222 /* LogInScreen */ = {
 			isa = PBXGroup;
 			children = (
 				84EB44EB2638027900828222 /* LoginViewController.storyboard */,
 				84EB44E92638026400828222 /* LoginViewController.swift */,
 				849A50F326397C250047340A /* LoginViewModel.swift */,
 			);
-			path = "Log in Screen";
+			path = LogInScreen;
 			sourceTree = "<group>";
 		};
 		A8F3CBBB0AAC7A76744ACFAC /* Frameworks */ = {
@@ -932,7 +940,7 @@
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
 				84D7F82B2644184F004B2DB0 /* BlogCollectionViewCell.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
-				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,
+				849C4E6D264A922A00C26C53 /* MainScreenDataManager.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,

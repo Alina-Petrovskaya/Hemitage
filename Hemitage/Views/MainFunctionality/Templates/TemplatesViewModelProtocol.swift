@@ -7,10 +7,12 @@
 
 import Foundation
 
-protocol TemplatesViewModelProtocol: TemplatesViewModelProtocolBase {
+protocol TemplatesViewModelProtocol {
+    
     associatedtype Model
     
     var dataModel: ((Model) -> ())? { get set }
     
     func getDataForContent() -> ()
+    
 }
