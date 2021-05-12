@@ -35,7 +35,7 @@
 		849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */; };
 		849C4E65264A77C000C26C53 /* MainScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C4E64264A77C000C26C53 /* MainScreenHeaderView.xib */; };
 		849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E67264A8D3800C26C53 /* SongModel.swift */; };
-		849C4E6D264A922A00C26C53 /* MainScreenDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */; };
+		849C4E6D264A922A00C26C53 /* DataManagerMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6C264A922A00C26C53 /* DataManagerMainScreen.swift */; };
 		849C4E6F264AA01800C26C53 /* ConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */; };
 		849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E70264ACB8500C26C53 /* ProfileModel.swift */; };
 		849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E72264ACC2200C26C53 /* CategoriesModel.swift */; };
@@ -45,6 +45,8 @@
 		849C4E7B264BBEB000C26C53 /* ViewModelTemplateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */; };
 		849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */; };
 		849C4E7F264BD11900C26C53 /* ViewModelTemplateSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7E264BD11900C26C53 /* ViewModelTemplateSong.swift */; };
+		849C4E82264BE53E00C26C53 /* MainScreenModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E81264BE53E00C26C53 /* MainScreenModelView.swift */; };
+		849C4E84264BEC1900C26C53 /* CollectionViewMainScreenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E83264BEC1900C26C53 /* CollectionViewMainScreenDelegate.swift */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -144,7 +146,7 @@
 		849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderType.swift; sourceTree = "<group>"; };
 		849C4E64264A77C000C26C53 /* MainScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenHeaderView.xib; sourceTree = "<group>"; };
 		849C4E67264A8D3800C26C53 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
-		849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenDataManager.swift; sourceTree = "<group>"; };
+		849C4E6C264A922A00C26C53 /* DataManagerMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerMainScreen.swift; sourceTree = "<group>"; };
 		849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguringCell.swift; sourceTree = "<group>"; };
 		849C4E70264ACB8500C26C53 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		849C4E72264ACC2200C26C53 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
@@ -154,6 +156,8 @@
 		849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTemplateHeader.swift; sourceTree = "<group>"; };
 		849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewModelProtocol.swift; sourceTree = "<group>"; };
 		849C4E7E264BD11900C26C53 /* ViewModelTemplateSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTemplateSong.swift; sourceTree = "<group>"; };
+		849C4E81264BE53E00C26C53 /* MainScreenModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModelView.swift; sourceTree = "<group>"; };
+		849C4E83264BEC1900C26C53 /* CollectionViewMainScreenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMainScreenDelegate.swift; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -473,7 +477,8 @@
 			children = (
 				849C4E342646C90400C26C53 /* LayoutConstructorMainScreen.swift */,
 				84D7F831264427E6004B2DB0 /* DataSourceManagerMainScreen.swift */,
-				849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */,
+				849C4E6C264A922A00C26C53 /* DataManagerMainScreen.swift */,
+				849C4E83264BEC1900C26C53 /* CollectionViewMainScreenDelegate.swift */,
 			);
 			path = DataConstructor;
 			sourceTree = "<group>";
@@ -541,6 +546,7 @@
 			children = (
 				84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */,
 				84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */,
+				849C4E81264BE53E00C26C53 /* MainScreenModelView.swift */,
 				849C4E372646C9E700C26C53 /* DataSourceManager */,
 				84D7F81D2643F536004B2DB0 /* CollectionViewCells */,
 				849C4E63264A777000C26C53 /* Templates */,
@@ -939,8 +945,9 @@
 				849C4E7B264BBEB000C26C53 /* ViewModelTemplateHeader.swift in Sources */,
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
 				84D7F82B2644184F004B2DB0 /* BlogCollectionViewCell.swift in Sources */,
+				849C4E84264BEC1900C26C53 /* CollectionViewMainScreenDelegate.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
-				849C4E6D264A922A00C26C53 /* MainScreenDataManager.swift in Sources */,
+				849C4E6D264A922A00C26C53 /* DataManagerMainScreen.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
@@ -961,6 +968,7 @@
 				84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */,
 				849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */,
 				84D7F8142642C481004B2DB0 /* TemplateHeaderView.swift in Sources */,
+				849C4E82264BE53E00C26C53 /* MainScreenModelView.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				849C4E75264ACC6600C26C53 /* BlogModel.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,

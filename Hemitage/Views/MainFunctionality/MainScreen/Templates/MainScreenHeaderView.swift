@@ -13,6 +13,8 @@ class MainScreenHeaderView: UICollectionReusableView {
     @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var categoryButton: UIButton!
     
+    var callBack: (() -> ())?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -23,6 +25,7 @@ class MainScreenHeaderView: UICollectionReusableView {
         
     }
     
-    @IBAction func categoryButtonTapped(_ sender: UIButton) {
+    @IBAction private func categoryButtonTapped(_ sender: UIButton) {
+        callBack?()
     }
 }

@@ -58,15 +58,15 @@ struct LayoutConstructorMainScreen {
     private func generateCategoriesSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
-                                            widthDimension: .absolute(160),
-                                            heightDimension: .fractionalHeight(1)))
+                                            widthDimension: .fractionalWidth(0.09),
+                                            heightDimension: .fractionalWidth(0.091)))
         
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
         
         // Group
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
                                                         widthDimension: .fractionalWidth(5),
-                                                        heightDimension: .absolute(163)),
+                                                        heightDimension: .estimated(40)),
                                                        subitems: [item])
         
         //Section

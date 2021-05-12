@@ -10,9 +10,9 @@ import UIKit
 class DataSourceManagerMainScreen {
     
     private let collectionView: UICollectionView
+    private let dataManager = DataManagerMainScreen()
     private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>! = nil
-    private let dataManager = MainScreenDataManager()
-    
+    var headerCallBack: (() -> ())?
     
     init(with collectionView: UICollectionView) {
         self.collectionView = collectionView
@@ -20,14 +20,12 @@ class DataSourceManagerMainScreen {
     
     
     // MARK: - Manage Data
-    
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModelWrapper>()
         
         snapshot.appendSections(MainScreenTypeOfSection.allCases)
         
         MainScreenTypeOfSection.allCases.forEach { type in
-            
             snapshot.appendItems(dataManager.getSectionContent(for: type), toSection: type)
         }
         
@@ -47,12 +45,11 @@ class DataSourceManagerMainScreen {
                 return self.configure(cellType: CategoriesCollectionViewCell.self, with: model, for: indexPath)
                 
             case .blog:
-               return self.configure(cellType: BlogCollectionViewCell.self, with: model, for: indexPath)
+                return self.configure(cellType: BlogCollectionViewCell.self, with: model, for: indexPath)
             }
         })
         
         createHeader(for: dataSource)
-        
     }
     
     private func configure<T: ConfiguringCell>(cellType: T.Type, with model: MainScreenModelWrapper, for indexPath: IndexPath) -> T {
@@ -73,6 +70,10 @@ class DataSourceManagerMainScreen {
                                                                                       withReuseIdentifier: String(describing: MainScreenHeaderView.self),
                                                                                       for: indexPath) as? MainScreenHeaderView
             else { return nil }
+            
+            sectionHeader.callBack = { [weak self] in
+                self?.headerCallBack?()
+            }
             
             return self?.dataManager.getHeaderView(for: sectionHeader, at: section)
         }

@@ -36,7 +36,7 @@ class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
             imageBlog.isHidden  = false
 
             
-            if data.imageName != "",  let image = UIImage(named: "\(data.imageName)")  {
+            if data.imageName != "",  let image = UIImage(named: data.imageName)  {
                 imageBlog.image = image
             } else {
                 imageBlog.isHidden = true

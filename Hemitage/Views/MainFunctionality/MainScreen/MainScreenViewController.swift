@@ -13,8 +13,7 @@ class MainScreenViewController: UIViewController {
     @IBOutlet private weak var headerView: TemplateHeaderView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    
-    var dataSource: DataSourceManagerMainScreen?
+    var viewModel: MainScreenModelViewProtocol?
     
     
     override func viewDidLoad() {
@@ -22,34 +21,27 @@ class MainScreenViewController: UIViewController {
         
         navigationController?.navigationBar.isHidden = true
         
-        registerNibs()
-        prepareCollectionView()
-    }
-   
-    
-    private func prepareCollectionView() {
-        dataSource = DataSourceManagerMainScreen(with: collectionView)
-        let layout = LayoutConstructorMainScreen()
-        
-        collectionView.collectionViewLayout = layout.createLayout()
-        
-        dataSource?.setupDataSource()
-        dataSource?.reloadData()
-        
+        prepareViewModel()
     }
     
-    private func registerNibs() {
-        collectionView.register(UINib(nibName: String(describing: MapCollectionViewCell.self), bundle: .main),
-                                forCellWithReuseIdentifier: String(describing: MapCollectionViewCell.self))
+    
+    private func prepareViewModel() {
+        viewModel = MainScreenModelView(with: collectionView)
         
-        collectionView.register(UINib(nibName: String(describing: CategoriesCollectionViewCell.self),bundle: .main),
-                                forCellWithReuseIdentifier: String(describing: CategoriesCollectionViewCell.self))
+        viewModel?.userInteractionCallBack = { data in
+            switch data {
+            
+            case .map(_):
+                break
+                
+            case .category(_):
+                print("Present group VC")
+                
+            case .blog(_):
+                print("Present article detail VC")
+            }
+        }
         
-        collectionView.register(UINib(nibName: String(describing: BlogCollectionViewCell.self), bundle: .main),
-                                forCellWithReuseIdentifier: String(describing: BlogCollectionViewCell.self))
-        
-        collectionView.register(UINib(nibName: String(describing: MainScreenHeaderView.self), bundle: .main),
-                                forSupplementaryViewOfKind: MainScreenHeaderType.header.rawValue,
-                                withReuseIdentifier: String(describing: MainScreenHeaderView.self))
+        viewModel?.headerCallBack = { print("Present blog") }
     }
 }

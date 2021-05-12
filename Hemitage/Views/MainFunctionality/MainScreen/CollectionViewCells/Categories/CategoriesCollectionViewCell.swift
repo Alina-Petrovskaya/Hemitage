@@ -38,7 +38,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         case .category(let data):
             categoryName.text = data.name
             
-            if data.imageName != "",  let image = UIImage(named: "\(data.imageName)")  {
+            if data.imageName != "", let image = UIImage(named: data.imageName)  {
                 categoryImage.image = image
             }
             
