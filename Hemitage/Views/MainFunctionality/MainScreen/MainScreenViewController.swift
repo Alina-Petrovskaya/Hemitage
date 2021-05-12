@@ -14,7 +14,7 @@ class MainScreenViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     var viewModel: MainScreenModelViewProtocol = MainScreenModelView()
-    var dataSourceManager: MainScreenDataSourceManager?
+    var dataSourceManager: MainScreenDataSourceManagerProtocol = MainScreenDataSourceManager()
     
     
     override func viewDidLoad() {
@@ -23,16 +23,11 @@ class MainScreenViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         
         prepareViewModel()
-        configureCollectionView()
-    }
-    
-    private func configureCollectionView() {
-        
         registerNibs()
         createLayout()
-        prepareDatasource()
+        setupDataSource()
+        dataSourceManager.reloadData()
     }
-    
     
     private func registerNibs() {
         collectionView.register(UINib(nibName: String(describing: MapCollectionViewCell.self), bundle: .main),
@@ -54,14 +49,6 @@ class MainScreenViewController: UIViewController {
         collectionView.collectionViewLayout = layout.createLayout()
     }
     
-    private func prepareDatasource() {
-        dataSourceManager = MainScreenDataSourceManager(with: collectionView)
-        dataSourceManager?.headerCallBack = { print("Present blog VC") }
-        
-        dataSourceManager?.setupDataSource()
-        dataSourceManager?.reloadData()
-    }
-    
     private func prepareViewModel() {
         collectionView.delegate = viewModel.collectionViewDelegate
 
@@ -77,6 +64,54 @@ class MainScreenViewController: UIViewController {
             case .blog(_):
                 print("Present article detail VC")
             }
+        }
+    }
+    
+    // MARK: - Manage Data
+    private func setupDataSource() {
+        dataSourceManager.dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView,
+                                                                          cellProvider: { [weak self] collectionView, indexPath, model in
+            
+            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell()}
+            
+            switch section {
+            case .map:
+                return self?.configure(cellType: MapCollectionViewCell.self, with: model, for: indexPath)
+                
+            case .categories:
+                return self?.configure(cellType: CategoriesCollectionViewCell.self, with: model, for: indexPath)
+                
+            case .blog:
+                return self?.configure(cellType: BlogCollectionViewCell.self, with: model, for: indexPath)
+            }
+        })
+        
+        createHeader()
+    }
+    
+    
+    private func configure<T: ConfiguringCell>(cellType: T.Type,
+                                               with model: MainScreenModelWrapper,
+                                               for indexPath: IndexPath) -> T {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as? T else {
+            fatalError("Can't create cell with id \( String(describing: cellType))")
+        }
+        
+        cell.updateContent(with: model)
+        return cell
+    }
+    
+    
+    private func createHeader() {
+        dataSourceManager.dataSource?.supplementaryViewProvider = { [weak self] collectionView, type, indexPath in
+            
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: MainScreenHeaderType.header.rawValue,
+                                                                                      withReuseIdentifier: String(describing: MainScreenHeaderView.self),
+                                                                                      for: indexPath) as? MainScreenHeaderView
+            else { return nil }
+            sectionHeader.callBack = { print("Present blog VC") }
+            
+            return self?.dataSourceManager.createHeader(with: sectionHeader, at: indexPath)
         }
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Alina Petrovskaya on 11.05.2021.
 //
 
-import UIKit
+import Foundation
 
 class MainScreenDataManager {
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
@@ -34,27 +34,6 @@ class MainScreenDataManager {
         case .blog:
             return blogData
         }
-    }
-    
-    
-    func getHeaderView(for view: MainScreenHeaderView, at section: MainScreenTypeOfSection) -> UICollectionReusableView? {
-        switch section {
-        case .map:
-            break
-            
-        case .categories:
-            view.categoryName.text = "Categories"
-            
-            return view
-            
-        case .blog:
-            view.categoryName.text = "Blog"
-            view.categoryButton.isHidden = false
-            
-            return view
-        }
-        
-        return nil
     }
 }
 

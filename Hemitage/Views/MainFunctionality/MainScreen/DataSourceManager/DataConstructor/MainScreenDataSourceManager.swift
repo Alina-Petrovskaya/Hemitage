@@ -7,16 +7,16 @@
 
 import UIKit
 
-class MainScreenDataSourceManager {
-    
-    private let collectionView: UICollectionView
+protocol MainScreenDataSourceManagerProtocol {
+    var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>? { get set }
+
+    func createHeader(with view: MainScreenHeaderView, at indexPath: IndexPath ) -> MainScreenHeaderView?
+    func reloadData()
+}
+
+class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     private let dataManager = MainScreenDataManager()
-    private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>! = nil
-    var headerCallBack: (() -> ())?
-    
-    init(with collectionView: UICollectionView) {
-        self.collectionView = collectionView
-    }
+    var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>? = nil
     
     
     // MARK: - Manage Data
@@ -29,54 +29,30 @@ class MainScreenDataSourceManager {
             snapshot.appendItems(dataManager.getSectionContent(for: type), toSection: type)
         }
         
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
     
-    func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, model in
-            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell() }
-            
-            switch section {
-            case .map:
-                return self.configure(cellType: MapCollectionViewCell.self, with: model, for: indexPath)
-                
-            case .categories:
-                return self.configure(cellType: CategoriesCollectionViewCell.self, with: model, for: indexPath)
-                
-            case .blog:
-                return self.configure(cellType: BlogCollectionViewCell.self, with: model, for: indexPath)
-            }
-        })
+    func createHeader(with view: MainScreenHeaderView, at indexPath: IndexPath ) -> MainScreenHeaderView? {
+        guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return nil }
         
-        createHeader(for: dataSource)
-    }
-    
-    private func configure<T: ConfiguringCell>(cellType: T.Type, with model: MainScreenModelWrapper, for indexPath: IndexPath) -> T {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as? T else {
-            fatalError("Can't create cell with id \( String(describing: cellType))")
+        switch section {
+        case .map:
+            break
+            
+        case .categories:
+            view.categoryName.text = "Categories"
+            
+            return view
+            
+        case .blog:
+            view.categoryName.text = "Blog"
+            view.categoryButton.isHidden = false
+            
+            return view
         }
         
-        cell.updateContent(with: model)
-        return cell
-    }
-    
-    
-    private func createHeader(for datasource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>) {
-        dataSource.supplementaryViewProvider = { [weak self] collectionView, type, indexPath in
-            
-            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section),
-                  let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: MainScreenHeaderType.header.rawValue,
-                                                                                      withReuseIdentifier: String(describing: MainScreenHeaderView.self),
-                                                                                      for: indexPath) as? MainScreenHeaderView
-            else { return nil }
-            
-            sectionHeader.callBack = { [weak self] in
-                self?.headerCallBack?()
-            }
-            
-            return self?.dataManager.getHeaderView(for: sectionHeader, at: section)
-        }
+        return nil
     }
 }
 

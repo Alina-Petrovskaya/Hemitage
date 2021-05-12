@@ -11,7 +11,7 @@ protocol MainScreenModelViewProtocol {
 
     var userInteractionCallBack: ((MainScreenModelWrapper) -> ())? { get set }
     var collectionViewDelegate: MainScreenCollectionViewDelegate { get }
-
+    
 }
 
 final class MainScreenModelView: MainScreenModelViewProtocol {
