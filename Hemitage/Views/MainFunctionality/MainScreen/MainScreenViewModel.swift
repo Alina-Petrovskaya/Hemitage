@@ -1,5 +1,5 @@
 //
-//  MainScreenDataManager.swift
+//  MainScreenViewModel.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 11.05.2021.
@@ -7,14 +7,22 @@
 
 import Foundation
 
-protocol MainScreenDataManagerProtocol {
-    func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
-    func getItem(for indexPath: IndexPath) -> MainScreenModelWrapper?
+protocol MainScreenViewModelDelegate {
+    
+    func reloadCollectionView(at indexPath: IndexPath)
+    
 }
 
 
-class MainScreenDataManager: MainScreenDataManagerProtocol {
+protocol MainScreenViewModelProtocol {
     
+    func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
+    func getItem(for indexPath: IndexPath) -> MainScreenModelWrapper?
+    
+}
+
+
+class MainScreenViewModel: MainScreenViewModelProtocol {
     // Get data
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
     
@@ -43,6 +51,7 @@ class MainScreenDataManager: MainScreenDataManagerProtocol {
             return blogData
         }
     }
+    
     
     func getItem(for indexPath: IndexPath) -> MainScreenModelWrapper? {
         guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return nil }

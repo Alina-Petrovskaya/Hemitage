@@ -7,7 +7,13 @@
 
 import UIKit
 
-struct MainScreenLayoutConstructor {
+protocol MainScreenLayoutConstructorProtocol {
+    
+    func createLayout() -> UICollectionViewLayout
+    
+}
+
+struct MainScreenLayoutConstructor: MainScreenLayoutConstructorProtocol {
     
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in

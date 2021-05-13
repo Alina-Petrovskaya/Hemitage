@@ -9,111 +9,39 @@ import UIKit
 
 class MainScreenViewController: UIViewController {
 
+    let viewModel: MainScreenViewModelProtocol = MainScreenViewModel()
+    let builder = MainScreenBuilder()
+    private var dataSourceManager: MainScreenDataSourceManagerProtocol?
+    
     @IBOutlet private weak var songBottomView: TemplateSongView!
     @IBOutlet private weak var headerView: TemplateHeaderView!
     @IBOutlet private weak var collectionView: UICollectionView!
-    
-    private var dataSourceManager: MainScreenDataSourceManagerProtocol = MainScreenDataSourceManager()
-    private let collectionViewDelegate = MainScreenCollectionViewDelegate()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
+    
+        dataSourceManager = builder.build(with: collectionView, with: viewModel)
         
-        prepareCollectionViewDelegate()
-        registerNibs()
-        createLayout()
-        setupDataSource()
-        dataSourceManager.reloadData()
-    }
-    
-    private func registerNibs() {
-        collectionView.register(UINib(nibName: String(describing: MapCollectionViewCell.self), bundle: .main),
-                                forCellWithReuseIdentifier: String(describing: MapCollectionViewCell.self))
-        
-        collectionView.register(UINib(nibName: String(describing: CategoriesCollectionViewCell.self),bundle: .main),
-                                forCellWithReuseIdentifier: String(describing: CategoriesCollectionViewCell.self))
-        
-        collectionView.register(UINib(nibName: String(describing: BlogCollectionViewCell.self), bundle: .main),
-                                forCellWithReuseIdentifier: String(describing: BlogCollectionViewCell.self))
-        
-        collectionView.register(UINib(nibName: String(describing: MainScreenHeaderView.self), bundle: .main),
-                                forSupplementaryViewOfKind: MainScreenHeaderType.header.rawValue,
-                                withReuseIdentifier: String(describing: MainScreenHeaderView.self))
-    }
-    
-    
-    private func createLayout() {
-        let layout = MainScreenLayoutConstructor()
-        collectionView.collectionViewLayout = layout.createLayout()
-    }
-    
-    
-    private func prepareCollectionViewDelegate() {
-        collectionView.delegate = collectionViewDelegate
-
-        collectionViewDelegate.callBack = { data in
-            switch data {
-
+        builder.collectionViewDelegate.callBack = { [weak self] indexPath in
+            guard let item = self?.viewModel.getItem(for: indexPath) else { return }
+            
+            switch item {
             case .map(_):
                 break
-
+                
             case .category(_):
                 print("Present group VC")
-
+                
             case .blog(_):
                 print("Present article detail VC")
             }
         }
-    }
-    
-    // MARK: - Manage Data
-    private func setupDataSource() {
-        dataSourceManager.dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView,
-                                                                          cellProvider: { [weak self] collectionView, indexPath, model in
-            
-            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell()}
-            
-            switch section {
-            case .map:
-                return self?.configure(cellType: MapCollectionViewCell.self, with: model, for: indexPath)
-                
-            case .categories:
-                return self?.configure(cellType: CategoriesCollectionViewCell.self, with: model, for: indexPath)
-                
-            case .blog:
-                return self?.configure(cellType: BlogCollectionViewCell.self, with: model, for: indexPath)
-            }
-        })
         
-        createHeader()
-    }
-    
-    
-    private func configure<T: ConfiguringCell>(cellType: T.Type,
-                                               with model: MainScreenModelWrapper,
-                                               for indexPath: IndexPath) -> T {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as? T else {
-            fatalError("Can't create cell with id \( String(describing: cellType))")
-        }
         
-        cell.updateContent(with: model)
-        return cell
-    }
-    
-    
-    private func createHeader() {
-        dataSourceManager.dataSource?.supplementaryViewProvider = { [weak self] collectionView, type, indexPath in
-            
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: MainScreenHeaderType.header.rawValue,
-                                                                                      withReuseIdentifier: String(describing: MainScreenHeaderView.self),
-                                                                                      for: indexPath) as? MainScreenHeaderView
-            else { return nil }
-            sectionHeader.callBack = { print("Present blog VC") }
-            
-            return self?.dataSourceManager.createHeader(with: sectionHeader, at: indexPath)
-        }
+        dataSourceManager?.headerCallback = { print("Present blog VC")}
+        
     }
 }

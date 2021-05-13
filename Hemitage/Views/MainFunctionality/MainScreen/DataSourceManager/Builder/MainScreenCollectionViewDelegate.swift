@@ -7,15 +7,13 @@
 
 import UIKit
 
+
 class MainScreenCollectionViewDelegate: NSObject, UICollectionViewDelegate {
     
-    var callBack: ((MainScreenModelWrapper) -> ())?
-    
-    private let dataManager: MainScreenDataManagerProtocol = MainScreenDataManager()
+    var callBack: ((IndexPath) -> ())?
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let item = dataManager.getItem(for: indexPath) {
-            callBack?(item)
-        }
+        callBack?(indexPath)
     }
+    
 }

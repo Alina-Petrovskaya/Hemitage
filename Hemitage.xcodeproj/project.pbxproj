@@ -24,6 +24,8 @@
 		84926F56264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F55264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift */; };
 		84926F58264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F57264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift */; };
 		84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */; };
+		84926F88264D3D14005E9074 /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F87264D3D14005E9074 /* MainScreenBuilder.swift */; };
+		84926F8A264D48D3005E9074 /* MainScreenCollectionViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F89264D48D3005E9074 /* MainScreenCollectionViewSetup.swift */; };
 		849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50E926394D600047340A /* AppDelegate+Navigation.swift */; };
 		849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */; };
 		849A50F426397C250047340A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F326397C250047340A /* LoginViewModel.swift */; };
@@ -39,7 +41,7 @@
 		849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */; };
 		849C4E65264A77C000C26C53 /* MainScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C4E64264A77C000C26C53 /* MainScreenHeaderView.xib */; };
 		849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E67264A8D3800C26C53 /* SongModel.swift */; };
-		849C4E6D264A922A00C26C53 /* MainScreenDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */; };
+		849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6C264A922A00C26C53 /* MainScreenViewModel.swift */; };
 		849C4E6F264AA01800C26C53 /* ConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */; };
 		849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E70264ACB8500C26C53 /* ProfileModel.swift */; };
 		849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E72264ACC2200C26C53 /* CategoriesModel.swift */; };
@@ -138,6 +140,8 @@
 		84926F55264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewCellModelViewProtocol.swift; sourceTree = "<group>"; };
 		84926F57264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCellModelView.swift; sourceTree = "<group>"; };
 		84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewCellModelView.swift; sourceTree = "<group>"; };
+		84926F87264D3D14005E9074 /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
+		84926F89264D48D3005E9074 /* MainScreenCollectionViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewSetup.swift; sourceTree = "<group>"; };
 		849A50E926394D600047340A /* AppDelegate+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Navigation.swift"; sourceTree = "<group>"; };
 		849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFireBaseLogInManager.swift; sourceTree = "<group>"; };
 		849A50F326397C250047340A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -153,7 +157,7 @@
 		849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderType.swift; sourceTree = "<group>"; };
 		849C4E64264A77C000C26C53 /* MainScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainScreenHeaderView.xib; sourceTree = "<group>"; };
 		849C4E67264A8D3800C26C53 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
-		849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenDataManager.swift; sourceTree = "<group>"; };
+		849C4E6C264A922A00C26C53 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguringCell.swift; sourceTree = "<group>"; };
 		849C4E70264ACB8500C26C53 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		849C4E72264ACC2200C26C53 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
@@ -428,6 +432,18 @@
 			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
+		84926F86264D3944005E9074 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				84926F87264D3D14005E9074 /* MainScreenBuilder.swift */,
+				84926F89264D48D3005E9074 /* MainScreenCollectionViewSetup.swift */,
+				84D7F831264427E6004B2DB0 /* MainScreenDataSourceManager.swift */,
+				849C4E342646C90400C26C53 /* MainScreenLayoutConstructor.swift */,
+				849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
 		849A50FD26399B5F0047340A /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,7 +477,7 @@
 		849C4E372646C9E700C26C53 /* DataSourceManager */ = {
 			isa = PBXGroup;
 			children = (
-				849C4E80264BE3DF00C26C53 /* DataConstructor */,
+				84926F86264D3944005E9074 /* Builder */,
 				849C4E5F264A71F900C26C53 /* MainScreenTypeOfSection.swift */,
 				849C4E61264A750C00C26C53 /* MainScreenHeaderType.swift */,
 				849C4E78264B102800C26C53 /* MainScreenModelWrapper.swift */,
@@ -476,17 +492,6 @@
 				849C4E322645723300C26C53 /* MainScreenHeaderView.swift */,
 			);
 			path = Templates;
-			sourceTree = "<group>";
-		};
-		849C4E80264BE3DF00C26C53 /* DataConstructor */ = {
-			isa = PBXGroup;
-			children = (
-				849C4E342646C90400C26C53 /* MainScreenLayoutConstructor.swift */,
-				849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */,
-				84D7F831264427E6004B2DB0 /* MainScreenDataSourceManager.swift */,
-				849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */,
-			);
-			path = DataConstructor;
 			sourceTree = "<group>";
 		};
 		84D7F799263C2C02004B2DB0 /* Protocols */ = {
@@ -552,6 +557,7 @@
 			children = (
 				84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */,
 				84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */,
+				849C4E6C264A922A00C26C53 /* MainScreenViewModel.swift */,
 				849C4E372646C9E700C26C53 /* DataSourceManager */,
 				84D7F81D2643F536004B2DB0 /* CollectionViewCells */,
 				849C4E63264A777000C26C53 /* Templates */,
@@ -944,9 +950,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84926F88264D3D14005E9074 /* MainScreenBuilder.swift in Sources */,
 				84EB44EA2638026400828222 /* LoginViewController.swift in Sources */,
 				849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */,
 				84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */,
+				84926F8A264D48D3005E9074 /* MainScreenCollectionViewSetup.swift in Sources */,
 				84D7F82726441434004B2DB0 /* CategoriesCollectionViewCell.swift in Sources */,
 				849C4E6F264AA01800C26C53 /* ConfiguringCell.swift in Sources */,
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
@@ -957,7 +965,7 @@
 				84D7F82B2644184F004B2DB0 /* BlogCollectionViewCell.swift in Sources */,
 				849C4E84264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
-				849C4E6D264A922A00C26C53 /* MainScreenDataManager.swift in Sources */,
+				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
