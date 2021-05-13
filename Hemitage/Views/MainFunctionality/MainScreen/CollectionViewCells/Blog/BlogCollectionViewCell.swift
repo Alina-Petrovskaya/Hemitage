@@ -14,6 +14,8 @@ class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     @IBOutlet private weak var date: UILabel!
     @IBOutlet private weak var articlePreview: UILabel!
     
+    var viewModel: BlogCollectionViewCellModelViewProtocol = BlogCollectionViewCellModelView()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,23 +26,21 @@ class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     func updateContent<T>(with data: T) {
         guard let safeData = data as? MainScreenModelWrapper else { return }
         
-        switch safeData {
-        case .map(_):
-            break
-        case .category(_):
-            break
-        case .blog(let data):
-            articleName.text    = data.title
-            articlePreview.text = data.preview
-            date.text           = data.date
-            imageBlog.isHidden  = false
-
+        imageBlog.isHidden = false
+        
+        viewModel.callBack = { [weak self] model in
             
-            if data.imageName != "",  let image = UIImage(named: data.imageName)  {
-                imageBlog.image = image
+            self?.articleName.text    = model.title
+            self?.articlePreview.text = model.preview
+            self?.date.text           = model.date
+        
+            if model.imageName != "",  let image = UIImage(named: model.imageName)  {
+                self?.imageBlog.image = image
             } else {
-                imageBlog.isHidden = true
+                self?.imageBlog.isHidden = true
             }
         }
+        
+        viewModel.handleData(with: safeData)
     }
 }

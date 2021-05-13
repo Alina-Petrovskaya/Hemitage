@@ -18,7 +18,7 @@ protocol MainScreenDataSourceManagerProtocol {
 
 
 class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
-    private let dataManager = MainScreenDataManager()
+    private let dataManager: MainScreenDataManagerProtocol = MainScreenDataManager()
     var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>? = nil
     
     

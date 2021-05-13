@@ -13,8 +13,8 @@ class MainScreenViewController: UIViewController {
     @IBOutlet private weak var headerView: TemplateHeaderView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    var viewModel: MainScreenModelViewProtocol = MainScreenModelView()
-    var dataSourceManager: MainScreenDataSourceManagerProtocol = MainScreenDataSourceManager()
+    private var dataSourceManager: MainScreenDataSourceManagerProtocol = MainScreenDataSourceManager()
+    private let collectionViewDelegate = MainScreenCollectionViewDelegate()
     
     
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class MainScreenViewController: UIViewController {
         
         navigationController?.navigationBar.isHidden = true
         
-        prepareViewModel()
+        prepareCollectionViewDelegate()
         registerNibs()
         createLayout()
         setupDataSource()
@@ -51,10 +51,10 @@ class MainScreenViewController: UIViewController {
     }
     
     
-    private func prepareViewModel() {
-        collectionView.delegate = viewModel.collectionViewDelegate
+    private func prepareCollectionViewDelegate() {
+        collectionView.delegate = collectionViewDelegate
 
-        viewModel.userInteractionCallBack = { data in
+        collectionViewDelegate.callBack = { data in
             switch data {
 
             case .map(_):

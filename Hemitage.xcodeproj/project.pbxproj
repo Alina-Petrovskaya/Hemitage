@@ -20,6 +20,10 @@
 		848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
 		848CF7902636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
 		848CF7912636B1A40070A3C6 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */; };
+		84926F54264D0A89005E9074 /* MapCollectionViewCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F53264D0A89005E9074 /* MapCollectionViewCellModelView.swift */; };
+		84926F56264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F55264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift */; };
+		84926F58264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F57264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift */; };
+		84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */; };
 		849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50E926394D600047340A /* AppDelegate+Navigation.swift */; };
 		849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */; };
 		849A50F426397C250047340A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F326397C250047340A /* LoginViewModel.swift */; };
@@ -45,7 +49,6 @@
 		849C4E7B264BBEB000C26C53 /* ViewModelTemplateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */; };
 		849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */; };
 		849C4E7F264BD11900C26C53 /* ViewModelTemplateSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7E264BD11900C26C53 /* ViewModelTemplateSong.swift */; };
-		849C4E82264BE53E00C26C53 /* MainScreenModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E81264BE53E00C26C53 /* MainScreenModelView.swift */; };
 		849C4E84264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
@@ -131,6 +134,10 @@
 		848CF76726369F2C0070A3C6 /* HemitageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HemitageUITests.swift; sourceTree = "<group>"; };
 		848CF76926369F2C0070A3C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848CF78E2636B1A40070A3C6 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		84926F53264D0A89005E9074 /* MapCollectionViewCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCellModelView.swift; sourceTree = "<group>"; };
+		84926F55264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewCellModelViewProtocol.swift; sourceTree = "<group>"; };
+		84926F57264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCellModelView.swift; sourceTree = "<group>"; };
+		84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewCellModelView.swift; sourceTree = "<group>"; };
 		849A50E926394D600047340A /* AppDelegate+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Navigation.swift"; sourceTree = "<group>"; };
 		849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFireBaseLogInManager.swift; sourceTree = "<group>"; };
 		849A50F326397C250047340A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -156,7 +163,6 @@
 		849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTemplateHeader.swift; sourceTree = "<group>"; };
 		849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewModelProtocol.swift; sourceTree = "<group>"; };
 		849C4E7E264BD11900C26C53 /* ViewModelTemplateSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTemplateSong.swift; sourceTree = "<group>"; };
-		849C4E81264BE53E00C26C53 /* MainScreenModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModelView.swift; sourceTree = "<group>"; };
 		849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
@@ -476,9 +482,9 @@
 			isa = PBXGroup;
 			children = (
 				849C4E342646C90400C26C53 /* MainScreenLayoutConstructor.swift */,
+				849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */,
 				84D7F831264427E6004B2DB0 /* MainScreenDataSourceManager.swift */,
 				849C4E6C264A922A00C26C53 /* MainScreenDataManager.swift */,
-				849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */,
 			);
 			path = DataConstructor;
 			sourceTree = "<group>";
@@ -546,7 +552,6 @@
 			children = (
 				84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */,
 				84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */,
-				849C4E81264BE53E00C26C53 /* MainScreenModelView.swift */,
 				849C4E372646C9E700C26C53 /* DataSourceManager */,
 				84D7F81D2643F536004B2DB0 /* CollectionViewCells */,
 				849C4E63264A777000C26C53 /* Templates */,
@@ -567,6 +572,7 @@
 		84D7F81D2643F536004B2DB0 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				84926F55264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift */,
 				84D7F81E2643F5A5004B2DB0 /* Map */,
 				84D7F81F2643F5B8004B2DB0 /* Categories */,
 				84D7F8202643F5D0004B2DB0 /* Blog */,
@@ -579,6 +585,7 @@
 			children = (
 				84D7F8222643F605004B2DB0 /* MapCollectionViewCell.xib */,
 				84D7F8212643F605004B2DB0 /* MapCollectionViewCell.swift */,
+				84926F53264D0A89005E9074 /* MapCollectionViewCellModelView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -588,6 +595,7 @@
 			children = (
 				84D7F82626441434004B2DB0 /* CategoriesCollectionViewCell.xib */,
 				84D7F82526441434004B2DB0 /* CategoriesCollectionViewCell.swift */,
+				84926F57264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -597,6 +605,7 @@
 			children = (
 				84D7F82A2644184E004B2DB0 /* BlogCollectionViewCell.xib */,
 				84D7F8292644184E004B2DB0 /* BlogCollectionViewCell.swift */,
+				84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
@@ -937,6 +946,7 @@
 			files = (
 				84EB44EA2638026400828222 /* LoginViewController.swift in Sources */,
 				849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */,
+				84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */,
 				84D7F82726441434004B2DB0 /* CategoriesCollectionViewCell.swift in Sources */,
 				849C4E6F264AA01800C26C53 /* ConfiguringCell.swift in Sources */,
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
@@ -957,7 +967,9 @@
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
 				849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */,
+				84926F54264D0A89005E9074 /* MapCollectionViewCellModelView.swift in Sources */,
 				84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */,
+				84926F56264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
 				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
 				849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */,
@@ -968,11 +980,11 @@
 				84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */,
 				849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */,
 				84D7F8142642C481004B2DB0 /* TemplateHeaderView.swift in Sources */,
-				849C4E82264BE53E00C26C53 /* MainScreenModelView.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				849C4E75264ACC6600C26C53 /* BlogModel.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,
+				84926F58264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift in Sources */,
 				848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */,
 				84D7F791263BE4F9004B2DB0 /* AppleFirebaseLoginManager.swift in Sources */,
 				84D7F832264427E6004B2DB0 /* MainScreenDataSourceManager.swift in Sources */,

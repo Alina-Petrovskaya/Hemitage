@@ -12,6 +12,8 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     @IBOutlet private weak var content: UIView!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
+    
+    var viewModel: CategoriesCollectionViewCellModelViewProtocol = CategoriesCollectionViewCellModelView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,23 +30,20 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         categoryName.layer.masksToBounds = true
     }
     
+    
     func updateContent<T> (with data: T) {
         guard let safeData = data as? MainScreenModelWrapper else { return }
         
-        switch safeData {
-        case .map(_):
-            break
+        viewModel.callBack = { [weak self] model in
             
-        case .category(let data):
-            categoryName.text = data.name
+            self?.categoryName.text = model.name
             
-            if data.imageName != "", let image = UIImage(named: data.imageName)  {
-                categoryImage.image = image
+            if model.imageName != "", let image = UIImage(named: model.imageName)  {
+                self?.categoryImage.image = image
             }
-            
-        case .blog(_):
-            break
         }
+        
+        viewModel.handleData(with: safeData)
     }
     
 }
