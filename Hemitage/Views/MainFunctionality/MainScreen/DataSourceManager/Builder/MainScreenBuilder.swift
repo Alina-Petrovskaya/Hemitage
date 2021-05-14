@@ -14,12 +14,13 @@ class MainScreenBuilder {
     
     func build(with collectionView: UICollectionView, with viewModel: MainScreenViewModelProtocol) -> MainScreenDataSourceManagerProtocol {
         
-        let layout                     = MainScreenLayoutConstructor()
-        let configuratedCollectionView = MainScreenCollectionViewSetup(for: collectionView,
-                                                                       with: collectionViewDelegate,
-                                                                       with: layout)
+        let layout               = MainScreenLayoutConstructor()
+        let setupCollectionView  = MainScreenCollectionViewSetup(for: collectionView, with: collectionViewDelegate, with: layout)
+        setupCollectionView.registerNibs()
+        setupCollectionView.setLayout()
         
-        let dataSourceManager = MainScreenDataSourceManager(with: collectionView, with: viewModel)
+        let dataSourceManager = MainScreenDataSourceManager(with: collectionView)
+        dataSourceManager.reloadData(with: viewModel)
         
         return dataSourceManager
     }

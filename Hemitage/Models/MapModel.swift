@@ -7,7 +7,21 @@
 
 import Foundation
 
-struct MapModel: Hashable {
-    let allUsers: Int
-    let usersOnline: Int
+class MapModel: Hashable {
+    let uuid = UUID()
+    var allUsers: Int
+    var usersOnline: Int
+    
+    init(allUsers: Int, usersOnline: Int) {
+        self.usersOnline = usersOnline
+        self.allUsers    = allUsers
+    }
+    
+    static func == (lhs: MapModel, rhs: MapModel) -> Bool {
+        return lhs.uuid == rhs.uuid
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
 }

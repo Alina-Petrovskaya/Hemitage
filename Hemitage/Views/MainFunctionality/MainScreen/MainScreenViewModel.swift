@@ -7,22 +7,24 @@
 
 import Foundation
 
-protocol MainScreenViewModelDelegate {
-    
-    func reloadCollectionView(at indexPath: IndexPath)
-    
-}
-
 
 protocol MainScreenViewModelProtocol {
     
+    var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())? { get set }
+    var itemsReloaded: (([MainScreenModelWrapper]) -> ())? { get set }
+    var itemsDeleted:  (([MainScreenModelWrapper]) -> ())? { get set }
+    
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
     func getItem(for indexPath: IndexPath) -> MainScreenModelWrapper?
-    
 }
 
 
 class MainScreenViewModel: MainScreenViewModelProtocol {
+    
+    var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())?
+    var itemsReloaded: (([MainScreenModelWrapper]) -> ())?
+    var itemsDeleted: (([MainScreenModelWrapper]) -> ())?
+    
     // Get data
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
     
@@ -33,11 +35,12 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     ]
     
     private var blogData: [MainScreenModelWrapper] = [
-        MainScreenModelWrapper.blog(BlogModel(imageName:  "river", title: "One", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "11.12.2020", text: "")) ,
-        MainScreenModelWrapper.blog(BlogModel(imageName:  "", title: "Two", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "10.12.2020", text: "")),
-        MainScreenModelWrapper.blog(BlogModel(imageName:  "forest", title: "Etiam vivamus", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "4.07.2020", text: ""))
+        MainScreenModelWrapper.blog(BlogModel(id: 1, imageName:  "river", title: "One", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "11.12.2020", text: "")) ,
+        MainScreenModelWrapper.blog(BlogModel(id: 2, imageName:  "", title: "Two", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "10.12.2020", text: "")),
+        MainScreenModelWrapper.blog(BlogModel(id: 3, imageName:  "forest", title: "Etiam vivamus", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "4.07.2020", text: ""))
      ]
 
+    
     // Actions
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper] {
         switch sectionType {
@@ -66,6 +69,15 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
         case .blog:
             return blogData[indexPath.row]
         }
+    }
+    
+    
+    private func getDifferensesToUpdate() {
+        
+//        itemsInserted?(((items: data, section: .blog))
+//        itemsReloaded?(data)
+//        itemsDeleted?(dara)
+        
     }
 }
 

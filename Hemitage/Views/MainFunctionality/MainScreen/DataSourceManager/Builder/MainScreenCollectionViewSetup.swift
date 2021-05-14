@@ -9,8 +9,8 @@ import UIKit
 
 class MainScreenCollectionViewSetup {
     
-    let collectionView: UICollectionView
-    let layout: MainScreenLayoutConstructorProtocol
+    private let collectionView: UICollectionView
+    private let layout: MainScreenLayoutConstructorProtocol
     
     init(for collectionView: UICollectionView, with delegate: MainScreenCollectionViewDelegate, with customLayout: MainScreenLayoutConstructorProtocol) {
         
@@ -18,9 +18,6 @@ class MainScreenCollectionViewSetup {
         self.layout = customLayout
         
         collectionView.delegate = delegate
-        
-        registerNibs()
-        setLayout()
     }
     
     func registerNibs() {

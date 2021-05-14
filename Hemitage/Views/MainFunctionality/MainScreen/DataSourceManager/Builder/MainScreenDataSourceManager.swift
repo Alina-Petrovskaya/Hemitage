@@ -11,7 +11,11 @@ protocol MainScreenDataSourceManagerProtocol {
     
     var headerCallback: (() -> ())? { get set }
     
-    func reloadData()
+    func reloadData(with viewModel: MainScreenViewModelProtocol)
+    
+    func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection)
+    func reloadItems(items: [MainScreenModelWrapper])
+    func deleteItems(items: [MainScreenModelWrapper])
 }
 
 
@@ -19,20 +23,18 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     
     private var collectionView: UICollectionView
     private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>?
-    private var viewModel: MainScreenViewModelProtocol
     
     var headerCallback: (() -> ())?
     
-    init(with collectionView: UICollectionView, with viewModel: MainScreenViewModelProtocol) {
+    
+    init(with collectionView: UICollectionView) {
         self.collectionView = collectionView
-        self.viewModel = viewModel
-        
+    
         setupDataSource()
-        reloadData()
     }
     
     
-    func reloadData() {
+    func reloadData(with viewModel: MainScreenViewModelProtocol) {
         var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModelWrapper>()
         
         snapshot.appendSections(MainScreenTypeOfSection.allCases)
@@ -44,6 +46,39 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
+    
+    func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection) {
+        guard var snapshot = dataSource?.snapshot() else { return }
+        
+        switch section {
+        case .map:
+            break
+           
+        case .categories:
+            snapshot.appendItems(items, toSection: section)
+            
+        case .blog:
+            let firstItem = snapshot.itemIdentifiers(inSection: section)[0]
+            snapshot.insertItems(items, beforeItem: firstItem)
+        }
+        
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    
+    func reloadItems(items: [MainScreenModelWrapper]) {
+        guard var snapshot = dataSource?.snapshot() else { return }
+        
+        snapshot.reloadItems(items)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
+    
+    func deleteItems(items: [MainScreenModelWrapper]) {
+        guard var snapshot = dataSource?.snapshot() else { return }
+        snapshot.deleteItems(items)
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
     
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, model in
@@ -64,6 +99,7 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
         
         createHeader()
     }
+    
     
     private func configure<T: ConfiguringCell>(cellType: T.Type,
                                                with model: MainScreenModelWrapper,
@@ -97,6 +133,7 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
                 sectionHeader.categoryName.text = "Categories"
                 
                 return sectionHeader
+                
                 
             case .blog:
                 sectionHeader.categoryName.text = "Blog"
