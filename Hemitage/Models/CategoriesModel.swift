@@ -7,22 +7,24 @@
 
 import Foundation
 
-class CategoriesModel: Hashable {
-    let uuid = UUID()
-    let imageName: String
-    let name: String
+class CategoriesModel: Hashable, Codable {
+    var id: String
+    var imageURL: URL?
+    var imageName: String
+    var name: String
     
-    
-    init(imageName: String, name: String) {
+    init(id: String, imageURL: URL?, imageName: String, name: String) {
+        self.id        = id
         self.name      = name
+        self.imageURL  = imageURL
         self.imageName = imageName
     }
     
     static func ==(lhs: CategoriesModel, rhs: CategoriesModel) -> Bool {
-        return lhs.uuid == rhs.uuid || lhs.name == rhs.name
+        return lhs.id == rhs.id && lhs.name == rhs.name
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
+        hasher.combine(id)
     }
 }

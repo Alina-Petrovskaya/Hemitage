@@ -9,7 +9,7 @@ import Foundation
 
 class BlogModel: Hashable {
     let uuid = UUID()
-    let id: Int
+    let id: String
     let imageName: String
     let title: String
     let preview: String
@@ -17,7 +17,7 @@ class BlogModel: Hashable {
     let text: String
     
     
-    init(id: Int,
+    init(id: String,
          imageName: String,
          title: String,
          preview: String,

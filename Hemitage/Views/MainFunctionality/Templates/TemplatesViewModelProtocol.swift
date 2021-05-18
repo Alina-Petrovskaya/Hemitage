@@ -9,9 +9,9 @@ import Foundation
 
 protocol TemplatesViewModelProtocol {
     
-    associatedtype Model
+    associatedtype Data
     
-    var dataModel: ((Model) -> ())? { get set }
+    var dataModel: ((Data) -> ())? { get set }
     
     func getDataForContent() -> ()
     

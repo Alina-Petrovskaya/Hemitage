@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 protocol MainScreenCollectionViewCellModelViewProtocol {
     
     func handleData(with data: MainScreenModelWrapper)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
    
@@ -33,17 +34,20 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
     func updateContent<T> (with data: T) {
         guard let safeData = data as? MainScreenModelWrapper else { return }
-        
+
         viewModel.callBack = { [weak self] model in
-            
             self?.categoryName.text = model.name
-            
-            if model.imageName != "", let image = UIImage(named: model.imageName)  {
-                self?.categoryImage.image = image
-            }
+            self?.categoryImage.sd_setImage(with: model.imageURL)
         }
         
         viewModel.handleData(with: safeData)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        categoryImage.image = nil
+        categoryName.text = ""
     }
     
 }

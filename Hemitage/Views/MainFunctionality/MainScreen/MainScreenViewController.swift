@@ -31,8 +31,8 @@ class MainScreenViewController: UIViewController {
     }
     
     
-    
     private func handlingCollectionViewDelegateEvents() {
+        
         builder.collectionViewDelegate.callBack = { [weak self] indexPath in
             guard let item = self?.viewModel.getItem(for: indexPath) else { return }
             
@@ -42,6 +42,7 @@ class MainScreenViewController: UIViewController {
                 
             case .category(_):
                 print("Present group VC")
+                
                 
             case .blog(_):
                 print("Present article detail VC")
@@ -69,9 +70,9 @@ class MainScreenViewController: UIViewController {
         }
         
         
-        viewModel.itemsReloaded = { [weak self] items in
+        viewModel.itemsReloaded = { [weak self] data in
             if let self = self {
-                self.dataSourceManager?.reloadItems(items: items)
+                self.dataSourceManager?.reloadItems(data: data.newData, section: data.section, with: data.index)
             }
         }
     }

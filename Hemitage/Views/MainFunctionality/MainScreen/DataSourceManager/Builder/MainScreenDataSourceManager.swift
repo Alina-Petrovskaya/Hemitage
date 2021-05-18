@@ -11,10 +11,9 @@ protocol MainScreenDataSourceManagerProtocol {
     
     var headerCallback: (() -> ())? { get set }
     
-    func reloadData(with viewModel: MainScreenViewModelProtocol)
-    
+    func reloadData()
     func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection)
-    func reloadItems(items: [MainScreenModelWrapper])
+    func reloadItems(data: AnyHashable, section: MainScreenTypeOfSection, with index: Int)
     func deleteItems(items: [MainScreenModelWrapper])
 }
 
@@ -23,20 +22,20 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     
     private var collectionView: UICollectionView
     private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>?
+    private var viewModel: MainScreenViewModelProtocol
     
     var headerCallback: (() -> ())?
     
     
-    init(with collectionView: UICollectionView) {
+    init(for collectionView: UICollectionView, with viewModel: MainScreenViewModelProtocol) {
         self.collectionView = collectionView
-    
+        self.viewModel      = viewModel
         setupDataSource()
     }
     
     
-    func reloadData(with viewModel: MainScreenViewModelProtocol) {
+    func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModelWrapper>()
-        
         snapshot.appendSections(MainScreenTypeOfSection.allCases)
         
         MainScreenTypeOfSection.allCases.forEach { type in
@@ -57,6 +56,7 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
         case .categories:
             snapshot.appendItems(items, toSection: section)
             
+            
         case .blog:
             let firstItem = snapshot.itemIdentifiers(inSection: section)[0]
             snapshot.insertItems(items, beforeItem: firstItem)
@@ -66,10 +66,27 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     }
     
     
-    func reloadItems(items: [MainScreenModelWrapper]) {
+    func reloadItems(data: AnyHashable, section: MainScreenTypeOfSection, with index: Int) {
         guard var snapshot = dataSource?.snapshot() else { return }
         
-        snapshot.reloadItems(items)
+        var itemForReload = snapshot.itemIdentifiers(inSection: section)[index]
+        
+        switch itemForReload {
+        case .map(_):
+            break
+            
+        case .category(let model):
+            if let newData = data as? CategoriesModel {
+                model.name      = newData.name
+                model.imageURL  = newData.imageURL
+                model.imageName = newData.imageName
+            }
+            
+        case .blog(_):
+            break
+        }
+        
+        snapshot.reloadItems([itemForReload])
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     

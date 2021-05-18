@@ -19,8 +19,8 @@ class MainScreenBuilder {
         setupCollectionView.registerNibs()
         setupCollectionView.setLayout()
         
-        let dataSourceManager = MainScreenDataSourceManager(with: collectionView)
-        dataSourceManager.reloadData(with: viewModel)
+        let dataSourceManager = MainScreenDataSourceManager(for: collectionView, with: viewModel)
+        dataSourceManager.reloadData()
         
         return dataSourceManager
     }

@@ -6,12 +6,14 @@ target 'Hemitage' do
   use_frameworks!
 
   # Pods for Hemitage
+  
+   pod 'SDWebImage'
 
   # Firebase
    pod 'Firebase/Auth'
    pod 'FirebaseUI/OAuth'
-   pod 'Firebase/Firestore'
    pod 'Firebase/Storage'
+   pod 'Firebase/Firestore'
 
    #Facebook
    pod 'FBSDKLoginKit'

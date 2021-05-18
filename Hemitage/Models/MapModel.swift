@@ -8,7 +8,7 @@
 import Foundation
 
 class MapModel: Hashable {
-    let uuid = UUID()
+    var uuid = UUID()
     var allUsers: Int
     var usersOnline: Int
     
