@@ -12,7 +12,22 @@
 		843F0B56264EB90F004DE5A8 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B55264EB90F004DE5A8 /* StorageManager.swift */; };
 		843F0B5826525EDE004DE5A8 /* StorageDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B5726525EDE004DE5A8 /* StorageDirectory.swift */; };
 		843F0B5B26526E43004DE5A8 /* FireStoreTypeOfCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B5A26526E43004DE5A8 /* FireStoreTypeOfCollection.swift */; };
-		843F0B5D26527C02004DE5A8 /* FireStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B5C26527C02004DE5A8 /* FireStoreDataManager.swift */; };
+		843F0B5D26527C02004DE5A8 /* FireStoreCacheDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B5C26527C02004DE5A8 /* FireStoreCacheDataManager.swift */; };
+		843F0B6D26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B6B26551D52004DE5A8 /* Article+CoreDataClass copy.swift */; };
+		843F0B6E26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B6B26551D52004DE5A8 /* Article+CoreDataClass copy.swift */; };
+		843F0B6F26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B6B26551D52004DE5A8 /* Article+CoreDataClass copy.swift */; };
+		843F0B742655232E004DE5A8 /* DataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B732655232E004DE5A8 /* DataStoreManager.swift */; };
+		843F0B752655232E004DE5A8 /* DataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B732655232E004DE5A8 /* DataStoreManager.swift */; };
+		843F0B762655232E004DE5A8 /* DataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B732655232E004DE5A8 /* DataStoreManager.swift */; };
+		843F0B79265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B78265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift */; };
+		843F0B7A265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B78265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift */; };
+		843F0B7B265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B78265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift */; };
+		843F0B7D26552918004DE5A8 /* FireStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B7C26552918004DE5A8 /* FireStoreDataManager.swift */; };
+		843F0B7E26552918004DE5A8 /* FireStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B7C26552918004DE5A8 /* FireStoreDataManager.swift */; };
+		843F0B7F26552918004DE5A8 /* FireStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B7C26552918004DE5A8 /* FireStoreDataManager.swift */; };
+		843F0B812655345A004DE5A8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B802655345A004DE5A8 /* Date.swift */; };
+		843F0B822655345A004DE5A8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B802655345A004DE5A8 /* Date.swift */; };
+		843F0B832655345A004DE5A8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B802655345A004DE5A8 /* Date.swift */; };
 		848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74226369F270070A3C6 /* AppDelegate.swift */; };
 		848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74626369F270070A3C6 /* WelcomeViewController.swift */; };
 		848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74826369F270070A3C6 /* WelcomeViewController.storyboard */; };
@@ -128,7 +143,12 @@
 		843F0B55264EB90F004DE5A8 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		843F0B5726525EDE004DE5A8 /* StorageDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDirectory.swift; sourceTree = "<group>"; };
 		843F0B5A26526E43004DE5A8 /* FireStoreTypeOfCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreTypeOfCollection.swift; sourceTree = "<group>"; };
-		843F0B5C26527C02004DE5A8 /* FireStoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreDataManager.swift; sourceTree = "<group>"; };
+		843F0B5C26527C02004DE5A8 /* FireStoreCacheDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreCacheDataManager.swift; sourceTree = "<group>"; };
+		843F0B6B26551D52004DE5A8 /* Article+CoreDataClass copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Article+CoreDataClass copy.swift"; sourceTree = "<group>"; };
+		843F0B732655232E004DE5A8 /* DataStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreManager.swift; sourceTree = "<group>"; };
+		843F0B78265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreDataManagerProtocol.swift; sourceTree = "<group>"; };
+		843F0B7C26552918004DE5A8 /* FireStoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreDataManager.swift; sourceTree = "<group>"; };
+		843F0B802655345A004DE5A8 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		848CF73F26369F270070A3C6 /* Hemitage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hemitage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848CF74226369F270070A3C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848CF74626369F270070A3C6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +285,8 @@
 		843F0B52264EA0BB004DE5A8 /* FireStoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				843F0B5C26527C02004DE5A8 /* FireStoreDataManager.swift */,
+				843F0B5C26527C02004DE5A8 /* FireStoreCacheDataManager.swift */,
+				843F0B7C26552918004DE5A8 /* FireStoreDataManager.swift */,
 				843F0B5A26526E43004DE5A8 /* FireStoreTypeOfCollection.swift */,
 			);
 			path = FireStoreDataManager;
@@ -278,6 +299,22 @@
 				843F0B5726525EDE004DE5A8 /* StorageDirectory.swift */,
 			);
 			path = FirebaseStorageManager;
+			sourceTree = "<group>";
+		};
+		843F0B5E26551048004DE5A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				843F0B6B26551D52004DE5A8 /* Article+CoreDataClass copy.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		843F0B77265528A2004DE5A8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				843F0B78265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		848CF73626369F270070A3C6 = {
@@ -359,6 +396,7 @@
 		848CF7802636A2D60070A3C6 /* FirebaseManager */ = {
 			isa = PBXGroup;
 			children = (
+				843F0B77265528A2004DE5A8 /* Protocols */,
 				843F0B5926525EE6004DE5A8 /* FirebaseStorageManager */,
 				843F0B52264EA0BB004DE5A8 /* FireStoreDataManager */,
 				849A50FE26399B6D0047340A /* Login */,
@@ -397,6 +435,8 @@
 			isa = PBXGroup;
 			children = (
 				848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */,
+				843F0B732655232E004DE5A8 /* DataStoreManager.swift */,
+				843F0B5E26551048004DE5A8 /* Models */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -427,6 +467,7 @@
 				84205E56263832DB005264E8 /* UITextfield+View.swift */,
 				849A50E926394D600047340A /* AppDelegate+Navigation.swift */,
 				84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */,
+				843F0B802655345A004DE5A8 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -989,6 +1030,7 @@
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
 				849C4E7F264BD11900C26C53 /* ViewModelTemplateSong.swift in Sources */,
 				84D7F8232643F606004B2DB0 /* MapCollectionViewCell.swift in Sources */,
+				843F0B7D26552918004DE5A8 /* FireStoreDataManager.swift in Sources */,
 				849C4E7B264BBEB000C26C53 /* ViewModelTemplateHeader.swift in Sources */,
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
 				84D7F82B2644184F004B2DB0 /* BlogCollectionViewCell.swift in Sources */,
@@ -1000,6 +1042,7 @@
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
+				843F0B812655345A004DE5A8 /* Date.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
@@ -1007,7 +1050,9 @@
 				84926F54264D0A89005E9074 /* MapCollectionViewCellModelView.swift in Sources */,
 				84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */,
 				84926F56264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift in Sources */,
-				843F0B5D26527C02004DE5A8 /* FireStoreDataManager.swift in Sources */,
+				843F0B5D26527C02004DE5A8 /* FireStoreCacheDataManager.swift in Sources */,
+				843F0B742655232E004DE5A8 /* DataStoreManager.swift in Sources */,
+				843F0B79265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
 				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
 				849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */,
@@ -1038,6 +1083,7 @@
 				849C4E332645723300C26C53 /* MainScreenHeaderView.swift in Sources */,
 				84D7F830264424DF004B2DB0 /* Constants.swift in Sources */,
 				849C4E77264B0E4D00C26C53 /* MapModel.swift in Sources */,
+				843F0B6D26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
 				849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */,
 				843F0B56264EB90F004DE5A8 /* StorageManager.swift in Sources */,
@@ -1048,7 +1094,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843F0B6E26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
+				843F0B822655345A004DE5A8 /* Date.swift in Sources */,
 				848CF75D26369F2C0070A3C6 /* HemitageTests.swift in Sources */,
+				843F0B7E26552918004DE5A8 /* FireStoreDataManager.swift in Sources */,
+				843F0B752655232E004DE5A8 /* DataStoreManager.swift in Sources */,
+				843F0B7A265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,7 +1107,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843F0B6F26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
+				843F0B832655345A004DE5A8 /* Date.swift in Sources */,
 				848CF76826369F2C0070A3C6 /* HemitageUITests.swift in Sources */,
+				843F0B7F26552918004DE5A8 /* FireStoreDataManager.swift in Sources */,
+				843F0B762655232E004DE5A8 /* DataStoreManager.swift in Sources */,
+				843F0B7B265528CF004DE5A8 /* FireStoreDataManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

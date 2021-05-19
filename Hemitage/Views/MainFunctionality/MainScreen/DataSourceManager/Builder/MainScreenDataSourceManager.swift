@@ -11,7 +11,7 @@ protocol MainScreenDataSourceManagerProtocol {
     
     var headerCallback: (() -> ())? { get set }
     
-    func reloadData()
+    func reloadData(with viewModel: MainScreenViewModelProtocol)
     func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection)
     func reloadItems(data: AnyHashable, section: MainScreenTypeOfSection, with index: Int)
     func deleteItems(items: [MainScreenModelWrapper])
@@ -22,30 +22,17 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     
     private var collectionView: UICollectionView
     private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>?
-    private var viewModel: MainScreenViewModelProtocol
     
     var headerCallback: (() -> ())?
     
     
-    init(for collectionView: UICollectionView, with viewModel: MainScreenViewModelProtocol) {
+    init(for collectionView: UICollectionView) {
         self.collectionView = collectionView
-        self.viewModel      = viewModel
         setupDataSource()
     }
     
     
-    func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModelWrapper>()
-        snapshot.appendSections(MainScreenTypeOfSection.allCases)
-        
-        MainScreenTypeOfSection.allCases.forEach { type in
-            snapshot.appendItems(viewModel.getSectionContent(for: type), toSection: type)
-        }
-        
-        dataSource?.apply(snapshot, animatingDifferences: true)
-    }
-    
-    
+    // MARK: - Updating data
     func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection) {
         guard var snapshot = dataSource?.snapshot() else { return }
         
@@ -96,6 +83,19 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
         snapshot.deleteItems(items)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
+    
+    // MARK: - Prepare data to display
+    func reloadData(with viewModel: MainScreenViewModelProtocol) {
+        var snapshot = NSDiffableDataSourceSnapshot<MainScreenTypeOfSection, MainScreenModelWrapper>()
+        snapshot.appendSections(MainScreenTypeOfSection.allCases)
+        
+        MainScreenTypeOfSection.allCases.forEach { type in
+            snapshot.appendItems(viewModel.getSectionContent(for: type), toSection: type)
+        }
+        
+        dataSource?.apply(snapshot, animatingDifferences: true)
+    }
+    
     
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, model in

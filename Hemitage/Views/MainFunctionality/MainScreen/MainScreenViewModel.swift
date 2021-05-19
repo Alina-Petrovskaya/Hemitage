@@ -25,37 +25,23 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     var itemsReloaded: (((newData: AnyHashable, section: MainScreenTypeOfSection, index: Int)) -> ())?
     var itemsDeleted: (([MainScreenModelWrapper]) -> ())?
     
-    var dataManager: some FireStoreDataManagerProtocol = FireStoreDataManager()
+    var dataManager: some FireStoreDataManagerProtocol = FireStoreCacheDataManager()
+    
     private var categoriesData: [MainScreenModelWrapper] = []
-    
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
+    private var blogData: [MainScreenModelWrapper] = []
     
-    private var blogData: [MainScreenModelWrapper] = [
-        MainScreenModelWrapper.blog(BlogModel(id: "1", imageName:  "river", title: "One", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "11.12.2020", text: "")) ,
-        MainScreenModelWrapper.blog(BlogModel(id: "2", imageName:  "", title: "Two", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "10.12.2020", text: "")),
-        MainScreenModelWrapper.blog(BlogModel(id: "3", imageName:  "forest", title: "Etiam vivamus", preview: "Praesent eu dolor eu orci vehicula euismod. Vivamus sed sollicitudin libero, vel malesuada velit. Nullam...", date: "4.07.2020", text: ""))
-    ]
     
     init() {
         manageContent()
     }
+    
     
     private func manageContent() {
         dataManager.callBack = { [weak self] result in
             
             switch result.collection {
             case .blog:
-//                guard let data = result.data as? BlogModel else { return }
-//                switch result.typeOfChange {
-//                case .added:
-//                    break
-//
-//                case .modified:
-//                    break
-//
-//                case .removed:
-//                    break
-//                }
             break
               
                 
@@ -108,6 +94,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
         
         return nil
     }
+    
     
     // Actions
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper] {

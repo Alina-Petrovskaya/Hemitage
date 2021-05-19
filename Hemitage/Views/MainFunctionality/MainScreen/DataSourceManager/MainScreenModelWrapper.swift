@@ -10,5 +10,5 @@ import Foundation
 enum MainScreenModelWrapper: Hashable {
     case map(MapModel)
     case category(CategoriesModel)
-    case blog(BlogModel)
+    case blog(Article)
 }

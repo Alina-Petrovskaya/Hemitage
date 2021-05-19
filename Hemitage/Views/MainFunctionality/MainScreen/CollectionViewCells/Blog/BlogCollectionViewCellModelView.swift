@@ -9,11 +9,11 @@ import Foundation
 
 protocol BlogCollectionViewCellModelViewProtocol: MainScreenCollectionViewCellModelViewProtocol {
   
-    var callBack: ((BlogModel) -> ())? { get set }
+    var callBack: (((title: String, subtitle: String, date: String, image: Data?)) -> ())? { get set }
 }
 
 class BlogCollectionViewCellModelView: BlogCollectionViewCellModelViewProtocol {
-    var callBack: ((BlogModel) -> ())?
+    var callBack: (((title: String, subtitle: String, date: String, image: Data?)) -> ())?
     
     func handleData(with data: MainScreenModelWrapper) {
         switch data {
@@ -24,7 +24,8 @@ class BlogCollectionViewCellModelView: BlogCollectionViewCellModelViewProtocol {
             break
             
         case .blog(let model):
-            callBack?(model)
+            break
+            //callBack?(model)
         }
     }
 }

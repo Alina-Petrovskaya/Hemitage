@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 import Firebase
 import FBSDKCoreKit
 
@@ -23,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window?.rootViewController = RootViewController()
+        window?.backgroundColor    = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         window?.makeKeyAndVisible()
-        window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
         return true
     }
     
@@ -38,36 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
-        
     }
-    
-    
-    // MARK: - Core Data stack
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Hemitage")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
 }
 
