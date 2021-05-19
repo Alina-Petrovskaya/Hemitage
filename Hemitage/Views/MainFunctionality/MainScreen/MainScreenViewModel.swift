@@ -45,17 +45,18 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             
             switch result.collection {
             case .blog:
-                guard let data = result.data as? BlogModel else { return }
-                switch result.typeOfChange {
-                case .added:
-                    break
-                    
-                case .modified:
-                    break
-                    
-                case .removed:
-                    break
-                }
+//                guard let data = result.data as? BlogModel else { return }
+//                switch result.typeOfChange {
+//                case .added:
+//                    break
+//
+//                case .modified:
+//                    break
+//
+//                case .removed:
+//                    break
+//                }
+            break
               
                 
             case .categories:

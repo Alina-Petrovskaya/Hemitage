@@ -30,9 +30,6 @@
 		84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */; };
 		84926F88264D3D14005E9074 /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F87264D3D14005E9074 /* MainScreenBuilder.swift */; };
 		84926F8A264D48D3005E9074 /* MainScreenCollectionViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F89264D48D3005E9074 /* MainScreenCollectionViewSetup.swift */; };
-		84926F8C264E93FA005E9074 /* UserActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F8B264E93F9005E9074 /* UserActivityManager.swift */; };
-		84926F91264E98A6005E9074 /* GategoriesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F90264E98A6005E9074 /* GategoriesManager.swift */; };
-		84926F93264E98E6005E9074 /* BlogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F92264E98E6005E9074 /* BlogManager.swift */; };
 		849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50E926394D600047340A /* AppDelegate+Navigation.swift */; };
 		849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */; };
 		849A50F426397C250047340A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F326397C250047340A /* LoginViewModel.swift */; };
@@ -153,9 +150,6 @@
 		84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewCellModelView.swift; sourceTree = "<group>"; };
 		84926F87264D3D14005E9074 /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
 		84926F89264D48D3005E9074 /* MainScreenCollectionViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewSetup.swift; sourceTree = "<group>"; };
-		84926F8B264E93F9005E9074 /* UserActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActivityManager.swift; sourceTree = "<group>"; };
-		84926F90264E98A6005E9074 /* GategoriesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GategoriesManager.swift; sourceTree = "<group>"; };
-		84926F92264E98E6005E9074 /* BlogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogManager.swift; sourceTree = "<group>"; };
 		849A50E926394D600047340A /* AppDelegate+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Navigation.swift"; sourceTree = "<group>"; };
 		849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFireBaseLogInManager.swift; sourceTree = "<group>"; };
 		849A50F326397C250047340A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -367,7 +361,6 @@
 			children = (
 				843F0B5926525EE6004DE5A8 /* FirebaseStorageManager */,
 				843F0B52264EA0BB004DE5A8 /* FireStoreDataManager */,
-				84926F8F264E9864005E9074 /* FirebaseEventListener */,
 				849A50FE26399B6D0047340A /* Login */,
 				849A50FD26399B5F0047340A /* SignIn */,
 				849A50F92639874F0047340A /* Validation.swift */,
@@ -477,16 +470,6 @@
 				849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */,
 			);
 			path = Builder;
-			sourceTree = "<group>";
-		};
-		84926F8F264E9864005E9074 /* FirebaseEventListener */ = {
-			isa = PBXGroup;
-			children = (
-				84926F8B264E93F9005E9074 /* UserActivityManager.swift */,
-				84926F90264E98A6005E9074 /* GategoriesManager.swift */,
-				84926F92264E98E6005E9074 /* BlogManager.swift */,
-			);
-			path = FirebaseEventListener;
 			sourceTree = "<group>";
 		};
 		849A50FD26399B5F0047340A /* SignIn */ = {
@@ -1015,12 +998,10 @@
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
-				84926F93264E98E6005E9074 /* BlogManager.swift in Sources */,
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
-				84926F8C264E93FA005E9074 /* UserActivityManager.swift in Sources */,
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
 				849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */,
 				84926F54264D0A89005E9074 /* MapCollectionViewCellModelView.swift in Sources */,
@@ -1028,7 +1009,6 @@
 				84926F56264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift in Sources */,
 				843F0B5D26527C02004DE5A8 /* FireStoreDataManager.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
-				84926F91264E98A6005E9074 /* GategoriesManager.swift in Sources */,
 				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
 				849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */,
 				849A50FA2639874F0047340A /* Validation.swift in Sources */,

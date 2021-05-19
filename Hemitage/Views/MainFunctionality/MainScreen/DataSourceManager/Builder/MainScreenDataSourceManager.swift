@@ -69,7 +69,7 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     func reloadItems(data: AnyHashable, section: MainScreenTypeOfSection, with index: Int) {
         guard var snapshot = dataSource?.snapshot() else { return }
         
-        var itemForReload = snapshot.itemIdentifiers(inSection: section)[index]
+        let itemForReload = snapshot.itemIdentifiers(inSection: section)[index]
         
         switch itemForReload {
         case .map(_):
