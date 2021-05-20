@@ -10,26 +10,23 @@ import Foundation
 class BlogModel: Hashable {
     let uuid = UUID()
     let id: String
-    let imageName: String
+    let previewImageName: String
     let title: String
-    let preview: String
-    let date: String
-    let text: String
+    let subtitle: String
+    let date: Date
     
     
     init(id: String,
-         imageName: String,
+         previewImageName: String,
          title: String,
-         preview: String,
-         date: String,
-         text: String) {
+         subtitle: String,
+         date: Date) {
         
-        self.id        = id
-        self.imageName = imageName
-        self.title     = title
-        self.preview   = preview
-        self.date      = date
-        self.text      = text
+        self.id               = id
+        self.previewImageName = previewImageName
+        self.title            = title
+        self.subtitle         = subtitle
+        self.date             = date
     }
     
     static func == (lhs: BlogModel, rhs: BlogModel) -> Bool {

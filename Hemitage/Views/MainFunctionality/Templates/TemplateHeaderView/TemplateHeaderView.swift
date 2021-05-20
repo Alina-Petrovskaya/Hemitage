@@ -53,7 +53,7 @@ class TemplateHeaderView: UIView {
             guard let safeModel = model as? ProfileModel else { return }
 
             self?.welcomeLabel.text              = safeModel.name
-            self?.notificationIndicator.isHidden = safeModel.isNewNotificatoins
+            self?.notificationIndicator.isHidden = !safeModel.isNewNotificatoins
 
             if safeModel.imageName != "", let image = UIImage(named: safeModel.imageName) {
                 self?.profilePhoto.image = image

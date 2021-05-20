@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import CoreData
 
 protocol MainScreenViewModelProtocol {
     
@@ -30,20 +30,22 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     private var categoriesData: [MainScreenModelWrapper] = []
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
     private var blogData: [MainScreenModelWrapper] = []
-    
+    let coredata = DataStoreManager()
     
     init() {
-        manageContent()
+        manageContentWithFirebase()
+        manageContentWithInnerBase()
+        coredata.getDataFromDB()
     }
     
-    
-    private func manageContent() {
+// MARK: - Firebase
+    private func manageContentWithFirebase() {
         dataManager.callBack = { [weak self] result in
             
             switch result.collection {
             case .blog:
             break
-              
+    
                 
             case .categories:
                 guard let data = result.data as? CategoriesModel else { return }
@@ -70,7 +72,6 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
         dataManager.fetchData(from: .categories)
     }
     
-    
         private func getElementIndex(newData: MainScreenModelWrapper, section: MainScreenTypeOfSection) -> Int? {
             
             switch section {
@@ -95,6 +96,23 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
         return nil
     }
     
+    
+    // MARK: - CoreData
+    private func manageContentWithInnerBase() {
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(contextDidSave(_:)),
+                                               name: Notification.Name.NSManagedObjectContextDidSave,
+                                               object: nil)
+        
+    }
+    
+    
+    @objc private func contextDidSave(_ notification: Notification) {
+        let context = notification.object as? NSManagedObjectContext
+        
+        
+    }
     
     // Actions
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper] {
@@ -124,6 +142,11 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
         case .blog:
             return blogData[indexPath.row]
         }
+    }
+    
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

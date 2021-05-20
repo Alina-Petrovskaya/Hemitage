@@ -8,7 +8,7 @@ import Foundation
 import FirebaseFirestore
 
 class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
-    var callBack: (((data: AnyHashable, typeOfChange: DocumentChangeType, collection: FireStoreTypeOfCollection)) -> ())?
+    var callBack: (((data: AnyHashable, typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     private let db = Firestore.firestore()
     
     init() {
@@ -27,7 +27,7 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     }
     
     
-    func fetchData(from collection: FireStoreTypeOfCollection) {
+    func fetchData(from collection: FireStoreCollectionName) {
         db.collection(collection.rawValue).addSnapshotListener(includeMetadataChanges: true) { [weak self] querySnapshot, error in
             guard let snapshot = querySnapshot else { return }
             
@@ -36,15 +36,15 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     }
     
     
-    private func getData(with snapshot: QuerySnapshot, from collection: FireStoreTypeOfCollection) {
+    private func getData(with snapshot: QuerySnapshot, from collection: FireStoreCollectionName) {
         _ = snapshot.documentChanges.compactMap { [weak self] documentChange -> AnyHashable? in
             let data = documentChange.document.data()
             
             switch collection {
             case .categories:
                 self?.parseCategoryData(with: data, documentId: documentChange.document.documentID) { model in
-                    if let model = model {
-                        self?.callBack?((data: model, typeOfChange: documentChange.type, collection: collection))
+                    if let changeType = FireStoreTypeOfChangeDocument(rawValue: documentChange.type.rawValue) {
+                        self?.callBack?((data: model, typeOfChange: changeType, collection: collection))
                     }
                 }
                 
@@ -57,11 +57,11 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     }
     
     
-    private func parseCategoryData(with data: [String : Any], documentId: String, completion: @escaping (CategoriesModel?) -> ()) {
+    private func parseCategoryData(with data: [String : Any], documentId: String, completion: @escaping (CategoriesModel) -> ()) {
         guard let name      = data["name"] as? String,
               let imageName = data["imageName"] as? String,
               let imageUrl  = data["imageURL"] as? String
-        else { return completion(nil)}
+        else { return }
         
         if let url = URL(string: imageUrl) {
             let data = CategoriesModel(id: documentId, imageURL: url, imageName: imageName, name: name)

@@ -9,54 +9,43 @@ import Foundation
 import FirebaseFirestore
 
 class FireStoreDataManager: FireStoreDataManagerProtocol {
+    var callBack: (((data: AnyHashable, typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
+    private let db = Firestore.firestore()
     
-var callBack: (((data: AnyHashable, typeOfChange: DocumentChangeType, collection: FireStoreTypeOfCollection)) -> ())?
-private let db = Firestore.firestore()
-
-func fetchData(from collection: FireStoreTypeOfCollection) {
-    db.collection(collection.rawValue).addSnapshotListener(includeMetadataChanges: true) { [weak self] querySnapshot, error in
-        guard let snapshot = querySnapshot else { return }
-        
-        self?.getData(with: snapshot, from: collection)
+    func fetchData(from collection: FireStoreCollectionName) {
+        db.collection(collection.rawValue).addSnapshotListener(includeMetadataChanges: true) { [weak self] querySnapshot, error in
+            guard let snapshot = querySnapshot else { return }
+            self?.getData(with: snapshot, from: collection)
+        }
     }
-}
-
-
-private func getData(with snapshot: QuerySnapshot, from collection: FireStoreTypeOfCollection) {
     
-    _ = snapshot.documentChanges.compactMap { [weak self] documentChange -> AnyHashable? in
-        let data = documentChange.document.data()
-        
-        switch collection {
-        case .categories:
-            self?.parseCategoryData(with: data, documentId: documentChange.document.documentID) { model in
-                if let model = model {
-                    self?.callBack?((data: model, typeOfChange: documentChange.type, collection: collection))
+    private func getData(with snapshot: QuerySnapshot, from collection: FireStoreCollectionName) {
+        _ = snapshot.documentChanges.compactMap { [weak self] documentChange -> AnyHashable? in
+            let data = documentChange.document.data()
+            
+            switch collection {
+            case .categories:
+                break
+                
+            case .blog:
+                
+                self?.parseBlogdata(with: data, documentId: documentChange.document.documentID) { model in
+                    if let changetype = FireStoreTypeOfChangeDocument(rawValue: documentChange.type.rawValue) {
+                        self?.callBack?((data: model, typeOfChange: changetype, collection: collection))
+                    }
                 }
             }
-            break
-            
-        case .blog:
-            break
+            return nil
         }
-        
-        return nil
     }
-}
+    
+    private func parseBlogdata(with data: [String : Any], documentId: String, completion: @escaping (BlogModel) -> ()) {
+        guard let title            = data["title"] as? String,
+              let subtitle         = data["subtitle"] as? String,
+              let previewImageName = data["previewImageName"] as? String,
+              let timestamp        = data["date"] as? Timestamp
+        else { return }
 
-
-    private func parseCategoryData(with data: [String : Any], documentId: String, completion: @escaping (CategoriesModel?) -> ()) {
-        guard let name      = data["name"] as? String,
-              let imageName = data["imageName"] as? String,
-              let imageUrl  = data["imageURL"] as? String
-        else { return completion(nil)}
-        
-        if let url = URL(string: imageUrl) {
-            let data = CategoriesModel(id: documentId, imageURL: url, imageName: imageName, name: name)
-            completion(data)
-        } else {
-            let model = CategoriesModel(id: documentId, imageURL: nil, imageName: imageName, name: name)
-            completion(model)
-        }
+        completion(BlogModel(id: documentId, previewImageName: previewImageName, title: title, subtitle: subtitle, date: timestamp.dateValue()))
     }
 }
