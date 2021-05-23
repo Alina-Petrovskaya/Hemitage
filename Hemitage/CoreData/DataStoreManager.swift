@@ -8,17 +8,23 @@
 import Foundation
 import CoreData
 
-
-
-class DataStoreManager {
+protocol CoreDataManager {
+    var viewContext: NSManagedObjectContext { get }
     
+    func createRequest(from collection: FireStoreCollectionName, sortByField: String) -> NSFetchRequest<NSManagedObject>
+    /**
+     Method returns all elements from the given collection
+     */
+    func getAllItems(from collection: FireStoreCollectionName, completion: ([NSManagedObject]) -> ())
+}
+
+class DataStoreManager: CoreDataManager {
     private var dataManager: FireStoreDataManagerProtocol = FireStoreDataManager()
     
     // MARK: - Core Data stack
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Hemitage")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -28,13 +34,31 @@ class DataStoreManager {
     }()
     
     
-    private lazy var viewContext: NSManagedObjectContext = {
+    lazy var viewContext: NSManagedObjectContext = {
         return persistentContainer.viewContext
     }()
     
     
+    func createRequest(from collection: FireStoreCollectionName, sortByField: String = "id") -> NSFetchRequest<NSManagedObject> {
+        
+        switch collection {
+        case .blog:
+            let articleRequest: NSFetchRequest<Article> = Article.fetchRequest()
+            articleRequest.sortDescriptors = [NSSortDescriptor(key: sortByField, ascending: false)]
+            guard let request = articleRequest as? NSFetchRequest<NSManagedObject> else {
+                    fatalError("Can't create request")
+            }
+        
+            return request
+            
+        default: break
+        }
+        
+        fatalError("Can't create request")
+    }
+    
     // MARK: - CRUD
-    func saveContext() {
+    private func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -47,38 +71,59 @@ class DataStoreManager {
     }
     
     
-    func getDataFromDB() {
+    func getAllItems(from collection: FireStoreCollectionName, completion: ([NSManagedObject]) -> ())  {
+         
+        let request = createRequest(from: collection)
+        if let data = getItems(with: request) {
+            completion(data)
+        }
+        
+        getDataFromDB(from: collection)
+    }
+    
+    
+    private func getDataFromDB(from collection: FireStoreCollectionName) {
         dataManager.callBack = { [weak self] result in
             
             switch result.collection {
-            
             case .blog:
-                guard let data = result.data as? BlogModel, let self = self else { return }
+                guard let data = result.data as? [BlogModel],
+                      let self = self
+                else { return }
+                
                 
                 switch result.typeOfChange {
                 case .added, .modified:
-                    let item = Article(context: self.viewContext)
-                    
-                    item.id               = data.id
-                    item.title            = data.title
-                    item.subtitle         = data.subtitle
-                    item.date             = data.date
-                    item.previewImageName = data.previewImageName
-                    
-                    self.saveContext()
-                    
-                case .removed:
-                    if let item: Article = self.buildRequest(id: data.id, object: Article.self)?[0] {
-                        self.viewContext.delete(item)
+                    data.forEach { model  in
+                        let items = self.buildRequest(id: model.id, object: Article.self)
+                        
+                        let itemToUpdate: Article = items?.count != 0
+                            ? (items?[0] ?? Article(context: self.viewContext))
+                            : Article(context: self.viewContext)
+                        
+                        itemToUpdate.id               = model.id
+                        itemToUpdate.title            = model.title
+                        itemToUpdate.subtitle         = model.subtitle
+                        itemToUpdate.date             = model.date
+                        itemToUpdate.previewImageName = model.previewImageName
+                        
                         self.saveContext()
                     }
-                }
                 
+                case .removed:
+                    data.forEach { model in
+                        if let item = self.buildRequest(id: model.id, object: Article.self)?[0] {
+                            self.viewContext.delete(item)
+                            self.saveContext()
+                        }
+                    }
+                }
                 
             default: break
             }
         }
-        dataManager.fetchData(from: .blog)
+        
+        dataManager.fetchData(from: collection)
     }
     
     
@@ -89,9 +134,13 @@ class DataStoreManager {
         request?.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate])
         
         guard let safeRequest = request else { return nil }
-        
+        return getItems(with: safeRequest)
+    }
+    
+    
+    private func getItems<T: NSManagedObject> (with request: NSFetchRequest<T>) -> [T]? {
         do {
-            let items = try viewContext.fetch(safeRequest)
+            let items = try viewContext.fetch(request)
             return items
         }
         catch {

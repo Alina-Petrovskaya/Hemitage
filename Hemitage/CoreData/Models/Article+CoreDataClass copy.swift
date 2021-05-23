@@ -20,9 +20,9 @@ extension Article {
         return NSFetchRequest<Article>(entityName: "Article")
     }
 
-    @NSManaged public var title: String?
+    @NSManaged public var title: String
     @NSManaged public var subtitle: String?
     @NSManaged public var previewImageName: String?
-    @NSManaged public var id: String?
+    @NSManaged public var id: String
     @NSManaged public var date: Date
 }

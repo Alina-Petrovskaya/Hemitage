@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -32,7 +33,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3rQ-rI-UYv">
                         <rect key="frame" x="20" y="0.0" width="437" height="371"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" image="forest" translatesAutoresizingMaskIntoConstraints="NO" id="20H-Ap-6VL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" image="Picture Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="20H-Ap-6VL">
                                 <rect key="frame" x="0.0" y="0.0" width="437" height="284"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="20H-Ap-6VL" secondAttribute="height" multiplier="1: 0.65" id="T3W-V8-NyN"/>
@@ -87,7 +88,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="forest" width="5120" height="2880"/>
+        <image name="Picture Placeholder" width="400" height="266.5"/>
         <namedColor name="DarkText #18191A">
             <color red="0.093999996781349182" green="0.097999997437000275" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

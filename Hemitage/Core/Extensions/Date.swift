@@ -12,7 +12,7 @@ extension Date {
     func stringRepresentation() -> String {
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "d. mm. yyyy"
+        dateFormatter.dateFormat = "d. MM. yyyy"
         return dateFormatter.string(from: self)
     }
 }

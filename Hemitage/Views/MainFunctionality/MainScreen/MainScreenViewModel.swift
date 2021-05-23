@@ -11,7 +11,7 @@ import CoreData
 protocol MainScreenViewModelProtocol {
     
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())? { get set }
-    var itemsReloaded: (((newData: AnyHashable, section: MainScreenTypeOfSection, index: Int)) -> ())? { get set }
+    var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())? { get set }
     var itemsDeleted:  (([MainScreenModelWrapper]) -> ())? { get set }
     
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
@@ -22,97 +22,104 @@ protocol MainScreenViewModelProtocol {
 class MainScreenViewModel: MainScreenViewModelProtocol {
     
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())?
-    var itemsReloaded: (((newData: AnyHashable, section: MainScreenTypeOfSection, index: Int)) -> ())?
+    var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())?
     var itemsDeleted: (([MainScreenModelWrapper]) -> ())?
     
-    var dataManager: some FireStoreDataManagerProtocol = FireStoreCacheDataManager()
-    
     private var categoriesData: [MainScreenModelWrapper] = []
-    private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapModel(allUsers: 15, usersOnline: 5))]
+    private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(allUsers: 15, usersOnline: 5))]
     private var blogData: [MainScreenModelWrapper] = []
-    let coredata = DataStoreManager()
+    
+    var contentManager    = ContentManager()
     
     init() {
-        manageContentWithFirebase()
-        manageContentWithInnerBase()
-        coredata.getDataFromDB()
+        manageContent()
     }
     
-// MARK: - Firebase
-    private func manageContentWithFirebase() {
-        dataManager.callBack = { [weak self] result in
+    
+    // MARK: - Manage row content
+    private func manageContent() {
+        contentManager.callback = { [weak self] result in
             
             switch result.collection {
+            
             case .blog:
-            break
-    
+                guard let data = result.data as? [Article],
+                      let self = self
+                else { return }
+                
+                data.forEach { dataItem in
+                    
+                    if let imageName = dataItem.previewImageName {
+                        ImageCacheManager.shared.cacheObject(imageName: imageName, documentID: dataItem.id, from: .blog) { data in
+                            let item = MainScreenModelWrapper.blog(BlogCollectionViewCellModelView(id: dataItem.id,
+                                                                                                   title: dataItem.title,
+                                                                                                   subtitle: dataItem.subtitle,
+                                                                                                   date: dataItem.date,
+                                                                                                   imageData: data))
+                            self.updateItems(typeOfChange: result.typeOfChange,
+                                             with: item,
+                                             at: &self.blogData,
+                                             section: .blog)
+                        }
+                    }
+                }
+                
                 
             case .categories:
-                guard let data = result.data as? CategoriesModel else { return }
-                let item = MainScreenModelWrapper.category(data)
+                guard let data = result.data as? [CategoriesModel],
+                      let self = self
+                else { return }
                 
-                switch result.typeOfChange {
-                case .added:
-                    self?.categoriesData.append(item)
-                    self?.itemsInserted?((items: [item], section: .categories))
+                data.forEach { dataItem in
+                    let viewModel = CategoriesCollectionViewCellModelView(id: dataItem.id,title: dataItem.name, imageURL: dataItem.imageURL)
+                    let item = MainScreenModelWrapper.category(viewModel)
                     
-                case .modified:
-                    if let index = self?.getElementIndex(newData: item, section: .categories) {
-                        self?.itemsReloaded?((newData: data, section: .categories, index: index))
-                    }
-                    
-                case .removed:
-                    self?.itemsDeleted?([item])
-                    if let index = self?.categoriesData.firstIndex(of: item) {
-                        self?.categoriesData.remove(at: index)
-                    }
+                    self.updateItems(typeOfChange: result.typeOfChange,
+                                     with: item,
+                                     at: &self.categoriesData,
+                                     section: .categories)
                 }
             }
         }
-        dataManager.fetchData(from: .categories)
+        
+        contentManager.getContent(from: .categories, with: .fireBaseManager)
+        contentManager.getContent(from: .blog, with: .coreDataManager)
     }
     
-        private func getElementIndex(newData: MainScreenModelWrapper, section: MainScreenTypeOfSection) -> Int? {
-            
-            switch section {
-            
-            case .map:
-                break
-            case .categories:
-                for (index, item) in categoriesData.enumerated() {
-                    if item.hashValue == newData.hashValue {
-                        return index
-                    }
-                }
-                
-            case .blog:
-                for (index, item) in blogData.enumerated() {
-                    if item.hashValue == newData.hashValue {
-                        return index
-                    }
-                }
-            }
+    
+    private func updateItems(typeOfChange: FireStoreTypeOfChangeDocument, with item: MainScreenModelWrapper, at dataArray: inout [MainScreenModelWrapper], section: MainScreenTypeOfSection) {
         
+        switch typeOfChange {
+        
+        case .added:
+            dataArray.append(item)
+            itemsInserted?((items: [item], section: section))
+            
+        case .modified:
+            if let index = self.getElementIndex(newData: item, currentData: dataArray) {
+                self.itemsReloaded?((newData: item, section: section, index: index))
+            }
+            
+        case .removed:
+            itemsDeleted?([item])
+            
+            if let index = dataArray.firstIndex(of: item) {
+                dataArray.remove(at: index)
+            }
+        }
+    }
+    
+    
+    private func getElementIndex(newData: MainScreenModelWrapper, currentData: [MainScreenModelWrapper]) -> Int? {
+        
+        for (index, item) in currentData.enumerated() {
+            if item.hashValue == newData.hashValue {
+                return index
+            }
+        }
         return nil
     }
     
-    
-    // MARK: - CoreData
-    private func manageContentWithInnerBase() {
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(contextDidSave(_:)),
-                                               name: Notification.Name.NSManagedObjectContextDidSave,
-                                               object: nil)
-        
-    }
-    
-    
-    @objc private func contextDidSave(_ notification: Notification) {
-        let context = notification.object as? NSManagedObjectContext
-        
-        
-    }
     
     // Actions
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper] {
@@ -142,11 +149,6 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
         case .blog:
             return blogData[indexPath.row]
         }
-    }
-    
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 

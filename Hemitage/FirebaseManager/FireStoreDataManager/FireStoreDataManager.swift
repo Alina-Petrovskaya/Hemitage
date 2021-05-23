@@ -9,18 +9,18 @@ import Foundation
 import FirebaseFirestore
 
 class FireStoreDataManager: FireStoreDataManagerProtocol {
-    var callBack: (((data: AnyHashable, typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
+    var callBack: (((data: [AnyHashable], typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     private let db = Firestore.firestore()
     
     func fetchData(from collection: FireStoreCollectionName) {
-        db.collection(collection.rawValue).addSnapshotListener(includeMetadataChanges: true) { [weak self] querySnapshot, error in
+        db.collection(collection.rawValue).addSnapshotListener(includeMetadataChanges: false) { [weak self] querySnapshot, error in
             guard let snapshot = querySnapshot else { return }
             self?.getData(with: snapshot, from: collection)
         }
     }
     
     private func getData(with snapshot: QuerySnapshot, from collection: FireStoreCollectionName) {
-        _ = snapshot.documentChanges.compactMap { [weak self] documentChange -> AnyHashable? in
+        snapshot.documentChanges.forEach { [weak self] documentChange in
             let data = documentChange.document.data()
             
             switch collection {
@@ -31,11 +31,10 @@ class FireStoreDataManager: FireStoreDataManagerProtocol {
                 
                 self?.parseBlogdata(with: data, documentId: documentChange.document.documentID) { model in
                     if let changetype = FireStoreTypeOfChangeDocument(rawValue: documentChange.type.rawValue) {
-                        self?.callBack?((data: model, typeOfChange: changetype, collection: collection))
+                        self?.callBack?((data: [model], typeOfChange: changetype, collection: collection))
                     }
                 }
             }
-            return nil
         }
     }
     

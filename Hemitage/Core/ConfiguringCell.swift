@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ConfiguringCell where Self: UICollectionViewCell {
-    func updateContent<T> (with data: T) -> ()
+    func updateContent<T> (with viewModel: T) -> ()
 }

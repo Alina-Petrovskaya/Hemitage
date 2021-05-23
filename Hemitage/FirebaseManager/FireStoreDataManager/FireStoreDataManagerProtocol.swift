@@ -9,7 +9,7 @@ import FirebaseFirestore
 
 protocol FireStoreDataManagerProtocol {
     
-    var callBack: (((data: AnyHashable, typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
+    var callBack: (((data: [AnyHashable], typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
     
     func fetchData(from collection: FireStoreCollectionName)
     

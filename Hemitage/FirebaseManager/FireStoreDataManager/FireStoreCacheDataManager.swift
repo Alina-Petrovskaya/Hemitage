@@ -8,7 +8,7 @@ import Foundation
 import FirebaseFirestore
 
 class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
-    var callBack: (((data: AnyHashable, typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
+    var callBack: (((data: [AnyHashable], typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     private let db = Firestore.firestore()
     
     init() {
@@ -37,22 +37,20 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     
     
     private func getData(with snapshot: QuerySnapshot, from collection: FireStoreCollectionName) {
-        _ = snapshot.documentChanges.compactMap { [weak self] documentChange -> AnyHashable? in
+        snapshot.documentChanges.forEach { [weak self] documentChange  in
             let data = documentChange.document.data()
             
             switch collection {
             case .categories:
                 self?.parseCategoryData(with: data, documentId: documentChange.document.documentID) { model in
                     if let changeType = FireStoreTypeOfChangeDocument(rawValue: documentChange.type.rawValue) {
-                        self?.callBack?((data: model, typeOfChange: changeType, collection: collection))
+                        self?.callBack?((data: [model], typeOfChange: changeType, collection: collection))
                     }
                 }
                 
             case .blog:
                 break
             }
-            
-            return nil
         }
     }
     

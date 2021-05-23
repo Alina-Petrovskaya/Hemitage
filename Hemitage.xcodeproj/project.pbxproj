@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0DE2229DD3B38CBEE9579469 /* Pods_Hemitage_HemitageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1081C7998670EFECE87C53 /* Pods_Hemitage_HemitageUITests.framework */; };
 		84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84205E56263832DB005264E8 /* UITextfield+View.swift */; };
-		843F0B56264EB90F004DE5A8 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B55264EB90F004DE5A8 /* StorageManager.swift */; };
+		843F0B56264EB90F004DE5A8 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B55264EB90F004DE5A8 /* FirebaseStorageManager.swift */; };
 		843F0B5826525EDE004DE5A8 /* StorageDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B5726525EDE004DE5A8 /* StorageDirectory.swift */; };
 		843F0B5B26526E43004DE5A8 /* FireStoreCollectionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B5A26526E43004DE5A8 /* FireStoreCollectionName.swift */; };
 		843F0B5D26527C02004DE5A8 /* FireStoreCacheDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B5C26527C02004DE5A8 /* FireStoreCacheDataManager.swift */; };
@@ -34,6 +34,9 @@
 		843F0B8F265682BF004DE5A8 /* FireStoreTypeOfChangeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B8E265682BF004DE5A8 /* FireStoreTypeOfChangeDocument.swift */; };
 		843F0B90265682BF004DE5A8 /* FireStoreTypeOfChangeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B8E265682BF004DE5A8 /* FireStoreTypeOfChangeDocument.swift */; };
 		843F0B91265682BF004DE5A8 /* FireStoreTypeOfChangeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B8E265682BF004DE5A8 /* FireStoreTypeOfChangeDocument.swift */; };
+		843F0B9326579F4A004DE5A8 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */; };
+		843F0B9426579F4A004DE5A8 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */; };
+		843F0B9526579F4B004DE5A8 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */; };
 		848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74226369F270070A3C6 /* AppDelegate.swift */; };
 		848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74626369F270070A3C6 /* WelcomeViewController.swift */; };
 		848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74826369F270070A3C6 /* WelcomeViewController.storyboard */; };
@@ -146,7 +149,7 @@
 		55F992CFC66C9E73B0826643 /* Pods_HemitageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HemitageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1081C7998670EFECE87C53 /* Pods_Hemitage_HemitageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hemitage_HemitageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84205E56263832DB005264E8 /* UITextfield+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextfield+View.swift"; sourceTree = "<group>"; };
-		843F0B55264EB90F004DE5A8 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		843F0B55264EB90F004DE5A8 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		843F0B5726525EDE004DE5A8 /* StorageDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDirectory.swift; sourceTree = "<group>"; };
 		843F0B5A26526E43004DE5A8 /* FireStoreCollectionName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreCollectionName.swift; sourceTree = "<group>"; };
 		843F0B5C26527C02004DE5A8 /* FireStoreCacheDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreCacheDataManager.swift; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 		843F0B802655345A004DE5A8 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		843F0B89265680B1004DE5A8 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		843F0B8E265682BF004DE5A8 /* FireStoreTypeOfChangeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreTypeOfChangeDocument.swift; sourceTree = "<group>"; };
+		843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		848CF73F26369F270070A3C6 /* Hemitage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hemitage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848CF74226369F270070A3C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848CF74626369F270070A3C6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -305,7 +309,7 @@
 		843F0B5926525EE6004DE5A8 /* FirebaseStorageManager */ = {
 			isa = PBXGroup;
 			children = (
-				843F0B55264EB90F004DE5A8 /* StorageManager.swift */,
+				843F0B55264EB90F004DE5A8 /* FirebaseStorageManager.swift */,
 				843F0B5726525EDE004DE5A8 /* StorageDirectory.swift */,
 			);
 			path = FirebaseStorageManager;
@@ -331,6 +335,7 @@
 			children = (
 				849A51012639A2570047340A /* KeyboardManager.swift */,
 				843F0B89265680B1004DE5A8 /* ContentManager.swift */,
+				843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -362,11 +367,11 @@
 			children = (
 				84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */,
 				84DDE7222636CCF0005D91C8 /* Localization */,
+				848CF79A2636B3E00070A3C6 /* Core */,
 				848CF7812636AABE0070A3C6 /* Models */,
 				848CF79D2636B49E0070A3C6 /* Views */,
 				848CF7802636A2D60070A3C6 /* FirebaseManager */,
 				848CF7992636B38F0070A3C6 /* CoreData */,
-				848CF79A2636B3E00070A3C6 /* Core */,
 				848CF77C2636A0510070A3C6 /* Resourses */,
 				848CF77826369FFA0070A3C6 /* Settings */,
 			);
@@ -1061,6 +1066,7 @@
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
 				843F0B812655345A004DE5A8 /* Date.swift in Sources */,
+				843F0B9326579F4A004DE5A8 /* ImageCacheManager.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
@@ -1106,7 +1112,7 @@
 				843F0B6D26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
 				849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */,
-				843F0B56264EB90F004DE5A8 /* StorageManager.swift in Sources */,
+				843F0B56264EB90F004DE5A8 /* FirebaseStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,6 +1122,7 @@
 			files = (
 				843F0B6E26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				843F0B822655345A004DE5A8 /* Date.swift in Sources */,
+				843F0B9426579F4A004DE5A8 /* ImageCacheManager.swift in Sources */,
 				848CF75D26369F2C0070A3C6 /* HemitageTests.swift in Sources */,
 				843F0B7E26552918004DE5A8 /* FireStoreDataManager.swift in Sources */,
 				843F0B752655232E004DE5A8 /* DataStoreManager.swift in Sources */,
@@ -1131,6 +1138,7 @@
 			files = (
 				843F0B6F26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				843F0B832655345A004DE5A8 /* Date.swift in Sources */,
+				843F0B9526579F4B004DE5A8 /* ImageCacheManager.swift in Sources */,
 				848CF76826369F2C0070A3C6 /* HemitageUITests.swift in Sources */,
 				843F0B7F26552918004DE5A8 /* FireStoreDataManager.swift in Sources */,
 				843F0B762655232E004DE5A8 /* DataStoreManager.swift in Sources */,

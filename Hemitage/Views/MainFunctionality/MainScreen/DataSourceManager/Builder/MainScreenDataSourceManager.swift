@@ -13,7 +13,7 @@ protocol MainScreenDataSourceManagerProtocol {
     
     func reloadData(with viewModel: MainScreenViewModelProtocol)
     func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection)
-    func reloadItems(data: AnyHashable, section: MainScreenTypeOfSection, with index: Int)
+    func reloadItems(data: MainScreenModelWrapper, section: MainScreenTypeOfSection, with index: Int)
     func deleteItems(items: [MainScreenModelWrapper])
 }
 
@@ -36,42 +36,17 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection) {
         guard var snapshot = dataSource?.snapshot() else { return }
         
-        switch section {
-        case .map:
-            break
-           
-        case .categories:
-            snapshot.appendItems(items, toSection: section)
-            
-            
-        case .blog:
-            let firstItem = snapshot.itemIdentifiers(inSection: section)[0]
-            snapshot.insertItems(items, beforeItem: firstItem)
-        }
-        
+        snapshot.appendItems(items, toSection: section)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
     
-    func reloadItems(data: AnyHashable, section: MainScreenTypeOfSection, with index: Int) {
+    func reloadItems(data: MainScreenModelWrapper, section: MainScreenTypeOfSection, with index: Int) {
         guard var snapshot = dataSource?.snapshot() else { return }
         
         let itemForReload = snapshot.itemIdentifiers(inSection: section)[index]
+        itemForReload.setData(with: data)
         
-        switch itemForReload {
-        case .map(_):
-            break
-            
-        case .category(let model):
-            if let newData = data as? CategoriesModel {
-                model.name      = newData.name
-                model.imageURL  = newData.imageURL
-                model.imageName = newData.imageName
-            }
-            
-        case .blog(_):
-            break
-        }
         
         snapshot.reloadItems([itemForReload])
         dataSource?.apply(snapshot, animatingDifferences: true)
@@ -80,6 +55,7 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     
     func deleteItems(items: [MainScreenModelWrapper]) {
         guard var snapshot = dataSource?.snapshot() else { return }
+        
         snapshot.deleteItems(items)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -119,15 +95,16 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     
     
     private func configure<T: ConfiguringCell>(cellType: T.Type,
-                                               with model: MainScreenModelWrapper,
+                                               with viewModel: MainScreenModelWrapper,
                                                for indexPath: IndexPath) -> T {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as? T else {
             fatalError("Can't create cell with id \( String(describing: cellType))")
         }
         
-        cell.updateContent(with: model)
+        cell.updateContent(with: viewModel.getViewModel())
         return cell
     }
+    
     
     
    private func createHeader() {
@@ -148,7 +125,6 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
                 
             case .categories:
                 sectionHeader.categoryName.text = "Categories"
-                
                 return sectionHeader
                 
                 
@@ -158,7 +134,6 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
                 
                 return sectionHeader
             }
-            
             return sectionHeader
         }
     }

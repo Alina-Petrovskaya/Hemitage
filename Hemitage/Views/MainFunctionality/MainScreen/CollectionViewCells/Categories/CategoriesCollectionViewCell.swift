@@ -13,8 +13,6 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     @IBOutlet private weak var content: UIView!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
-    
-    var viewModel: CategoriesCollectionViewCellModelViewProtocol = CategoriesCollectionViewCellModelView()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,15 +30,17 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     }
     
     
-    func updateContent<T> (with data: T) {
-        guard let safeData = data as? MainScreenModelWrapper else { return }
-
-        viewModel.callBack = { [weak self] model in
-            self?.categoryName.text = model.name
-            self?.categoryImage.sd_setImage(with: model.imageURL)
-        }
+    func updateContent<T>(with viewModel: T) {
+        guard let safeViewModel: MainScreenCollectionViewCellModelViewProtocol = viewModel as? CategoriesCollectionViewCellModelView
+        else { return }
         
-        viewModel.handleData(with: safeData)
+        let data: (imageURL: URL?, title: String) = safeViewModel.getData()
+    
+        categoryName.text = data.title
+        
+        if let safeURL = data.imageURL {
+            categoryImage.sd_setImage(with: safeURL)
+        }
     }
     
     override func prepareForReuse() {

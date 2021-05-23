@@ -8,6 +8,7 @@
 import Foundation
 
 @objc protocol LoginViewModelProtocol: AnyObject {
+    
     @objc dynamic var loginResult: Bool { get }
     @objc dynamic var errorMessage: String? { get }
     

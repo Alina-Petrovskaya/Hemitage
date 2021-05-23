@@ -7,31 +7,41 @@
 
 import Foundation
 
-protocol MapCollectionViewCellModelViewProtocol: MainScreenCollectionViewCellModelViewProtocol {
-   
-    var callBack: (((allUsers: String, usersOnline: String)) -> ())? { get set }
+
+class MapCollectionViewCellModelView: MainScreenCollectionViewCellModelViewProtocol, Hashable {
+
+    private let id = UUID()
+    private var allUsers: String
+    private var usersOnline: String
     
-}
-
-
-class MapCollectionViewCellModelView: MapCollectionViewCellModelViewProtocol {
-
-    var callBack: (((allUsers: String, usersOnline: String)) -> ())?
+    init(allUsers: Int, usersOnline: Int) {
+        self.allUsers    = "\(allUsers)"
+        self.usersOnline = "\(usersOnline)"
+    }
     
-    func handleData(with data: MainScreenModelWrapper) {
-        switch data {
-        case .map(let model):
-            let allUsers = "\(model.allUsers)K"
-            let usersOnline = "\(model.usersOnline)K"
-            
-            callBack?((allUsers: allUsers, usersOnline: usersOnline))
-            
-        case .category(_):
-            break
-            
-        case .blog(_):
-            break
+    func updateContent<T>(with data: T) -> () {
+        guard let safeData = data as? (allUsers: String, usersOnline: String) else { return }
+        
+        self.allUsers    = safeData.allUsers
+        self.usersOnline = safeData.usersOnline
+    }
+    
+    func getData<T>() -> T {
+        guard let data = (allUsers: allUsers, usersOnline: usersOnline) as? T else {
+            fatalError()
         }
+        return data
+    }
+
+    
+    static func == (lhs: MapCollectionViewCellModelView, rhs: MapCollectionViewCellModelView) -> Bool {
+        return lhs.id == rhs.id
+            && lhs.allUsers == rhs.allUsers
+            && lhs.usersOnline == rhs.usersOnline
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 

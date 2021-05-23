@@ -14,8 +14,6 @@ class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     @IBOutlet private weak var date: UILabel!
     @IBOutlet private weak var subtitle: UILabel!
     
-    var viewModel: BlogCollectionViewCellModelViewProtocol = BlogCollectionViewCellModelView()
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,13 +21,28 @@ class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         imageBlog.layer.cornerRadius = 16
     }
     
-    func updateContent<T>(with data: T) {
-        guard let safeData = data as? MainScreenModelWrapper else { return }
+    func updateContent<T>(with viewModel: T) {
+        guard let safeViewModel: MainScreenCollectionViewCellModelViewProtocol = viewModel as? BlogCollectionViewCellModelView
+        else { return }
         
-        imageBlog.isHidden = false
-        viewModel.callBack = { [weak self] model in
+        let data: (title: String, subtitle: String?, date: String, imageData: Data?) = safeViewModel.getData()
+        
+        title.text = data.title
+        subtitle.text = data.subtitle
+        date.text = data.date
+        
+        if let imageData = data.imageData {
+            imageBlog.image = UIImage(data: imageData)
         }
         
-        viewModel.handleData(with: safeData)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageBlog.image = #imageLiteral(resourceName: "Picture Placeholder")
+        title.text      = ""
+        date.text       = ""
+        subtitle.text   = ""
     }
 }

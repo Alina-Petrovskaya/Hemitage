@@ -11,18 +11,15 @@ class MapCollectionViewCell: UICollectionViewCell, ConfiguringCell {
 
     @IBOutlet weak var allUsers: UILabel!
     @IBOutlet weak var onlineUsers: UILabel!
+
     
-    var viewModel: MapCollectionViewCellModelViewProtocol = MapCollectionViewCellModelView()
+    func updateContent<T>(with viewModel: T) {
+        guard let safeViewModel: MainScreenCollectionViewCellModelViewProtocol = viewModel as? MapCollectionViewCellModelView
+        else { return }
     
-    func updateContent<T> (with data: T) {
-        guard let safeData = data as? MainScreenModelWrapper else { return }
+        let data: (allUsers: String, usersOnline: String) = safeViewModel.getData()
         
-        viewModel.callBack = { [weak self] model in
-            
-            self?.allUsers.text    = model.allUsers
-            self?.onlineUsers.text = model.usersOnline
-        }
-        
-        viewModel.handleData(with: safeData)
+        allUsers.text    = data.allUsers
+        onlineUsers.text = data.usersOnline
     }
 }

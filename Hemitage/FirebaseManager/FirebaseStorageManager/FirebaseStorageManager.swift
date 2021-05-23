@@ -1,5 +1,5 @@
 //
-//  StorageManager.swift
+//  FirebaseStorageManager.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 14.05.2021.
@@ -15,11 +15,9 @@ protocol FirebaseStorage {
 }
 
 
-class StorageManager: FirebaseStorage {
+class FirebaseStorageManager: FirebaseStorage {
     
-    
-    
-    let storage = Storage.storage()
+    private let storage = Storage.storage()
     
     func getData(fileName: String, from directory: StorageDirectory, completion: ((Result<Data, FirebaseError>) -> ())?) {
         let childPath     = "\(directory.rawValue)/\(fileName)"
