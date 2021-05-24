@@ -77,16 +77,16 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, model in
             
             guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell()}
-            
+            let viewModel = model.getViewModel()
             switch section {
             case .map:
-                return self?.configure(cellType: MapCollectionViewCell.self, with: model, for: indexPath)
+                return self?.configure(cellType: MapCollectionViewCell.self, with: viewModel, for: indexPath)
                 
             case .categories:
-                return self?.configure(cellType: CategoriesCollectionViewCell.self, with: model, for: indexPath)
+                return self?.configure(cellType: CategoriesCollectionViewCell.self, with: viewModel, for: indexPath)
                 
             case .blog:
-                return self?.configure(cellType: BlogCollectionViewCell.self, with: model, for: indexPath)
+                return self?.configure(cellType: BlogCollectionViewCell.self, with: viewModel, for: indexPath)
             }
         })
         
@@ -95,13 +95,13 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     
     
     private func configure<T: ConfiguringCell>(cellType: T.Type,
-                                               with viewModel: MainScreenModelWrapper,
+                                               with viewModel: MainScreenCollectionViewCellModelViewProtocol,
                                                for indexPath: IndexPath) -> T {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: cellType), for: indexPath) as? T else {
             fatalError("Can't create cell with id \( String(describing: cellType))")
         }
         
-        cell.updateContent(with: viewModel.getViewModel())
+        cell.updateContent(with: viewModel)
         return cell
     }
     

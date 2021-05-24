@@ -12,6 +12,7 @@ class Cache: NSCache<NSString, NSData> {
     
     private override init() {
         super.init()
+        self.name = "Images"
     }
 }
 
@@ -26,20 +27,16 @@ class ImageCacheManager {
                      typeOFUpdate: TypeOfChangeDocument,
                      completion: @escaping ((imageData: Data?, typeOfCahnge: TypeOfChangeDocument)) -> ())  {
         
-        cache.name = "Images"
+        let object = cache.object(forKey: "\(documentID)\(imageName)" as NSString)
+        completion((imageData: object as Data?, typeOfCahnge: typeOFUpdate))
         
-        if let object = cache.object(forKey: "\(documentID)\(imageName)" as NSString) {
-            completion((imageData: object as Data, typeOfCahnge: typeOFUpdate))
-            
-        } else {
-            
-            // Get data for cache
-            completion((imageData: nil, typeOfCahnge: typeOFUpdate))
+        if object == nil || typeOFUpdate == .removed {
             
             imageManager.getData(with: documentID, imageName: imageName, for: typeOFUpdate, from: category) { [weak self] result in
+                
                 completion((imageData: result, typeOfCahnge: .modified))
                 self?.cache.setObject(result as NSData, forKey: "\(documentID)\(imageName)" as NSString)
-
+                
             }
         }
     }

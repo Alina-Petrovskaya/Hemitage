@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
@@ -30,11 +31,11 @@ class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         title.text = data.title
         subtitle.text = data.subtitle
         date.text = data.date
+      
         
         if let imageData = data.imageData {
             imageBlog.image = UIImage(data: imageData)
         }
-        
     }
     
     override func prepareForReuse() {

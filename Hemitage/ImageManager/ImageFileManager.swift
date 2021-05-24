@@ -28,20 +28,18 @@ class ImageFileManager: ImageFileManagerProtocol {
     private let monitor = NWPathMonitor()
     private let fileManager = FileManager.default
     private let firebaseStorage: FirebaseStorage = FirebaseStorageManager()
-    private var internetStatus: NWPath.Status
+    
+    private var internetStatus: NWPath.Status = .unsatisfied
     
     init() {
-        internetStatus = .unsatisfied
-        
         monitor.pathUpdateHandler = { [weak self] path in
+            print("current status \(path)")
             self?.internetStatus = path.status
         }
         
         let queue = DispatchQueue.global()
         monitor.start(queue: queue)
     }
-
-
 
 
     func getData(with documentID: String,
@@ -95,13 +93,12 @@ class ImageFileManager: ImageFileManagerProtocol {
 
     
     private func getDataFromStorage(imageName: String, at directory: StorageDirectory, completion: @escaping (Data) -> ()) {
-        
+
         if internetStatus == .satisfied {
             firebaseStorage.getData(fileName: imageName, from: directory) { result in
                 switch result {
                 
                 case .success(let data):
-                    print("Image downloaded")
                     completion(data)
                     
                 case .failure(let error):
