@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 class FireStoreDataManager: FireStoreDataManagerProtocol {
-    var callBack: (((data: [AnyHashable], typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
+    var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     private let db = Firestore.firestore()
     
     func fetchData(from collection: FireStoreCollectionName) {
@@ -30,7 +30,7 @@ class FireStoreDataManager: FireStoreDataManagerProtocol {
             case .blog:
                 
                 self?.parseBlogdata(with: data, documentId: documentChange.document.documentID) { model in
-                    if let changetype = FireStoreTypeOfChangeDocument(rawValue: documentChange.type.rawValue) {
+                    if let changetype = TypeOfChangeDocument(rawValue: documentChange.type.rawValue) {
                         self?.callBack?((data: [model], typeOfChange: changetype, collection: collection))
                     }
                 }

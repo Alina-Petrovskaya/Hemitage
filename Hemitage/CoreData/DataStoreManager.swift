@@ -44,7 +44,7 @@ class DataStoreManager: CoreDataManager {
         switch collection {
         case .blog:
             let articleRequest: NSFetchRequest<Article> = Article.fetchRequest()
-            articleRequest.sortDescriptors = [NSSortDescriptor(key: sortByField, ascending: false)]
+            articleRequest.sortDescriptors = [NSSortDescriptor(key: sortByField, ascending: true)]
             guard let request = articleRequest as? NSFetchRequest<NSManagedObject> else {
                     fatalError("Can't create request")
             }

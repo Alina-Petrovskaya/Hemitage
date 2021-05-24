@@ -12,7 +12,7 @@ import CoreData
 protocol ContentManagerProtocol {
     associatedtype DBManager
     
-    var callback: (((data: [AnyHashable], typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
+    var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
     
     func getContent(from collection: FireStoreCollectionName, with dbManager: DBManager)
 }
@@ -24,7 +24,7 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
         case fireBaseManager, coreDataManager
     }
     
-    var callback: (((data: [AnyHashable], typeOfChange: FireStoreTypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
+    var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     
     private lazy var fireBaseManager: FireStoreDataManagerProtocol = FireStoreCacheDataManager()
     private lazy var coreDataManager: CoreDataManager              = DataStoreManager()

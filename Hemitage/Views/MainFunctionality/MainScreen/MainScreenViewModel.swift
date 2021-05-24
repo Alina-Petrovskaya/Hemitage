@@ -29,7 +29,8 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(allUsers: 15, usersOnline: 5))]
     private var blogData: [MainScreenModelWrapper] = []
     
-    var contentManager    = ContentManager()
+    private var contentManager = ContentManager()
+    private let cacheManager   = ImageCacheManager()
     
     init() {
         manageContent()
@@ -50,13 +51,17 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
                 data.forEach { dataItem in
                     
                     if let imageName = dataItem.previewImageName {
-                        ImageCacheManager.shared.cacheObject(imageName: imageName, documentID: dataItem.id, from: .blog) { data in
+                        
+                        self.cacheManager.cacheObject(imageName: imageName,
+                                                             documentID: dataItem.id,
+                                                             from: .blog,
+                                                             typeOFUpdate: result.typeOfChange) { data in
                             let item = MainScreenModelWrapper.blog(BlogCollectionViewCellModelView(id: dataItem.id,
                                                                                                    title: dataItem.title,
                                                                                                    subtitle: dataItem.subtitle,
                                                                                                    date: dataItem.date,
-                                                                                                   imageData: data))
-                            self.updateItems(typeOfChange: result.typeOfChange,
+                                                                                                   imageData: data.imageData))
+                            self.updateItems(typeOfChange: data.typeOfCahnge,
                                              with: item,
                                              at: &self.blogData,
                                              section: .blog)
@@ -87,7 +92,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     }
     
     
-    private func updateItems(typeOfChange: FireStoreTypeOfChangeDocument, with item: MainScreenModelWrapper, at dataArray: inout [MainScreenModelWrapper], section: MainScreenTypeOfSection) {
+    private func updateItems(typeOfChange: TypeOfChangeDocument, with item: MainScreenModelWrapper, at dataArray: inout [MainScreenModelWrapper], section: MainScreenTypeOfSection) {
         
         switch typeOfChange {
         
