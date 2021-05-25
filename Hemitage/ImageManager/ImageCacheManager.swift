@@ -16,6 +16,7 @@ class Cache: NSCache<NSString, NSData> {
     }
 }
 
+
 class ImageCacheManager {
     private let cache = Cache.shared
     var imageManager: ImageFileManagerProtocol = ImageFileManager()

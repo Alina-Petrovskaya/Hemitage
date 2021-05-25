@@ -36,7 +36,9 @@ class FireStoreDataManager: FireStoreDataManagerProtocol {
                 }
             }
         }
+        
     }
+    
     
     private func parseBlogdata(with data: [String : Any], documentId: String, completion: @escaping (BlogModel) -> ()) {
         guard let title            = data["title"] as? String,

@@ -34,12 +34,6 @@ class SignInViewController: UIViewController {
     private func prepareUI() {
         signInButton.layer.cornerRadius = 8
         
-        emailField.setLeftView(with: "envelope")
-        passwordField.setLeftView(with: "lock")
-        nameField.setLeftView(with: "person")
-        passwordField.setRightButtonForPasswordfield()
-        
-        
         viewModel.keyBoardCallBack = { [weak self] keyboardHeight in
             let inset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
             self?.scrollView.contentInset = inset

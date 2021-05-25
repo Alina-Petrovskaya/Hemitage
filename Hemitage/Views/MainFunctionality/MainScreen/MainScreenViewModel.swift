@@ -52,19 +52,15 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
                     
                     if let imageName = dataItem.previewImageName {
                         
-                        self.cacheManager.cacheObject(imageName: imageName,
-                                                             documentID: dataItem.id,
-                                                             from: .blog,
-                                                             typeOFUpdate: result.typeOfChange) { data in
+                        self.cacheManager.cacheObject(imageName: imageName, documentID: dataItem.id, from: .blog, typeOFUpdate: result.typeOfChange) { data in
+                            
                             let item = MainScreenModelWrapper.blog(BlogCollectionViewCellModelView(id: dataItem.id,
                                                                                                    title: dataItem.title,
                                                                                                    subtitle: dataItem.subtitle,
                                                                                                    date: dataItem.date,
                                                                                                    imageData: data.imageData))
-                            self.updateItems(typeOfChange: data.typeOfCahnge,
-                                             with: item,
-                                             at: &self.blogData,
-                                             section: .blog)
+                            
+                            self.updateItems(typeOfChange: data.typeOfCahnge, with: item, at: &self.blogData, section: .blog)
                         }
                     }
                 }

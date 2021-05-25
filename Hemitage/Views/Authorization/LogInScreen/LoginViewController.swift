@@ -40,6 +40,7 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
         
         emailField.delegate    = self
         passwordField.delegate = self
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,9 +61,9 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
     private func prepareUI() {
         loginButton.layer.cornerRadius = 8
         
-        emailField.setLeftView(with: "envelope")
-        passwordField.setLeftView(with: "lock")
-        passwordField.setRightButtonForPasswordfield()
+//        emailField.setLeftView(with: "envelope")
+//        passwordField.setLeftView(with: "lock")
+//        passwordField.setRightButtonForPasswordfield()
     }
     
     private func prepareLocalizedText() {
@@ -91,7 +92,9 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
     }
     
     @IBAction func resetPasswordButtonTapped(_ sender: UIButton) {
-        
+        if let vc = PasscodeRecoveryViewController.instantiate() {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {

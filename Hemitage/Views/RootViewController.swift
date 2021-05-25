@@ -18,8 +18,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        // presentAuthController()
-        presentContent()
+         presentAuthController()
+//        presentContent()
     }
     
     private func presentContent() {
@@ -32,7 +32,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func presentAuthController() {
-        guard let vc = WelcomeViewController.instantiate()
+        guard let vc = PasscodeRecoveryViewController.instantiate()
+//        guard let vc = LoginViewController.instantiate()
         else {
             print("Can't create path to Welcome VC")
             return

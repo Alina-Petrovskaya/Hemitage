@@ -85,6 +85,9 @@
                                                                 <color key="textColor" name="GrayText #9B9B9B"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="envelope"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LgT-km-Tsr">
                                                                 <rect key="frame" x="0.0" y="65" width="350" height="50"/>
@@ -95,6 +98,10 @@
                                                                 <color key="textColor" name="GrayText #9B9B9B"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="lock"/>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="eye.slash" catalog="system"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -212,6 +219,9 @@
     <resources>
         <image name="Sky" width="347" height="347"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="envelope" width="24" height="24"/>
+        <image name="eye.slash" catalog="system" width="128" height="86"/>
+        <image name="lock" width="24" height="24"/>
         <namedColor name="DarkText #18191A">
             <color red="0.093999996781349182" green="0.097999997437000275" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
