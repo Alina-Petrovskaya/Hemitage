@@ -41,7 +41,6 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
         
         emailField.delegate    = self
         passwordField.delegate = self
-        navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

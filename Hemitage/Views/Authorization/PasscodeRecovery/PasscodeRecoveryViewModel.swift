@@ -8,11 +8,22 @@
 import Foundation
 
 protocol PasscodeRecoveryViewModelProtocol {
-    var keyBoardCallBack: (() -> ())? { get set }
+   
 }
 
 
-class PasscodeRecoveryViewModel: PasscodeRecoveryViewModelProtocol {
-    var keyBoardCallBack: (() -> ())?
+class PasscodeRecoveryViewModel: NSObject, PasscodeRecoveryViewModelProtocol, KeyboardManagerPorotocol {
+    
+    @objc dynamic private(set)var keyboardHeight: Float = 0
+    private let keyBoardManager = KeyboardManager()
+    
+    
+    override init() {
+        super.init()
+        
+        keyBoardManager.keyboardStateChanged = { [weak self] height in
+            self?.keyboardHeight = Float(height)
+        }
+    }
     
 }
