@@ -32,7 +32,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func presentAuthController() {
-        guard let vc = PasscodeRecoveryViewController.instantiate()
+//        guard let vc = PasscodeRecoveryViewController.instantiate()
+        guard let vc = WelcomeViewController.instantiate()
 //        guard let vc = LoginViewController.instantiate()
         else {
             print("Can't create path to Welcome VC")
