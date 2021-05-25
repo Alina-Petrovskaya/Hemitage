@@ -20,3 +20,9 @@
 "email_text_field"     = "Email";
 "password_text_field"  = "Password";
 "sign_in_button"       = "CREATE ACCOUNT";
+
+
+//Passcode Recovery screen
+"passcode_recovery_title"    = "Passcode recovery";
+"passcode_recovery_subtitle" = "Enter your email address to which your account is registered, you will receive an email to reset your new password.";
+"passcode_recovery_reset_button"   = "Restore passcode";

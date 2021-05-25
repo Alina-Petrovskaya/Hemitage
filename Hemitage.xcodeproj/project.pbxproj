@@ -82,6 +82,7 @@
 		84A00ABF265B910400087E07 /* ImageManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ABE265B910400087E07 /* ImageManagerModel.swift */; };
 		84A00AC5265BED3E00087E07 /* PasscodeRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AC4265BED3E00087E07 /* PasscodeRecoveryViewController.swift */; };
 		84A00AC7265BED5700087E07 /* PasscodeRecoveryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A00AC6265BED5700087E07 /* PasscodeRecoveryViewController.storyboard */; };
+		84A00AC9265CE1E800087E07 /* PasscodeRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AC8265CE1E800087E07 /* PasscodeRecoveryViewModel.swift */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -214,6 +215,7 @@
 		84A00ABE265B910400087E07 /* ImageManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerModel.swift; sourceTree = "<group>"; };
 		84A00AC4265BED3E00087E07 /* PasscodeRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeRecoveryViewController.swift; sourceTree = "<group>"; };
 		84A00AC6265BED5700087E07 /* PasscodeRecoveryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasscodeRecoveryViewController.storyboard; sourceTree = "<group>"; };
+		84A00AC8265CE1E800087E07 /* PasscodeRecoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeRecoveryViewModel.swift; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -328,13 +330,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		843F0B77265528A2004DE5A8 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		843F0B8D265680EC004DE5A8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,7 +419,6 @@
 		848CF7802636A2D60070A3C6 /* FirebaseManager */ = {
 			isa = PBXGroup;
 			children = (
-				843F0B77265528A2004DE5A8 /* Protocols */,
 				843F0B5926525EE6004DE5A8 /* FirebaseStorageManager */,
 				843F0B52264EA0BB004DE5A8 /* FireStoreDataManager */,
 				849A50FE26399B6D0047340A /* Login */,
@@ -615,6 +609,7 @@
 			children = (
 				84A00AC6265BED5700087E07 /* PasscodeRecoveryViewController.storyboard */,
 				84A00AC4265BED3E00087E07 /* PasscodeRecoveryViewController.swift */,
+				84A00AC8265CE1E800087E07 /* PasscodeRecoveryViewModel.swift */,
 			);
 			path = PasscodeRecovery;
 			sourceTree = "<group>";
@@ -1093,6 +1088,7 @@
 				849C4E7B264BBEB000C26C53 /* ViewModelTemplateHeader.swift in Sources */,
 				849A51022639A2570047340A /* KeyboardManager.swift in Sources */,
 				84D7F82B2644184F004B2DB0 /* BlogCollectionViewCell.swift in Sources */,
+				84A00AC9265CE1E800087E07 /* PasscodeRecoveryViewModel.swift in Sources */,
 				849C4E84264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,

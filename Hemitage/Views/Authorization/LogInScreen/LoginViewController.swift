@@ -33,6 +33,7 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
         }
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
@@ -60,10 +61,6 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
     
     private func prepareUI() {
         loginButton.layer.cornerRadius = 8
-        
-//        emailField.setLeftView(with: "envelope")
-//        passwordField.setLeftView(with: "lock")
-//        passwordField.setRightButtonForPasswordfield()
     }
     
     private func prepareLocalizedText() {

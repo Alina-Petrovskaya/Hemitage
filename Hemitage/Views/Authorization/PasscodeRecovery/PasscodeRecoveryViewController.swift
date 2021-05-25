@@ -8,22 +8,41 @@
 import UIKit
 
 class PasscodeRecoveryViewController: UIViewController {
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var resetButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        prepareUI()
+        prepareContent()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func prepareUI() {
+        resetButton.layer.cornerRadius = 8
     }
-    */
+    
+    
+    private func prepareContent() {
+        titleLabel.text    = NSLocalizedString("passcode_recovery_title", comment: "")
+        subtitleLabel.text = NSLocalizedString("passcode_recovery_subtitle", comment: "")
 
+        resetButton.setTitle(NSLocalizedString("passcode_recovery_reset_button", comment: ""), for: .normal)
+    }
+    
+    
+    @IBAction func resetButtonTupped(_ sender: UIButton) {
+        
+    }
+    
+    
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
 }
