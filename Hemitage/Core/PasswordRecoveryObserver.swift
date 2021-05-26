@@ -1,5 +1,5 @@
 //
-//  PasswordResetObserver.swift
+//  PasswordRecoveryObserver.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 25.05.2021.
@@ -7,22 +7,22 @@
 
 import UIKit
 
-@objc protocol PasswordResetObserver {
+@objc protocol PasswordRecoveryObserver {
     
-    @objc dynamic var kvoResult: NSKeyValueObservation? { get set }
+    @objc dynamic var kvoSuccesResult: NSKeyValueObservation? { get set }
     @objc dynamic var kvoErrorMessage: NSKeyValueObservation? { get set }
 }
 
 
-extension PasswordResetObserver where Self: UIViewController {
+extension PasswordRecoveryObserver where Self: UIViewController {
     
-    func observePasscodedManager<T: NSObject & PasscodeManagerProtocol>(viewModel: T?) {
+    func observePasscodedManager<T: NSObject & PasswordManagerProtocol>(viewModel: T?, isNeedToHideSelf: Bool) {
        
-        kvoResult = viewModel?.observe(\.recoveryResult, options: .new) { [weak self] _, result in
+        kvoSuccesResult = viewModel?.observe(\.sucssesResult, options: .new) { [weak self] _, result in
             guard let successText = result.newValue,
                   let safeSuccessText = successText else { return }
             
-            self?.showNotificationAlert(with: safeSuccessText, isNeedToHideSelf: false)
+            self?.showNotificationAlert(with: safeSuccessText, isNeedToHideSelf: isNeedToHideSelf)
         }
         
         

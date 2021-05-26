@@ -12,16 +12,15 @@ protocol PasscodeRecoveryViewModelProtocol {
 }
 
 
-class PasscodeRecoveryViewModel: NSObject, PasscodeRecoveryViewModelProtocol, PasscodeManagerProtocol, KeyboardManagerPorotocol {
+class PasscodeRecoveryViewModel: NSObject, PasscodeRecoveryViewModelProtocol, PasswordManagerProtocol, KeyboardManagerPorotocol {
     
-    @objc dynamic var recoveryResult: String?
+    @objc dynamic var sucssesResult: String?
     @objc dynamic var errorMessage: String?
     @objc dynamic private(set)var keyboardHeight: Float = 0
     
-    let passwordManager: PasswordResetManagerProtocol = PasswordManager()
-    
+    private let passwordManager: PasswordResetManagerProtocol = PasswordResetManager()
     private let keyBoardManager = KeyboardManager()
-//    private let passwordManager = PasswordManager()
+    
     
     override init() {
         super.init()
@@ -31,6 +30,7 @@ class PasscodeRecoveryViewModel: NSObject, PasscodeRecoveryViewModelProtocol, Pa
         }
     }
     
+    
     func getNewPassword(for email: String?) {
         guard let safeEmail = email else { return }
         
@@ -38,11 +38,13 @@ class PasscodeRecoveryViewModel: NSObject, PasscodeRecoveryViewModelProtocol, Pa
             switch result {
             
             case .success(let message):
-                self?.recoveryResult = message
+                self?.sucssesResult = message
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription
             }
         }
     }
+    
+    
 }

@@ -136,6 +136,7 @@
                     <connections>
                         <outlet property="firstPasswordField" destination="pZ2-Sh-Ofc" id="xd3-K2-vCh"/>
                         <outlet property="resetButton" destination="P3i-u1-I3Q" id="sv8-Ic-suQ"/>
+                        <outlet property="scrollView" destination="lfW-kk-KzO" id="lA3-DA-OTu"/>
                         <outlet property="secondPasswordField" destination="k79-WM-yUK" id="ie4-qq-sfj"/>
                         <outlet property="titleLabel" destination="Hyq-cj-jRP" id="yZh-JM-3Aj"/>
                     </connections>

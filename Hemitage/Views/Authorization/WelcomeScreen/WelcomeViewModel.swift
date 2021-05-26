@@ -7,9 +7,9 @@
 
 import Foundation
 
-class WelcomeViewModel: NSObject, LoginViewModelProtocol {
+class WelcomeViewModel: NSObject, LoginProtocol {
     
-    @objc dynamic private(set) var loginResult: Bool = false
+    @objc dynamic private(set) var sucssesResult: String?
     @objc dynamic private(set) var errorMessage: String?
     private var autorizationQualifier = AuthorizationTypeQualifier()
     
@@ -18,8 +18,9 @@ class WelcomeViewModel: NSObject, LoginViewModelProtocol {
             switch loginStatus {
             case .notActive:
                 break
+                
             case .success:
-                loginResult = true
+                sucssesResult = "User successfully authorized"
                 
             case .failed(let error):
                 errorMessage = error

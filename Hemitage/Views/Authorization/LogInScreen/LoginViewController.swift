@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    private let loginViewModel: NSObject & LoginViewModelProtocol = LoginViewModel()
+    private let loginViewModel: NSObject & LoginProtocol = LoginViewModel()
     
     var kvoResultOfLogin: NSKeyValueObservation?
     var kvoErrorMessage: NSKeyValueObservation?
@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, AuthObserver, KeyboardStateObserver
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        observeAuth(viewModel: loginViewModel)
+        observeAuth(viewModel: loginViewModel, false)
         observeKeyBoard(viewModel: loginViewModel as? NSObject & KeyboardManagerPorotocol)
     }
     

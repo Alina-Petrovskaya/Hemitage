@@ -1,5 +1,5 @@
 //
-//  PasswordManager.swift
+//  PasswordResetManager.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 25.05.2021.
@@ -9,7 +9,6 @@ import Foundation
 import FirebaseAuth
 
 
-
 protocol PasswordResetManagerProtocol {
     func resetPassword(for userEmail: String, completion: @escaping (Result<String, Error>) -> ())
     func setNewPasswordWithObbCode(_ password: String, oobCode: String, completion: @escaping (Result<String, Error>) -> ())
@@ -17,7 +16,7 @@ protocol PasswordResetManagerProtocol {
 }
 
 
-class PasswordManager: PasswordResetManagerProtocol {
+class PasswordResetManager: PasswordResetManagerProtocol {
     
     func resetPassword(for userEmail: String, completion: @escaping (Result<String, Error>) -> ()) {
         Auth.auth().sendPasswordReset(withEmail: userEmail) { error in

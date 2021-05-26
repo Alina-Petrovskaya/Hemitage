@@ -28,11 +28,11 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
             switch result {
             case .success((let obbcode, let email)):
                 guard let newPasscodeVC = NewPasscodeViewController.instantiate() else { return }
+                
                 newPasscodeVC.email = email
                 newPasscodeVC.obbcode = obbcode
 
                 newPasscodeVC.modalPresentationStyle = .fullScreen
-
                 self?.present(newPasscodeVC, animated: true)
 
             case .failure(let error):

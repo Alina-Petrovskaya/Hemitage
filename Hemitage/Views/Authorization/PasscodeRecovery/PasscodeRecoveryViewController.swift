@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, PasswordResetObserver {
+class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, PasswordRecoveryObserver {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -18,7 +18,7 @@ class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, P
     private let viewModel: NSObject & PasscodeRecoveryViewModelProtocol = PasscodeRecoveryViewModel()
     
     var kvoKeyboardHeight: NSKeyValueObservation?
-    var kvoResult: NSKeyValueObservation?
+    var kvoSuccesResult: NSKeyValueObservation?
     var kvoErrorMessage: NSKeyValueObservation?
     
     var keyboardHeight: CGFloat = 0 {
@@ -41,17 +41,17 @@ class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, P
         super.viewWillAppear(animated)
         
         observeKeyBoard(viewModel: viewModel as? NSObject & KeyboardManagerPorotocol)
-        observePasscodedManager(viewModel: viewModel as? NSObject & PasscodeManagerProtocol)
-        
+        observePasscodedManager(viewModel: viewModel as? NSObject & PasswordManagerProtocol, isNeedToHideSelf: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
        
         kvoKeyboardHeight?.invalidate()
-        kvoResult?.invalidate()
+        kvoSuccesResult?.invalidate()
         kvoErrorMessage?.invalidate()
     }
+    
 
     private func prepareUI() {
         resetButton.layer.cornerRadius = 8
@@ -69,7 +69,6 @@ class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, P
     
     // MARK: - Actions
     @IBAction func resetButtonTupped(_ sender: UIButton) {
-
         viewModel.getNewPassword(for: emailTextField.text)
     }
     

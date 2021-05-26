@@ -6,13 +6,15 @@
 //
 
 import Foundation
-class LoginViewModel: NSObject, LoginViewModelProtocol, KeyboardManagerPorotocol {
+class LoginViewModel: NSObject, LoginProtocol, KeyboardManagerPorotocol {
     
-    @objc dynamic private(set) var loginResult: Bool = false
+    @objc dynamic private(set) var sucssesResult: String?
     @objc dynamic private(set) var errorMessage: String?
     @objc dynamic private(set) var keyboardHeight: Float = 0
+    
     private var autorizationQualifier = AuthorizationTypeQualifier()
     private let keyBoardManager = KeyboardManager()
+    
     
     override init() {
         super.init()
@@ -21,13 +23,15 @@ class LoginViewModel: NSObject, LoginViewModelProtocol, KeyboardManagerPorotocol
         }
     }
     
+    
     private var loginStatus: LoginStatus = .notActive {
         didSet {
             switch loginStatus {
             case .notActive:
                 break
+                
             case .success:
-                loginResult = true
+                sucssesResult = "User successfully authorized"
                 
             case .failed(let error):
                 errorMessage = error
@@ -43,4 +47,6 @@ class LoginViewModel: NSObject, LoginViewModelProtocol, KeyboardManagerPorotocol
             self?.loginStatus = authStatus
         }
     }
+    
+    
 }

@@ -13,7 +13,7 @@ class WelcomeViewController: UIViewController, AuthObserver {
     @IBOutlet weak var welcomLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    private let welcomeViewModel: NSObject & LoginViewModelProtocol = WelcomeViewModel()
+    private let welcomeViewModel: NSObject & LoginProtocol = WelcomeViewModel()
     var kvoResultOfLogin: NSKeyValueObservation?
     var kvoErrorMessage: NSKeyValueObservation?
     var kvoKeyboardHeight: NSKeyValueObservation?
@@ -34,7 +34,7 @@ class WelcomeViewController: UIViewController, AuthObserver {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        observeAuth(viewModel: welcomeViewModel)
+        observeAuth(viewModel: welcomeViewModel, false)
     }
     
     private func prepareUI() {

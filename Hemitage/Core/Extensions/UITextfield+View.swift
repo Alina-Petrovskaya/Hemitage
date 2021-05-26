@@ -14,6 +14,7 @@ extension UITextField {
             let UIImage = self.leftView?.subviews[0] as? UIImageView
             return UIImage?.image ?? #imageLiteral(resourceName: "FB icon")
         }
+        
         set(image) {
             setLeftView(with: image)
         }
@@ -25,6 +26,7 @@ extension UITextField {
             let UIImage = self.leftView?.subviews[0] as? UIImageView
             return UIImage?.image ?? #imageLiteral(resourceName: "FB icon")
         }
+        
         set(image) {
             setRightButtonImage(with: image)
         }
