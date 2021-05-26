@@ -86,6 +86,8 @@
 		84A00ACE265CFD2500087E07 /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ACD265CFD2500087E07 /* PasswordManager.swift */; };
 		84A00AD0265D1A9300087E07 /* PasswordManagerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ACF265D1A9300087E07 /* PasswordManagerObserver.swift */; };
 		84A00AD2265D1BE400087E07 /* PasscodeManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AD1265D1BE400087E07 /* PasscodeManagerProtocol.swift */; };
+		84A00AD5265E401C00087E07 /* NewPasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AD4265E401C00087E07 /* NewPasscodeViewController.swift */; };
+		84A00AD7265E403900087E07 /* NewPasscodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A00AD6265E403900087E07 /* NewPasscodeViewController.storyboard */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -222,6 +224,8 @@
 		84A00ACD265CFD2500087E07 /* PasswordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
 		84A00ACF265D1A9300087E07 /* PasswordManagerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerObserver.swift; sourceTree = "<group>"; };
 		84A00AD1265D1BE400087E07 /* PasscodeManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeManagerProtocol.swift; sourceTree = "<group>"; };
+		84A00AD4265E401C00087E07 /* NewPasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasscodeViewController.swift; sourceTree = "<group>"; };
+		84A00AD6265E403900087E07 /* NewPasscodeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPasscodeViewController.storyboard; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -639,6 +643,15 @@
 			path = PasswordManager;
 			sourceTree = "<group>";
 		};
+		84A00AD3265E3FE100087E07 /* NewPasscode */ = {
+			isa = PBXGroup;
+			children = (
+				84A00AD6265E403900087E07 /* NewPasscodeViewController.storyboard */,
+				84A00AD4265E401C00087E07 /* NewPasscodeViewController.swift */,
+			);
+			path = NewPasscode;
+			sourceTree = "<group>";
+		};
 		84D7F799263C2C02004B2DB0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,6 +688,7 @@
 				84EB44E82638021900828222 /* LogInScreen */,
 				84DB77E826384A8B0094483E /* SignInScreen */,
 				84A00AC3265BED0000087E07 /* PasscodeRecovery */,
+				84A00AD3265E3FE100087E07 /* NewPasscode */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -917,6 +931,7 @@
 				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
 				84D7F8122642BA26004B2DB0 /* TemplateHeaderView.xib in Resources */,
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
+				84A00AD7265E403900087E07 /* NewPasscodeViewController.storyboard in Resources */,
 				84D7F81C2643D62C004B2DB0 /* Inter-SemiBold.ttf in Resources */,
 				84D7F8242643F606004B2DB0 /* MapCollectionViewCell.xib in Resources */,
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
@@ -1102,6 +1117,7 @@
 				849A50EA26394D600047340A /* AppDelegate+Navigation.swift in Sources */,
 				84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */,
 				84926F8A264D48D3005E9074 /* MainScreenCollectionViewSetup.swift in Sources */,
+				84A00AD5265E401C00087E07 /* NewPasscodeViewController.swift in Sources */,
 				843F0B5826525EDE004DE5A8 /* StorageDirectory.swift in Sources */,
 				84D7F82726441434004B2DB0 /* CategoriesCollectionViewCell.swift in Sources */,
 				84A00ABB265B897000087E07 /* ImageFileManager.swift in Sources */,

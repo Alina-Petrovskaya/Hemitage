@@ -11,7 +11,7 @@ import FirebaseAuth
 class PasswordManager {
     
     static var shared = PasswordManager()
-    var chatchValidOobCode: ((String) -> ())?
+    var chatchValidOobCode: ((Result<String, Error>) -> ())?
 
     var obbCode: String? = nil {
         didSet {
@@ -41,9 +41,8 @@ class PasswordManager {
             if let error = error {
                 print(error.localizedDescription)
                 
-                //Nothing to do
-                
-            
+                //Present error allert
+
             } else if email != nil {
                 //send oobCode and present screren "New passcode"
                 print(email!)
@@ -55,7 +54,9 @@ class PasswordManager {
     
     func setNewPassword(password: String, oobCode: String) {
         Auth.auth().confirmPasswordReset(withCode: oobCode, newPassword: password) { error in
-            
+            if let error = error {
+                print(error.localizedDescription)
+            }
         }
     }
 }

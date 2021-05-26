@@ -69,7 +69,7 @@ class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, P
     
     // MARK: - Actions
     @IBAction func resetButtonTupped(_ sender: UIButton) {
-        viewModel.getNewPassword(for: emailTextField.text)
+//        viewModel.sentResetLinkToEmail(for: emailTextField.text)
     }
     
     

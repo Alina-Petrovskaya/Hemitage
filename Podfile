@@ -14,7 +14,6 @@ target 'Hemitage' do
    pod 'FirebaseUI/OAuth'
    pod 'Firebase/Storage'
    pod 'Firebase/Firestore'
-   pod 'Firebase/DynamicLinks'
 
    #Facebook
    pod 'FBSDKLoginKit'

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -22,17 +22,17 @@
             <objects>
                 <viewController storyboardIdentifier="PasscodeRecoveryViewController" id="Y6W-OH-hqX" customClass="PasscodeRecoveryViewController" customModule="Hemitage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="oXr-H4-t0E">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhW-x8-HWA" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xco-gK-iZK">
-                                                <rect key="frame" x="20" y="20" width="22" height="22"/>
+                                                <rect key="frame" x="15" y="20" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Xco-gK-iZK" secondAttribute="height" multiplier="1:1" id="550-YU-u94"/>
                                                     <constraint firstAttribute="height" constant="22" id="SRW-PC-Llt"/>
@@ -46,22 +46,22 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="wWY-JY-jR9">
-                                                <rect key="frame" x="20" y="67" width="374" height="255"/>
+                                                <rect key="frame" x="20" y="67" width="335" height="270.33333333333331"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalCompressionResistancePriority="250" text="Passcode recovery" textAlignment="justified" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u5t-OM-BBd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="45.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="45.666666666666664"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="39"/>
                                                         <color key="textColor" name="DarkText #18191A"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address to which your account is registered, you will receive an email to reset your new password." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNe-Ws-pch">
-                                                        <rect key="frame" x="0.0" y="70.5" width="374" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="70.666666666666657" width="335" height="45.666666666666657"/>
                                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                         <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="82T-UR-FG0">
-                                                        <rect key="frame" x="0.0" y="126" width="374" height="52"/>
+                                                        <rect key="frame" x="0.0" y="141.33333333333334" width="335" height="52"/>
                                                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="tintColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
@@ -74,7 +74,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFh-jt-vWw">
-                                                        <rect key="frame" x="0.0" y="203" width="374" height="52"/>
+                                                        <rect key="frame" x="0.0" y="218.33333333333331" width="335" height="52"/>
                                                         <color key="backgroundColor" red="0.87450980389999999" green="0.6705882353" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,7 +92,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Xco-gK-iZK" firstAttribute="top" secondItem="BhW-x8-HWA" secondAttribute="top" constant="20" id="AGe-8k-IAI"/>
-                                            <constraint firstItem="Xco-gK-iZK" firstAttribute="leading" secondItem="BhW-x8-HWA" secondAttribute="leading" constant="20" id="Sw7-Ik-HSq"/>
+                                            <constraint firstItem="Xco-gK-iZK" firstAttribute="leading" secondItem="BhW-x8-HWA" secondAttribute="leading" constant="15" id="Sw7-Ik-HSq"/>
                                             <constraint firstItem="wWY-JY-jR9" firstAttribute="leading" secondItem="BhW-x8-HWA" secondAttribute="leading" constant="20" id="aIJ-uE-619"/>
                                             <constraint firstAttribute="trailing" secondItem="wWY-JY-jR9" secondAttribute="trailing" constant="20" id="bJl-9V-qvL"/>
                                             <constraint firstItem="wWY-JY-jR9" firstAttribute="top" secondItem="Xco-gK-iZK" secondAttribute="bottom" constant="25" id="qsj-y5-w4g"/>
