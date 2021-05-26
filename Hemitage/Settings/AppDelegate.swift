@@ -39,5 +39,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )
     }
+    
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if let incomingURL = userActivity.webpageURL {
+            handleIncomingLink(incomingURL)
+            
+            return true
+        }
+        return false
+    }
+    
+    
+    
+    func handleIncomingLink(_ url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let queryItrems = components.queryItems  else { return }
+        
+        // Handle items to reset password
+        if queryItrems[0].name == "mode",  queryItrems[0].value == "resetPassword" {
+            
+            for item in queryItrems {
+                if item.name == "oobCode", let safeCode = item.value {
+                    PasswordManager.shared.obbCode = safeCode
+                }
+            }
+        }
+    }
+    
+    
 }
 

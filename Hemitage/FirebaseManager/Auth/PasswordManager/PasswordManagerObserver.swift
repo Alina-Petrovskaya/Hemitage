@@ -21,7 +21,7 @@ extension PasswordManagerObserver where Self: UIViewController {
             guard let successText = result.newValue,
                   let safeSuccessText = successText else { return }
             
-            self?.showNotificationAlert(with: safeSuccessText, isNeedToHideSelf: true)
+            self?.showNotificationAlert(with: safeSuccessText, isNeedToHideSelf: false)
         })
         
         

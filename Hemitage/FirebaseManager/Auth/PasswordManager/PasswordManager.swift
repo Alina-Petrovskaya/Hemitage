@@ -7,26 +7,54 @@
 
 import Foundation
 import FirebaseAuth
-import Firebase
 
 class PasswordManager {
     
-    func resetPassword(for userEmail: String, completion: @escaping (Result<String, Error>) -> ()) {
+    static var shared = PasswordManager()
+    var chatchValidOobCode: ((String) -> ())?
+
+    var obbCode: String? = nil {
+        didSet {
+            guard let safeCode = obbCode else { return }
+            checkCode(with: safeCode)
+        }
+    }
+    
+    private init() {
         
+    }
+    
+    func resetPassword(for userEmail: String, completion: @escaping (Result<String, Error>) -> ()) {
         Auth.auth().sendPasswordReset(withEmail: userEmail) { error in
             if let error = error {
                 completion(.failure(error))
                 
             } else {
-                completion(.success("Password recovery instructions have been sent to your email \(userEmail)"))
+                completion(.success("Password recovery link have been sent to your email \(userEmail). Please check it"))
             }
         }
     }
     
     
+    private func checkCode(with code: String) {
+        Auth.auth().verifyPasswordResetCode(code) { email, error in
+            if let error = error {
+                print(error.localizedDescription)
+                
+                //Nothing to do
+                
+            
+            } else if email != nil {
+                //send oobCode and present screren "New passcode"
+                print(email!)
+                print(code)
+            }
+        }
+    }
     
-    func setNewPassword(with password: String) {
-        Auth.auth().currentUser?.updatePassword(to: password) { error in
+    
+    func setNewPassword(password: String, oobCode: String) {
+        Auth.auth().confirmPasswordReset(withCode: oobCode, newPassword: password) { error in
             
         }
     }
