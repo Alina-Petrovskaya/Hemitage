@@ -23,6 +23,13 @@
 
 
 //Passcode Recovery screen
-"passcode_recovery_title"    = "Passcode recovery";
-"passcode_recovery_subtitle" = "Enter your email address to which your account is registered, you will receive an email to reset your new password.";
+"passcode_recovery_title"          = "Passcode recovery";
+"passcode_recovery_subtitle"       = "Enter your email address to which your account is registered, you will receive an email to reset your new password.";
 "passcode_recovery_reset_button"   = "Restore passcode";
+
+
+//New Passcode screen
+"new_passcode_title"            = "Come up with a new password";
+"new_passcode_first_textfield"  = "New passcode";
+"new_passcode_second_textfield" = "New passcode confirm";
+"new_passcode_reset_button"     = "SET NEW PASSCODE";

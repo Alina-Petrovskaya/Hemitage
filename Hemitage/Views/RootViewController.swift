@@ -9,17 +9,37 @@ import UIKit
 
 class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func prepareUI() {
+        navigationController?.navigationBar.isHidden = true
         
         tabBar.barTintColor = .white
-        tabBar.tintColor = #colorLiteral(red: 0.902816236, green: 0.729167521, blue: 0.6777408719, alpha: 1)
+        tabBar.tintColor    = #colorLiteral(red: 0.902816236, green: 0.729167521, blue: 0.6777408719, alpha: 1)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-         presentAuthController()
-//        presentContent()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        prepareUI()
+        presentAuthController()
+        //        presentContent()
+        
+        PasswordObbCodeManager.shared.callback = { [weak self] result in
+
+            switch result {
+            case .success((let obbcode, let email)):
+                guard let newPasscodeVC = NewPasscodeViewController.instantiate() else { return }
+                newPasscodeVC.email = email
+                newPasscodeVC.obbcode = obbcode
+
+                newPasscodeVC.modalPresentationStyle = .fullScreen
+
+                self?.present(newPasscodeVC, animated: true)
+
+            case .failure(let error):
+                self?.showErrorAlert(with: error.localizedDescription)
+            }
+        }
+        
     }
     
     private func presentContent() {
@@ -31,21 +51,15 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         self.viewControllers = controllers
     }
     
+    
     private func presentAuthController() {
-//        guard let vc = PasscodeRecoveryViewController.instantiate()
-        guard let vc = WelcomeViewController.instantiate()
-//        guard let vc = LoginViewController.instantiate()
-        else {
-            print("Can't create path to Welcome VC")
-            return
-        }
-        
-        let navVC = UINavigationController(rootViewController: vc)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true, completion: nil)
+        guard let vc = WelcomeViewController.instantiate() else { return }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return true;
+        return true
     }
 }

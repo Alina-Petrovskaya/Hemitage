@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, PasswordManagerObserver {
+class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, PasswordResetObserver {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -69,7 +69,8 @@ class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, P
     
     // MARK: - Actions
     @IBAction func resetButtonTupped(_ sender: UIButton) {
-//        viewModel.sentResetLinkToEmail(for: emailTextField.text)
+
+        viewModel.getNewPassword(for: emailTextField.text)
     }
     
     

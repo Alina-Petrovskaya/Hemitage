@@ -8,21 +8,16 @@
 import Foundation
 import FirebaseAuth
 
-class PasswordManager {
-    
-    static var shared = PasswordManager()
-    var chatchValidOobCode: ((Result<String, Error>) -> ())?
 
-    var obbCode: String? = nil {
-        didSet {
-            guard let safeCode = obbCode else { return }
-            checkCode(with: safeCode)
-        }
-    }
-    
-    private init() {
-        
-    }
+
+protocol PasswordResetManagerProtocol {
+    func resetPassword(for userEmail: String, completion: @escaping (Result<String, Error>) -> ())
+    func setNewPasswordWithObbCode(_ password: String, oobCode: String, completion: @escaping (Result<String, Error>) -> ())
+    func updatePasswordToCurrentUser(with password: String, completion: @escaping (Result<String, Error>) -> ())
+}
+
+
+class PasswordManager: PasswordResetManagerProtocol {
     
     func resetPassword(for userEmail: String, completion: @escaping (Result<String, Error>) -> ()) {
         Auth.auth().sendPasswordReset(withEmail: userEmail) { error in
@@ -35,28 +30,21 @@ class PasswordManager {
         }
     }
     
-    
-    private func checkCode(with code: String) {
-        Auth.auth().verifyPasswordResetCode(code) { email, error in
-            if let error = error {
-                print(error.localizedDescription)
-                
-                //Present error allert
 
-            } else if email != nil {
-                //send oobCode and present screren "New passcode"
-                print(email!)
-                print(code)
-            }
+    func updatePasswordToCurrentUser(with password: String, completion: @escaping (Result<String, Error>) -> () ) {
+        Auth.auth().currentUser?.updatePassword(to: password) { error in
+            
         }
     }
     
     
-    func setNewPassword(password: String, oobCode: String) {
+    func setNewPasswordWithObbCode(_ password: String, oobCode: String, completion: @escaping (Result<String, Error>) -> ()) {
         Auth.auth().confirmPasswordReset(withCode: oobCode, newPassword: password) { error in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
     }
+    
+    
 }

@@ -5,7 +5,7 @@
 //Login scereen
 "welcome_login_label"    = "Hey,\nLog in now";
 "create_account_button"  = "Create Account ";
-"create_ccount_label"    = "If you are new /";
+"create_account_label"    = "If you are new /";
 "email_field"            = "Email";
 "password_field"         = "Password";
 "reset_password_label"   = "Forgot Passcode?";
@@ -22,6 +22,13 @@
 "sign_in_button"       = "CREATE ACCOUNT";
 
 //Passcode Recovery screen
-"passcode_recovery_title"    = "Passcode recovery";
-"passcode_recovery_subtitle" = "Enter your email address to which your account is registered, you will receive an email to reset your new password.";
-"passcode_recovery_reset_button"   = "Restore passcode";
+"passcode_recovery_title"          = "Passcode recovery";
+"passcode_recovery_subtitle"       = "Enter your email address to which your account is registered, you will receive an email to reset your new password.";
+"passcode_recovery_reset_button"   = "RESTORE PASSCODE";
+
+
+//New Passcode screen
+"new_passcode_title"            = "Come up with a new password";
+"new_passcode_first_textfield"  = "New passcode";
+"new_passcode_second_textfield" = "New passcode confirm";
+"new_passcode_reset_button"     = "SET NEW PASSCODE";

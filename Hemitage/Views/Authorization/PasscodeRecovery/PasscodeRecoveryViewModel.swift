@@ -18,6 +18,8 @@ class PasscodeRecoveryViewModel: NSObject, PasscodeRecoveryViewModelProtocol, Pa
     @objc dynamic var errorMessage: String?
     @objc dynamic private(set)var keyboardHeight: Float = 0
     
+    let passwordManager: PasswordResetManagerProtocol = PasswordManager()
+    
     private let keyBoardManager = KeyboardManager()
 //    private let passwordManager = PasswordManager()
     
@@ -32,7 +34,7 @@ class PasscodeRecoveryViewModel: NSObject, PasscodeRecoveryViewModelProtocol, Pa
     func getNewPassword(for email: String?) {
         guard let safeEmail = email else { return }
         
-        PasswordManager.shared.resetPassword(for: safeEmail) { [weak self] result in
+        passwordManager.resetPassword(for: safeEmail) { [weak self] result in
             switch result {
             
             case .success(let message):

@@ -39,7 +39,6 @@ class WelcomeViewController: UIViewController, AuthObserver {
     
     private func prepareUI() {
         signInButtons.forEach { $0.layer.cornerRadius = 8 }
-        navigationController?.navigationBar.isHidden = true
     }
     
     private func prepareLocalizedText() {

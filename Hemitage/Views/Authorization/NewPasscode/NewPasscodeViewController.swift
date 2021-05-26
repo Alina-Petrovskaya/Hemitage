@@ -9,17 +9,33 @@ import UIKit
 
 class NewPasscodeViewController: UIViewController {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var firstPasswordField: UITextField!
-    @IBOutlet weak var secondPasswordField: UITextField!
-    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var firstPasswordField: UITextField!
+    @IBOutlet weak private var secondPasswordField: UITextField!
+    @IBOutlet weak private var resetButton: UIButton!
+    
+    var email: String?
+    var obbcode: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+        prepareUI()
+        prepareContent()
     }
+    
+    
+    
+    func prepareUI() {
+        resetButton.layer.cornerRadius = 8
+    }
+    
+    
+    func prepareContent() {
+        
+    }
+    
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         
@@ -27,6 +43,8 @@ class NewPasscodeViewController: UIViewController {
     
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
+        
+        dismiss(animated: true)
     }
     
 }

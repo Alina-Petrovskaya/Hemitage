@@ -15,13 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure()
-        
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
-        window?.rootViewController = RootViewController()
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let navVC = UINavigationController(rootViewController: RootViewController())
+        window?.rootViewController = navVC
         window?.backgroundColor    = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         window?.makeKeyAndVisible()
         
@@ -61,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             for item in queryItrems {
                 if item.name == "oobCode", let safeCode = item.value {
-                    PasswordManager.shared.obbCode = safeCode
+                    PasswordObbCodeManager.shared.checkObbCode(with: safeCode)
                 }
             }
         }

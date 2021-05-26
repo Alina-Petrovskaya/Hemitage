@@ -68,7 +68,7 @@
                                                             <constraint firstAttribute="height" constant="52" id="uDC-U7-pRR"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" textContentType="email"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="envelope"/>
                                                         </userDefinedRuntimeAttributes>

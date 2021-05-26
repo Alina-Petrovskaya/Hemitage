@@ -84,10 +84,11 @@
 		84A00AC7265BED5700087E07 /* PasscodeRecoveryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A00AC6265BED5700087E07 /* PasscodeRecoveryViewController.storyboard */; };
 		84A00AC9265CE1E800087E07 /* PasscodeRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AC8265CE1E800087E07 /* PasscodeRecoveryViewModel.swift */; };
 		84A00ACE265CFD2500087E07 /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ACD265CFD2500087E07 /* PasswordManager.swift */; };
-		84A00AD0265D1A9300087E07 /* PasswordManagerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ACF265D1A9300087E07 /* PasswordManagerObserver.swift */; };
+		84A00AD0265D1A9300087E07 /* PasswordResetObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ACF265D1A9300087E07 /* PasswordResetObserver.swift */; };
 		84A00AD2265D1BE400087E07 /* PasscodeManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AD1265D1BE400087E07 /* PasscodeManagerProtocol.swift */; };
 		84A00AD5265E401C00087E07 /* NewPasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AD4265E401C00087E07 /* NewPasscodeViewController.swift */; };
 		84A00AD7265E403900087E07 /* NewPasscodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A00AD6265E403900087E07 /* NewPasscodeViewController.storyboard */; };
+		84A00ADB265E5A3900087E07 /* PasswordObbCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ADA265E5A3900087E07 /* PasswordObbCodeManager.swift */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -222,10 +223,11 @@
 		84A00AC6265BED5700087E07 /* PasscodeRecoveryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasscodeRecoveryViewController.storyboard; sourceTree = "<group>"; };
 		84A00AC8265CE1E800087E07 /* PasscodeRecoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeRecoveryViewModel.swift; sourceTree = "<group>"; };
 		84A00ACD265CFD2500087E07 /* PasswordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
-		84A00ACF265D1A9300087E07 /* PasswordManagerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerObserver.swift; sourceTree = "<group>"; };
+		84A00ACF265D1A9300087E07 /* PasswordResetObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetObserver.swift; sourceTree = "<group>"; };
 		84A00AD1265D1BE400087E07 /* PasscodeManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeManagerProtocol.swift; sourceTree = "<group>"; };
 		84A00AD4265E401C00087E07 /* NewPasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasscodeViewController.swift; sourceTree = "<group>"; };
 		84A00AD6265E403900087E07 /* NewPasscodeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPasscodeViewController.storyboard; sourceTree = "<group>"; };
+		84A00ADA265E5A3900087E07 /* PasswordObbCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordObbCodeManager.swift; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 				84A00AC6265BED5700087E07 /* PasscodeRecoveryViewController.storyboard */,
 				84A00AC4265BED3E00087E07 /* PasscodeRecoveryViewController.swift */,
 				84A00AC8265CE1E800087E07 /* PasscodeRecoveryViewModel.swift */,
+				84A00ACF265D1A9300087E07 /* PasswordResetObserver.swift */,
 			);
 			path = PasscodeRecovery;
 			sourceTree = "<group>";
@@ -638,7 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				84A00ACD265CFD2500087E07 /* PasswordManager.swift */,
-				84A00ACF265D1A9300087E07 /* PasswordManagerObserver.swift */,
+				84A00ADA265E5A3900087E07 /* PasswordObbCodeManager.swift */,
 			);
 			path = PasswordManager;
 			sourceTree = "<group>";
@@ -1137,7 +1140,7 @@
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
-				84A00AD0265D1A9300087E07 /* PasswordManagerObserver.swift in Sources */,
+				84A00AD0265D1A9300087E07 /* PasswordResetObserver.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
 				843F0B812655345A004DE5A8 /* Date+StringPresentation.swift in Sources */,
 				843F0B9326579F4A004DE5A8 /* ImageCacheManager.swift in Sources */,
@@ -1168,6 +1171,7 @@
 				849C4E75264ACC6600C26C53 /* BlogModel.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,
+				84A00ADB265E5A3900087E07 /* PasswordObbCodeManager.swift in Sources */,
 				84926F58264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift in Sources */,
 				848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */,
 				84D7F791263BE4F9004B2DB0 /* AppleFirebaseLoginManager.swift in Sources */,
