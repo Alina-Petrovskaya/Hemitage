@@ -14,12 +14,14 @@ import UIKit
 
 extension AuthObserver where Self: UIViewController {
     
-    func observeAuth<T: NSObject & LoginProtocol>(viewModel: T?, _ isNeedToShowSuccessAlert: Bool) {
+    func observeAuth<T: NSObject & AuthProtocol>(viewModel: T?, _ isNeedToShowSuccessAlert: Bool) {
         kvoResultOfLogin = viewModel?.observe(\.sucssesResult, options: .new, changeHandler: { [weak self] _, result in
             guard let loginResult = result.newValue, loginResult != nil  else { return }
             
             if isNeedToShowSuccessAlert {
-                self?.showNotificationAlert(with: loginResult!, isNeedToHideSelf: true)
+                self?.showNotificationAlert(with: loginResult!) {
+                    self?.navigationController?.popToRootViewController(animated: true)
+                }
                 
             } else {
                 self?.navigationController?.popToRootViewController(animated: true)

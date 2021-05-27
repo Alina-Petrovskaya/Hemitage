@@ -16,13 +16,13 @@ import UIKit
 
 extension PasswordRecoveryObserver where Self: UIViewController {
     
-    func observePasscodedManager<T: NSObject & PasswordManagerProtocol>(viewModel: T?, isNeedToHideSelf: Bool) {
+    func observePasscodedManager<T: NSObject & PasswordManagerProtocol>(viewModel: T?) {
        
         kvoSuccesResult = viewModel?.observe(\.sucssesResult, options: .new) { [weak self] _, result in
             guard let successText = result.newValue,
                   let safeSuccessText = successText else { return }
             
-            self?.showNotificationAlert(with: safeSuccessText, isNeedToHideSelf: isNeedToHideSelf)
+            self?.showNotificationAlert(with: safeSuccessText, completion: nil)
         }
         
         

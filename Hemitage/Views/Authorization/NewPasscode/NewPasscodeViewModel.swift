@@ -12,7 +12,7 @@ protocol NewPasscodeViewModelProtocol {
 }
 
 
-class NewPasscodeViewModel: NSObject, LoginProtocol, KeyboardManagerPorotocol, NewPasscodeViewModelProtocol {
+class NewPasscodeViewModel: NSObject, AuthProtocol, KeyboardManagerPorotocol, NewPasscodeViewModelProtocol {
     
     @objc dynamic private(set) var sucssesResult: String?
     @objc dynamic private(set) var errorMessage: String?
@@ -60,7 +60,7 @@ class NewPasscodeViewModel: NSObject, LoginProtocol, KeyboardManagerPorotocol, N
             
             switch result {
             
-            case .success(_):
+            case .success(let message):
                 self?.login(email: email, password: password, autorizationType: .email)
                 
             case .failure(let error):
@@ -82,8 +82,11 @@ class NewPasscodeViewModel: NSObject, LoginProtocol, KeyboardManagerPorotocol, N
                 
             case .failed(let error):
                 self?.errorMessage = error
+                print(error)
             }
         }
+        
+        authManager.login(email: email, password: password, loginType: autorizationType)
     }
     
 }

@@ -95,7 +95,7 @@
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
 		84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */; };
 		84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */; };
-		84D7F78D263AF8E9004B2DB0 /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78C263AF8E9004B2DB0 /* LoginProtocol.swift */; };
+		84D7F78D263AF8E9004B2DB0 /* AuthProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F78C263AF8E9004B2DB0 /* AuthProtocol.swift */; };
 		84D7F791263BE4F9004B2DB0 /* AppleFirebaseLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */; };
 		84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */; };
 		84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F797263C284C004B2DB0 /* AuthResultDelegate.swift */; };
@@ -235,7 +235,7 @@
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
 		84D7F788263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookFirebaseLoginManager.swift; sourceTree = "<group>"; };
 		84D7F78A263AF102004B2DB0 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
-		84D7F78C263AF8E9004B2DB0 /* LoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocol.swift; sourceTree = "<group>"; };
+		84D7F78C263AF8E9004B2DB0 /* AuthProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProtocol.swift; sourceTree = "<group>"; };
 		84D7F790263BE4F8004B2DB0 /* AppleFirebaseLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleFirebaseLoginManager.swift; sourceTree = "<group>"; };
 		84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hemitage.entitlements; sourceTree = "<group>"; };
 		84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -488,11 +488,10 @@
 		848CF79B2636B3E60070A3C6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				84D7F79F263C4876004B2DB0 /* AuthObserver */,
+				84A00ADF265F96D700087E07 /* KeyboardObserver */,
+				84A00ADE265F96C100087E07 /* PasswordObserver */,
 				849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */,
-				84A00ACF265D1A9300087E07 /* PasswordRecoveryObserver.swift */,
-				84A00AD1265D1BE400087E07 /* PasswordManagerProtocol.swift */,
-				84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */,
-				84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -561,7 +560,6 @@
 		849A50FE26399B6D0047340A /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				84D7F79F263C4876004B2DB0 /* AuthObserver */,
 				84D7F799263C2C02004B2DB0 /* Protocols */,
 				84D7F79C263C3E2B004B2DB0 /* AuthStrategy */,
 				84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */,
@@ -658,6 +656,24 @@
 			path = NewPasscode;
 			sourceTree = "<group>";
 		};
+		84A00ADE265F96C100087E07 /* PasswordObserver */ = {
+			isa = PBXGroup;
+			children = (
+				84A00ACF265D1A9300087E07 /* PasswordRecoveryObserver.swift */,
+				84A00AD1265D1BE400087E07 /* PasswordManagerProtocol.swift */,
+			);
+			name = PasswordObserver;
+			sourceTree = "<group>";
+		};
+		84A00ADF265F96D700087E07 /* KeyboardObserver */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F7A0263C490E004B2DB0 /* KeyboardStateObserver.swift */,
+				84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */,
+			);
+			name = KeyboardObserver;
+			sourceTree = "<group>";
+		};
 		84D7F799263C2C02004B2DB0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,7 +697,7 @@
 		84D7F79F263C4876004B2DB0 /* AuthObserver */ = {
 			isa = PBXGroup;
 			children = (
-				84D7F78C263AF8E9004B2DB0 /* LoginProtocol.swift */,
+				84D7F78C263AF8E9004B2DB0 /* AuthProtocol.swift */,
 				84D7F79D263C404D004B2DB0 /* AuthObserver.swift */,
 			);
 			path = AuthObserver;
@@ -1186,7 +1202,7 @@
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
 				84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */,
-				84D7F78D263AF8E9004B2DB0 /* LoginProtocol.swift in Sources */,
+				84D7F78D263AF8E9004B2DB0 /* AuthProtocol.swift in Sources */,
 				843F0B5B26526E43004DE5A8 /* FireStoreCollectionName.swift in Sources */,
 				849C4E79264B102800C26C53 /* MainScreenModelWrapper.swift in Sources */,
 				84A00ACE265CFD2500087E07 /* PasswordResetManager.swift in Sources */,

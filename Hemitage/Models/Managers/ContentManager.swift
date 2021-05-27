@@ -14,6 +14,13 @@ protocol ContentManagerProtocol {
     
     var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
     
+    /**
+     Requests content based on storage type.
+     
+     - parameter collection: Database collection from which data will be requested
+     - parameter dbManager: Storage type
+     - returns: The data will be returned to callback
+     */
     func getContent(from collection: FireStoreCollectionName, with dbManager: DBManager)
 }
 

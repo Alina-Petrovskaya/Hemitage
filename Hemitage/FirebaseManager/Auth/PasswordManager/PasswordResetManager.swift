@@ -40,7 +40,9 @@ class PasswordResetManager: PasswordResetManagerProtocol {
     func setNewPasswordWithObbCode(_ password: String, oobCode: String, completion: @escaping (Result<String, Error>) -> ()) {
         Auth.auth().confirmPasswordReset(withCode: oobCode, newPassword: password) { error in
             if let error = error {
-                print(error.localizedDescription)
+                completion(.failure(error))
+            } else {
+                completion(.success("Password has been changed"))
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  LoginProtocol.swift
+//  AuthProtocol.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 29.04.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc protocol LoginProtocol: AnyObject {
+@objc protocol AuthProtocol: AnyObject {
     
     @objc dynamic var sucssesResult: String? { get }
     @objc dynamic var errorMessage: String? { get }

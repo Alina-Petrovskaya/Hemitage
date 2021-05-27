@@ -9,13 +9,16 @@ import Foundation
 import CoreData
 
 protocol CoreDataManager {
+    
     var viewContext: NSManagedObjectContext { get }
     
     func createRequest(from collection: FireStoreCollectionName, sortByField: String) -> NSFetchRequest<NSManagedObject>
+    
     /**
      Method returns all elements from the given collection
      */
     func getAllItems(from collection: FireStoreCollectionName, completion: ([NSManagedObject]) -> ())
+    
 }
 
 class DataStoreManager: CoreDataManager {

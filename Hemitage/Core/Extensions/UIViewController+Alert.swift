@@ -17,12 +17,11 @@ extension UIViewController {
     }
     
     
-    func showNotificationAlert(with message: String, isNeedToHideSelf: Bool = false) {
+    func showNotificationAlert(with message: String, completion: (() -> ())?) {
         let alert = UIAlertController(title: "Great!", message: message, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
-            if isNeedToHideSelf {
-                self?.navigationController?.popViewController(animated: true)
-            }
+        
+        let cancel = UIAlertAction(title: "Ok", style: .default) { _ in
+            completion?()
         }
         
         alert.addAction(cancel)

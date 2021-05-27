@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WelcomeViewModel: NSObject, LoginProtocol {
+class WelcomeViewModel: NSObject, AuthProtocol {
     
     @objc dynamic private(set) var sucssesResult: String?
     @objc dynamic private(set) var errorMessage: String?

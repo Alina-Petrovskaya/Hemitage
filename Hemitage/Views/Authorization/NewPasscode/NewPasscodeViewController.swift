@@ -46,7 +46,7 @@ class NewPasscodeViewController: UIViewController, KeyboardStateObserver, AuthOb
         super.viewWillAppear(animated)
         
         observeKeyBoard(viewModel: viewModel as? NSObject & KeyboardManagerPorotocol)
-        observeAuth(viewModel: viewModel as? NSObject & LoginProtocol, true)
+        observeAuth(viewModel: viewModel as? NSObject & AuthProtocol, true)
     }
     
     
@@ -75,13 +75,16 @@ class NewPasscodeViewController: UIViewController, KeyboardStateObserver, AuthOb
     
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
-        
+        viewModel.setNewPassword(firstPassword: firstPasswordField.text,
+                                 secondPassword: secondPasswordField.text,
+                                 email: email,
+                                 obbCode: obbcode)
     }
     
     
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     

@@ -13,7 +13,7 @@ class WelcomeViewController: UIViewController, AuthObserver {
     @IBOutlet weak var welcomLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    private let welcomeViewModel: NSObject & LoginProtocol = WelcomeViewModel()
+    private let welcomeViewModel: NSObject & AuthProtocol = WelcomeViewModel()
     var kvoResultOfLogin: NSKeyValueObservation?
     var kvoErrorMessage: NSKeyValueObservation?
     var kvoKeyboardHeight: NSKeyValueObservation?

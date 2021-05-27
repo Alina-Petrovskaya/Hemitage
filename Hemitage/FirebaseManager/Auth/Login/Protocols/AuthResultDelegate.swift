@@ -8,5 +8,7 @@
 import Foundation
 
 protocol AuthResultDelegate {
+    
     func getAuthResult(result: Result<Bool, Error>)
+    
 }

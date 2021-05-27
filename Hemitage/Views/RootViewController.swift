@@ -20,8 +20,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(true)
         
         prepareUI()
-        presentAuthController()
-        //        presentContent()
+//        presentAuthController()
+                presentContent()
         
         PasswordObbCodeManager.shared.callback = { [weak self] result in
 
@@ -32,8 +32,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
                 newPasscodeVC.email = email
                 newPasscodeVC.obbcode = obbcode
 
-                newPasscodeVC.modalPresentationStyle = .fullScreen
-                self?.present(newPasscodeVC, animated: true)
+                self?.navigationController?.pushViewController(newPasscodeVC, animated: true)
+                
 
             case .failure(let error):
                 self?.showErrorAlert(with: error.localizedDescription)

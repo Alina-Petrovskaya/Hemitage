@@ -41,7 +41,7 @@ class PasscodeRecoveryViewController: UIViewController, KeyboardStateObserver, P
         super.viewWillAppear(animated)
         
         observeKeyBoard(viewModel: viewModel as? NSObject & KeyboardManagerPorotocol)
-        observePasscodedManager(viewModel: viewModel as? NSObject & PasswordManagerProtocol, isNeedToHideSelf: false)
+        observePasscodedManager(viewModel: viewModel as? NSObject & PasswordManagerProtocol)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
