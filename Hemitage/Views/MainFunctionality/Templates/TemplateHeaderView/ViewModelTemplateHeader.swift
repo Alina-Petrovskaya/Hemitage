@@ -13,7 +13,7 @@ class ViewModelTemplateHeader: TemplatesViewModelProtocol {
     func getDataForContent() {
         //Get data from resource
         
-        let model = ProfileModel(imageName: "forest", name: "Hi, Pussy", isNewNotificatoins: true)
+        let model = ProfileModel(imageName: "Sleep", name: "Hi, Pussy", isNewNotificatoins: true)
             dataModel?(model)
     }
 }

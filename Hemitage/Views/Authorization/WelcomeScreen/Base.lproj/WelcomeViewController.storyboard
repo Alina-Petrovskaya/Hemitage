@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" secondItem="BC8-cA-bwA" secondAttribute="height" multiplier="1:1" id="Gtd-Nr-HCx"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcom to  Hemitation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iR6-Py-zA0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to  Hemitation" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iR6-Py-zA0">
                                 <rect key="frame" x="20" y="329.66666666666669" width="350" height="79.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="34"/>
                                 <color key="textColor" name="DarkText #18191A"/>

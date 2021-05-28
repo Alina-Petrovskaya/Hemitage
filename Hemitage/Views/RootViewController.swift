@@ -20,8 +20,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(true)
         
         prepareUI()
-//        presentAuthController()
-                presentContent()
+        presentAuthController()
+//                presentContent()
         
         PasswordObbCodeManager.shared.callback = { [weak self] result in
 
@@ -53,7 +53,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
     
     private func presentAuthController() {
-        guard let vc = WelcomeViewController.instantiate() else { return }
+        guard let vc = GroupScreenViewController.instantiate() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
     

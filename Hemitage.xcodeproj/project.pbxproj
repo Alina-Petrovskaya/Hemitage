@@ -90,6 +90,10 @@
 		84A00AD7265E403900087E07 /* NewPasscodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A00AD6265E403900087E07 /* NewPasscodeViewController.storyboard */; };
 		84A00ADB265E5A3900087E07 /* PasswordObbCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ADA265E5A3900087E07 /* PasswordObbCodeManager.swift */; };
 		84A00ADD265E905A00087E07 /* NewPasscodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ADC265E905900087E07 /* NewPasscodeViewModel.swift */; };
+		84A00AE2265F9F1300087E07 /* GroupScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00AE1265F9F1300087E07 /* GroupScreenViewController.swift */; };
+		84A00AE4265F9F4300087E07 /* GroupScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A00AE3265F9F4300087E07 /* GroupScreenViewController.storyboard */; };
+		84A00B0726611EEC00087E07 /* GroupNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A00B0626611EEB00087E07 /* GroupNavigationView.xib */; };
+		84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00B0826611F2100087E07 /* GroupNavigationView.swift */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -230,6 +234,10 @@
 		84A00AD6265E403900087E07 /* NewPasscodeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPasscodeViewController.storyboard; sourceTree = "<group>"; };
 		84A00ADA265E5A3900087E07 /* PasswordObbCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordObbCodeManager.swift; sourceTree = "<group>"; };
 		84A00ADC265E905900087E07 /* NewPasscodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasscodeViewModel.swift; sourceTree = "<group>"; };
+		84A00AE1265F9F1300087E07 /* GroupScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewController.swift; sourceTree = "<group>"; };
+		84A00AE3265F9F4300087E07 /* GroupScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupScreenViewController.storyboard; sourceTree = "<group>"; };
+		84A00B0626611EEB00087E07 /* GroupNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupNavigationView.xib; sourceTree = "<group>"; };
+		84A00B0826611F2100087E07 /* GroupNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationView.swift; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -674,6 +682,25 @@
 			name = KeyboardObserver;
 			sourceTree = "<group>";
 		};
+		84A00AE0265F9EE600087E07 /* GroupScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84A00AE3265F9F4300087E07 /* GroupScreenViewController.storyboard */,
+				84A00AE1265F9F1300087E07 /* GroupScreenViewController.swift */,
+				84A00B0526611EAE00087E07 /* Templates */,
+			);
+			path = GroupScreen;
+			sourceTree = "<group>";
+		};
+		84A00B0526611EAE00087E07 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				84A00B0626611EEB00087E07 /* GroupNavigationView.xib */,
+				84A00B0826611F2100087E07 /* GroupNavigationView.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
 		84D7F799263C2C02004B2DB0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +746,7 @@
 			isa = PBXGroup;
 			children = (
 				84D7F8152642DE02004B2DB0 /* MainScreen */,
+				84A00AE0265F9EE600087E07 /* GroupScreen */,
 				84D7F8162643CFAF004B2DB0 /* Templates */,
 			);
 			path = MainFunctionality;
@@ -955,8 +983,10 @@
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
 				84A00AD7265E403900087E07 /* NewPasscodeViewController.storyboard in Resources */,
 				84D7F81C2643D62C004B2DB0 /* Inter-SemiBold.ttf in Resources */,
+				84A00B0726611EEC00087E07 /* GroupNavigationView.xib in Resources */,
 				84D7F8242643F606004B2DB0 /* MapCollectionViewCell.xib in Resources */,
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
+				84A00AE4265F9F4300087E07 /* GroupScreenViewController.storyboard in Resources */,
 				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 				84D7F82C2644184F004B2DB0 /* BlogCollectionViewCell.xib in Resources */,
@@ -1161,6 +1191,7 @@
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
 				84A00AD0265D1A9300087E07 /* PasswordRecoveryObserver.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
+				84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */,
 				843F0B812655345A004DE5A8 /* Date+StringPresentation.swift in Sources */,
 				843F0B9326579F4A004DE5A8 /* ImageCacheManager.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
@@ -1178,6 +1209,7 @@
 				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
 				849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */,
 				843F0B8A265680B1004DE5A8 /* ContentManager.swift in Sources */,
+				84A00AE2265F9F1300087E07 /* GroupScreenViewController.swift in Sources */,
 				849A50FA2639874F0047340A /* Validation.swift in Sources */,
 				84D7F79B263C2C26004B2DB0 /* LoginManager.swift in Sources */,
 				84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */,

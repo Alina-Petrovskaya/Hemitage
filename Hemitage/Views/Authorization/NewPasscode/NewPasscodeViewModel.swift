@@ -60,7 +60,7 @@ class NewPasscodeViewModel: NSObject, AuthProtocol, KeyboardManagerPorotocol, Ne
             
             switch result {
             
-            case .success(let message):
+            case .success(_):
                 self?.login(email: email, password: password, autorizationType: .email)
                 
             case .failure(let error):
