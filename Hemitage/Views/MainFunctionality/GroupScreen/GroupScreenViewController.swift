@@ -38,8 +38,7 @@ class GroupScreenViewController: UIViewController, UITableViewDataSource {
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        navigationController?.navigationBar.backgroundColor = .white
-        navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "Group 257"), for: .any, barMetrics: .default)
+        navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "Group 257"), for: .default)
         navigationController?.navigationBar.isTranslucent = true
 
         let style = NSMutableParagraphStyle()

@@ -39,7 +39,6 @@
 		848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74626369F270070A3C6 /* WelcomeViewController.swift */; };
 		848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74826369F270070A3C6 /* WelcomeViewController.storyboard */; };
 		848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */; };
-		848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74E26369F2C0070A3C6 /* Assets.xcassets */; };
 		848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF75026369F2C0070A3C6 /* LaunchScreen.storyboard */; };
 		848CF75D26369F2C0070A3C6 /* HemitageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF75C26369F2C0070A3C6 /* HemitageTests.swift */; };
 		848CF76826369F2C0070A3C6 /* HemitageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF76726369F2C0070A3C6 /* HemitageUITests.swift */; };
@@ -94,6 +93,7 @@
 		84A00AE4265F9F4300087E07 /* GroupScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A00AE3265F9F4300087E07 /* GroupScreenViewController.storyboard */; };
 		84A00B0726611EEC00087E07 /* GroupNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A00B0626611EEB00087E07 /* GroupNavigationView.xib */; };
 		84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00B0826611F2100087E07 /* GroupNavigationView.swift */; };
+		84A00B0B2661928800087E07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A00B0A2661928800087E07 /* Assets.xcassets */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -180,7 +180,6 @@
 		848CF74626369F270070A3C6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		848CF74926369F270070A3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WelcomeViewController.storyboard; sourceTree = "<group>"; };
 		848CF74C26369F270070A3C6 /* Hemitage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hemitage.xcdatamodel; sourceTree = "<group>"; };
-		848CF74E26369F2C0070A3C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		848CF75126369F2C0070A3C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848CF75326369F2C0070A3C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848CF75826369F2C0070A3C6 /* HemitageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HemitageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +237,7 @@
 		84A00AE3265F9F4300087E07 /* GroupScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupScreenViewController.storyboard; sourceTree = "<group>"; };
 		84A00B0626611EEB00087E07 /* GroupNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupNavigationView.xib; sourceTree = "<group>"; };
 		84A00B0826611F2100087E07 /* GroupNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationView.swift; sourceTree = "<group>"; };
+		84A00B0A2661928800087E07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -431,8 +431,8 @@
 		848CF77C2636A0510070A3C6 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				84A00B0A2661928800087E07 /* Assets.xcassets */,
 				848CF7822636AB850070A3C6 /* Fonts */,
-				848CF74E26369F2C0070A3C6 /* Assets.xcassets */,
 				84D7F82F264424DE004B2DB0 /* Constants.swift */,
 			);
 			path = Resourses;
@@ -977,6 +977,7 @@
 			files = (
 				84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */,
 				84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */,
+				84A00B0B2661928800087E07 /* Assets.xcassets in Resources */,
 				84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */,
 				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
 				84D7F8122642BA26004B2DB0 /* TemplateHeaderView.xib in Resources */,
@@ -987,7 +988,6 @@
 				84D7F8242643F606004B2DB0 /* MapCollectionViewCell.xib in Resources */,
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
 				84A00AE4265F9F4300087E07 /* GroupScreenViewController.storyboard in Resources */,
-				848CF74F26369F2C0070A3C6 /* Assets.xcassets in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 				84D7F82C2644184F004B2DB0 /* BlogCollectionViewCell.xib in Resources */,
 				84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */,
