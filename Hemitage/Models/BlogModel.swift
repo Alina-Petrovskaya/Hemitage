@@ -6,23 +6,21 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-class BlogModel: Hashable {
-    let uuid = UUID()
-    let id: String
+class BlogModel: Hashable, Codable, Identifiable {
+    @DocumentID var id: String?
     let previewImageName: String
     let title: String
     let subtitle: String
     let date: Date
     
     
-    init(id: String,
-         previewImageName: String,
+    init(previewImageName: String,
          title: String,
          subtitle: String,
          date: Date) {
         
-        self.id               = id
         self.previewImageName = previewImageName
         self.title            = title
         self.subtitle         = subtitle
@@ -30,10 +28,10 @@ class BlogModel: Hashable {
     }
     
     static func == (lhs: BlogModel, rhs: BlogModel) -> Bool {
-        return lhs.uuid == rhs.uuid || lhs.id == rhs.id
+        return lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
+        hasher.combine(id)
     }
 }

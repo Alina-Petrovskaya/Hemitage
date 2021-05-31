@@ -53,7 +53,6 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
                     if let imageName = dataItem.previewImageName {
                         
                         self.cacheManager.cacheObject(imageName: imageName, documentID: dataItem.id, from: .blog, typeOFUpdate: result.typeOfChange) { data in
-                            
                             let item = MainScreenModelWrapper.blog(BlogCollectionViewCellModelView(id: dataItem.id,
                                                                                                    title: dataItem.title,
                                                                                                    subtitle: dataItem.subtitle,
@@ -72,7 +71,9 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
                 else { return }
                 
                 data.forEach { dataItem in
-                    let viewModel = CategoriesCollectionViewCellModelView(id: dataItem.id,title: dataItem.name, imageURL: dataItem.imageURL)
+                    guard let safeId = dataItem.id else { return }
+                    
+                    let viewModel = CategoriesCollectionViewCellModelView(id: safeId, title: dataItem.name, imageURL: dataItem.imageURL)
                     let item = MainScreenModelWrapper.category(viewModel)
                     
                     self.updateItems(typeOfChange: result.typeOfChange,

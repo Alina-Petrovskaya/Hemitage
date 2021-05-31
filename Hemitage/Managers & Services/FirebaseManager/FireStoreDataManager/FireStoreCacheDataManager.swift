@@ -38,14 +38,14 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     
     private func getData(with snapshot: QuerySnapshot, from collection: FireStoreCollectionName) {
         snapshot.documentChanges.forEach { [weak self] documentChange  in
-            let data = documentChange.document.data()
             
             switch collection {
             case .categories:
-                self?.parseCategoryData(with: data, documentId: documentChange.document.documentID) { model in
-                    if let changeType = TypeOfChangeDocument(rawValue: documentChange.type.rawValue) {
-                        self?.callBack?((data: [model], typeOfChange: changeType, collection: collection))
-                    }
+                
+                if let changeType = TypeOfChangeDocument(rawValue: documentChange.type.rawValue),
+                   let data = parseData(with: documentChange.document, model: CategoriesModel.self) {
+                    
+                    self?.callBack?((data: [data], typeOfChange: changeType, collection: collection))
                 }
                 
             case .blog:
@@ -55,18 +55,16 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     }
     
     
-    private func parseCategoryData(with data: [String : Any], documentId: String, completion: @escaping (CategoriesModel) -> ()) {
-        guard let name      = data["name"] as? String,
-              let imageName = data["imageName"] as? String,
-              let imageUrl  = data["imageURL"] as? String
-        else { return }
-        
-        if let url = URL(string: imageUrl) {
-            let data = CategoriesModel(id: documentId, imageURL: url, imageName: imageName, name: name)
-            completion(data)
-        } else {
-            let model = CategoriesModel(id: documentId, imageURL: nil, imageName: imageName, name: name)
-            completion(model)
+    private func parseData<T: Codable>(with snapshot: QueryDocumentSnapshot, model: T.Type) -> T? {
+        do {
+            let data = try snapshot.data(as: model)
+            return data
+            
+        } catch {
+            print("can't parse data")
         }
+        
+        return nil
     }
+    
 }

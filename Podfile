@@ -14,6 +14,7 @@ target 'Hemitage' do
    pod 'FirebaseUI/OAuth'
    pod 'Firebase/Storage'
    pod 'Firebase/Firestore'
+   pod 'FirebaseFirestoreSwift', '~> 8.0.0-beta'
 
    #Facebook
    pod 'FBSDKLoginKit'

@@ -6,21 +6,24 @@
 //
 
 import UIKit
+import SDWebImage
 
 @IBDesignable
 class GroupNavigationView: UIView {
     
-    @IBOutlet var contentView: UIView!
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var topTitle: UILabel!
-    @IBOutlet weak var mediumTitle: UILabel!
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var bottomView: UIView!
+    @IBOutlet private weak var topTitle: UILabel!
+    @IBOutlet private weak var mediumTitle: UILabel!
+    @IBOutlet private weak var image: UIImageView!
+    @IBOutlet private weak var subtitle: UILabel!
     
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         commonInit()
     }
+
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -31,13 +34,12 @@ class GroupNavigationView: UIView {
 
     private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: GroupNavigationView.self), owner: self)
-        
         configureUI()
+        
     }
 
     
     private func configureUI() {
-        contentView.backgroundColor = #colorLiteral(red: 0.4156862745, green: 0.4196078431, blue: 0.6431372549, alpha: 1)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -48,7 +50,23 @@ class GroupNavigationView: UIView {
     }
     
     
-    func updateUI(_ backgroundColor: UIColor, image: UIImage, title: String, subtitle: String) {
+    func updateUI<T: ViewModelConfigurator>(with model: T) {
+        let model = model as? GroupNavigationViewModel
+        let data = model?.getData()
+        
+        mediumTitle.text = data?.title
+        topTitle.text = data?.title
+        subtitle.text = data?.subtitle
+        
+        image.sd_setImage(with: data?.imageURL) { [weak self] image, _, _, _ in
+            if let image = image {
+                self?.contentView.backgroundColor = UIColor(patternImage: image)
+            }
+        }
+    }
+    
+    
+    @IBAction func backbuttonTapped(_ sender: UIButton) {
         
     }
     

@@ -47,6 +47,7 @@ extension UITextField {
         self.leftViewMode = .always
     }
     
+    
    private func setRightButtonImage(with image: UIImage) {
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 24))
@@ -71,9 +72,8 @@ extension UITextField {
         if let buttonRightImage: UIImage = self.isSecureTextEntry ? UIImage(systemName: "eye.slash") : UIImage(systemName: "eye") {
             rightImage = buttonRightImage
         }
-        
-        
     }
+    
     
 }
 

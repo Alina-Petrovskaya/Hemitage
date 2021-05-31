@@ -21,8 +21,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         
         prepareUI()
         passwordManagerObserve()
-        presentAuthController()
-//                presentContent()
+//        presentAuthController()
+                presentContent()
         
         
         

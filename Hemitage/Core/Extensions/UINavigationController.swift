@@ -12,7 +12,7 @@ extension UINavigationController {
     func setupForGroupController(with color: UIColor) {
         self.navigationBar.isHidden = false
         self.navigationBar.prefersLargeTitles = true
-        self.navigationBar.setBackgroundImage(#colorLiteral(red: 0.4156862745, green: 0.4196078431, blue: 0.6431372549, alpha: 1).image(), for: .default)
+        self.navigationBar.setBackgroundImage(color.image(), for: .default)
         self.navigationBar.isTranslucent = true
         self.navigationItem.largeTitleDisplayMode = .automatic
 

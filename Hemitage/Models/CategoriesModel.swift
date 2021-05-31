@@ -6,15 +6,15 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-class CategoriesModel: Hashable, Codable {
-    var id: String
+class CategoriesModel: Hashable, Codable, Identifiable {
+    @DocumentID var id: String? 
     var imageURL: URL?
     var imageName: String
     var name: String
     
-    init(id: String, imageURL: URL?, imageName: String, name: String) {
-        self.id        = id
+    init(imageURL: URL?, imageName: String, name: String) {
         self.name      = name
         self.imageURL  = imageURL
         self.imageName = imageName

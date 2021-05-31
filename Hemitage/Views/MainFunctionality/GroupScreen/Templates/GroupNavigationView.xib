@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,9 +20,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupNavigationView" customModule="Hemitage" customModuleProvider="target">
             <connections>
                 <outlet property="bottomView" destination="25s-SN-hn0" id="6ca-Sm-Bcp"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="Cw9-vt-ifE"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="IVm-1h-tPZ"/>
                 <outlet property="image" destination="ipp-G8-oeu" id="7jc-FC-IgV"/>
                 <outlet property="mediumTitle" destination="Pr4-ln-FXH" id="POl-s8-A8u"/>
+                <outlet property="subtitle" destination="FgX-oI-3Zs" id="3GI-OJ-00K"/>
                 <outlet property="topTitle" destination="QK8-VA-xc1" id="EWt-k5-vVf"/>
             </connections>
         </placeholder>
@@ -30,8 +32,9 @@
             <rect key="frame" x="0.0" y="0.0" width="424" height="235"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 257" translatesAutoresizingMaskIntoConstraints="NO" id="ipp-G8-oeu">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ipp-G8-oeu">
                     <rect key="frame" x="0.0" y="0.0" width="424" height="235"/>
+                    <color key="backgroundColor" name="DarkText #18191A"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25s-SN-hn0">
                     <rect key="frame" x="0.0" y="171.5" width="424" height="63.5"/>
@@ -45,28 +48,31 @@
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" backgroundImage="chevron.backward" catalog="system"/>
+                    <connections>
+                        <action selector="backbuttonTapped:" destination="-1" eventType="touchUpInside" id="iyX-mp-2tN"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meditation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Pr4-ln-FXH">
-                    <rect key="frame" x="20" y="74.5" width="124" height="27"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Pr4-ln-FXH">
+                    <rect key="frame" x="20" y="74.5" width="49" height="27"/>
                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20,000 Free Meditations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgX-oI-3Zs">
-                    <rect key="frame" x="20" y="111.5" width="151" height="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgX-oI-3Zs">
+                    <rect key="frame" x="20" y="111.5" width="47.5" height="16"/>
                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meditation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="QK8-VA-xc1">
-                    <rect key="frame" x="51.5" y="27.5" width="124" height="27"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="QK8-VA-xc1">
+                    <rect key="frame" x="51.5" y="27.5" width="49" height="27"/>
                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" red="0.78809523579999996" green="0.82040566209999999" blue="0.84704232219999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="25s-SN-hn0" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="9Tm-Kg-OZ7"/>
                 <constraint firstItem="25s-SN-hn0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9b3-qN-jUr"/>
@@ -90,8 +96,10 @@
         </view>
     </objects>
     <resources>
-        <image name="Group 257" width="375" height="242"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <namedColor name="DarkText #18191A">
+            <color red="0.093999996781349182" green="0.097999997437000275" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

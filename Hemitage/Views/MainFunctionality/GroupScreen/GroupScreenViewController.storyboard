@@ -20,31 +20,38 @@
                                 <rect key="frame" x="0.0" y="104" width="414" height="792"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zXU-8j-tAY">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="792"/>
+                                        <rect key="frame" x="0.0" y="58" width="414" height="734"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="v0o-2W-WKu">
-                                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v0o-2W-WKu" id="3BD-2w-rEZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
                                     </tableView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CRR-3c-PDT">
+                                        <rect key="frame" x="20" y="0.0" width="394" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="WfB-2d-pel"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pJF-KG-1e5">
+                                            <size key="itemSize" width="128" height="51"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="zXU-8j-tAY" firstAttribute="leading" secondItem="FZ0-53-3Mk" secondAttribute="leading" id="CVL-Qp-VsA"/>
-                                    <constraint firstItem="zXU-8j-tAY" firstAttribute="top" secondItem="FZ0-53-3Mk" secondAttribute="top" id="gQw-II-rfn"/>
-                                    <constraint firstAttribute="trailing" secondItem="zXU-8j-tAY" secondAttribute="trailing" id="hsP-MQ-9xR"/>
-                                    <constraint firstAttribute="bottom" secondItem="zXU-8j-tAY" secondAttribute="bottom" id="i7Q-gb-lgI"/>
+                                    <constraint firstAttribute="trailing" secondItem="CRR-3c-PDT" secondAttribute="trailing" id="3hF-FJ-s0V"/>
+                                    <constraint firstItem="zXU-8j-tAY" firstAttribute="leading" secondItem="FZ0-53-3Mk" secondAttribute="leading" id="CVz-1b-l7m"/>
+                                    <constraint firstAttribute="trailing" secondItem="zXU-8j-tAY" secondAttribute="trailing" id="X5X-W8-rNq"/>
+                                    <constraint firstItem="CRR-3c-PDT" firstAttribute="top" secondItem="FZ0-53-3Mk" secondAttribute="top" id="Y3w-aI-dy7"/>
+                                    <constraint firstItem="CRR-3c-PDT" firstAttribute="leading" secondItem="FZ0-53-3Mk" secondAttribute="leading" constant="20" id="kZP-Y9-jZ7"/>
+                                    <constraint firstAttribute="bottom" secondItem="zXU-8j-tAY" secondAttribute="bottom" id="ks6-Sb-jzy"/>
+                                    <constraint firstItem="zXU-8j-tAY" firstAttribute="top" secondItem="CRR-3c-PDT" secondAttribute="bottom" constant="10" id="pC7-Hd-kCq"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.41809523110000002" green="0.42122688889999998" blue="0.62747424839999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FZ0-53-3Mk" secondAttribute="trailing" id="bLZ-7L-gEB"/>
                             <constraint firstAttribute="bottom" secondItem="FZ0-53-3Mk" secondAttribute="bottom" id="fRp-n4-ho5"/>
@@ -53,6 +60,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="CRR-3c-PDT" id="2Ax-pt-jxS"/>
                         <outlet property="contentView" destination="FZ0-53-3Mk" id="t5y-Ht-WxO"/>
                         <outlet property="tableView" destination="zXU-8j-tAY" id="yaw-bl-dIg"/>
                     </connections>

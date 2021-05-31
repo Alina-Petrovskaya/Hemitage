@@ -98,13 +98,14 @@ class DataStoreManager: CoreDataManager {
                 switch result.typeOfChange {
                 case .added, .modified:
                     data.forEach { model  in
-                        let items = self.buildRequest(id: model.id, object: Article.self)
+                        guard let safeId = model.id else { return }
+                        let items = self.buildRequest(id: safeId, object: Article.self)
                         
                         let itemToUpdate: Article = items?.count != 0
                             ? (items?[0] ?? Article(context: self.viewContext))
                             : Article(context: self.viewContext)
                         
-                        itemToUpdate.id               = model.id
+                        itemToUpdate.id               = safeId
                         itemToUpdate.title            = model.title
                         itemToUpdate.subtitle         = model.subtitle
                         itemToUpdate.date             = model.date
@@ -115,7 +116,8 @@ class DataStoreManager: CoreDataManager {
                 
                 case .removed:
                     data.forEach { model in
-                        if let item = self.buildRequest(id: model.id, object: Article.self)?[0] {
+                        guard let safeId = model.id else { return }
+                        if let item = self.buildRequest(id: safeId, object: Article.self)?[0] {
                             self.viewContext.delete(item)
                             self.saveContext()
                         }
