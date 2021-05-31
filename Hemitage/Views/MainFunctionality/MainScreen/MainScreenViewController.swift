@@ -10,7 +10,7 @@ import UIKit
 class MainScreenViewController: UIViewController {
 
     var viewModel: MainScreenViewModelProtocol = MainScreenViewModel()
-    let builder = MainScreenBuilder()
+    
     private var dataSourceManager: MainScreenDataSourceManagerProtocol?
     
     @IBOutlet private weak var songBottomView: TemplateSongView!
@@ -23,6 +23,7 @@ class MainScreenViewController: UIViewController {
         
         navigationController?.navigationBar.isHidden = true
         
+        let builder = MainScreenBuilder()
         dataSourceManager = builder.build(with: collectionView, with: viewModel)
         
         
@@ -33,7 +34,7 @@ class MainScreenViewController: UIViewController {
     
     private func handlingCollectionViewDelegateEvents() {
         
-        builder.collectionViewDelegate.callBack = { [weak self] indexPath in
+        dataSourceManager?.collectionViewDelegate.callBack = { [weak self] indexPath in
             guard let item = self?.viewModel.getItem(for: indexPath) else { return }
             
             switch item {

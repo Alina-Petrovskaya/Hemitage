@@ -20,17 +20,23 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewWillAppear(true)
         
         prepareUI()
+        passwordManagerObserve()
         presentAuthController()
 //                presentContent()
         
+        
+        
+    }
+    
+    private func passwordManagerObserve() {
         PasswordObbCodeManager.shared.callback = { [weak self] result in
 
             switch result {
             case .success((let obbcode, let email)):
                 guard let newPasscodeVC = NewPasscodeViewController.instantiate() else { return }
                 
-                newPasscodeVC.email = email
-                newPasscodeVC.obbcode = obbcode
+                newPasscodeVC.viewModel = NewPasscodeViewModel(email: email, obbCode: obbcode)
+                
 
                 self?.navigationController?.pushViewController(newPasscodeVC, animated: true)
                 
@@ -39,7 +45,6 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
                 self?.showErrorAlert(with: error.localizedDescription)
             }
         }
-        
     }
     
     private func presentContent() {

@@ -9,11 +9,10 @@ import UIKit
 
 class GroupScreenViewController: UIViewController, UITableViewDataSource {
     
-    
-    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     var observer: NSKeyValueObservation?
+    let viewModel = GroupScreenViewModel()
 
     let navigationView: GroupNavigationView = {
         let view = GroupNavigationView()
@@ -22,51 +21,31 @@ class GroupScreenViewController: UIViewController, UITableViewDataSource {
         return view
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBar(with: #colorLiteral(red: 0.4173461795, green: 0.4213980436, blue: 0.6433352828, alpha: 1))
+        
         updateNavigationBarView()
+        observeNavBarState()
         
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     
-    private func setupNavigationBar(with color: UIColor) {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
-        navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "Group 257"), for: .default)
-        navigationController?.navigationBar.isTranslucent = true
+    private func observeNavBarState() {
 
-        let style = NSMutableParagraphStyle()
-        style.lineHeightMultiple = 2
-
-        navigationController?.navigationBar.largeTitleTextAttributes = [
-            .baselineOffset: 30.0,
-            .paragraphStyle: style
-        ]
-
-        
         observer = navigationController?.navigationBar.observe(\.bounds, options: [.new]) { [weak self] navigationBar, changes in
-            
-            if let height = changes.newValue?.height {
-                if height > 44.0 {
-                    self?.navigationView.mediumTitle.isHidden = false
-                    self?.navigationView.topTitle.isHidden = true
-                } else {
-                    self?.navigationView.mediumTitle.isHidden = true
-                    self?.navigationView.topTitle.isHidden = false
-                    
-                }
-            }
+            guard let height = changes.newValue?.height else { return }
+            self?.viewModel.heightNavBarHandling(height: Double(height), completion: {
+                self?.navigationView.regulateElementsTransparency()
+            })
         }
     }
     
-    
     private func updateNavigationBarView() {
+        navigationController?.setupForGroupController(with: #colorLiteral(red: 0.4156862745, green: 0.4196078431, blue: 0.6431372549, alpha: 1))
+        
         navigationController?.navigationBar.addSubview(navigationView)
         NSLayoutConstraint.activate([
             navigationView.leadingAnchor.constraint(equalTo: navigationController!.navigationBar.leadingAnchor, constant: -1),

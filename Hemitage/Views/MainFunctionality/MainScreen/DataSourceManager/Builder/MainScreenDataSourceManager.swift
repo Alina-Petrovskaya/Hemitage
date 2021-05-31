@@ -10,6 +10,7 @@ import UIKit
 protocol MainScreenDataSourceManagerProtocol {
     
     var headerCallback: (() -> ())? { get set }
+    var collectionViewDelegate: MainScreenCollectionViewDelegate { get }
     
     func reloadData(with viewModel: MainScreenViewModelProtocol)
     func insertItems(items: [MainScreenModelWrapper], at section: MainScreenTypeOfSection)
@@ -24,10 +25,12 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
     private var dataSource: UICollectionViewDiffableDataSource<MainScreenTypeOfSection, MainScreenModelWrapper>?
     
     var headerCallback: (() -> ())?
+    var collectionViewDelegate = MainScreenCollectionViewDelegate()
     
     
     init(for collectionView: UICollectionView) {
         self.collectionView = collectionView
+        collectionView.delegate = collectionViewDelegate
         setupDataSource()
     }
     

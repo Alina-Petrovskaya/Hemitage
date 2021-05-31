@@ -12,12 +12,10 @@ class MainScreenCollectionViewSetup {
     private let collectionView: UICollectionView
     private let layout: MainScreenLayoutConstructorProtocol
     
-    init(for collectionView: UICollectionView, with delegate: MainScreenCollectionViewDelegate, with customLayout: MainScreenLayoutConstructorProtocol) {
+    init(for collectionView: UICollectionView, with customLayout: MainScreenLayoutConstructorProtocol) {
         
         self.collectionView = collectionView
         self.layout = customLayout
-        
-        collectionView.delegate = delegate
     }
     
     func registerNibs() {

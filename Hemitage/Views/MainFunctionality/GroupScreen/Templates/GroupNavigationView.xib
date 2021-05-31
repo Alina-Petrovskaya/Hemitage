@@ -20,6 +20,7 @@
             <connections>
                 <outlet property="bottomView" destination="25s-SN-hn0" id="6ca-Sm-Bcp"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Cw9-vt-ifE"/>
+                <outlet property="image" destination="ipp-G8-oeu" id="7jc-FC-IgV"/>
                 <outlet property="mediumTitle" destination="Pr4-ln-FXH" id="POl-s8-A8u"/>
                 <outlet property="topTitle" destination="QK8-VA-xc1" id="EWt-k5-vVf"/>
             </connections>

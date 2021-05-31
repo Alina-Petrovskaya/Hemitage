@@ -94,6 +94,9 @@
 		84A00B0726611EEC00087E07 /* GroupNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A00B0626611EEB00087E07 /* GroupNavigationView.xib */; };
 		84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00B0826611F2100087E07 /* GroupNavigationView.swift */; };
 		84A00B0B2661928800087E07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A00B0A2661928800087E07 /* Assets.xcassets */; };
+		84BE17CE266418B300AF1CD4 /* UIColor+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17CD266418B300AF1CD4 /* UIColor+Image.swift */; };
+		84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */; };
+		84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */; };
 		84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */; };
 		84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */; };
 		84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */; };
@@ -238,6 +241,9 @@
 		84A00B0626611EEB00087E07 /* GroupNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupNavigationView.xib; sourceTree = "<group>"; };
 		84A00B0826611F2100087E07 /* GroupNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationView.swift; sourceTree = "<group>"; };
 		84A00B0A2661928800087E07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84BE17CD266418B300AF1CD4 /* UIColor+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Image.swift"; sourceTree = "<group>"; };
+		84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModel.swift; sourceTree = "<group>"; };
+		84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		84D7F784263AB5C2004B2DB0 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		84D7F786263AB62F004B2DB0 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationType.swift; sourceTree = "<group>"; };
@@ -352,15 +358,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		843F0B8D265680EC004DE5A8 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				849A51012639A2570047340A /* KeyboardManager.swift */,
-				843F0B89265680B1004DE5A8 /* ContentManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		848CF73626369F270070A3C6 = {
 			isa = PBXGroup;
 			children = (
@@ -391,9 +388,7 @@
 				848CF79A2636B3E00070A3C6 /* Core */,
 				848CF7812636AABE0070A3C6 /* Models */,
 				848CF79D2636B49E0070A3C6 /* Views */,
-				848CF7802636A2D60070A3C6 /* FirebaseManager */,
-				848CF7992636B38F0070A3C6 /* CoreData */,
-				84A00ABC265B897C00087E07 /* ImageManager */,
+				84BE17D12664DA8000AF1CD4 /* Managers & Services */,
 				848CF77C2636A0510070A3C6 /* Resourses */,
 				848CF77826369FFA0070A3C6 /* Settings */,
 			);
@@ -452,7 +447,6 @@
 		848CF7812636AABE0070A3C6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				843F0B8D265680EC004DE5A8 /* Managers */,
 				849C4E67264A8D3800C26C53 /* SongModel.swift */,
 				849C4E70264ACB8500C26C53 /* ProfileModel.swift */,
 				849C4E72264ACC2200C26C53 /* CategoriesModel.swift */,
@@ -512,6 +506,8 @@
 				849A50E926394D600047340A /* AppDelegate+Navigation.swift */,
 				84D7F782263AB17C004B2DB0 /* UIViewController+Alert.swift */,
 				843F0B802655345A004DE5A8 /* Date+StringPresentation.swift */,
+				84BE17CD266418B300AF1CD4 /* UIColor+Image.swift */,
+				84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -687,6 +683,7 @@
 			children = (
 				84A00AE3265F9F4300087E07 /* GroupScreenViewController.storyboard */,
 				84A00AE1265F9F1300087E07 /* GroupScreenViewController.swift */,
+				84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */,
 				84A00B0526611EAE00087E07 /* Templates */,
 			);
 			path = GroupScreen;
@@ -699,6 +696,34 @@
 				84A00B0826611F2100087E07 /* GroupNavigationView.swift */,
 			);
 			path = Templates;
+			sourceTree = "<group>";
+		};
+		84BE17D12664DA8000AF1CD4 /* Managers & Services */ = {
+			isa = PBXGroup;
+			children = (
+				848CF7802636A2D60070A3C6 /* FirebaseManager */,
+				84BE17D32664DADC00AF1CD4 /* ContentManager */,
+				84A00ABC265B897C00087E07 /* ImageManager */,
+				848CF7992636B38F0070A3C6 /* CoreData */,
+				84BE17D22664DAB300AF1CD4 /* KeyboardManager */,
+			);
+			path = "Managers & Services";
+			sourceTree = "<group>";
+		};
+		84BE17D22664DAB300AF1CD4 /* KeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				849A51012639A2570047340A /* KeyboardManager.swift */,
+			);
+			path = KeyboardManager;
+			sourceTree = "<group>";
+		};
+		84BE17D32664DADC00AF1CD4 /* ContentManager */ = {
+			isa = PBXGroup;
+			children = (
+				843F0B89265680B1004DE5A8 /* ContentManager.swift */,
+			);
+			path = ContentManager;
 			sourceTree = "<group>";
 		};
 		84D7F799263C2C02004B2DB0 /* Protocols */ = {
@@ -1186,6 +1211,7 @@
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
+				84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
 				84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */,
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
@@ -1193,6 +1219,7 @@
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
 				84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */,
 				843F0B812655345A004DE5A8 /* Date+StringPresentation.swift in Sources */,
+				84BE17CE266418B300AF1CD4 /* UIColor+Image.swift in Sources */,
 				843F0B9326579F4A004DE5A8 /* ImageCacheManager.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
@@ -1235,6 +1262,7 @@
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
 				84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */,
 				84D7F78D263AF8E9004B2DB0 /* AuthProtocol.swift in Sources */,
+				84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */,
 				843F0B5B26526E43004DE5A8 /* FireStoreCollectionName.swift in Sources */,
 				849C4E79264B102800C26C53 /* MainScreenModelWrapper.swift in Sources */,
 				84A00ACE265CFD2500087E07 /* PasswordResetManager.swift in Sources */,

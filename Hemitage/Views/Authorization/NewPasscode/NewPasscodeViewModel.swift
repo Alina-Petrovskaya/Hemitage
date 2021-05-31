@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NewPasscodeViewModelProtocol {
-    func setNewPassword(firstPassword: String?, secondPassword: String?, email: String?, obbCode: String?)
+    func setNewPassword(firstPassword: String?, secondPassword: String?)
 }
 
 
@@ -22,9 +22,15 @@ class NewPasscodeViewModel: NSObject, AuthProtocol, KeyboardManagerPorotocol, Ne
     private var authManager     = AuthorizationTypeQualifier()
     private var keyBoardManager = KeyboardManager()
     private let validator       = Validation()
+    private var obbCode: String
+    private var email: String
     
     
-    override init() {
+    init(email: String, obbCode: String ) {
+        
+        self.obbCode = obbCode
+        self.email   = email
+        
         super.init()
         
         keyBoardManager.keyboardStateChanged = { [weak self] height in
@@ -33,7 +39,7 @@ class NewPasscodeViewModel: NSObject, AuthProtocol, KeyboardManagerPorotocol, Ne
     }
     
     
-    func setNewPassword(firstPassword: String?, secondPassword: String?, email: String?, obbCode: String?) {
+    func setNewPassword(firstPassword: String?, secondPassword: String?) {
         guard firstPassword == secondPassword else {
             errorMessage = "Passwords must match"
             return
@@ -44,24 +50,17 @@ class NewPasscodeViewModel: NSObject, AuthProtocol, KeyboardManagerPorotocol, Ne
             return
         }
         
-        
-        if let safeObbCode = obbCode, let safeEmail = email {
-            passwordProcessing(safeObbCode, secondPassword!, for: safeEmail)
-            
-        } else {
-            errorMessage = "It seems like something is wrong. Contact the app developer"
-        }
-        
+        passwordProcessing(secondPassword!)
     }
     
     
-    private func passwordProcessing(_ obbCode: String, _ password: String, for email: String) {
+    private func passwordProcessing(_ password: String) {
         passwordManager.setNewPasswordWithObbCode(password, oobCode: obbCode) { [weak self] result in
             
             switch result {
             
             case .success(_):
-                self?.login(email: email, password: password, autorizationType: .email)
+                self?.login(email: self?.email, password: password, autorizationType: .email)
                 
             case .failure(let error):
                 self?.errorMessage = error.localizedDescription

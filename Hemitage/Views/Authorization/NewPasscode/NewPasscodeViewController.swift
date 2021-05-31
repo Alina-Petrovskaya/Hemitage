@@ -19,10 +19,7 @@ class NewPasscodeViewController: UIViewController, KeyboardStateObserver, AuthOb
     var kvoErrorMessage: NSKeyValueObservation?
     var kvoKeyboardHeight: NSKeyValueObservation?
    
-    var email: String?
-    var obbcode: String?
-    
-    private let viewModel: NSObject & NewPasscodeViewModelProtocol = NewPasscodeViewModel()
+    var viewModel: (NSObject & NewPasscodeViewModelProtocol)?
     
     var keyboardHeight: CGFloat = 0 {
         didSet {
@@ -75,10 +72,7 @@ class NewPasscodeViewController: UIViewController, KeyboardStateObserver, AuthOb
     
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
-        viewModel.setNewPassword(firstPassword: firstPasswordField.text,
-                                 secondPassword: secondPasswordField.text,
-                                 email: email,
-                                 obbCode: obbcode)
+        viewModel?.setNewPassword(firstPassword: firstPasswordField.text, secondPassword: secondPasswordField.text)
     }
     
     
