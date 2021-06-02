@@ -10,18 +10,30 @@ import FirebaseFirestoreSwift
 
 class CategoriesModel: Hashable, Codable, Identifiable {
     @DocumentID var id: String? 
-    var imageURL: URL?
-    var imageName: String
-    var name: String
+    let imageURL: URL?
+    let imageName: String
+    let detailImageURL: URL?
+    let subTitle: String?
+    let name: String
+    let isDarkText: Bool
     
-    init(imageURL: URL?, imageName: String, name: String) {
-        self.name      = name
-        self.imageURL  = imageURL
-        self.imageName = imageName
+    init(imageURL: URL?,
+         imageName: String,
+         name: String,
+         detailImageURL: URL?,
+         subTitle: String?,
+         isDarkText: Bool) {
+        
+        self.name           = name
+        self.imageURL       = imageURL
+        self.imageName      = imageName
+        self.detailImageURL = detailImageURL
+        self.subTitle       = subTitle
+        self.isDarkText     = isDarkText
     }
     
     static func ==(lhs: CategoriesModel, rhs: CategoriesModel) -> Bool {
-        return lhs.id == rhs.id && lhs.name == rhs.name
+        return lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {

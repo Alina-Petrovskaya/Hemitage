@@ -9,25 +9,32 @@ import Foundation
 
 class GroupNavigationViewModel: ViewModelConfigurator {
     
+    typealias DataType = (title: String, imageURL: URL?, subtitle: String?, isDarkText: Bool)
+    
     private var title: String
     private var imageURL: URL?
     private var subtitle: String?
+    private var isDarkText: Bool
     
-    init(title: String, imageURL: URL?, subtitle: String?) {
-        self.title    = title
-        self.imageURL = imageURL
-        self.subtitle = subtitle
+    
+    init(with data: DataType) {
+        self.title      = data.title
+        self.imageURL   = data.imageURL
+        self.subtitle   = data.subtitle
+        self.isDarkText = data.isDarkText
     }
     
     
-    func getData() -> (title: String, imageURL: URL?, subtitle: String?) {
-        return (title: title, imageURL: imageURL, subtitle: subtitle)
+    func getData() -> (DataType) {
+        return (title: title, imageURL: imageURL, subtitle: subtitle, isDarkText: isDarkText)
     }
     
-    func setData(with data: (title: String, imageURL: URL?, subtitle: String?) ) {
-        self.title    = data.title
-        self.imageURL = data.imageURL
-        self.subtitle = data.subtitle
+    
+    func setData(with data: DataType ) {
+        self.title      = data.title
+        self.imageURL   = data.imageURL
+        self.subtitle   = data.subtitle
+        self.isDarkText = data.isDarkText
     }
     
 }

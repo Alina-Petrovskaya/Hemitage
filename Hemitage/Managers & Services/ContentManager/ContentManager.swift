@@ -22,6 +22,11 @@ protocol ContentManagerProtocol {
      - returns: The data will be returned to callback
      */
     func getContent(from collection: FireStoreCollectionName, with dbManager: DBManager)
+    
+    func queryItemFromFirebase<T: Hashable & Codable>(with id: String,
+                                                      from collection: FireStoreCollectionName,
+                                                      with model: T.Type,
+                                                      completion: @escaping (T) -> ())
 }
 
 
@@ -34,11 +39,10 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
     var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     
     private lazy var fireBaseManager: FireStoreDataManagerProtocol = FireStoreCacheDataManager()
-    private lazy var coreDataManager: CoreDataManager              = DataStoreManager()
     
     private lazy var fetchedResultsBlog = NSFetchedResultsController(
-        fetchRequest: coreDataManager.createRequest(from: .blog, sortByField: "date"),
-        managedObjectContext: coreDataManager.viewContext,
+        fetchRequest: DataStoreManager.shared.createRequest(from: .blog, sortByField: "date"),
+        managedObjectContext: DataStoreManager.shared.viewContext,
         sectionNameKeyPath: nil,
         cacheName: nil)
     
@@ -50,7 +54,7 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
             manageContentWithFirebase(from: collection)
             
         case .coreDataManager:
-            coreDataManager.getAllItems(from: collection) { [weak self] data in
+            DataStoreManager.shared.getAllItems(from: collection) { [weak self] data in
                 self?.callback?((data: data, typeOfChange: .added, collection: collection))
             }
             
@@ -59,13 +63,26 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     
+    func queryItemFromFirebase<T: Hashable & Codable>(with id: String,
+                                          from collection: FireStoreCollectionName,
+                                          with model: T.Type,
+                                          completion: @escaping (T) -> ()) {
+        
+       
+        fireBaseManager.queryItem(from: collection, by: id, with: model) { item in
+            completion(item)
+        }
+        
+        
+    }
+   
     
     private func manageContentWithFirebase(from collection: FireStoreCollectionName) {
         fireBaseManager.callBack = { [weak self] result in
             self?.callback?(result)
         }
         
-        fireBaseManager.fetchData(from: collection)
+        fireBaseManager.fetchData(from: collection, with: CategoriesModel.self)
     }
     
     
@@ -94,10 +111,7 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
             case .update:
                 callback?((data: [blogObject], typeOfChange: .modified, collection: .blog))
                 
-            case .move:
-                break
-                
-            @unknown default:
+            default:
                break
             }
         }

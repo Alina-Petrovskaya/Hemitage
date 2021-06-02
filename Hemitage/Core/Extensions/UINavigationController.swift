@@ -9,11 +9,10 @@ import UIKit
 
 extension UINavigationController {
     
-    func setupForGroupController(with color: UIColor) {
+    func setupForGroupController() {
+        
         self.navigationBar.isHidden = false
         self.navigationBar.prefersLargeTitles = true
-        self.navigationBar.setBackgroundImage(color.image(), for: .default)
-        self.navigationBar.isTranslucent = true
         self.navigationItem.largeTitleDisplayMode = .automatic
 
         let style = NSMutableParagraphStyle()

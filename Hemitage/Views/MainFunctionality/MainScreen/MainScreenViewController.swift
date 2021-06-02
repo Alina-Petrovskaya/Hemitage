@@ -35,19 +35,23 @@ class MainScreenViewController: UIViewController {
     private func handlingCollectionViewDelegateEvents() {
         
         dataSourceManager?.collectionViewDelegate.callBack = { [weak self] indexPath in
-            guard let item = self?.viewModel.getItem(for: indexPath) else { return }
-            
-            switch item {
-            case .map(_):
-                break
+            self?.viewModel.getItem(for: indexPath) { result in
+                switch result.section {
                 
-            case .category(_):
-                print("Present group VC")
-                
-                
-            case .blog(_):
-                print("Present article detail VC")
-                
+                case .map:
+                    break
+                    
+                case .categories:
+                    guard let groupScreenVC = GroupScreenViewController.instantiate(),
+                          let model = result.model as? CategoriesModel
+                    else { return }
+                    
+                    groupScreenVC.viewModel = GroupScreenViewModel(with: model)
+                    self?.navigationController?.pushViewController(groupScreenVC, animated: true)
+                    
+                case .blog:
+                    print("Present article detail VC")
+                }
             }
         }
         

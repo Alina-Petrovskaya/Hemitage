@@ -25,7 +25,7 @@ enum MainScreenModelWrapper: Hashable {
             modelToUpdate.updateContent(with: data)
             
         case .category(let modelToUpdate):
-            let data: (imageURL: URL?, title: String) = viewModel.getData()
+            let data: (id: String, imageURL: URL?, title: String) = viewModel.getData()
             modelToUpdate.updateContent(with: data)
             
         case .map(let modelToUpdate):
@@ -48,5 +48,22 @@ enum MainScreenModelWrapper: Hashable {
         case .map(let viewModel):
             return viewModel
         }
+    }
+    
+    
+    func getItemId() -> String {
+        switch self {
+        case .blog(_):
+            break
+            
+        case .category(let viewModel):
+            let data: (id: String, imageURL: URL?, title: String) = viewModel.getData()
+            return data.id
+            
+        case .map(_):
+            break
+        }
+        
+        return ""
     }
 }

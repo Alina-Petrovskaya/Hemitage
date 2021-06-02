@@ -22,14 +22,14 @@ class CategoriesCollectionViewCellModelView: MainScreenCollectionViewCellModelVi
     
     
     func updateContent<T>(with data: T) {
-        guard let safeData = data as? (imageURL: URL?, title: String) else { return }
+        guard let safeData = data as? (id: String, imageURL: URL?, title: String) else { return }
         imageURL = safeData.imageURL
         title    = safeData.title
     }
     
     
     func getData<T>() -> T {
-        guard let returnData = (imageURL: imageURL, title: title) as? T else {
+        guard let returnData = (id: id, imageURL: imageURL, title: title) as? T else {
             fatalError("Can't return data for Categories row")
         }
         return returnData

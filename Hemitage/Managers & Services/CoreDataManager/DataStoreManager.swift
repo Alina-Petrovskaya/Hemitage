@@ -13,6 +13,7 @@ protocol CoreDataManager {
     var viewContext: NSManagedObjectContext { get }
     
     func createRequest(from collection: FireStoreCollectionName, sortByField: String) -> NSFetchRequest<NSManagedObject>
+    func getQueryedItems<T: NSManagedObject>(with id: String, for model: T.Type) -> [T]?
     
     /**
      Method returns all elements from the given collection
@@ -22,7 +23,13 @@ protocol CoreDataManager {
 }
 
 class DataStoreManager: CoreDataManager {
-    private var dataManager: FireStoreDataManagerProtocol = FireStoreDataManager()
+    
+    static var shared: CoreDataManager = DataStoreManager()
+    private var dataManager: FireStoreDataManagerProtocol = FireStoreCacheDataManager()
+    
+    private init() {
+        
+    }
     
     // MARK: - Core Data stack
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -83,6 +90,7 @@ class DataStoreManager: CoreDataManager {
         
         getDataFromDB(from: collection)
     }
+   
     
     
     private func getDataFromDB(from collection: FireStoreCollectionName) {
@@ -98,12 +106,11 @@ class DataStoreManager: CoreDataManager {
                 switch result.typeOfChange {
                 case .added, .modified:
                     data.forEach { model  in
-                        guard let safeId = model.id else { return }
-                        let items = self.buildRequest(id: safeId, object: Article.self)
+                        guard let safeId = model.id,
+                              let items = self.getQueryedItems(with: safeId, for: Article.self)
+                        else { return }
                         
-                        let itemToUpdate: Article = items?.count != 0
-                            ? (items?[0] ?? Article(context: self.viewContext))
-                            : Article(context: self.viewContext)
+                        let itemToUpdate: Article = items.count != 0 ? items[0] : Article(context: self.viewContext)
                         
                         itemToUpdate.id               = safeId
                         itemToUpdate.title            = model.title
@@ -117,7 +124,7 @@ class DataStoreManager: CoreDataManager {
                 case .removed:
                     data.forEach { model in
                         guard let safeId = model.id else { return }
-                        if let item = self.buildRequest(id: safeId, object: Article.self)?[0] {
+                        if let item = self.getQueryedItems(with: safeId, for: Article.self)?[0] {
                             self.viewContext.delete(item)
                             self.saveContext()
                         }
@@ -128,11 +135,11 @@ class DataStoreManager: CoreDataManager {
             }
         }
         
-        dataManager.fetchData(from: collection)
+        dataManager.fetchData(from: collection, with: BlogModel.self)
     }
     
     
-    private func buildRequest<T: NSManagedObject>(id: String, object: T.Type) -> [T]? {
+    func getQueryedItems<T: NSManagedObject>(with id: String, for model: T.Type) -> [T]? {
         let predicate = NSPredicate(format: "id == %@", id)
         
         let request: NSFetchRequest<T>? = T.fetchRequest() as? NSFetchRequest<T>

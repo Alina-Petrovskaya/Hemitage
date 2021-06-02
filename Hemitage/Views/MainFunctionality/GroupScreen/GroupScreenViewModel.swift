@@ -7,13 +7,21 @@
 
 import Foundation
 
+protocol GroupScreenViewModelProtocol {
+    associatedtype TypeOfContent
+    
+    func heightNavBarHandling(height: Double?, completion: () -> ())
+    func getDataContent<T: ViewModelConfigurator>(for contentType: TypeOfContent) -> T?
+    
+}
+
 class GroupScreenViewModel {
     
-    private enum StateOfNavigationBar {
+     enum StateOfNavigationBar {
         case small, large, undefined
     }
     
-    private enum GroupScreenTypeOfContent {
+     enum GroupScreenTypeOfContent {
         case navigationBar
         case subGroup
         case songList
@@ -47,7 +55,7 @@ class GroupScreenViewModel {
     
     
     private func determinationOfNavBarStatus(with height: Double) -> StateOfNavigationBar {
-        if height > 44.0 {
+        if height > 120 {
             return .large
         } else {
             return .small
@@ -57,12 +65,16 @@ class GroupScreenViewModel {
     
     
     // MARK: - Actions
-    private func getData<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> T? {
+    func getDataContent<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> T? {
         switch contentType {
-        
+    
         case .navigationBar:
-            let navigationViewModel: some ViewModelConfigurator = GroupNavigationViewModel(title: categoriesModel.name, imageURL: nil, subtitle: nil)
+            let navigationViewModel: some ViewModelConfigurator = GroupNavigationViewModel(with: (title: categoriesModel.name,
+                                                                                           imageURL: categoriesModel.detailImageURL,
+                                                                                           subtitle: categoriesModel.subTitle,
+                                                                                           isDarkText: categoriesModel.isDarkText))
             return navigationViewModel as? T
+           
             
         case .subGroup:
             break

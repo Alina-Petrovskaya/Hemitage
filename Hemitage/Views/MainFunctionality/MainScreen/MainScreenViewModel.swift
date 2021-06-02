@@ -15,7 +15,7 @@ protocol MainScreenViewModelProtocol {
     var itemsDeleted:  (([MainScreenModelWrapper]) -> ())? { get set }
     
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
-    func getItem(for indexPath: IndexPath) -> MainScreenModelWrapper?
+    func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
 }
 
 
@@ -73,6 +73,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
                 data.forEach { dataItem in
                     guard let safeId = dataItem.id else { return }
                     
+                    
                     let viewModel = CategoriesCollectionViewCellModelView(id: safeId, title: dataItem.name, imageURL: dataItem.imageURL)
                     let item = MainScreenModelWrapper.category(viewModel)
                     
@@ -115,7 +116,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     private func getElementIndex(newData: MainScreenModelWrapper, currentData: [MainScreenModelWrapper]) -> Int? {
         
         for (index, item) in currentData.enumerated() {
-            if item.hashValue == newData.hashValue {
+            if item == newData {
                 return index
             }
         }
@@ -138,18 +139,23 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     }
     
     
-    func getItem(for indexPath: IndexPath) -> MainScreenModelWrapper? {
-        guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return nil }
+    func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ()) {
+        guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return }
         
         switch section {
         case .map:
-            return mapData[indexPath.row]
+            break
             
         case .categories:
-            return categoriesData[indexPath.row]
+            contentManager.queryItemFromFirebase(with: categoriesData[indexPath.row].getItemId(),
+                                                 from: .categories,
+                                                 with: CategoriesModel.self) { item in
+                completion((model: item, section: .categories))
+            }
             
         case .blog:
-            return blogData[indexPath.row]
+            break
+//            return blogData[indexPath.row]
         }
     }
 }

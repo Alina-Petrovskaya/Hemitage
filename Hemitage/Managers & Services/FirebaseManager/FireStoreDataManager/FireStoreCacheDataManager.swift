@@ -7,64 +7,56 @@
 import Foundation
 import FirebaseFirestore
 
+protocol FireStoreDataManagerProtocol {
+    
+    var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
+    
+    func fetchData<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type)
+    func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName, by id: String, with model: T.Type, completion: @escaping (T) -> ())
+}
+
 class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     private let db = Firestore.firestore()
     
-    init() {
-        let settings                  = FirestoreSettings()
-        settings.isPersistenceEnabled = true
-        db.settings                   = settings
-        
-        configureCacheSize()
-    }
     
     
-    private func configureCacheSize() {
-        let settings = Firestore.firestore().settings
-        settings.cacheSizeBytes = FirestoreCacheSizeUnlimited
-        Firestore.firestore().settings = settings
-    }
-    
-    
-    func fetchData(from collection: FireStoreCollectionName) {
+    func fetchData<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
         db.collection(collection.rawValue).addSnapshotListener(includeMetadataChanges: true) { [weak self] querySnapshot, error in
+            
             guard let snapshot = querySnapshot else { return }
             
-            self?.getData(with: snapshot, from: collection)
-        }
-    }
-    
-    
-    private func getData(with snapshot: QuerySnapshot, from collection: FireStoreCollectionName) {
-        snapshot.documentChanges.forEach { [weak self] documentChange  in
-            
-            switch collection {
-            case .categories:
+            snapshot.documentChanges.forEach { [weak self] documentChange in
+                guard let changeType = TypeOfChangeDocument(rawValue: documentChange.type.rawValue) else { return }
                 
-                if let changeType = TypeOfChangeDocument(rawValue: documentChange.type.rawValue),
-                   let data = parseData(with: documentChange.document, model: CategoriesModel.self) {
+                do {
+                    if let data = try documentChange.document.data(as: model) {
+                        self?.callBack?((data: [data], typeOfChange: changeType, collection: collection))
+                    }
                     
-                    self?.callBack?((data: [data], typeOfChange: changeType, collection: collection))
+                } catch {
+                    print("can't parse data")
                 }
-                
-            case .blog:
-                break
             }
         }
     }
     
     
-    private func parseData<T: Codable>(with snapshot: QueryDocumentSnapshot, model: T.Type) -> T? {
-        do {
-            let data = try snapshot.data(as: model)
-            return data
+    
+    
+    func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName, by id: String, with model: T.Type, completion: @escaping (T) -> ()) {
+        db.collection(collection.rawValue).document(id).getDocument { snapshot, error in
+            guard let safeSnapshot = snapshot else { return }
             
-        } catch {
-            print("can't parse data")
+            do {
+                if let data = try safeSnapshot.data(as: model) {
+                    completion(data)
+                }
+                
+            } catch {
+                print("can't parse data")
+            }
         }
-        
-        return nil
     }
     
 }

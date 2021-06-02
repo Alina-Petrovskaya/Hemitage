@@ -17,7 +17,10 @@ class GroupNavigationView: UIView {
     @IBOutlet private weak var mediumTitle: UILabel!
     @IBOutlet private weak var image: UIImageView!
     @IBOutlet private weak var subtitle: UILabel!
+    @IBOutlet private weak var backButton: UIButton!
     
+    
+    var backButtonTapped: (() -> ())?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,23 +54,26 @@ class GroupNavigationView: UIView {
     
     
     func updateUI<T: ViewModelConfigurator>(with model: T) {
-        let model = model as? GroupNavigationViewModel
-        let data = model?.getData()
+        guard let model = model as? GroupNavigationViewModel else { return }
+        let data = model.getData()
         
-        mediumTitle.text = data?.title
-        topTitle.text = data?.title
-        subtitle.text = data?.subtitle
+        mediumTitle.text = data.title
+        topTitle.text    = data.title
+        subtitle.text    = data.subtitle
         
-        image.sd_setImage(with: data?.imageURL) { [weak self] image, _, _, _ in
-            if let image = image {
-                self?.contentView.backgroundColor = UIColor(patternImage: image)
-            }
+        if data.isDarkText {
+            mediumTitle.textColor = .black
+            topTitle.textColor    = .black
+            subtitle.textColor    = .black
+            backButton.tintColor  = .black
         }
+        
+        image.sd_setImage(with: data.imageURL)
     }
     
     
     @IBAction func backbuttonTapped(_ sender: UIButton) {
-        
+        backButtonTapped?()
     }
     
     
@@ -75,7 +81,6 @@ class GroupNavigationView: UIView {
         
         topTitle.isHidden = !topTitle.isHidden
         mediumTitle.isHidden = !mediumTitle.isHidden
-        image.isHidden = !image.isHidden
-
+        subtitle.isHidden = !subtitle.isHidden
     }
 }

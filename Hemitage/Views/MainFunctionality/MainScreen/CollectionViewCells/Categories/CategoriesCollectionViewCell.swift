@@ -34,7 +34,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         guard let safeViewModel: MainScreenCollectionViewCellModelViewProtocol = viewModel as? CategoriesCollectionViewCellModelView
         else { return }
         
-        let data: (imageURL: URL?, title: String) = safeViewModel.getData()
+        let data: (id: String, imageURL: URL?, title: String) = safeViewModel.getData()
     
         categoryName.text = data.title
         

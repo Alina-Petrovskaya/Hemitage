@@ -1,5 +1,5 @@
 //
-//  SubGroupCollectionViewCell.swift
+//  GroupScreenSubgroupCell.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 31.05.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SubGroupCollectionViewCell: UICollectionViewCell {
+class GroupScreenSubgroupCell: UICollectionViewCell {
     
     @IBOutlet weak var view: UIView!
     @IBOutlet weak var title: UILabel!
@@ -20,6 +20,7 @@ class SubGroupCollectionViewCell: UICollectionViewCell {
             }
         }
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

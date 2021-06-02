@@ -50,7 +50,7 @@ class ImageFileManager: ImageFileManagerProtocol {
         
         guard let path = getPath(with: documentID)
         else {
-            print("Can't create path")
+            print("Can't create path to image storage")
             return
         }
               
@@ -70,7 +70,7 @@ class ImageFileManager: ImageFileManagerProtocol {
                         let modelData  = self?.encodeData(with: imageModel)
                         
                         try? modelData?.write(to: path)
-                        print("Item aded")
+                        print("Image aded")
                     }
                 }
                 return
@@ -79,13 +79,13 @@ class ImageFileManager: ImageFileManagerProtocol {
             
             // Return current image
             let imageData = data.imageData
-            print("Item found")
+            print("Image found")
             completion(imageData)
             
             
             
         case .removed:
-            print("Item removed")
+            print("Image removed")
             try? fileManager.removeItem(at: path)
         }
     }
