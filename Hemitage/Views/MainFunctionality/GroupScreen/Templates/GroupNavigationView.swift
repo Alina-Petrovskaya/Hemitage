@@ -79,8 +79,8 @@ class GroupNavigationView: UIView {
     
     func regulateElementsTransparency() {
         
-        topTitle.isHidden = !topTitle.isHidden
+        topTitle.isHidden    = !topTitle.isHidden
         mediumTitle.isHidden = !mediumTitle.isHidden
-        subtitle.isHidden = !subtitle.isHidden
+        subtitle.isHidden    = !subtitle.isHidden
     }
 }
