@@ -85,8 +85,8 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             }
         }
         
-        contentManager.getContent(from: .categories, with: .fireBaseManager)
-        contentManager.getContent(from: .blog, with: .coreDataManager)
+        contentManager.getContent(from: .categories, with: .fireBaseManager, codableModel: CategoriesModel.self)
+        contentManager.getContent(from: .blog, with: .coreDataManager, codableModel: BlogModel.self)
     }
     
     
@@ -116,7 +116,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     private func getElementIndex(newData: MainScreenModelWrapper, currentData: [MainScreenModelWrapper]) -> Int? {
         
         for (index, item) in currentData.enumerated() {
-            if item == newData {
+            if item.hashValue == newData.hashValue {
                 return index
             }
         }

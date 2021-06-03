@@ -22,6 +22,7 @@ protocol ImageFileManagerProtocol {
     func getData(with documentID: String, imageName: String, for typeOfChange: TypeOfChangeDocument, from directory: StorageDirectory?, completion: @escaping (Data) -> ())
 }
 
+
 class ImageFileManager: ImageFileManagerProtocol {
     
     var callback: ((Data) -> ())?
@@ -33,7 +34,6 @@ class ImageFileManager: ImageFileManagerProtocol {
     
     init() {
         monitor.pathUpdateHandler = { [weak self] path in
-            print("current status \(path)")
             self?.internetStatus = path.status
         }
         

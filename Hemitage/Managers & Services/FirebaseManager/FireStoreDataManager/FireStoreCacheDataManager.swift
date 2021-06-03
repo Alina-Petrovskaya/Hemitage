@@ -7,88 +7,102 @@
 import Foundation
 import FirebaseFirestore
 
-protocol FireStoreDataManagerProtocol {
-    
-    var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
-    
-    func fetchData<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type)
-    func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName, by id: String, with model: T.Type, completion: @escaping (T) -> ())
-}
 
 class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
-    var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
-    private let db = Firestore.firestore()
     
+    private let db = Firestore.firestore()
+    var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     
     
     func fetchData<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
-        db.collection(collection.rawValue).addSnapshotListener(includeMetadataChanges: true) { [weak self] querySnapshot, error in
-            
-            guard let snapshot = querySnapshot else { return }
-            
-            snapshot.documentChanges.forEach { [weak self] documentChange in
-                guard let changeType = TypeOfChangeDocument(rawValue: documentChange.type.rawValue),
-                      let data = self?.decodeQueryDocument(with: model, snapshot: documentChange.document) else { return }
-                
-                self?.callBack?((data: [data], typeOfChange: changeType, collection: collection))
-            }
+        
+        fetchDocuments(with: model, collectionReference: db.collection(collection.rawValue)) { [weak self] result in
+            self?.callBack?((data: result.items, typeOfChange: result.changeType, collection: collection))
         }
     }
     
     
-    func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName,
-                                          by field: String,
-                                          value: String,
-                                          with model: T.Type,
-                                          completion: @escaping ([T]) -> ()) {
+    func fetchDataFromSubcollection<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String) {
+        let mainCollection = collection.rawValue
+        guard let subcollection = collection.getSubcollectionName() else { return }
         
-        db.collection(collection.rawValue)
-            .whereField(field, arrayContains: value)
-            .limit(to: 20)
-            .getDocuments { [weak self] querySnapshot, error in
+        fetchDocuments(with: model, collectionReference: db.collection(mainCollection).document(id).collection(subcollection) ) { [weak self] result in
+            self?.callBack?((data: result.items, typeOfChange: result.changeType, collection: collection))
+        }
+    }
+    
 
+    func queryItems<T: Codable & Hashable>(from collection: FireStoreCollectionName,
+                                           by field: String,
+                                           with value: String,
+                                           using model: T.Type,
+                                           completion: @escaping ([T]) -> ()) {
+        
+        db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 20)
+            .getDocuments { [weak self] querySnapshot, error in
                 guard let snapshot = querySnapshot,
                       let lastSnapshot = snapshot.documents.last
                 else { return }
                 
                 
-                //QueryDocumentSnapshot
-        }
-    }
-    
-    
-    private func decodeQueryDocument<T: Codable & Hashable> (with model: T.Type, snapshot:  QueryDocumentSnapshot) -> T? {
-
-        do {
-            if let data = try snapshot.data(as: model) {
-                return data
+                self?.db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 20).start(afterDocument: lastSnapshot)
+                    .getDocuments { querySnapshot, error in
+                        
+                        guard let snapshot = querySnapshot else { return }
+                        let items = snapshot.documents.compactMap { [weak self] documentChange -> T? in
+                            let data = self?.decodeQueryDocument(with: model, documentSnapshot: documentChange)
+                            return data
+                        }
+                        completion(items)
+                    }
             }
-            
-        } catch {
-            print("can't parse data")
-        }
-
-        return nil
     }
-    
     
     
     
     func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName, by id: String, with model: T.Type, completion: @escaping (T) -> ()) {
-        db.collection(collection.rawValue)
-            .document(id)
-            .getDocument { snapshot, error in
+        db.collection(collection.rawValue).document(id).getDocument { snapshot, error in
             guard let safeSnapshot = snapshot else { return }
-
+            
             do {
                 if let data = try safeSnapshot.data(as: model) {
                     completion(data)
                 }
-                
             } catch {
                 print("can't parse data")
             }
         }
+    }
+    
+    
+    
+    private func fetchDocuments<T: Codable & Hashable> (with model: T.Type,
+                                                        collectionReference: CollectionReference,
+                                                        completion: @escaping ((items: [T], changeType: TypeOfChangeDocument)) -> ()) {
+        
+        collectionReference.addSnapshotListener(includeMetadataChanges: true) { querySnapshot, error in
+            guard let snapshot = querySnapshot else { return }
+            
+            snapshot.documentChanges.forEach { [weak self] documentChange in
+                if let item = self?.decodeQueryDocument(with: model, documentSnapshot: documentChange.document),
+                   let changetype = TypeOfChangeDocument.init(rawValue: documentChange.type.rawValue) {
+                    
+                    completion((items: [item], changeType: changetype))
+                }
+            }
+        }
+    }
+    
+    
+    private func decodeQueryDocument<T: Codable & Hashable>(with model: T.Type, documentSnapshot: QueryDocumentSnapshot) -> T? {
+        do {
+            if let data = try documentSnapshot.data(as: model) {
+                return data
+            }
+        } catch {
+            print("can't parse data")
+        }
+        return nil
     }
     
 }

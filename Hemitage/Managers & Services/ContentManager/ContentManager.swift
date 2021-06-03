@@ -19,10 +19,9 @@ protocol ContentManagerProtocol {
      
      - parameter collection: Database collection from which data will be requested
      - parameter dbManager: Storage type
-     - returns: The data will be returned to callback
+     - returns: Data will be returned to callback
      */
-    func getContent(from collection: FireStoreCollectionName, with dbManager: DBManager)
-    
+    func getContent<T: Codable & Hashable>(from collection: FireStoreCollectionName, with dbManager: DBManager, codableModel: T.Type)
     func queryItemFromFirebase<T: Hashable & Codable>(with id: String,
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
@@ -39,7 +38,6 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
     var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     
     private lazy var fireBaseManager: FireStoreDataManagerProtocol = FireStoreCacheDataManager()
-    
     private lazy var fetchedResultsBlog = NSFetchedResultsController(
         fetchRequest: DataStoreManager.shared.createRequest(from: .blog, sortByField: "date"),
         managedObjectContext: DataStoreManager.shared.viewContext,
@@ -47,47 +45,49 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
         cacheName: nil)
     
     
-    func getContent(from collection: FireStoreCollectionName, with dbManager: DBManager) {
+    func getContent<T: Codable & Hashable>(from collection: FireStoreCollectionName, with dbManager: DBManager, codableModel: T.Type) {
+
         switch dbManager {
-        
         case .fireBaseManager:
-            manageContentWithFirebase(from: collection)
+            manageContentWithFirebase(from: collection,with: codableModel)
+            
             
         case .coreDataManager:
             DataStoreManager.shared.getAllItems(from: collection) { [weak self] data in
                 self?.callback?((data: data, typeOfChange: .added, collection: collection))
             }
             
-            manageContentWithInnerBase(from: collection, object: Article.self)
+            manageContentWithInnerBase(from: collection)
         }
     }
+
     
     
+    // MARK: - Manage Firebase Data Content
     func queryItemFromFirebase<T: Hashable & Codable>(with id: String,
                                           from collection: FireStoreCollectionName,
                                           with model: T.Type,
                                           completion: @escaping (T) -> ()) {
-        
        
         fireBaseManager.queryItem(from: collection, by: id, with: model) { item in
             completion(item)
         }
-        
-        
     }
    
     
-    private func manageContentWithFirebase(from collection: FireStoreCollectionName) {
+    private func manageContentWithFirebase<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
         fireBaseManager.callBack = { [weak self] result in
             self?.callback?(result)
         }
         
-        fireBaseManager.fetchData(from: collection, with: CategoriesModel.self)
+        fireBaseManager.fetchData(from: collection, with: model)
     }
     
     
+    
+    
     // MARK: - Manage Core Data Content
-    private func manageContentWithInnerBase<T: NSManagedObject>(from collection: FireStoreCollectionName, object: T.Type) {
+    private func manageContentWithInnerBase(from collection: FireStoreCollectionName) {
         fetchedResultsBlog.delegate = self
         
         do {
