@@ -10,11 +10,9 @@ import Foundation
 protocol GroupScreenDataSourceProtocol {
     
     //    var collectionViewDelegate: MainScreenCollectionViewDelegate { get }
-    
-    associatedtype Data: Hashable
-    
+
     func reloadData<T: GroupScreenViewModelProtocol>(with viewModel: T)
-    func insertItems(items: [Data])
-    func reloadItems(data: Data, with index: Int)
-    func deleteItems(items: [Data])
+    func insertItems<T: ViewModelConfigurator>(items: [T])
+    func reloadItems<T: ViewModelConfigurator>(data: T, with index: Int)
+    func deleteItems<T: ViewModelConfigurator>(items: [T])
 }

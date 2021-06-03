@@ -59,7 +59,6 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
     }
     
     
-    
     func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName, by id: String, with model: T.Type, completion: @escaping (T) -> ()) {
         db.collection(collection.rawValue).document(id).getDocument { snapshot, error in
             guard let safeSnapshot = snapshot else { return }
@@ -73,7 +72,6 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
             }
         }
     }
-    
     
     
     private func fetchDocuments<T: Codable & Hashable> (with model: T.Type,

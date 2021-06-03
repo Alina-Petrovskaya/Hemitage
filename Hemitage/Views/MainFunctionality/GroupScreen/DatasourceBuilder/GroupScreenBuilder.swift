@@ -11,6 +11,6 @@ protocol GroupScreenBuilder {
     
     func setLayout(for object: UIScrollView)
     func registerNibs(for object: UIScrollView)
-    func setupDataSource<T: GroupScreenViewModelProtocol>(for object: UIScrollView, with viewModel: T)
+    func setupDataSource<T: GroupScreenViewModelProtocol>(for object: UIScrollView, with viewModel: T) -> GroupScreenDataSourceProtocol?
     
 }

@@ -29,13 +29,23 @@ class GroupScreenViewModel {
     
     private var categoriesModel: CategoriesModel
     private var stateOfNavigationBar: StateOfNavigationBar = .undefined
+//    private var contentManager: 
     
     
     init(with categoriesModel: CategoriesModel) {
         self.categoriesModel = categoriesModel
+        
+        getSubcollectionList(for: categoriesModel.id)
+    }
+ 
+    // MARK: - Manage Content
+    
+    private func getSubcollectionList(for id: String?) {
+        
     }
     
     
+    // MARK: - Manage Navigation Bar
     func heightNavBarHandling(height: Double?, completion: () -> ()) {
         guard let safeHeight = height else { return }
         let currentTypeOfNavBar = determinationOfNavBarStatus(with: safeHeight)
@@ -61,7 +71,6 @@ class GroupScreenViewModel {
             return .small
         }
     }
-   
     
     
     // MARK: - Actions

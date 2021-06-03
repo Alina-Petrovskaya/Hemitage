@@ -12,6 +12,7 @@ protocol FireStoreDataManagerProtocol {
     var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
     
     func fetchData<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type)
+    func fetchDataFromSubcollection<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String)
     /**
      Query item by document id
      */

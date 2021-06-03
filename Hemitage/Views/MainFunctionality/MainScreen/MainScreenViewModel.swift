@@ -147,10 +147,10 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             break
             
         case .categories:
-            contentManager.queryItemFromFirebase(with: categoriesData[indexPath.row].getItemId(),
+            contentManager.queryItemsFromFirebase(with: categoriesData[indexPath.row].getItemId(),
                                                  from: .categories,
-                                                 with: CategoriesModel.self) { item in
-                completion((model: item, section: .categories))
+                                                 with: CategoriesModel.self) { items in
+                completion((model: items[0], section: .categories))
             }
             
         case .blog:

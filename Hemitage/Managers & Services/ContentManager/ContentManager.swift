@@ -18,11 +18,19 @@ protocol ContentManagerProtocol {
      Requests content based on storage type.
      
      - parameter collection: Database collection from which data will be requested
-     - parameter dbManager: Storage type
+     - parameter dbManager: Name of the field in which to search for the value. If left as nil, the value will be taken as the ID of the document
      - returns: Data will be returned to callback
      */
     func getContent<T: Codable & Hashable>(from collection: FireStoreCollectionName, with dbManager: DBManager, codableModel: T.Type)
-    func queryItemFromFirebase<T: Hashable & Codable>(with id: String,
+    func getItemsFromSubgroup<T: Hashable & Codable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String)
+    /**
+     Query items by value without listening of changes
+     - parameter value: The parameter can act as a field value or as a document ID
+     - parameter field: Optional
+     - returns:  Data will be returned in completion -> Item or number of Items
+     */
+    func queryItemsFromFirebase<T: Hashable & Codable>(with value: String,
+                                                      at field: String?,
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
                                                       completion: @escaping (T) -> ())
@@ -46,7 +54,6 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
     
     
     func getContent<T: Codable & Hashable>(from collection: FireStoreCollectionName, with dbManager: DBManager, codableModel: T.Type) {
-
         switch dbManager {
         case .fireBaseManager:
             manageContentWithFirebase(from: collection,with: codableModel)
@@ -62,19 +69,7 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
     }
 
     
-    
     // MARK: - Manage Firebase Data Content
-    func queryItemFromFirebase<T: Hashable & Codable>(with id: String,
-                                          from collection: FireStoreCollectionName,
-                                          with model: T.Type,
-                                          completion: @escaping (T) -> ()) {
-       
-        fireBaseManager.queryItem(from: collection, by: id, with: model) { item in
-            completion(item)
-        }
-    }
-   
-    
     private func manageContentWithFirebase<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
         fireBaseManager.callBack = { [weak self] result in
             self?.callback?(result)
@@ -84,6 +79,28 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     
+    func queryItemsFromFirebase<T: Hashable & Codable>(with value: String,
+                                                      at field: String? = nil,
+                                                      from collection: FireStoreCollectionName,
+                                                      with model: T.Type,
+                                                      completion: @escaping ([T]) -> ()) {
+        guard let safeField = field
+        else {
+            fireBaseManager.queryItem(from: collection, by: value, with: model) { item in
+                completion([item])
+            }
+            return
+        }
+        
+        fireBaseManager.queryItems(from: collection, by: safeField, with: value, using: model) { items in
+            completion(items)
+        }
+    }
+    
+    
+    func getItemsFromSubgroup<T: Hashable & Codable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String) {
+        fireBaseManager.fetchDataFromSubcollection(from: collection, with: model, document: id)
+    }
     
     
     // MARK: - Manage Core Data Content
