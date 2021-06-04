@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -37,8 +36,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="806" height="447"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25s-SN-hn0">
-                    <rect key="frame" x="0.0" y="342" width="806" height="105"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="390.5" width="806" height="56.5"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmw-h2-IDl">
                     <rect key="frame" x="20" y="62" width="11.5" height="18.5"/>
@@ -46,7 +45,7 @@
                         <constraint firstAttribute="width" secondItem="Nmw-h2-IDl" secondAttribute="height" multiplier="13:25" id="Kau-vK-80o"/>
                         <constraint firstAttribute="height" constant="22" id="YrS-2I-x0K"/>
                     </constraints>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" name="DarkText #18191A"/>
                     <state key="normal" backgroundImage="chevron.backward" catalog="system"/>
                     <connections>
                         <action selector="backbuttonTapped:" destination="-1" eventType="touchUpInside" id="iyX-mp-2tN"/>
@@ -54,21 +53,23 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Pr4-ln-FXH">
                     <rect key="frame" x="20" y="187" width="49" height="28"/>
+                    <color key="tintColor" name="DarkText #18191A"/>
                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" name="DarkText #18191A"/>
                     <nil key="highlightedColor"/>
                     <color key="shadowColor" name="GrayText #9B9B9B"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgX-oI-3Zs">
                     <rect key="frame" x="20" y="225" width="47.5" height="16"/>
+                    <color key="tintColor" name="DarkText #18191A"/>
                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" name="DarkText #18191A"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="QK8-VA-xc1">
                     <rect key="frame" x="51.5" y="57.5" width="49" height="27"/>
                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" name="DarkText #18191A"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -88,7 +89,7 @@
                 <constraint firstItem="ipp-G8-oeu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n6A-6C-5MQ"/>
                 <constraint firstAttribute="bottom" secondItem="ipp-G8-oeu" secondAttribute="bottom" id="pCp-ZX-XNP"/>
                 <constraint firstItem="Nmw-h2-IDl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="qHi-3z-nGN"/>
-                <constraint firstItem="25s-SN-hn0" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.13" id="uCt-2C-35E"/>
+                <constraint firstItem="25s-SN-hn0" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.07" id="uCt-2C-35E"/>
                 <constraint firstItem="Pr4-ln-FXH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="wLN-vo-8Br"/>
                 <constraint firstItem="ipp-G8-oeu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ygS-7y-yl0"/>
                 <constraint firstItem="Pr4-ln-FXH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Nmw-h2-IDl" secondAttribute="bottom" priority="999" constant="10" id="zuC-WK-ht6"/>
@@ -106,8 +107,5 @@
         <namedColor name="GrayText #9B9B9B">
             <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

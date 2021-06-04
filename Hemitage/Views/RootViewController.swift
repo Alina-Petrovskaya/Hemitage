@@ -23,9 +23,6 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         passwordManagerObserve()
 //      presentAuthController()
         presentContent()
-        
-        
-        
     }
     
     private func passwordManagerObserve() {
@@ -47,8 +44,10 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
+    
     private func presentContent() {
-        guard let mainVC = MainScreenViewController.instantiate() else { return }
+        guard let mainVC = MainScreenViewController.instantiate()
+              else { return }
         
         mainVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home"), selectedImage: UIImage(named: "home-fill"))
         
@@ -61,7 +60,6 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         guard let vc = GroupScreenViewController.instantiate() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
     
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

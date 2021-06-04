@@ -33,11 +33,11 @@ protocol ContentManagerProtocol {
                                                       at field: String?,
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
-                                                      completion: @escaping (T) -> ())
+                                                      completion: @escaping ([T]) -> ())
 }
 
 
-class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
+class ContentManager: NSObject, NSFetchedResultsControllerDelegate, ContentManagerProtocol {
     
     enum DBManager {
         case fireBaseManager, coreDataManager
@@ -52,6 +52,10 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
         sectionNameKeyPath: nil,
         cacheName: nil)
     
+    override init() {
+        super.init()
+        catchCallbackFromFirebase()
+    }
     
     func getContent<T: Codable & Hashable>(from collection: FireStoreCollectionName, with dbManager: DBManager, codableModel: T.Type) {
         switch dbManager {
@@ -70,13 +74,22 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
 
     
     // MARK: - Manage Firebase Data Content
-    private func manageContentWithFirebase<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
+    private func catchCallbackFromFirebase() {
         fireBaseManager.callBack = { [weak self] result in
             self?.callback?(result)
         }
-        
+    }
+    
+    private func manageContentWithFirebase<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
         fireBaseManager.fetchData(from: collection, with: model)
     }
+    
+    
+    func getItemsFromSubgroup<T: Hashable & Codable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String) {
+        fireBaseManager.fetchDataFromSubcollection(from: collection, with: model, document: id)
+        
+    }
+    
     
     
     func queryItemsFromFirebase<T: Hashable & Codable>(with value: String,
@@ -95,11 +108,6 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate {
         fireBaseManager.queryItems(from: collection, by: safeField, with: value, using: model) { items in
             completion(items)
         }
-    }
-    
-    
-    func getItemsFromSubgroup<T: Hashable & Codable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String) {
-        fireBaseManager.fetchDataFromSubcollection(from: collection, with: model, document: id)
     }
     
     

@@ -81,6 +81,7 @@ class MainScreenDataSourceManager: MainScreenDataSourceManagerProtocol {
             
             guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return UICollectionViewCell()}
             let viewModel = model.getViewModel()
+            
             switch section {
             case .map:
                 return self?.configure(cellType: MapCollectionViewCell.self, with: viewModel, for: indexPath)

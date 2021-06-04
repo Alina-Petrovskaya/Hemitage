@@ -96,7 +96,7 @@
 		84ACEBD62664FBA00097A719 /* ViewModelConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACEBD52664FBA00097A719 /* ViewModelConfigurator.swift */; };
 		84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */; };
 		84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */; };
-		84D662B9266675B9009BE13A /* SubgroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662B8266675B9009BE13A /* SubgroupModel.swift */; };
+		84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662B8266675B9009BE13A /* SubcollectionModel.swift */; };
 		84D662BE26677A8B009BE13A /* GroupScreenDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */; };
 		84D662C026677A9C009BE13A /* GroupScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */; };
 		84D662C226677ACE009BE13A /* GroupScreenTableViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662C126677ACE009BE13A /* GroupScreenTableViewBuilder.swift */; };
@@ -253,7 +253,7 @@
 		84ACEBD52664FBA00097A719 /* ViewModelConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurator.swift; sourceTree = "<group>"; };
 		84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModel.swift; sourceTree = "<group>"; };
 		84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
-		84D662B8266675B9009BE13A /* SubgroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubgroupModel.swift; sourceTree = "<group>"; };
+		84D662B8266675B9009BE13A /* SubcollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcollectionModel.swift; sourceTree = "<group>"; };
 		84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenDirector.swift; sourceTree = "<group>"; };
 		84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenBuilder.swift; sourceTree = "<group>"; };
 		84D662C126677ACE009BE13A /* GroupScreenTableViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewBuilder.swift; sourceTree = "<group>"; };
@@ -467,7 +467,7 @@
 				849C4E72264ACC2200C26C53 /* CategoriesModel.swift */,
 				849C4E74264ACC6600C26C53 /* BlogModel.swift */,
 				849C4E76264B0E4D00C26C53 /* MapModel.swift */,
-				84D662B8266675B9009BE13A /* SubgroupModel.swift */,
+				84D662B8266675B9009BE13A /* SubcollectionModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1325,7 +1325,7 @@
 				849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */,
 				84D7F8142642C481004B2DB0 /* TemplateHeaderView.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
-				84D662B9266675B9009BE13A /* SubgroupModel.swift in Sources */,
+				84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */,
 				849C4E75264ACC6600C26C53 /* BlogModel.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,

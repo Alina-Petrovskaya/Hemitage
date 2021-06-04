@@ -10,7 +10,7 @@ import Network
 
 class CategoriesCollectionViewCellModelView: MainScreenCollectionViewCellModelViewProtocol, Hashable {
     
-    private let id: String
+    let id: String
     private var imageURL: URL?
     private var title: String
     

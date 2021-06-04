@@ -9,10 +9,11 @@ import UIKit
 
 class GroupScreenDirector {
     
-    func buildData<T: GroupScreenViewModelProtocol>(with viewModel: T, builder: GroupScreenBuilder, object: UIScrollView) {
+    func buildData<T: GroupScreenViewModelProtocol>(with viewModel: T, builder: GroupScreenBuilder, object: UIScrollView) -> GroupScreenDataSourceProtocol? {
         
-        builder.setLayout(for: object)
         builder.registerNibs(for: object)
-        builder.setupDataSource(for: object, with: viewModel)
+        builder.setLayout(for: object)
+        
+        return builder.setupDataSource(for: object, with: viewModel)
     }
 }

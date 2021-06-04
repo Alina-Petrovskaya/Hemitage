@@ -38,9 +38,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
         categoryName.text = data.title
         
-        if let safeURL = data.imageURL {
-            categoryImage.sd_setImage(with: safeURL)
-        }
+        categoryImage.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: [.continueInBackground, .delayPlaceholder, ], completed: nil)
     }
     
     override func prepareForReuse() {

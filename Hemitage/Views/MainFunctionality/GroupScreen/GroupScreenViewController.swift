@@ -14,12 +14,18 @@ class GroupScreenViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var kvoNavBar: NSKeyValueObservation?
-    var viewModel: GroupScreenViewModel?
-    let navigationView = GroupNavigationView()
+    var viewModel: GroupScreenViewModelProtocol?
+    private var collectionViewDataSourse: GroupScreenDataSourceProtocol?
+    private let navigationView = GroupNavigationView()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel?.delegate = self
+        
+        collectionViewDataSourse = GroupScreenDirector().buildData(with: viewModel! as! GroupScreenViewModel, builder: GroupScreenCollectionViewBuilder(), object: collectionView)
+        
+       
         
         updateNavigationBarView()
         observeNavBarState()
@@ -29,8 +35,10 @@ class GroupScreenViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         kvoNavBar?.invalidate()
     }
+    
     
     private func observeNavBarState() {
         kvoNavBar = navigationController?.navigationBar.observe(\.bounds, options: [.new]) { [weak self] navigationBar, changes in
@@ -59,7 +67,7 @@ class GroupScreenViewController: UIViewController {
         }
         
         
-        if let dataforNavigationView: GroupNavigationViewModel  = viewModel?.getDataContent(for: .navigationBar) {
+        if let dataforNavigationView: GroupNavigationViewModel  = viewModel?.getDataContent(for: .navigationBar)?[0] {
             navigationView.updateUI(with: dataforNavigationView)
         }
     }
@@ -71,4 +79,33 @@ class GroupScreenViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }
     }
+}
+
+
+extension GroupScreenViewController: GroupScreenViewModelDelegate {
+    
+    func itemsInserted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent) {
+        switch section {
+        case .navigationBar:
+            break
+            
+        case .subGroup:
+            collectionViewDataSourse?.insertItems(items: items)
+            
+        case .songList:
+            break
+        }
+        
+    }
+    
+    func itemsReloaded<T: ViewModelConfigurator>(newData: T, section: GroupScreenTypeOfContent, index: Int) {
+        
+    }
+    
+    
+    func itemsDeleted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent) {
+        
+    }
+    
+    
 }

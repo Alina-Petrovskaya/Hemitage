@@ -17,7 +17,7 @@ struct MainScreenLayoutConstructor: MainScreenLayoutConstructorProtocol {
     
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            guard let sectionType =  MainScreenTypeOfSection(rawValue: sectionIndex) else { return nil }
+            guard let sectionType = MainScreenTypeOfSection(rawValue: sectionIndex) else { return nil }
             
             switch sectionType {
             case .map:

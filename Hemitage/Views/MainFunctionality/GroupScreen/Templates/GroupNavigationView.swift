@@ -47,7 +47,7 @@ class GroupNavigationView: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        bottomView.layer.cornerRadius = 40
+        bottomView.layer.cornerRadius = 20
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         bottomView.layer.masksToBounds = true
     }
@@ -61,14 +61,15 @@ class GroupNavigationView: UIView {
         topTitle.text    = data.title
         subtitle.text    = data.subtitle
         
-        if data.isDarkText {
-            mediumTitle.textColor = .black
-            topTitle.textColor    = .black
-            subtitle.textColor    = .black
-            backButton.tintColor  = .black
+        if !data.isDarkText {
+            mediumTitle.textColor = .white
+            topTitle.textColor    = .white
+            subtitle.textColor    = .white
+            backButton.tintColor  = .white
         }
+        image.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: .delayPlaceholder, completed: nil)
+      
         
-        image.sd_setImage(with: data.imageURL)
     }
     
     

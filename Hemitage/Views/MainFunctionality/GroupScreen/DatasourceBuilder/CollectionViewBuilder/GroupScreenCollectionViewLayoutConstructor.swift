@@ -10,15 +10,11 @@ import UIKit
 class GroupScreenCollectionViewLayoutConstructor {
     
     func createLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
+        let layout = UICollectionViewCompositionalLayout { [self] sectionIndex, layoutEnvironment in
             
-            return self?.generateSection()
+            return generateSection()
         }
         
-        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        configuration.interSectionSpacing = 20
-        
-        layout.configuration = configuration
         return layout
     }
     
@@ -26,20 +22,29 @@ class GroupScreenCollectionViewLayoutConstructor {
     private func generateSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
-                                            widthDimension: .estimated(40),
-                                            heightDimension: .estimated(1)))
+                                            widthDimension: .estimated(100),
+                                            heightDimension: .fractionalHeight(0.7)))
         
-        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 0)
+        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil,
+                                                         top: nil,
+                                                         trailing: .flexible(10),
+                                                         bottom: nil)
+        
+        
+
         
         // Group
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
-                                                        widthDimension: .fractionalWidth(5),
-                                                        heightDimension: .estimated(1)),
+                                                        widthDimension: .fractionalWidth(2),
+                                                        heightDimension: .fractionalHeight(1)),
                                                        subitems: [item])
-        
+ 
         //Section
         let section = NSCollectionLayoutSection(group: group)
-        
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+       
+
         return section
     }
 }

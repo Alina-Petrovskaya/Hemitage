@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     
     private var collectionView: UICollectionView
@@ -35,7 +37,7 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
          
         let itemForReload = snapshot.itemIdentifiers[index]
       
-//         itemForReload.setData(with: item)
+//         itemForReload.setData(with: item) 
         
         snapshot.reloadItems([itemForReload])
         dataSource?.apply(snapshot, animatingDifferences: true)
@@ -45,7 +47,7 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     func deleteItems<T: ViewModelConfigurator>(items: [T]) {
         guard var snapshot = dataSource?.snapshot(),
               let data = items as? [GroupScreenSubgroupCellViewModel] else { return }
-        
+
         snapshot.deleteItems(data)
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -56,7 +58,10 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
         var snapshot = NSDiffableDataSourceSnapshot<Int, GroupScreenSubgroupCellViewModel>()
         snapshot.appendSections([0])
         
-//        snapshot.appendItems([])
+        
+            if let items: [GroupScreenSubgroupCellViewModel] = viewModel.getDataContent(for: .subGroup) {
+                snapshot.appendItems(items, toSection: 0)
+            }
         
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -64,18 +69,18 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     
    
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, model in
-            
+        dataSource = UICollectionViewDiffableDataSource<Int, GroupScreenSubgroupCellViewModel>(collectionView: collectionView) { collectionView, indexPath, model in
             let cellId = String(describing: GroupScreenSubgroupCell.self)
+            
+            
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? GroupScreenSubgroupCell else {
                 fatalError("Can't create cell with id \(cellId)")
             }
+            cell.updateContent(with: model)
             
-//            cell.updateContent(with: model)
             
             return cell
-            
             
         }
     }

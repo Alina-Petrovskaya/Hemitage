@@ -11,11 +11,11 @@ class GroupScreenSubgroupCellViewModel: ViewModelConfigurator, Hashable {
     
     typealias DataType = (id: String, title: String)
     
-    let id: String
-    var title: String
+    private let id: String
+    private var title: String
     
     
-    init(with data: DataType) {
+    init(with data: (id: String, title: String)) {
         self.id    = data.id
         self.title = data.title
     }
