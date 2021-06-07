@@ -12,6 +12,7 @@ import CoreData
 
 public class Article: NSManagedObject {
 
+    
 }
 
 extension Article {

@@ -50,6 +50,11 @@ class GroupNavigationView: UIView {
         bottomView.layer.cornerRadius = 20
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         bottomView.layer.masksToBounds = true
+        
+        
+        topTitle.isHidden    = false
+        mediumTitle.isHidden = true
+        subtitle.isHidden    = true
     }
     
     
@@ -67,9 +72,9 @@ class GroupNavigationView: UIView {
             subtitle.textColor    = .white
             backButton.tintColor  = .white
         }
-        image.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: .delayPlaceholder, completed: nil)
-      
         
+        image.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: .delayPlaceholder, completed: nil)
+
     }
     
     

@@ -6,18 +6,17 @@ target 'Hemitage' do
   use_frameworks!
 
   # Pods for Hemitage
-  
-   pod 'SDWebImage'
+  pod 'SDWebImage'
 
   # Firebase
-   pod 'Firebase/Auth'
-   pod 'FirebaseUI/OAuth'
-   pod 'Firebase/Storage'
-   pod 'Firebase/Firestore'
-   pod 'FirebaseFirestoreSwift', '~> 8.1.0-beta'
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI/OAuth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift', '~> 8.1.0-beta'
 
    #Facebook
-   pod 'FBSDKLoginKit'
+  pod 'FBSDKLoginKit'
    
   target 'HemitageTests' do
     inherit! :search_paths

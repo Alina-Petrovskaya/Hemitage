@@ -8,6 +8,7 @@
 import Foundation
 
 class BlogCollectionViewCellModelView: MainScreenCollectionViewCellModelViewProtocol, Hashable {
+    typealias ModelData = (id: String, title: String, subtitle: String?, date: String, imageData: Data?)
     
     private let id: String
     private var title: String
@@ -15,30 +16,30 @@ class BlogCollectionViewCellModelView: MainScreenCollectionViewCellModelViewProt
     private var date: String
     private var imageData: Data?
 
-    init(id: String, title: String, subtitle: String?, date: Date, imageData: Data?) {
-        self.id         = id
-        self.title      = title
-        self.subtitle   = subtitle
-        self.date       = date.stringRepresentation()
-        self .imageData = imageData
+    init(model: Article, imageData: Data?) {
+        self.id         = model.id 
+        self.title      = model.title
+        self.subtitle   = model.subtitle
+        self.date       = model.date.stringRepresentation()
+        self.imageData  = imageData
     }
     
     
-    func updateContent<T>(with data: T) {
-        guard  let safeData = data as? (title: String, subtitle: String?, date: String, imageData: Data?)
-        else { return }
+    func updateContent<T: MainScreenCollectionViewCellModelViewProtocol>(with data: T) {
+        guard  let data: ModelData = data.getData() else { return }
         
-        self.title      = safeData.title
-        self.subtitle   = safeData.subtitle
-        self.date       = safeData.date
-        self .imageData = safeData.imageData
+        self.title      = data.title
+        self.subtitle   = data.subtitle
+        self.date       = data.date
+        self.imageData  = data.imageData
     }
     
     
     func getData<T>() -> T {
-        guard let data: T = (title: title, subtitle: subtitle, date: date, imageData: imageData) as? T else {
-            fatalError("Can't return data for Blog row")
+        guard let data = (id: id, title: title, subtitle: subtitle, date: date, imageData: imageData) as? T else {
+            fatalError("Can't return BlogData")
         }
+        
         return data
     }
     

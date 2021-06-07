@@ -21,16 +21,20 @@ enum MainScreenModelWrapper: Hashable {
         
         switch self {
         case .blog(let modelToUpdate):
-            let data: (title: String, subtitle: String?, date: String, imageData: Data?) = viewModel.getData()
-            modelToUpdate.updateContent(with: data)
+            if let newData = viewModel as? BlogCollectionViewCellModelView {
+                modelToUpdate.updateContent(with: newData)
+            }
+            
             
         case .category(let modelToUpdate):
-            let data: (id: String, imageURL: URL?, title: String) = viewModel.getData()
-            modelToUpdate.updateContent(with: data)
+            if let newData = viewModel as? CategoriesCollectionViewCellModelView {
+                modelToUpdate.updateContent(with: newData)
+            }
             
         case .map(let modelToUpdate):
-            let data: (allUsers: String, usersOnline: String) = viewModel.getData()
-            modelToUpdate.updateContent(with: data)
+            if let newData = viewModel as? MapCollectionViewCellModelView {
+                modelToUpdate.updateContent(with: newData)
+            }
         }
     }
     
@@ -53,8 +57,9 @@ enum MainScreenModelWrapper: Hashable {
     
     func getItemId() -> String {
         switch self {
-        case .blog(_):
-            break
+        case .blog(let viewModel):
+            let data: (id: String, title: String, subtitle: String?, date: String, imageData: Data?) = viewModel.getData()
+            return data.id
             
         case .category(let viewModel):
             let data: (id: String, imageURL: URL?, title: String) = viewModel.getData()

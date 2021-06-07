@@ -9,22 +9,23 @@ import Foundation
 import Network
 
 class CategoriesCollectionViewCellModelView: MainScreenCollectionViewCellModelViewProtocol, Hashable {
+    typealias DataType = (id: String, imageURL: URL?, title: String)
     
     let id: String
     private var imageURL: URL?
     private var title: String
     
-    init(id: String, title: String, imageURL: URL?) {
-        self.id       = id
-        self.imageURL = imageURL
-        self.title    = title
+    init(model: CategoriesModel) {
+        self.id       = model.id ?? "nill"
+        self.imageURL = model.imageURL
+        self.title    = model.name
     }
     
     
-    func updateContent<T>(with data: T) {
-        guard let safeData = data as? (id: String, imageURL: URL?, title: String) else { return }
-        imageURL = safeData.imageURL
-        title    = safeData.title
+    func updateContent<T: MainScreenCollectionViewCellModelViewProtocol>(with data: T) {
+        guard let data: DataType = data.getData() else { return }
+        imageURL = data.imageURL
+        title    = data.title
     }
     
     

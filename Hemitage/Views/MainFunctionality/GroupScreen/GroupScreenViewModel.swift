@@ -53,24 +53,11 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
             guard let data = result.data as? [SubcollectionModel] else { return }
             
             data.forEach { model in
-                guard let id = model.id else { return }
-                let item = GroupScreenSubgroupCellViewModel(with: (id: id, title: model.name))
+                guard let id = model.id,
+                      let self = self else { return }
                 
-                switch result.typeOfChange {
-                case .added:
-                    self?.subcategoryList.append(item)
-                    self?.delegate?.itemsInserted(items: [item], section: .subGroup)
-                    
-                case .modified:
-                    guard let itemIndex = self?.findItemIndex(newItem: item) else { return }
-                    self?.subcategoryList[itemIndex] = item
-                    self?.delegate?.itemsReloaded(newData: item, section: .subGroup, index: itemIndex)
-                    
-                case .removed:
-                    guard let itemIndex = self?.findItemIndex(newItem: item) else { return }
-                    self?.subcategoryList.remove(at: itemIndex)
-                    self?.delegate?.itemsDeleted(items: [item], section: .subGroup)
-                }
+                let item = GroupScreenSubgroupCellViewModel(with: (id: id, title: model.name))
+                self.updateItems(typeOfChange: result.typeOfChange, with: item, at: &self.subcategoryList, section: .subGroup)
             }
         }
         
@@ -80,13 +67,37 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
         }
     }
     
+    
     private func getSongItems() {
+        
         
     }
     
-    private func findItemIndex(newItem: GroupScreenSubgroupCellViewModel) -> Int? {
-        for (index, item) in subcategoryList.enumerated() {
-            if item.hashValue == newItem.hashValue {
+    
+    private func updateItems<T: ViewModelConfigurator & Hashable>(typeOfChange: TypeOfChangeDocument, with item: T, at dataArray: inout [T], section: GroupScreenTypeOfContent) {
+
+        switch typeOfChange {
+
+        case .added:
+            dataArray.append(item)
+            delegate?.itemsInserted(items: [item], section: section)
+
+        case .modified:
+            if let index = elementIndex(dataArray: dataArray, newData: item) {
+                delegate?.itemsReloaded(newData: item, section: section, index: index)
+            }
+
+        case .removed:
+            delegate?.itemsDeleted(items: [item], section: section)
+            if let index = elementIndex(dataArray: dataArray, newData: item) {
+                dataArray.remove(at: index)
+            }
+        }
+    }
+    
+    private func elementIndex<T: ViewModelConfigurator & Hashable>(dataArray: [T], newData: T) -> Int? {
+        for (index, item) in dataArray.enumerated() {
+            if item.hashValue == newData.hashValue {
                 return index
             }
         }
@@ -135,7 +146,6 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
             
         case .subGroup:
             return subcategoryList as? [T]
-            
             
             
         case .songList:

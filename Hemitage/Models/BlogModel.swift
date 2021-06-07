@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-class BlogModel: Hashable, Codable, Identifiable {
+struct BlogModel: Hashable, Codable, Identifiable {
     @DocumentID var id: String?
     let previewImageName: String
     let title: String

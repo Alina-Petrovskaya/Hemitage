@@ -23,7 +23,7 @@ protocol CoreDataManager {
 }
 
 class DataStoreManager: CoreDataManager {
-    
+   
     static var shared: CoreDataManager = DataStoreManager()
     private var dataManager: FireStoreDataManagerProtocol = FireStoreCacheDataManager()
     

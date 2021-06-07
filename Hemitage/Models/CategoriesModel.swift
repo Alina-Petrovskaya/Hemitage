@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-class CategoriesModel: Hashable, Codable, Identifiable {
+struct CategoriesModel: Hashable, Codable, Identifiable {
     @DocumentID var id: String? 
     let imageURL: URL?
     let imageName: String

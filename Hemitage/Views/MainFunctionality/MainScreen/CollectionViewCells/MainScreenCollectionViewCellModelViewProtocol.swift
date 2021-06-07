@@ -10,6 +10,6 @@ import Foundation
 
 protocol MainScreenCollectionViewCellModelViewProtocol {
     
-    func updateContent<T>(with viewModel: T) -> ()
+    func updateContent<T: MainScreenCollectionViewCellModelViewProtocol>(with data: T)
     func getData<T>() -> T
 }

@@ -7,6 +7,6 @@
 
 import UIKit
 
-protocol ConfiguringCell where Self: UICollectionViewCell {
+protocol ConfiguringCell {
     func updateContent<T> (with viewModel: T) -> ()
 }

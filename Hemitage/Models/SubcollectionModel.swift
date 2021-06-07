@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-class SubcollectionModel: Hashable, Codable, Identifiable {
+struct SubcollectionModel: Hashable, Codable, Identifiable {
     @DocumentID var id: String?
     var name: String
     

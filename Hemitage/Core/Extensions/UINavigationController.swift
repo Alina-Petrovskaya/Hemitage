@@ -10,9 +10,8 @@ import UIKit
 extension UINavigationController {
     
     func setupForGroupController() {
-        
-        self.navigationBar.isHidden = false
         self.navigationBar.prefersLargeTitles = true
+        self.navigationBar.isHidden = false
         self.navigationItem.largeTitleDisplayMode = .automatic
         self.interactivePopGestureRecognizer?.isEnabled = false
 

@@ -14,7 +14,7 @@ class MainScreenViewController: UIViewController {
     private var dataSourceManager: MainScreenDataSourceManagerProtocol?
     
     @IBOutlet private weak var songBottomView: TemplateSongView!
-    @IBOutlet private weak var headerView: TemplateHeaderView!
+    @IBOutlet private weak var headerView: TemplateProfileHeaderView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     

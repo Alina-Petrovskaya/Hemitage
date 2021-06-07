@@ -26,7 +26,7 @@ class BlogCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         guard let safeViewModel: MainScreenCollectionViewCellModelViewProtocol = viewModel as? BlogCollectionViewCellModelView
         else { return }
         
-        let data: (title: String, subtitle: String?, date: String, imageData: Data?) = safeViewModel.getData()
+        let data: (id: String, title: String, subtitle: String?, date: String, imageData: Data?) = safeViewModel.getData()
         
         title.text = data.title
         subtitle.text = data.subtitle

@@ -1,5 +1,5 @@
 //
-//  TemplateHeaderView.swift
+//  TemplateProfileHeaderView.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 05.05.2021.
@@ -8,14 +8,12 @@
 import UIKit
 
 @IBDesignable
-class TemplateHeaderView: UIView {
+class TemplateProfileHeaderView: UIView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var notificationIndicator: UIView! 
     @IBOutlet weak var profilePhoto: UIImageView!
-    
-    var viewModel: some TemplatesViewModelProtocol = ViewModelTemplateHeader()
     
     // MARK: - Life cycle
     override init(frame: CGRect) {
@@ -32,11 +30,9 @@ class TemplateHeaderView: UIView {
     
 
     private func commonInit() {
-        Bundle.main.loadNibNamed(String(describing: TemplateHeaderView.self), owner: self)
+        Bundle.main.loadNibNamed(String(describing: TemplateProfileHeaderView.self), owner: self)
         configureUI()
         configureContent()
-        
-        viewModel.getDataForContent()
     }
     
     private func configureUI() {
@@ -49,16 +45,16 @@ class TemplateHeaderView: UIView {
     }
     
     private func configureContent() {
-        viewModel.dataModel = { [weak self] model in
-            guard let safeModel = model as? ProfileModel else { return }
-
-            self?.welcomeLabel.text              = safeModel.name
-            self?.notificationIndicator.isHidden = !safeModel.isNewNotificatoins
-
-            if safeModel.imageName != "", let image = UIImage(named: safeModel.imageName) {
-                self?.profilePhoto.image = image
-            }
-        }
+//        viewModel.dataModel = { [weak self] model in
+//            guard let safeModel = model as? ProfileModel else { return }
+//
+//            self?.welcomeLabel.text              = safeModel.name
+//            self?.notificationIndicator.isHidden = !safeModel.isNewNotificatoins
+//
+//            if safeModel.imageName != "", let image = UIImage(named: safeModel.imageName) {
+//                self?.profilePhoto.image = image
+//            }
+//        }
     }
 
     // MARK: - Actions

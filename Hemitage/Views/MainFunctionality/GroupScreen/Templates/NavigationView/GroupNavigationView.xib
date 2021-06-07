@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Pr4-ln-FXH">
-                    <rect key="frame" x="20" y="187" width="49" height="28"/>
+                    <rect key="frame" x="20" y="187.5" width="41.5" height="27"/>
                     <color key="tintColor" name="DarkText #18191A"/>
                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                     <color key="textColor" name="DarkText #18191A"/>
@@ -60,14 +60,14 @@
                     <color key="shadowColor" name="GrayText #9B9B9B"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FgX-oI-3Zs">
-                    <rect key="frame" x="20" y="225" width="47.5" height="16"/>
+                    <rect key="frame" x="20" y="224.5" width="44.5" height="16"/>
                     <color key="tintColor" name="DarkText #18191A"/>
                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                     <color key="textColor" name="DarkText #18191A"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="QK8-VA-xc1">
-                    <rect key="frame" x="51.5" y="57.5" width="49" height="27"/>
+                    <rect key="frame" x="51.5" y="58" width="41.5" height="26"/>
                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                     <color key="textColor" name="DarkText #18191A"/>
                     <nil key="highlightedColor"/>

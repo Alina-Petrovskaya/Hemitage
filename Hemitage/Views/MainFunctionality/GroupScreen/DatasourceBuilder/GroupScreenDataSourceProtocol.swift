@@ -8,8 +8,6 @@
 import Foundation
 
 protocol GroupScreenDataSourceProtocol {
-    
-    //    var collectionViewDelegate: MainScreenCollectionViewDelegate { get }
 
     func reloadData<T: GroupScreenViewModelProtocol>(with viewModel: T)
     func insertItems<T: ViewModelConfigurator>(items: [T])

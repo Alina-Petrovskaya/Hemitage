@@ -8,11 +8,9 @@
 import Foundation
 
 protocol TemplatesViewModelProtocol {
+    associatedtype DataType
     
-    associatedtype Data
-    
-    var dataModel: ((Data) -> ())? { get set }
-    
-    func getDataForContent() -> ()
+    func getDataForContent() -> DataType
+    func updateData(with data: DataType)
     
 }

@@ -48,6 +48,8 @@
 		84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */; };
 		84926F88264D3D14005E9074 /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F87264D3D14005E9074 /* MainScreenBuilder.swift */; };
 		84926F8A264D48D3005E9074 /* MainScreenCollectionViewSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84926F89264D48D3005E9074 /* MainScreenCollectionViewSetup.swift */; };
+		84937A96266A540700672BAB /* GroupScreenSongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84937A94266A540700672BAB /* GroupScreenSongCell.swift */; };
+		84937A97266A540700672BAB /* GroupScreenSongCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84937A95266A540700672BAB /* GroupScreenSongCell.xib */; };
 		849A50F2263972D10047340A /* EmailFireBaseLogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */; };
 		849A50F426397C250047340A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F326397C250047340A /* LoginViewModel.swift */; };
 		849A50F626397FF10047340A /* SignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A50F526397FF10047340A /* SignInManager.swift */; };
@@ -94,6 +96,7 @@
 		84ACEBD22664F07A0097A719 /* GroupScreenSubgroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ACEBD02664F0790097A719 /* GroupScreenSubgroupCell.xib */; };
 		84ACEBD42664F5630097A719 /* GroupNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */; };
 		84ACEBD62664FBA00097A719 /* ViewModelConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACEBD52664FBA00097A719 /* ViewModelConfigurator.swift */; };
+		84AFCEF9266E4C3D00115159 /* UpdatingCellInformationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCEF8266E4C3D00115159 /* UpdatingCellInformationDelegate.swift */; };
 		84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */; };
 		84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */; };
 		84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662B8266675B9009BE13A /* SubcollectionModel.swift */; };
@@ -118,8 +121,8 @@
 		84D7F7A3263C4E90004B2DB0 /* KeyboardManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */; };
 		84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */; };
 		84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */; };
-		84D7F8122642BA26004B2DB0 /* TemplateHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8112642BA26004B2DB0 /* TemplateHeaderView.xib */; };
-		84D7F8142642C481004B2DB0 /* TemplateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8132642C481004B2DB0 /* TemplateHeaderView.swift */; };
+		84D7F8122642BA26004B2DB0 /* TemplateProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8112642BA26004B2DB0 /* TemplateProfileHeaderView.xib */; };
+		84D7F8142642C481004B2DB0 /* TemplateProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8132642C481004B2DB0 /* TemplateProfileHeaderView.swift */; };
 		84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F8172643D01E004B2DB0 /* TemplateSongView.xib */; };
 		84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7F8192643D035004B2DB0 /* TemplateSongView.swift */; };
 		84D7F81C2643D62C004B2DB0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84D7F81B2643D62C004B2DB0 /* Inter-SemiBold.ttf */; };
@@ -144,6 +147,9 @@
 		84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */; };
 		84EB44EA2638026400828222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E92638026400828222 /* LoginViewController.swift */; };
 		84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44EB2638027900828222 /* LoginViewController.storyboard */; };
+		84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */; };
+		84FD54D1266E017800C89D96 /* GroupScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D0266E017800C89D96 /* GroupScreenHeaderView.swift */; };
+		84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
 		DDF8538BA8C163197BC79F6C /* Pods_HemitageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F992CFC66C9E73B0826643 /* Pods_HemitageTests.framework */; };
 /* End PBXBuildFile section */
@@ -205,6 +211,8 @@
 		84926F59264D1389005E9074 /* BlogCollectionViewCellModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCollectionViewCellModelView.swift; sourceTree = "<group>"; };
 		84926F87264D3D14005E9074 /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
 		84926F89264D48D3005E9074 /* MainScreenCollectionViewSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewSetup.swift; sourceTree = "<group>"; };
+		84937A94266A540700672BAB /* GroupScreenSongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenSongCell.swift; sourceTree = "<group>"; };
+		84937A95266A540700672BAB /* GroupScreenSongCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenSongCell.xib; sourceTree = "<group>"; };
 		849A50F1263972D10047340A /* EmailFireBaseLogInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailFireBaseLogInManager.swift; sourceTree = "<group>"; };
 		849A50F326397C250047340A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		849A50F526397FF10047340A /* SignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInManager.swift; sourceTree = "<group>"; };
@@ -251,6 +259,7 @@
 		84ACEBD02664F0790097A719 /* GroupScreenSubgroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenSubgroupCell.xib; sourceTree = "<group>"; };
 		84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationViewModel.swift; sourceTree = "<group>"; };
 		84ACEBD52664FBA00097A719 /* ViewModelConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurator.swift; sourceTree = "<group>"; };
+		84AFCEF8266E4C3D00115159 /* UpdatingCellInformationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingCellInformationDelegate.swift; sourceTree = "<group>"; };
 		84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModel.swift; sourceTree = "<group>"; };
 		84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		84D662B8266675B9009BE13A /* SubcollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcollectionModel.swift; sourceTree = "<group>"; };
@@ -276,8 +285,8 @@
 		84D7F7A2263C4E90004B2DB0 /* KeyboardManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManagerProtocol.swift; sourceTree = "<group>"; };
 		84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreenViewController.storyboard; sourceTree = "<group>"; };
 		84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
-		84D7F8112642BA26004B2DB0 /* TemplateHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateHeaderView.xib; sourceTree = "<group>"; };
-		84D7F8132642C481004B2DB0 /* TemplateHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateHeaderView.swift; sourceTree = "<group>"; };
+		84D7F8112642BA26004B2DB0 /* TemplateProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateProfileHeaderView.xib; sourceTree = "<group>"; };
+		84D7F8132642C481004B2DB0 /* TemplateProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateProfileHeaderView.swift; sourceTree = "<group>"; };
 		84D7F8172643D01E004B2DB0 /* TemplateSongView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSongView.xib; sourceTree = "<group>"; };
 		84D7F8192643D035004B2DB0 /* TemplateSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSongView.swift; sourceTree = "<group>"; };
 		84D7F81B2643D62C004B2DB0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -299,6 +308,9 @@
 		84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		84EB44E92638026400828222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84EB44EB2638027900828222 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenHeaderView.xib; sourceTree = "<group>"; };
+		84FD54D0266E017800C89D96 /* GroupScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenHeaderView.swift; sourceTree = "<group>"; };
+		84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDatasource.swift; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9F311DCD9DD40862B92A5016 /* Pods-Hemitage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage.release.xcconfig"; path = "Target Support Files/Pods-Hemitage/Pods-Hemitage.release.xcconfig"; sourceTree = "<group>"; };
 		DA0E06E33BA46AF8CDE450FB /* Pods-HemitageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HemitageTests.release.xcconfig"; path = "Target Support Files/Pods-HemitageTests/Pods-HemitageTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -511,6 +523,7 @@
 				84A00ADE265F96C100087E07 /* PasswordObserver */,
 				849C4E6E264AA01800C26C53 /* ConfiguringCell.swift */,
 				84ACEBD52664FBA00097A719 /* ViewModelConfigurator.swift */,
+				84AFCEF8266E4C3D00115159 /* UpdatingCellInformationDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -709,9 +722,8 @@
 		84A00B0526611EAE00087E07 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				84A00B0626611EEB00087E07 /* GroupNavigationView.xib */,
-				84A00B0826611F2100087E07 /* GroupNavigationView.swift */,
-				84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */,
+				84FD54CD266E011D00C89D96 /* Header */,
+				84FD54CC266E010E00C89D96 /* NavigationView */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -738,6 +750,8 @@
 		84ACEBCE2664EE1A0097A719 /* Songs */ = {
 			isa = PBXGroup;
 			children = (
+				84937A95266A540700672BAB /* GroupScreenSongCell.xib */,
+				84937A94266A540700672BAB /* GroupScreenSongCell.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -786,6 +800,7 @@
 			isa = PBXGroup;
 			children = (
 				84D662C126677ACE009BE13A /* GroupScreenTableViewBuilder.swift */,
+				84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */,
 			);
 			path = TableViewBuilder;
 			sourceTree = "<group>";
@@ -851,14 +866,14 @@
 			path = MainFunctionality;
 			sourceTree = "<group>";
 		};
-		84D7F8102642B9A3004B2DB0 /* TemplateHeaderView */ = {
+		84D7F8102642B9A3004B2DB0 /* TemplateProfileHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				84D7F8112642BA26004B2DB0 /* TemplateHeaderView.xib */,
-				84D7F8132642C481004B2DB0 /* TemplateHeaderView.swift */,
+				84D7F8112642BA26004B2DB0 /* TemplateProfileHeaderView.xib */,
+				84D7F8132642C481004B2DB0 /* TemplateProfileHeaderView.swift */,
 				849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */,
 			);
-			path = TemplateHeaderView;
+			path = TemplateProfileHeaderView;
 			sourceTree = "<group>";
 		};
 		84D7F8152642DE02004B2DB0 /* MainScreen */ = {
@@ -878,7 +893,7 @@
 			isa = PBXGroup;
 			children = (
 				849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */,
-				84D7F8102642B9A3004B2DB0 /* TemplateHeaderView */,
+				84D7F8102642B9A3004B2DB0 /* TemplateProfileHeaderView */,
 				849C4E362646C9A400C26C53 /* SongView */,
 			);
 			path = Templates;
@@ -953,6 +968,25 @@
 			path = LogInScreen;
 			sourceTree = "<group>";
 		};
+		84FD54CC266E010E00C89D96 /* NavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				84A00B0626611EEB00087E07 /* GroupNavigationView.xib */,
+				84A00B0826611F2100087E07 /* GroupNavigationView.swift */,
+				84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */,
+			);
+			path = NavigationView;
+			sourceTree = "<group>";
+		};
+		84FD54CD266E011D00C89D96 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */,
+				84FD54D0266E017800C89D96 /* GroupScreenHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		A8F3CBBB0AAC7A76744ACFAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -974,8 +1008,8 @@
 				848CF73B26369F270070A3C6 /* Sources */,
 				848CF73C26369F270070A3C6 /* Frameworks */,
 				848CF73D26369F270070A3C6 /* Resources */,
-				1701AB6C1C5CB809C3E2E73C /* [CP] Embed Pods Frameworks */,
-				D78F27C661DF0FC4A0E532E6 /* [CP] Copy Pods Resources */,
+				AB83763E43149885D63659D5 /* [CP] Embed Pods Frameworks */,
+				912D4BE55483B00F2361C141 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1013,8 +1047,8 @@
 				848CF75F26369F2C0070A3C6 /* Sources */,
 				848CF76026369F2C0070A3C6 /* Frameworks */,
 				848CF76126369F2C0070A3C6 /* Resources */,
-				C6A5AAC93B08188DAAC45938 /* [CP] Embed Pods Frameworks */,
-				035440A80BAA5342FAD6F08F /* [CP] Copy Pods Resources */,
+				5B01E387AE8E8F970E244FFB /* [CP] Embed Pods Frameworks */,
+				21FDCCCFC2F07D68FBDC5D43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1078,9 +1112,11 @@
 				84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */,
 				84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */,
 				84A00B0B2661928800087E07 /* Assets.xcassets in Resources */,
+				84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */,
 				84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */,
+				84937A97266A540700672BAB /* GroupScreenSongCell.xib in Resources */,
 				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
-				84D7F8122642BA26004B2DB0 /* TemplateHeaderView.xib in Resources */,
+				84D7F8122642BA26004B2DB0 /* TemplateProfileHeaderView.xib in Resources */,
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
 				84A00AD7265E403900087E07 /* NewPasscodeViewController.storyboard in Resources */,
 				84D7F81C2643D62C004B2DB0 /* Inter-SemiBold.ttf in Resources */,
@@ -1123,7 +1159,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		035440A80BAA5342FAD6F08F /* [CP] Copy Pods Resources */ = {
+		21FDCCCFC2F07D68FBDC5D43 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1138,23 +1174,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1701AB6C1C5CB809C3E2E73C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3804E3E78B17456CC97EEA7D /* [CP] Check Pods Manifest.lock */ = {
@@ -1179,6 +1198,57 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5B01E387AE8E8F970E244FFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		912D4BE55483B00F2361C141 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB83763E43149885D63659D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ACB39E7A2CEFF09B4940FD51 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1199,40 +1269,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C6A5AAC93B08188DAAC45938 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D78F27C661DF0FC4A0E532E6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hemitage/Pods-Hemitage-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F1E79DDFFDF31AF09FB40E64 /* [CP] Check Pods Manifest.lock */ = {
@@ -1275,6 +1311,7 @@
 				84A00ABB265B897000087E07 /* ImageFileManager.swift in Sources */,
 				849C4E6F264AA01800C26C53 /* ConfiguringCell.swift in Sources */,
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
+				84FD54D1266E017800C89D96 /* GroupScreenHeaderView.swift in Sources */,
 				849C4E7F264BD11900C26C53 /* ViewModelTemplateSong.swift in Sources */,
 				84ACEBD12664F0790097A719 /* GroupScreenSubgroupCell.swift in Sources */,
 				84D7F8232643F606004B2DB0 /* MapCollectionViewCell.swift in Sources */,
@@ -1285,6 +1322,7 @@
 				849C4E84264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,
+				84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84D662BE26677A8B009BE13A /* GroupScreenDirector.swift in Sources */,
 				84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */,
@@ -1323,10 +1361,11 @@
 				84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */,
 				84A00ADD265E905A00087E07 /* NewPasscodeViewModel.swift in Sources */,
 				849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */,
-				84D7F8142642C481004B2DB0 /* TemplateHeaderView.swift in Sources */,
+				84D7F8142642C481004B2DB0 /* TemplateProfileHeaderView.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */,
 				849C4E75264ACC6600C26C53 /* BlogModel.swift in Sources */,
+				84AFCEF9266E4C3D00115159 /* UpdatingCellInformationDelegate.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,
 				84A00ADB265E5A3900087E07 /* PasswordObbCodeManager.swift in Sources */,
@@ -1337,6 +1376,7 @@
 				84D7F832264427E6004B2DB0 /* MainScreenDataSourceManager.swift in Sources */,
 				84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */,
 				84A00AC5265BED3E00087E07 /* PasscodeRecoveryViewController.swift in Sources */,
+				84937A96266A540700672BAB /* GroupScreenSongCell.swift in Sources */,
 				849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */,
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,

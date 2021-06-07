@@ -12,5 +12,6 @@ struct SongModel: Hashable, Codable, Identifiable {
     @DocumentID var id: String? 
     let songName: String
     let singer: String
-    let imageName: String
+    let imageURL: String
+    
 }

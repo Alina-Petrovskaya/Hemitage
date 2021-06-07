@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MapModel: Hashable {
+struct MapModel: Hashable {
     var uuid = UUID()
     var allUsers: Int
     var usersOnline: Int

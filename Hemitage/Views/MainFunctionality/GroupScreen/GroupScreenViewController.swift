@@ -15,7 +15,9 @@ class GroupScreenViewController: UIViewController {
     
     var kvoNavBar: NSKeyValueObservation?
     var viewModel: GroupScreenViewModelProtocol?
+    
     private var collectionViewDataSourse: GroupScreenDataSourceProtocol?
+    private var tableViewDataSource: GroupScreenDataSourceProtocol?
     private let navigationView = GroupNavigationView()
     
     // MARK: - Life Cycle
@@ -23,9 +25,9 @@ class GroupScreenViewController: UIViewController {
         super.viewDidLoad()
         viewModel?.delegate = self
         
-        collectionViewDataSourse = GroupScreenDirector().buildData(with: viewModel! as! GroupScreenViewModel, builder: GroupScreenCollectionViewBuilder(), object: collectionView)
-        
-       
+        guard let safeViewModel = viewModel as? GroupScreenViewModel else { return }
+        collectionViewDataSourse = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenCollectionViewBuilder(), object: collectionView)
+        tableViewDataSource = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenTableViewBuilder(), object: tableView)
         
         updateNavigationBarView()
         observeNavBarState()
@@ -83,7 +85,6 @@ class GroupScreenViewController: UIViewController {
 
 
 extension GroupScreenViewController: GroupScreenViewModelDelegate {
-    
     func itemsInserted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent) {
         switch section {
         case .navigationBar:
@@ -93,19 +94,36 @@ extension GroupScreenViewController: GroupScreenViewModelDelegate {
             collectionViewDataSourse?.insertItems(items: items)
             
         case .songList:
-            break
+            tableViewDataSource?.insertItems(items: items)
         }
-        
     }
     
+    
     func itemsReloaded<T: ViewModelConfigurator>(newData: T, section: GroupScreenTypeOfContent, index: Int) {
-        
+        switch section {
+        case .navigationBar:
+            break
+            
+        case .subGroup:
+            collectionViewDataSourse?.reloadItems(data: newData, with: index)
+            
+        case .songList:
+            tableViewDataSource?.reloadItems(data: newData, with: index)
+        }
     }
     
     
     func itemsDeleted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent) {
-        
+        switch section {
+        case .navigationBar:
+            break
+            
+        case .subGroup:
+            collectionViewDataSourse?.deleteItems(items: items)
+            
+        case .songList:
+            tableViewDataSource?.deleteItems(items: items)
+        }
     }
-    
     
 }

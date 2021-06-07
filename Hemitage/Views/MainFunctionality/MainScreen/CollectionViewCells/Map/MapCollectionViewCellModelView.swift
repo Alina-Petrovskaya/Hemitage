@@ -10,20 +10,22 @@ import Foundation
 
 class MapCollectionViewCellModelView: MainScreenCollectionViewCellModelViewProtocol, Hashable {
 
+    typealias DataType = (allUsers: Int, usersOnline: Int)
+    
     private let id = UUID()
     private var allUsers: String
     private var usersOnline: String
     
-    init(allUsers: Int, usersOnline: Int) {
-        self.allUsers    = "\(allUsers)"
-        self.usersOnline = "\(usersOnline)"
+    init(model: MapModel) {
+        self.allUsers    = "\(model.allUsers)"
+        self.usersOnline = "\(model.usersOnline)"
     }
     
-    func updateContent<T>(with data: T) -> () {
-        guard let safeData = data as? (allUsers: String, usersOnline: String) else { return }
+    func updateContent<T: MainScreenCollectionViewCellModelViewProtocol>(with data: T) -> () {
+        guard let data: DataType  = data.getData() else { return }
         
-        self.allUsers    = safeData.allUsers
-        self.usersOnline = safeData.usersOnline
+        self.allUsers    = "\(data.allUsers)"
+        self.usersOnline = "\(data.usersOnline)"
     }
     
     func getData<T>() -> T {

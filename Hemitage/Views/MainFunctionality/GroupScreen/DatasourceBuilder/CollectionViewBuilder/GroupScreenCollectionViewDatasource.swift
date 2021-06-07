@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     
     private var collectionView: UICollectionView
@@ -37,7 +35,7 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
          
         let itemForReload = snapshot.itemIdentifiers[index]
       
-//         itemForReload.setData(with: item) 
+        itemForReload.setData(with: item.getData())
         
         snapshot.reloadItems([itemForReload])
         dataSource?.apply(snapshot, animatingDifferences: true)

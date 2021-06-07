@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TemplateHeaderView" customModule="Hemitage" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TemplateProfileHeaderView" customModule="Hemitage" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="CE2-H0-DTq"/>
                 <outlet property="notificationIndicator" destination="z05-2J-kSh" id="Jfg-8Y-WSY"/>
@@ -23,7 +23,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="HeaderView" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" restorationIdentifier="TemplateProfileHeaderView" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="623" height="263"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -60,7 +60,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Hi, Jared" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="uYm-ld-74G">
-                    <rect key="frame" x="68" y="164.5" width="88.5" height="26"/>
+                    <rect key="frame" x="68" y="164" width="98.5" height="27"/>
                     <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="22"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
