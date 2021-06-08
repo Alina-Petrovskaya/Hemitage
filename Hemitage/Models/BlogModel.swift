@@ -15,18 +15,6 @@ struct BlogModel: Hashable, Codable, Identifiable {
     let subtitle: String
     let date: Date
     
-    
-    init(previewImageName: String,
-         title: String,
-         subtitle: String,
-         date: Date) {
-        
-        self.previewImageName = previewImageName
-        self.title            = title
-        self.subtitle         = subtitle
-        self.date             = date
-    }
-    
     static func == (lhs: BlogModel, rhs: BlogModel) -> Bool {
         return lhs.id == rhs.id
     }

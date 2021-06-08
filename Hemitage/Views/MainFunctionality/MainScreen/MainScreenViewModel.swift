@@ -29,7 +29,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(model: MapModel(allUsers: 15, usersOnline: 5)))]
     private var blogData: [MainScreenModelWrapper] = []
     
-    private var contentManager = ContentManager()
+    private var contentManager = ReadContentManager()
     private let cacheManager   = ImageCacheManager()
     
     init() {
@@ -75,6 +75,9 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
                                      at: &self.categoriesData,
                                      section: .categories)
                 }
+            
+            default:
+                break
             }
         }
         
@@ -140,9 +143,11 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             break
             
         case .categories:
-            contentManager.queryItemsFromFirebase(with: categoriesData[indexPath.row].getItemId(),
-                                                 from: .categories,
-                                                 with: CategoriesModel.self) { items in
+            contentManager.queryItemsFromFirebase(value: categoriesData[indexPath.row].getItemId(),
+                                                  field: nil,
+                                                  from: .categories,
+                                                  with: CategoriesModel.self,
+                                                  sortField: nil) { items in
                 completion((model: items[0], section: .categories))
             }
             

@@ -23,7 +23,7 @@ class ViewModelTemplateSong: ViewModelConfigurator, Hashable {
         id                     = songModel.id ?? "nil"
         title                  = songModel.songName
         subtitle               = songModel.singer
-        imageURL               = URL(string: songModel.imageURL)
+        imageURL               = songModel.imageURL
         self.isPlaying         = isPlaying
         self.isHideCloseButton = isHideCloseButton
     }

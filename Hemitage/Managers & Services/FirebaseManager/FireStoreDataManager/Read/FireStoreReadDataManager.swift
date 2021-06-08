@@ -1,5 +1,5 @@
 //
-//  FireStoreCacheDataManager.swift
+//  FireStoreReadDataManager.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 17.05.2021.
@@ -8,7 +8,7 @@ import Foundation
 import FirebaseFirestore
 
 
-class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
+class FireStoreReadDataManager: FireStoreDataManagerProtocol {
     
     private let db = Firestore.firestore()
     var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
@@ -30,27 +30,47 @@ class FireStoreCacheDataManager: FireStoreDataManagerProtocol {
             self?.callBack?((data: result.items, typeOfChange: result.changeType, collection: collection))
         }
     }
-    
 
     func queryItems<T: Codable & Hashable>(from collection: FireStoreCollectionName,
-                                           by field: String,
-                                           with value: String,
+                                           field: String,
+                                           value: String,
                                            using model: T.Type,
+                                           sortField: String,
                                            completion: @escaping ([T]) -> ()) {
-        
-        db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 20)
+
+        db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 1).order(by: sortField)
             .getDocuments { [weak self] querySnapshot, error in
-                guard let snapshot = querySnapshot,
-                      let lastSnapshot = snapshot.documents.last
-                else { return }
-                
-                
-                self?.db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 20).start(afterDocument: lastSnapshot)
+
+                if let error = error {
+                    print(error)
+                }
+
+                guard let snapshot = querySnapshot
+                else {
+
+                    return
+
+                }
+
+                guard let lastSnapshot = snapshot.documents.last else {
+                    print("Error in creating last snaphot")
+                    return
+                }
+
+                self?.db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 10).order(by: sortField).start(afterDocument: lastSnapshot)
                     .getDocuments { querySnapshot, error in
-                        
-                        guard let snapshot = querySnapshot else { return }
+
+                        if let error = error {
+                            print(error)
+                        }
+
+                        guard let snapshot = querySnapshot else {
+                            print("Error in creating snaphot")
+                            return }
+
                         let items = snapshot.documents.compactMap { [weak self] documentChange -> T? in
                             let data = self?.decodeQueryDocument(with: model, documentSnapshot: documentChange)
+
                             return data
                         }
                         completion(items)

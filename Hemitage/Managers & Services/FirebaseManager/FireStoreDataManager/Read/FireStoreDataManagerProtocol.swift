@@ -21,5 +21,10 @@ protocol FireStoreDataManagerProtocol {
     /**
      Query items by  value  at specific field
      */
-    func queryItems<T: Codable & Hashable>(from collection: FireStoreCollectionName, by field: String, with value: String, using model: T.Type, completion: @escaping ([T]) -> ())
+    func queryItems<T: Codable & Hashable>(from collection: FireStoreCollectionName,
+                                           field: String,
+                                           value: String,
+                                           using model: T.Type,
+                                           sortField: String,
+                                           completion: @escaping ([T]) -> ())
 }

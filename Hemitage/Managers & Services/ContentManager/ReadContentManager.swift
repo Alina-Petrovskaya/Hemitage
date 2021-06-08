@@ -1,5 +1,5 @@
 //
-//  ContentManager.swift
+//  ReadContentManager.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 20.05.2021.
@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 
-protocol ContentManagerProtocol {
+protocol ReadContentManagerProtocol {
     associatedtype DBManager
     
     var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
@@ -29,15 +29,16 @@ protocol ContentManagerProtocol {
      - parameter field: Optional
      - returns:  Data will be returned in completion -> Item or number of Items
      */
-    func queryItemsFromFirebase<T: Hashable & Codable>(with value: String,
-                                                      at field: String?,
+    func queryItemsFromFirebase<T: Hashable & Codable>(value: String,
+                                                      field: String?,
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
+                                                      sortField: String?,
                                                       completion: @escaping ([T]) -> ())
 }
 
 
-class ContentManager: NSObject, NSFetchedResultsControllerDelegate, ContentManagerProtocol {
+class ReadContentManager: NSObject, NSFetchedResultsControllerDelegate, ReadContentManagerProtocol {
     
     enum DBManager {
         case fireBaseManager, coreDataManager
@@ -45,7 +46,7 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate, ContentManag
     
     var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     
-    private lazy var fireBaseManager: FireStoreDataManagerProtocol = FireStoreCacheDataManager()
+    private lazy var fireBaseManager: FireStoreDataManagerProtocol = FireStoreReadDataManager()
     private lazy var fetchedResultsBlog = NSFetchedResultsController(
         fetchRequest: DataStoreManager.shared.createRequest(from: .blog, sortByField: "date"),
         managedObjectContext: DataStoreManager.shared.viewContext,
@@ -92,12 +93,14 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate, ContentManag
     
     
     
-    func queryItemsFromFirebase<T: Hashable & Codable>(with value: String,
-                                                      at field: String? = nil,
+    func queryItemsFromFirebase<T: Hashable & Codable>(value: String,
+                                                      field: String? = nil,
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
+                                                      sortField: String?,
                                                       completion: @escaping ([T]) -> ()) {
-        guard let safeField = field
+        guard let safeField = field,
+              let by = sortField
         else {
             fireBaseManager.queryItem(from: collection, by: value, with: model) { item in
                 completion([item])
@@ -105,7 +108,7 @@ class ContentManager: NSObject, NSFetchedResultsControllerDelegate, ContentManag
             return
         }
         
-        fireBaseManager.queryItems(from: collection, by: safeField, with: value, using: model) { items in
+        fireBaseManager.queryItems(from: collection, field: safeField, value: value, using: model, sortField: by) { items in
             completion(items)
         }
     }

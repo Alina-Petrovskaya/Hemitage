@@ -18,13 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="Fob-gm-Y8C" customClass="TemplateSongView" customModule="Hemitage" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="489" height="145"/>
+                        <rect key="frame" x="0.0" y="0.0" width="489" height="83"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Fob-gm-Y8C" secondAttribute="bottom" id="6Hr-oz-fQG"/>
+                    <constraint firstAttribute="bottom" secondItem="Fob-gm-Y8C" secondAttribute="bottom" priority="999" id="6Hr-oz-fQG"/>
                     <constraint firstAttribute="trailing" secondItem="Fob-gm-Y8C" secondAttribute="trailing" id="6cm-pz-SN4"/>
+                    <constraint firstItem="Fob-gm-Y8C" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.17" id="AVp-9L-X2n"/>
                     <constraint firstItem="Fob-gm-Y8C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DRT-RH-6bQ"/>
                     <constraint firstItem="Fob-gm-Y8C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="F4e-5M-Nur"/>
                 </constraints>

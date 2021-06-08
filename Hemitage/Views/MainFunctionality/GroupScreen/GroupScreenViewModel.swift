@@ -13,38 +13,35 @@ enum GroupScreenTypeOfContent {
    case songList
 }
 
-protocol GroupScreenViewModelDelegate {
-    
-    func itemsInserted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent)
-    func itemsReloaded<T: ViewModelConfigurator>(newData: T, section: GroupScreenTypeOfContent, index: Int)
-    func itemsDeleted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent)
-    
-}
-
-protocol GroupScreenViewModelProtocol {
-    var delegate: GroupScreenViewModelDelegate? { get set }
-    
-    func heightNavBarHandling(height: Double?, completion: () -> ())
-    func getDataContent<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> [T]?
-}
-
 class GroupScreenViewModel: GroupScreenViewModelProtocol {
     
      enum StateOfNavigationBar {
         case small, large, undefined
     }
     
-    var delegate: GroupScreenViewModelDelegate?
+    
     private var categoriesModel: CategoriesModel
     private var stateOfNavigationBar: StateOfNavigationBar = .undefined
-    private var contentManager: some ContentManagerProtocol = ContentManager()
+    private var contentManager: some ReadContentManagerProtocol = ReadContentManager()
     private var subcategoryList: [GroupScreenSubgroupCellViewModel] = []
+    private var songList: [ViewModelTemplateSong] = []
+    
+    var delegate: GroupScreenViewModelDelegate?
+    var selectedSubCategory: String? = nil {
+        didSet {
+            if selectedSubCategory != nil {
+                songList.removeAll()
+                getSongItems()
+            }
+        }
+    }
     
     
     init(with categoriesModel: CategoriesModel) {
         self.categoriesModel = categoriesModel
         
         getSubcollectionList(for: categoriesModel.id)
+        getSongItems()
     }
  
     // MARK: - Manage Content
@@ -69,8 +66,23 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     
     
     private func getSongItems() {
+        let field = selectedSubCategory != nil ? "subCategories" : "categories"
+        let value = selectedSubCategory != nil ? selectedSubCategory! : categoriesModel.id!
         
-        
+         
+        contentManager.queryItemsFromFirebase(value: value,
+                                              field: field,
+                                              from: .songs,
+                                              with: SongModel.self,
+                                              sortField: "raiting") { [weak self] data in
+            
+            let items = data.compactMap { model -> ViewModelTemplateSong in
+                return ViewModelTemplateSong(songModel: model, isPlaying: false, isHideCloseButton: true)
+            }
+            
+            self?.songList.append(contentsOf: items)
+            self?.delegate?.itemsInserted(items: items, section: .songList)
+        }
     }
     
     

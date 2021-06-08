@@ -29,36 +29,36 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="563" height="104"/>
+            <rect key="frame" x="0.0" y="0.0" width="434" height="162"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMy-f8-MEH" userLabel="Border">
-                    <rect key="frame" x="0.0" y="0.0" width="563" height="1"/>
+                    <rect key="frame" x="0.0" y="0.0" width="434" height="1"/>
                     <color key="backgroundColor" name="Border #EEEEEE"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="LTa-Eo-sYd"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="999" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="999" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-2G-cfQ">
-                    <rect key="frame" x="20" y="13" width="435" height="79"/>
+                    <rect key="frame" x="20" y="13" width="306" height="137"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="Sleep" translatesAutoresizingMaskIntoConstraints="NO" id="8sa-7Q-h6e">
-                            <rect key="frame" x="0.0" y="0.0" width="79" height="79"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="999" image="Group 257" translatesAutoresizingMaskIntoConstraints="NO" id="8sa-7Q-h6e">
+                            <rect key="frame" x="0.0" y="0.0" width="137" height="137"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="8sa-7Q-h6e" secondAttribute="height" multiplier="1:1" id="3ea-CN-JJg"/>
                             </constraints>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-ZB-GHv">
-                            <rect key="frame" x="89" y="0.0" width="346" height="79"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-ZB-GHv">
+                            <rect key="frame" x="147" y="0.0" width="159" height="137"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Rain &amp; Tunder Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-IQ-jkS">
-                                    <rect key="frame" x="0.0" y="0.0" width="346" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Rain &amp; Tunder Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-IQ-jkS">
+                                    <rect key="frame" x="0.0" y="0.0" width="159" height="72"/>
                                     <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="13"/>
                                     <color key="textColor" name="DarkText #18191A"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nature sound Emporium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-ey-htp">
-                                    <rect key="frame" x="0.0" y="41" width="346" height="38"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nature sound Emporium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-ey-htp">
+                                    <rect key="frame" x="0.0" y="72" width="159" height="65"/>
                                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                     <color key="textColor" name="GrayText #9B9B9B"/>
                                     <nil key="highlightedColor"/>
@@ -68,7 +68,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-AY-Ttm">
-                    <rect key="frame" x="475" y="13" width="68" height="24"/>
+                    <rect key="frame" x="346" y="13" width="68" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-J2-otx" userLabel="Stop/play">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -113,11 +113,11 @@
                 <constraint firstItem="BIg-AY-Ttm" firstAttribute="top" secondItem="lMy-f8-MEH" secondAttribute="bottom" constant="12" id="xd4-qn-yLp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="339.85507246376812" y="-384.375"/>
+            <point key="canvasLocation" x="242.0289855072464" y="-393.08035714285711"/>
         </view>
     </objects>
     <resources>
-        <image name="Sleep" width="150" height="163"/>
+        <image name="Group 257" width="375" height="242"/>
         <image name="pause" catalog="system" width="88" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Border #EEEEEE">

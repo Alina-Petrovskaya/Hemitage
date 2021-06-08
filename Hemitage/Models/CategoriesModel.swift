@@ -17,21 +17,6 @@ struct CategoriesModel: Hashable, Codable, Identifiable {
     let name: String
     let isDarkText: Bool
     
-    init(imageURL: URL?,
-         imageName: String,
-         name: String,
-         detailImageURL: URL?,
-         subTitle: String?,
-         isDarkText: Bool) {
-        
-        self.name           = name
-        self.imageURL       = imageURL
-        self.imageName      = imageName
-        self.detailImageURL = detailImageURL
-        self.subTitle       = subTitle
-        self.isDarkText     = isDarkText
-    }
-    
     static func ==(lhs: CategoriesModel, rhs: CategoriesModel) -> Bool {
         return lhs.id == rhs.id
     }

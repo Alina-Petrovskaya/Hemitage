@@ -55,7 +55,10 @@ class MainScreenViewController: UIViewController {
             }
         }
         
-        dataSourceManager?.headerCallback = { print("Present blog VC")}
+        
+        dataSourceManager?.headerCallback = {
+            print("Present blog VC")
+        }
     }
     
     
