@@ -10,8 +10,7 @@ import UIKit
 class GroupScreenTableViewBuilder: GroupScreenBuilder {
     
     func setLayout(for object: UIScrollView) {
-        guard let tableView = object as? UITableView else { return }
-        
+
     }
     
     

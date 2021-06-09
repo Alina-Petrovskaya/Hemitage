@@ -731,7 +731,6 @@
 				84D662BC26677A72009BE13A /* DatasourceBuilder */,
 				84ACEBCC2664EDE90097A719 /* Cells */,
 				84A00B0526611EAE00087E07 /* Templates */,
-				84AFCF08266F614600115159 /* Delegats */,
 				84AFCF00266E6B4F00115159 /* Core */,
 			);
 			path = GroupScreen;
@@ -799,13 +798,6 @@
 				84AFCF1E2670BE2800115159 /* Enums */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		84AFCF08266F614600115159 /* Delegats */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Delegats;
 			sourceTree = "<group>";
 		};
 		84AFCF0D266FAB2D00115159 /* Footer */ = {

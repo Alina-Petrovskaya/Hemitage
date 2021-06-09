@@ -19,6 +19,7 @@ class TemplateSongView: UIView {
     @IBOutlet private weak var imageSong: UIImageView!
     @IBOutlet private weak var playButton: UIButton!
     @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet weak var topBorder: UIView!
     
     // MARK: - Life cycle
     override init(frame: CGRect) {

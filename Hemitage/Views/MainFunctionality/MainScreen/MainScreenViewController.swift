@@ -26,7 +26,7 @@ class MainScreenViewController: UIViewController {
         let builder = MainScreenBuilder()
         dataSourceManager = builder.build(with: collectionView, with: viewModel)
         
-        
+        songBottomView.topBorder.isHidden = false
         handlingCollectionViewDelegateEvents()
         handlingViewModelEvents()
         manageHeadeScreen()
