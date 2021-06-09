@@ -11,9 +11,7 @@ class GroupScreenTableViewBuilder: GroupScreenBuilder {
     
     func setLayout(for object: UIScrollView) {
         guard let tableView = object as? UITableView else { return }
-        tableView.tableHeaderView = GroupScreenHeaderView(frame: .zero)
-        tableView.sectionHeaderHeight = tableView.estimatedSectionHeaderHeight
-        tableView.sectionFooterHeight = tableView.estimatedSectionFooterHeight
+        
     }
     
     

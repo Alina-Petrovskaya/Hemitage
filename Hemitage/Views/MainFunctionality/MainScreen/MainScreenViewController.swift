@@ -29,6 +29,7 @@ class MainScreenViewController: UIViewController {
         
         handlingCollectionViewDelegateEvents()
         handlingViewModelEvents()
+        manageHeadeScreen()
     }
     
     
@@ -59,6 +60,15 @@ class MainScreenViewController: UIViewController {
         dataSourceManager?.headerCallback = {
             print("Present blog VC")
         }
+    }
+    
+    
+    
+    private func manageHeadeScreen() {
+        headerView.configureContent(with: ViewModelTemplateHeader(
+                                        model: ProfileModel(imageName: "Sleep",
+                                                            name: "Tatiana",
+                                                            isNewNotificatoins: true)))
     }
     
     

@@ -27,7 +27,6 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
         guard var snapshot = dataSource?.snapshot(),
               let data = items as? [ViewModelTemplateSong] else { return }
 
-        print(data.count)
         snapshot.appendItems(data)
         dataSource?.apply(snapshot, animatingDifferences: true)
         
@@ -62,6 +61,7 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
             }
         }
         
+        
         DispatchQueue.main.async { [weak self] in
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
@@ -78,8 +78,6 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
             }
             
             cell.updateContent(with: model)
-            cell.separatorInset = .zero
-            
             return cell
         }
     }

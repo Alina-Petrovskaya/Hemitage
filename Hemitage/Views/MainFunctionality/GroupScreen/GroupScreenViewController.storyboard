@@ -38,6 +38,7 @@
                                         <cells/>
                                     </collectionView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="CRR-3c-PDT" secondAttribute="trailing" id="3hF-FJ-s0V"/>
                                     <constraint firstItem="zXU-8j-tAY" firstAttribute="leading" secondItem="FZ0-53-3Mk" secondAttribute="leading" id="CVz-1b-l7m"/>

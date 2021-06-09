@@ -26,6 +26,7 @@ class GroupScreenViewController: UIViewController {
         viewModel?.delegate = self
         
         guard let safeViewModel = viewModel as? GroupScreenViewModel else { return }
+        
         collectionViewDataSourse = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenCollectionViewBuilder(), object: collectionView)
         tableViewDataSource = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenTableViewBuilder(), object: tableView)
         
@@ -82,7 +83,6 @@ class GroupScreenViewController: UIViewController {
     }
     
     // MARK: - Handle Actions
-    
     private func backButtonTaped() {
         navigationView.backButtonTapped = { [weak self] in
             self?.navigationController?.popViewController(animated: true)

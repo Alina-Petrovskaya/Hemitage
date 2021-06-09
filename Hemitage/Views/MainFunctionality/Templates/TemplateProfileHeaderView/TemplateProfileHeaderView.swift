@@ -32,7 +32,6 @@ class TemplateProfileHeaderView: UIView {
     private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: TemplateProfileHeaderView.self), owner: self)
         configureUI()
-        configureContent()
     }
     
     private func configureUI() {
@@ -44,17 +43,14 @@ class TemplateProfileHeaderView: UIView {
         notificationIndicator.layer.cornerRadius = notificationIndicator.frame.size.height / 2
     }
     
-    private func configureContent() {
-//        viewModel.dataModel = { [weak self] model in
-//            guard let safeModel = model as? ProfileModel else { return }
-//
-//            self?.welcomeLabel.text              = safeModel.name
-//            self?.notificationIndicator.isHidden = !safeModel.isNewNotificatoins
-//
-//            if safeModel.imageName != "", let image = UIImage(named: safeModel.imageName) {
-//                self?.profilePhoto.image = image
-//            }
-//        }
+    
+    func configureContent<T: ViewModelConfigurator>(with model: T) {
+        
+        let data = model.getData() as? (name: String, image: String, isNewNotificatoins: Bool)
+
+        welcomeLabel.text              = data?.name
+        profilePhoto.image             = UIImage(named: data?.image ?? "user-line")
+        notificationIndicator.isHidden = !(data?.isNewNotificatoins ?? false)
     }
 
     // MARK: - Actions

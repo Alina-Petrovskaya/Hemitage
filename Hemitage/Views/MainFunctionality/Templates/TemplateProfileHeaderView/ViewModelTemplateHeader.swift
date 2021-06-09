@@ -23,9 +23,7 @@ class ViewModelTemplateHeader: ViewModelConfigurator {
     }
     
     func getData() -> DataType {
-        
         return (name: name, image: image, isNewNotificatoins: isNewNotificatoins)
-        
     }
     
     func setData(with data: DataType) {
