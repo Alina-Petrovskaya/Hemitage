@@ -9,15 +9,19 @@ import UIKit
 
 class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     
-    private var collectionView: UICollectionView
     private var dataSource: UICollectionViewDiffableDataSource<Int, GroupScreenSubgroupCellViewModel>?
+    private var groupScreenDelegate: GroupScreenCollectionDelegateProtocol
+    
     
     init(with collectionView: UICollectionView) {
-        self.collectionView = collectionView
-        
+        groupScreenDelegate = GroupScreenCollectionViewDelegate(with: collectionView)
         setupDataSource()
     }
     
+    
+    func getDelegateObject<T>() -> T? {
+        return groupScreenDelegate as? T
+    }
     
     // MARK: - Data Updating
     func insertItems<T: ViewModelConfigurator>(items: [T]) {
@@ -67,7 +71,7 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     
    
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, GroupScreenSubgroupCellViewModel>(collectionView: collectionView) { collectionView, indexPath, model in
+        dataSource = UICollectionViewDiffableDataSource<Int, GroupScreenSubgroupCellViewModel>(collectionView: groupScreenDelegate.collectionView) { collectionView, indexPath, model in
             let cellId = String(describing: GroupScreenSubgroupCell.self)
             
             

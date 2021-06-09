@@ -13,7 +13,8 @@ class GroupScreenDirector {
         
         builder.registerNibs(for: object)
         builder.setLayout(for: object)
+        let dataSource = builder.setupDataSource(for: object, with: viewModel)
         
-        return builder.setupDataSource(for: object, with: viewModel)
+        return dataSource
     }
 }

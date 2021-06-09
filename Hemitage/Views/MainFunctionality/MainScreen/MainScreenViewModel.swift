@@ -144,10 +144,8 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             
         case .categories:
             contentManager.queryItemsFromFirebase(value: categoriesData[indexPath.row].getItemId(),
-                                                  field: nil,
                                                   from: .categories,
-                                                  with: CategoriesModel.self,
-                                                  sortField: nil) { items in
+                                                  with: CategoriesModel.self) { items in
                 completion((model: items[0], section: .categories))
             }
             

@@ -7,6 +7,8 @@
 import Foundation
 import FirebaseFirestore
 
+typealias QueryData = (field: String, value: String, sortField: String, currentNumberOfItems: Int)
+
 
 class FireStoreReadDataManager: FireStoreDataManagerProtocol {
     
@@ -30,56 +32,28 @@ class FireStoreReadDataManager: FireStoreDataManagerProtocol {
             self?.callBack?((data: result.items, typeOfChange: result.changeType, collection: collection))
         }
     }
-
-    func queryItems<T: Codable & Hashable>(from collection: FireStoreCollectionName,
-                                           field: String,
-                                           value: String,
-                                           using model: T.Type,
-                                           sortField: String,
-                                           completion: @escaping ([T]) -> ()) {
-
-        db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 1).order(by: sortField)
-            .getDocuments { [weak self] querySnapshot, error in
-
-                if let error = error {
-                    print(error)
-                }
-
-                guard let snapshot = querySnapshot
-                else {
-
-                    return
-
-                }
-
-                guard let lastSnapshot = snapshot.documents.last else {
-                    print("Error in creating last snaphot")
-                    return
-                }
-
-                self?.db.collection(collection.rawValue).whereField(field, arrayContains: value).limit(to: 10).order(by: sortField).start(afterDocument: lastSnapshot)
-                    .getDocuments { querySnapshot, error in
-
-                        if let error = error {
-                            print(error)
-                        }
-
-                        guard let snapshot = querySnapshot else {
-                            print("Error in creating snaphot")
-                            return }
-
-                        let items = snapshot.documents.compactMap { [weak self] documentChange -> T? in
-                            let data = self?.decodeQueryDocument(with: model, documentSnapshot: documentChange)
-
-                            return data
-                        }
-                        completion(items)
-                    }
-            }
+    
+    
+    func queryItems<T: Codable & Hashable>(queryData: QueryData, from collection: FireStoreCollectionName, model: T.Type,completion: @escaping ([T]) -> ()) {
+        let query = db.collection(collection.rawValue).whereField(queryData.field, arrayContains: queryData.value).order(by: queryData.sortField, descending: true)
+        
+        guard queryData.currentNumberOfItems != 0
+        else {
+            fetchQuery(with: model, query: query.limit(to: 10)) { completion($0) }
+            return
+        }
+        
+        query.limit(to: queryData.currentNumberOfItems).getDocuments { [weak self] querySnapshot, error in
+            guard let snapshot = querySnapshot,
+                  let lastSnapshot = snapshot.documents.last else { return }
+            
+            let newQuery = query.limit(to: 10).start(afterDocument: lastSnapshot)
+            self?.fetchQuery(with: model, query: newQuery) { completion($0) }
+        }
     }
     
     
-    func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName, by id: String, with model: T.Type, completion: @escaping (T) -> ()) {
+    func queryItemByID<T: Codable & Hashable>(_ id: String, from collection: FireStoreCollectionName, model: T.Type, completion: @escaping (T) -> ()) {
         db.collection(collection.rawValue).document(id).getDocument { snapshot, error in
             guard let safeSnapshot = snapshot else { return }
             
@@ -90,6 +64,19 @@ class FireStoreReadDataManager: FireStoreDataManagerProtocol {
             } catch {
                 print("can't parse data")
             }
+        }
+    }
+    
+    
+    private func fetchQuery<T: Codable & Hashable>(with model: T.Type, query: Query, completion: @escaping ([T]) -> ()) {
+        query.getDocuments { querySnapshot, error in
+            guard let snapshot = querySnapshot else { return }
+            
+            let items = snapshot.documents.compactMap { [weak self] documentSnaphot -> T? in
+                return self?.decodeQueryDocument(with: model, documentSnapshot: documentSnaphot)
+            }
+            
+            completion(items)
         }
     }
     
@@ -113,6 +100,7 @@ class FireStoreReadDataManager: FireStoreDataManagerProtocol {
     
     
     private func decodeQueryDocument<T: Codable & Hashable>(with model: T.Type, documentSnapshot: QueryDocumentSnapshot) -> T? {
+        
         do {
             if let data = try documentSnapshot.data(as: model) {
                 return data

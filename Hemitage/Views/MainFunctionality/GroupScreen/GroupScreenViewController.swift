@@ -18,7 +18,7 @@ class GroupScreenViewController: UIViewController {
     
     private var collectionViewDataSourse: GroupScreenDataSourceProtocol?
     private var tableViewDataSource: GroupScreenDataSourceProtocol?
-    private let navigationView = GroupNavigationView()
+    private var navigationView = GroupNavigationView()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class GroupScreenViewController: UIViewController {
         updateNavigationBarView()
         observeNavBarState()
         backButtonTaped()
+        observeDataSourceDelegates()
     }
     
     
@@ -51,24 +52,30 @@ class GroupScreenViewController: UIViewController {
             })
         }
     }
+    
+    
+    func observeDataSourceDelegates() {
+        var tableDelegate: GroupScreenTableDelegateProtocol? = tableViewDataSource?.getDelegateObject()
+        var collectionDelegate: GroupScreenCollectionDelegateProtocol? = collectionViewDataSourse?.getDelegateObject()
+        
+        tableDelegate?.requestForMoreItems = { [weak self] in
+            self?.viewModel?.querySongItems()
+        }
+        
+        tableDelegate?.rowTapped = { print("Present song \($0) detail screen") }
+        
+        collectionDelegate?.rowTapped = { [weak self] index in
+            if let title = self?.viewModel?.newSubcategoryTapped(with: index) {
+                tableDelegate?.subGroup = title
+            }
+        }
+    }
   
     
     private func updateNavigationBarView() {
         navigationController?.setupForGroupController()
-        
-        navigationView.translatesAutoresizingMaskIntoConstraints = false
-        navigationController?.navigationBar.addSubview(navigationView)
-        
-        if let navBar = navigationController?.navigationBar {
-            NSLayoutConstraint.activate([
-                navigationView.leadingAnchor.constraint(equalTo: navBar.leadingAnchor, constant: -1),
-                navigationView.trailingAnchor.constraint(equalTo: navBar.trailingAnchor, constant: 1),
-                navigationView.topAnchor.constraint(equalTo: navBar.topAnchor, constant: -50),
-                navigationView.heightAnchor.constraint(equalTo: navBar.heightAnchor, constant: 100)
-            ])
-        }
-        
-        
+        navigationController?.updateSubview(with: &navigationView)
+
         if let dataforNavigationView: GroupNavigationViewModel  = viewModel?.getDataContent(for: .navigationBar)?[0] {
             navigationView.updateUI(with: dataforNavigationView)
         }
@@ -81,49 +88,35 @@ class GroupScreenViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }
     }
+    
 }
 
 
 extension GroupScreenViewController: GroupScreenViewModelDelegate {
-    func itemsInserted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent) {
-        switch section {
-        case .navigationBar:
-            break
-            
-        case .subGroup:
-            collectionViewDataSourse?.insertItems(items: items)
-            
-        case .songList:
-            tableViewDataSource?.insertItems(items: items)
+    
+    func reloadData(section: GroupScreenTypeOfContent) {
+        let dataSourse: GroupScreenDataSourceProtocol? = (section == .subGroup) ? collectionViewDataSourse : tableViewDataSource
+        if let viewModel = viewModel as? GroupScreenViewModel {
+            dataSourse?.reloadData(with: viewModel)
         }
     }
     
     
-    func itemsReloaded<T: ViewModelConfigurator>(newData: T, section: GroupScreenTypeOfContent, index: Int) {
-        switch section {
-        case .navigationBar:
-            break
+    func updateData<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent, typeOfChange: TypeOfChangeDocument, index: Int? = nil)  {
+        
+        let dataSourse: GroupScreenDataSourceProtocol? = (section == .subGroup) ? collectionViewDataSourse : tableViewDataSource
+        
+        switch typeOfChange {
+        case .added:
+            dataSourse?.insertItems(items: items)
             
-        case .subGroup:
-            collectionViewDataSourse?.reloadItems(data: newData, with: index)
+        case .modified:
+            if let safeIndex = index {
+                dataSourse?.reloadItems(data: items[0], with: safeIndex)
+            }
             
-        case .songList:
-            tableViewDataSource?.reloadItems(data: newData, with: index)
+        case .removed:
+            dataSourse?.deleteItems(items: items)
         }
     }
-    
-    
-    func itemsDeleted<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent) {
-        switch section {
-        case .navigationBar:
-            break
-            
-        case .subGroup:
-            collectionViewDataSourse?.deleteItems(items: items)
-            
-        case .songList:
-            tableViewDataSource?.deleteItems(items: items)
-        }
-    }
-    
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class GroupScreenCollectionViewBuilder: GroupScreenBuilder {
-
+   
     func setLayout(for object: UIScrollView) {
         guard let collectionView = object as? UICollectionView else { return }
         
@@ -27,7 +27,7 @@ class GroupScreenCollectionViewBuilder: GroupScreenBuilder {
     func setupDataSource<T: GroupScreenViewModelProtocol>(for object: UIScrollView, with viewModel: T) -> GroupScreenDataSourceProtocol? {
         guard let collectionView = object as? UICollectionView else { return nil }
         
-        let dataSource: GroupScreenDataSourceProtocol = GroupScreenCollectionViewDatasource(with: collectionView)
+        let dataSource = GroupScreenCollectionViewDatasource(with: collectionView)
         dataSource.reloadData(with: viewModel)
         
         return dataSource

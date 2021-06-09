@@ -16,15 +16,10 @@ protocol FireStoreDataManagerProtocol {
     /**
      Query item by document id
      */
-    func queryItem<T: Codable & Hashable>(from collection: FireStoreCollectionName, by id: String, with model: T.Type, completion: @escaping (T) -> ())
+    func queryItemByID<T: Codable & Hashable>(_ id: String, from collection: FireStoreCollectionName, model: T.Type, completion: @escaping (T) -> ())
     
     /**
      Query items by  value  at specific field
      */
-    func queryItems<T: Codable & Hashable>(from collection: FireStoreCollectionName,
-                                           field: String,
-                                           value: String,
-                                           using model: T.Type,
-                                           sortField: String,
-                                           completion: @escaping ([T]) -> ())
+    func queryItems<T: Codable & Hashable>(queryData: QueryData, from collection: FireStoreCollectionName, model: T.Type,completion: @escaping ([T]) -> ())
 }

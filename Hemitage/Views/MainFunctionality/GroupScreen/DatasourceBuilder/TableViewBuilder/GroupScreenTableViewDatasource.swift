@@ -9,44 +9,41 @@ import UIKit
 
 class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
     
-    private var tableView: UITableView
     private var dataSource: UITableViewDiffableDataSource<Int, ViewModelTemplateSong>?
+    private var groupScreenDelegate: GroupScreenTableDelegateProtocol
+    
     
     init(with tableView: UITableView) {
-        self.tableView = tableView
-        
-        setupDataSource()
+        groupScreenDelegate = GroupScreenTableViewDelegate(with: tableView)
+        setupDataSource(with: tableView)
     }
     
+    func getDelegateObject<T>() -> T? {
+        return groupScreenDelegate as? T
+    }
     
     // MARK: - Data Updating
     func insertItems<T: ViewModelConfigurator>(items: [T]) {
         guard var snapshot = dataSource?.snapshot(),
               let data = items as? [ViewModelTemplateSong] else { return }
 
+        print(data.count)
         snapshot.appendItems(data)
         dataSource?.apply(snapshot, animatingDifferences: true)
+        
+        if data.count > 0 {
+            groupScreenDelegate.canLoadMoreData = true
+        }
+        
+        groupScreenDelegate.tableView.tableFooterView = nil
     }
     
     
     func reloadItems<T: ViewModelConfigurator>(data: T, with index: Int) {
-        guard var snapshot = dataSource?.snapshot(),
-              let item = data as? ViewModelTemplateSong else { return }
-
-        let itemForReload = snapshot.itemIdentifiers[index]
-        itemForReload.setData(with: item.getData())
-
-        snapshot.reloadItems([itemForReload])
-        dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
     
     func deleteItems<T: ViewModelConfigurator>(items: [T]) {
-        guard var snapshot = dataSource?.snapshot(),
-              let data = items as? [ViewModelTemplateSong] else { return }
-
-        snapshot.deleteItems(data)
-        dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
     
@@ -58,6 +55,11 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
         
         if let items: [ViewModelTemplateSong] = viewModel.getDataContent(for: .songList) {
             snapshot.appendItems(items, toSection: 0)
+            
+            if items.count > 0 {
+                groupScreenDelegate.canLoadMoreData = true
+                groupScreenDelegate.tableView.tableFooterView = nil
+            }
         }
         
         DispatchQueue.main.async { [weak self] in
@@ -66,9 +68,7 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
     }
     
     
-   
-    private func setupDataSource() {
-        
+    private func setupDataSource(with tableView: UITableView) {
         dataSource = UITableViewDiffableDataSource(tableView: tableView) { tableView, indexPath, model in
             let cellID = String(describing: GroupScreenSongCell.self)
             
@@ -78,17 +78,9 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
             }
             
             cell.updateContent(with: model)
+            cell.separatorInset = .zero
             
             return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = GroupScreenHeaderView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-        
-        return view
-    }
-    
-    
-    
 }

@@ -100,6 +100,12 @@
 		84AFCEFB266E535100115159 /* FireStoreWriteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCEFA266E535100115159 /* FireStoreWriteDataManager.swift */; };
 		84AFCF03266E6B6300115159 /* GroupScreenViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF02266E6B6300115159 /* GroupScreenViewModelDelegate.swift */; };
 		84AFCF05266E6B9D00115159 /* GroupScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF04266E6B9D00115159 /* GroupScreenViewModelProtocol.swift */; };
+		84AFCF0C266F735D00115159 /* GroupScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF0B266F735D00115159 /* GroupScreenHeaderView.swift */; };
+		84AFCF0F266FAB4C00115159 /* GroupScreenFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AFCF0E266FAB4C00115159 /* GroupScreenFooterView.xib */; };
+		84AFCF11266FAB6900115159 /* GroupScreenFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF10266FAB6900115159 /* GroupScreenFooterView.swift */; };
+		84AFCF13266FB12700115159 /* GroupScreenTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF12266FB12700115159 /* GroupScreenTableViewDelegate.swift */; };
+		84AFCF172670A26600115159 /* GroupScreenCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF162670A26600115159 /* GroupScreenCollectionViewDelegate.swift */; };
+		84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */; };
 		84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */; };
 		84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */; };
 		84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662B8266675B9009BE13A /* SubcollectionModel.swift */; };
@@ -151,7 +157,6 @@
 		84EB44EA2638026400828222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E92638026400828222 /* LoginViewController.swift */; };
 		84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44EB2638027900828222 /* LoginViewController.storyboard */; };
 		84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */; };
-		84FD54D1266E017800C89D96 /* GroupScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D0266E017800C89D96 /* GroupScreenHeaderView.swift */; };
 		84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
 		DDF8538BA8C163197BC79F6C /* Pods_HemitageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F992CFC66C9E73B0826643 /* Pods_HemitageTests.framework */; };
@@ -266,6 +271,12 @@
 		84AFCEFA266E535100115159 /* FireStoreWriteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreWriteDataManager.swift; sourceTree = "<group>"; };
 		84AFCF02266E6B6300115159 /* GroupScreenViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModelDelegate.swift; sourceTree = "<group>"; };
 		84AFCF04266E6B9D00115159 /* GroupScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModelProtocol.swift; sourceTree = "<group>"; };
+		84AFCF0B266F735D00115159 /* GroupScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenHeaderView.swift; sourceTree = "<group>"; };
+		84AFCF0E266FAB4C00115159 /* GroupScreenFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenFooterView.xib; sourceTree = "<group>"; };
+		84AFCF10266FAB6900115159 /* GroupScreenFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenFooterView.swift; sourceTree = "<group>"; };
+		84AFCF12266FB12700115159 /* GroupScreenTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDelegate.swift; sourceTree = "<group>"; };
+		84AFCF162670A26600115159 /* GroupScreenCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTypeOfContent.swift; sourceTree = "<group>"; };
 		84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModel.swift; sourceTree = "<group>"; };
 		84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		84D662B8266675B9009BE13A /* SubcollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcollectionModel.swift; sourceTree = "<group>"; };
@@ -315,7 +326,6 @@
 		84EB44E92638026400828222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84EB44EB2638027900828222 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenHeaderView.xib; sourceTree = "<group>"; };
-		84FD54D0266E017800C89D96 /* GroupScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenHeaderView.swift; sourceTree = "<group>"; };
 		84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDatasource.swift; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9F311DCD9DD40862B92A5016 /* Pods-Hemitage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage.release.xcconfig"; path = "Target Support Files/Pods-Hemitage/Pods-Hemitage.release.xcconfig"; sourceTree = "<group>"; };
@@ -721,7 +731,8 @@
 				84D662BC26677A72009BE13A /* DatasourceBuilder */,
 				84ACEBCC2664EDE90097A719 /* Cells */,
 				84A00B0526611EAE00087E07 /* Templates */,
-				84AFCF00266E6B4F00115159 /* Protocols */,
+				84AFCF08266F614600115159 /* Delegats */,
+				84AFCF00266E6B4F00115159 /* Core */,
 			);
 			path = GroupScreen;
 			sourceTree = "<group>";
@@ -729,6 +740,7 @@
 		84A00B0526611EAE00087E07 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				84AFCF0D266FAB2D00115159 /* Footer */,
 				84FD54CD266E011D00C89D96 /* Header */,
 				84FD54CC266E010E00C89D96 /* NavigationView */,
 			);
@@ -780,7 +792,40 @@
 			path = Write;
 			sourceTree = "<group>";
 		};
-		84AFCF00266E6B4F00115159 /* Protocols */ = {
+		84AFCF00266E6B4F00115159 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				84AFCF1F2670BE3200115159 /* Protocols */,
+				84AFCF1E2670BE2800115159 /* Enums */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		84AFCF08266F614600115159 /* Delegats */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Delegats;
+			sourceTree = "<group>";
+		};
+		84AFCF0D266FAB2D00115159 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				84AFCF0E266FAB4C00115159 /* GroupScreenFooterView.xib */,
+				84AFCF10266FAB6900115159 /* GroupScreenFooterView.swift */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		84AFCF1E2670BE2800115159 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		84AFCF1F2670BE3200115159 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				84AFCF02266E6B6300115159 /* GroupScreenViewModelDelegate.swift */,
@@ -834,6 +879,7 @@
 			children = (
 				84D662C126677ACE009BE13A /* GroupScreenTableViewBuilder.swift */,
 				84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */,
+				84AFCF12266FB12700115159 /* GroupScreenTableViewDelegate.swift */,
 			);
 			path = TableViewBuilder;
 			sourceTree = "<group>";
@@ -844,6 +890,7 @@
 				84D662C326677AE2009BE13A /* GroupScreenCollectionViewBuilder.swift */,
 				84D662C726678429009BE13A /* GroupScreenCollectionViewLayoutConstructor.swift */,
 				84D662C926678942009BE13A /* GroupScreenCollectionViewDatasource.swift */,
+				84AFCF162670A26600115159 /* GroupScreenCollectionViewDelegate.swift */,
 			);
 			path = CollectionViewBuilder;
 			sourceTree = "<group>";
@@ -1015,7 +1062,7 @@
 			isa = PBXGroup;
 			children = (
 				84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */,
-				84FD54D0266E017800C89D96 /* GroupScreenHeaderView.swift */,
+				84AFCF0B266F735D00115159 /* GroupScreenHeaderView.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -1148,6 +1195,7 @@
 				84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */,
 				84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */,
 				84937A97266A540700672BAB /* GroupScreenSongCell.xib in Resources */,
+				84AFCF0F266FAB4C00115159 /* GroupScreenFooterView.xib in Resources */,
 				84DDE7412636D4AE005D91C8 /* Montserrat-SemiBold.ttf in Resources */,
 				84D7F8122642BA26004B2DB0 /* TemplateProfileHeaderView.xib in Resources */,
 				84DDE72B2636CD6D005D91C8 /* Localizable.strings in Resources */,
@@ -1344,7 +1392,6 @@
 				84A00ABB265B897000087E07 /* ImageFileManager.swift in Sources */,
 				849C4E6F264AA01800C26C53 /* ConfiguringCell.swift in Sources */,
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
-				84FD54D1266E017800C89D96 /* GroupScreenHeaderView.swift in Sources */,
 				849C4E7F264BD11900C26C53 /* ViewModelTemplateSong.swift in Sources */,
 				84ACEBD12664F0790097A719 /* GroupScreenSubgroupCell.swift in Sources */,
 				84D7F8232643F606004B2DB0 /* MapCollectionViewCell.swift in Sources */,
@@ -1374,13 +1421,16 @@
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
 				84D662C826678429009BE13A /* GroupScreenCollectionViewLayoutConstructor.swift in Sources */,
+				84AFCF13266FB12700115159 /* GroupScreenTableViewDelegate.swift in Sources */,
 				849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */,
 				84926F54264D0A89005E9074 /* MapCollectionViewCellModelView.swift in Sources */,
 				84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */,
 				84A00ABF265B910400087E07 /* ImageManagerModel.swift in Sources */,
+				84AFCF0C266F735D00115159 /* GroupScreenHeaderView.swift in Sources */,
 				84926F56264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift in Sources */,
 				843F0B5D26527C02004DE5A8 /* FireStoreReadDataManager.swift in Sources */,
 				84ACEBD42664F5630097A719 /* GroupNavigationViewModel.swift in Sources */,
+				84AFCF172670A26600115159 /* GroupScreenCollectionViewDelegate.swift in Sources */,
 				843F0B742655232E004DE5A8 /* DataStoreManager.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
 				84AFCEFB266E535100115159 /* FireStoreWriteDataManager.swift in Sources */,
@@ -1413,6 +1463,7 @@
 				84D7F78B263AF102004B2DB0 /* WelcomeViewModel.swift in Sources */,
 				84A00AC5265BED3E00087E07 /* PasscodeRecoveryViewController.swift in Sources */,
 				84937A96266A540700672BAB /* GroupScreenSongCell.swift in Sources */,
+				84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */,
 				849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */,
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
@@ -1430,6 +1481,7 @@
 				84D7F830264424DF004B2DB0 /* Constants.swift in Sources */,
 				84D662C426677AE2009BE13A /* GroupScreenCollectionViewBuilder.swift in Sources */,
 				849C4E77264B0E4D00C26C53 /* MapModel.swift in Sources */,
+				84AFCF11266FAB6900115159 /* GroupScreenFooterView.swift in Sources */,
 				8453C6232667902600875A69 /* GroupScreenDataSourceProtocol.swift in Sources */,
 				843F0B6D26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,

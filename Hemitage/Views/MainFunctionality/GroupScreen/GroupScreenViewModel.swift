@@ -7,19 +7,12 @@
 
 import Foundation
 
-enum GroupScreenTypeOfContent {
-   case navigationBar
-   case subGroup
-   case songList
-}
-
 class GroupScreenViewModel: GroupScreenViewModelProtocol {
-    
+
      enum StateOfNavigationBar {
         case small, large, undefined
     }
-    
-    
+
     private var categoriesModel: CategoriesModel
     private var stateOfNavigationBar: StateOfNavigationBar = .undefined
     private var contentManager: some ReadContentManagerProtocol = ReadContentManager()
@@ -29,19 +22,18 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     var delegate: GroupScreenViewModelDelegate?
     var selectedSubCategory: String? = nil {
         didSet {
-            if selectedSubCategory != nil {
+            if selectedSubCategory != nil, oldValue != selectedSubCategory {
                 songList.removeAll()
-                getSongItems()
+                querySongItems()
             }
         }
     }
-    
     
     init(with categoriesModel: CategoriesModel) {
         self.categoriesModel = categoriesModel
         
         getSubcollectionList(for: categoriesModel.id)
-        getSongItems()
+        querySongItems()
     }
  
     // MARK: - Manage Content
@@ -57,34 +49,37 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
                 self.updateItems(typeOfChange: result.typeOfChange, with: item, at: &self.subcategoryList, section: .subGroup)
             }
         }
-        
-        
+
         if let documentId = categoriesModel.id {
             contentManager.getItemsFromSubgroup(from: .categories, with: SubcollectionModel.self, document: documentId)
         }
     }
     
-    
-    private func getSongItems() {
+    func querySongItems() {
         let field = selectedSubCategory != nil ? "subCategories" : "categories"
         let value = selectedSubCategory != nil ? selectedSubCategory! : categoriesModel.id!
         
-         
         contentManager.queryItemsFromFirebase(value: value,
                                               field: field,
                                               from: .songs,
                                               with: SongModel.self,
-                                              sortField: "raiting") { [weak self] data in
+                                              sortField: "raiting",
+                                              currentNamberOfItems: songList.count) { [weak self] data in
             
             let items = data.compactMap { model -> ViewModelTemplateSong in
                 return ViewModelTemplateSong(songModel: model, isPlaying: false, isHideCloseButton: true)
             }
             
-            self?.songList.append(contentsOf: items)
-            self?.delegate?.itemsInserted(items: items, section: .songList)
+            if self?.songList.count == 0 {
+                self?.songList.append(contentsOf: items)
+                self?.delegate?.reloadData(section: .songList)
+                
+            } else {
+                self?.songList.append(contentsOf: items)
+                self?.delegate?.updateData(items: items, section: .songList, typeOfChange: .added, index: nil)
+            }
         }
     }
-    
     
     private func updateItems<T: ViewModelConfigurator & Hashable>(typeOfChange: TypeOfChangeDocument, with item: T, at dataArray: inout [T], section: GroupScreenTypeOfContent) {
 
@@ -92,20 +87,22 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
 
         case .added:
             dataArray.append(item)
-            delegate?.itemsInserted(items: [item], section: section)
-
+            delegate?.updateData(items: [item], section: section, typeOfChange: .added, index: nil)
+            
         case .modified:
             if let index = elementIndex(dataArray: dataArray, newData: item) {
-                delegate?.itemsReloaded(newData: item, section: section, index: index)
+                delegate?.updateData(items: [item], section: section, typeOfChange: .modified, index: index)
             }
-
+            
         case .removed:
-            delegate?.itemsDeleted(items: [item], section: section)
+            delegate?.updateData(items: [item], section: section, typeOfChange: .removed, index: nil)
+            
             if let index = elementIndex(dataArray: dataArray, newData: item) {
                 dataArray.remove(at: index)
             }
         }
     }
+    
     
     private func elementIndex<T: ViewModelConfigurator & Hashable>(dataArray: [T], newData: T) -> Int? {
         for (index, item) in dataArray.enumerated() {
@@ -155,16 +152,19 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
                                                                                            isDarkText: categoriesModel.isDarkText))
             return [navigationViewModel] as? [T]
            
-            
         case .subGroup:
             return subcategoryList as? [T]
             
-            
         case .songList:
-            break
+            return songList as? [T]
         }
+    }
+    
+    func newSubcategoryTapped(with index: Int) -> String {
+        let data = subcategoryList[index].getData()
+        selectedSubCategory = data.id
         
-        return nil
+        return data.title
     }
     
 }

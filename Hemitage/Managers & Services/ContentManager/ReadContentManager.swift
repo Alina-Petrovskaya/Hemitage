@@ -34,6 +34,7 @@ protocol ReadContentManagerProtocol {
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
                                                       sortField: String?,
+                                                      currentNamberOfItems: Int?,
                                                       completion: @escaping ([T]) -> ())
 }
 
@@ -97,20 +98,16 @@ class ReadContentManager: NSObject, NSFetchedResultsControllerDelegate, ReadCont
                                                       field: String? = nil,
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
-                                                      sortField: String?,
+                                                      sortField: String? = nil,
+                                                      currentNamberOfItems: Int? = nil,
                                                       completion: @escaping ([T]) -> ()) {
-        guard let safeField = field,
-              let by = sortField
+        guard let safeField = field, let sort = sortField, let items = currentNamberOfItems
         else {
-            fireBaseManager.queryItem(from: collection, by: value, with: model) { item in
-                completion([item])
-            }
+            fireBaseManager.queryItemByID(value, from: collection, model: model) { completion([$0]) }
             return
         }
         
-        fireBaseManager.queryItems(from: collection, field: safeField, value: value, using: model, sortField: by) { items in
-            completion(items)
-        }
+        fireBaseManager.queryItems(queryData: (field: safeField, value: value, sortField: sort, currentNumberOfItems: items), from: collection, model: model) { completion($0) }
     }
     
     

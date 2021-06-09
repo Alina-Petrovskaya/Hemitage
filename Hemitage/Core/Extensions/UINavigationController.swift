@@ -24,4 +24,17 @@ extension UINavigationController {
             .backgroundColor: UIColor(white: 1, alpha: 1)
         ]
     }
+    
+    func updateSubview(with view: inout GroupNavigationView) {
+        navigationBar.addSubview(view)
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            view.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor, constant: -1),
+            view.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor, constant: 1),
+            view.topAnchor.constraint(equalTo: navigationBar.topAnchor, constant: -50),
+            view.heightAnchor.constraint(equalTo: navigationBar.heightAnchor, constant: 100)
+        ])
+    }
 }

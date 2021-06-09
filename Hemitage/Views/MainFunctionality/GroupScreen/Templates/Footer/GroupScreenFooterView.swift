@@ -1,5 +1,5 @@
 //
-//  Test.swift
+//  GroupScreenFooterView.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 08.06.2021.
@@ -8,9 +8,8 @@
 import UIKit
 
 @IBDesignable
-class GroupScreenHeaderView: UIView {
+class GroupScreenFooterView: UIView {
 
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet private var parrentView: UIView!
     
     // MARK: - Life cycle'
@@ -25,7 +24,7 @@ class GroupScreenHeaderView: UIView {
     }
     
     private func commonInit() {
-        Bundle.main.loadNibNamed(String(describing: GroupScreenHeaderView.self), owner: self)
+        Bundle.main.loadNibNamed(String(describing: GroupScreenFooterView.self), owner: self)
         configureUI()
     }
     
@@ -33,5 +32,6 @@ class GroupScreenHeaderView: UIView {
         addSubview(parrentView)
         parrentView.frame = self.bounds
     }
+
 
 }
