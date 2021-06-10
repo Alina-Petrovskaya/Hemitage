@@ -108,6 +108,8 @@
 		84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */; };
 		84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */; };
 		84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */; };
+		84D24F692670F2F400205C1E /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D24F682670F2F400205C1E /* PaymentViewController.swift */; };
+		84D24F6B2670F30100205C1E /* PaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D24F6A2670F30100205C1E /* PaymentViewController.storyboard */; };
 		84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662B8266675B9009BE13A /* SubcollectionModel.swift */; };
 		84D662BE26677A8B009BE13A /* GroupScreenDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */; };
 		84D662C026677A9C009BE13A /* GroupScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */; };
@@ -279,6 +281,8 @@
 		84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTypeOfContent.swift; sourceTree = "<group>"; };
 		84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModel.swift; sourceTree = "<group>"; };
 		84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		84D24F682670F2F400205C1E /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		84D24F6A2670F30100205C1E /* PaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentViewController.storyboard; sourceTree = "<group>"; };
 		84D662B8266675B9009BE13A /* SubcollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcollectionModel.swift; sourceTree = "<group>"; };
 		84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenDirector.swift; sourceTree = "<group>"; };
 		84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenBuilder.swift; sourceTree = "<group>"; };
@@ -854,6 +858,15 @@
 			path = ContentManager;
 			sourceTree = "<group>";
 		};
+		84D24F672670F26100205C1E /* PaymentScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84D24F6A2670F30100205C1E /* PaymentViewController.storyboard */,
+				84D24F682670F2F400205C1E /* PaymentViewController.swift */,
+			);
+			path = PaymentScreen;
+			sourceTree = "<group>";
+		};
 		84D662BC26677A72009BE13A /* DatasourceBuilder */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,6 +946,7 @@
 			children = (
 				84D7F8152642DE02004B2DB0 /* MainScreen */,
 				84A00AE0265F9EE600087E07 /* GroupScreen */,
+				84D24F672670F26100205C1E /* PaymentScreen */,
 				84D7F8162643CFAF004B2DB0 /* Templates */,
 			);
 			path = MainFunctionality;
@@ -1183,6 +1197,7 @@
 				84ACEBD22664F07A0097A719 /* GroupScreenSubgroupCell.xib in Resources */,
 				84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */,
 				84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */,
+				84D24F6B2670F30100205C1E /* PaymentViewController.storyboard in Resources */,
 				84A00B0B2661928800087E07 /* Assets.xcassets in Resources */,
 				84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */,
 				84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */,
@@ -1478,6 +1493,7 @@
 				843F0B6D26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
 				849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */,
+				84D24F692670F2F400205C1E /* PaymentViewController.swift in Sources */,
 				843F0B56264EB90F004DE5A8 /* FirebaseStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

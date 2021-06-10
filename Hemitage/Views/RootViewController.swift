@@ -21,8 +21,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         
         prepareUI()
         passwordManagerObserve()
-//      presentAuthController()
-        presentContent()
+        presentController()
+//        presentContent()
     }
     
     private func passwordManagerObserve() {
@@ -56,13 +56,9 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     
-    private func presentAuthController() {
-        guard let vc = GroupScreenViewController.instantiate() else { return }
+    private func presentController() {
+        guard let vc = PaymentViewController.instantiate() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return true
-    }
 }
