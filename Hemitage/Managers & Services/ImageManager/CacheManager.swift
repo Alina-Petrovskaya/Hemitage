@@ -1,5 +1,5 @@
 //
-//  ImageCacheManager.swift
+//  CacheManager.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 21.05.2021.
@@ -17,12 +17,16 @@ class Cache: NSCache<NSString, NSData> {
 }
 
 
-class ImageCacheManager {
+class CacheManager {
     private let cache = Cache.shared
     var imageManager: ImageFileManagerProtocol = ImageFileManager()
     
+    let sdsdsf = (2, "")
+    let sddsf = (3, "4")
+
+   
     
-    func cacheObject(imageName: String,
+    func cacheImageObject(imageName: String,
                      documentID: String,
                      from category: StorageDirectory,
                      typeOFUpdate: TypeOfChangeDocument,
@@ -41,4 +45,6 @@ class ImageCacheManager {
             }
         }
     }
+    
+    
 }

@@ -27,9 +27,9 @@
 		843F0B8B265680B1004DE5A8 /* ReadContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B89265680B1004DE5A8 /* ReadContentManager.swift */; };
 		843F0B8C265680B1004DE5A8 /* ReadContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B89265680B1004DE5A8 /* ReadContentManager.swift */; };
 		843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B8E265682BF004DE5A8 /* TypeOfChangeDocument.swift */; };
-		843F0B9326579F4A004DE5A8 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */; };
-		843F0B9426579F4A004DE5A8 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */; };
-		843F0B9526579F4B004DE5A8 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */; };
+		843F0B9326579F4A004DE5A8 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* CacheManager.swift */; };
+		843F0B9426579F4A004DE5A8 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* CacheManager.swift */; };
+		843F0B9526579F4B004DE5A8 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* CacheManager.swift */; };
 		8453C6232667902600875A69 /* GroupScreenDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453C6222667902600875A69 /* GroupScreenDataSourceProtocol.swift */; };
 		8453C62626679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453C62526679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift */; };
 		848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74226369F270070A3C6 /* AppDelegate.swift */; };
@@ -92,6 +92,8 @@
 		84A00B0726611EEC00087E07 /* GroupNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A00B0626611EEB00087E07 /* GroupNavigationView.xib */; };
 		84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00B0826611F2100087E07 /* GroupNavigationView.swift */; };
 		84A00B0B2661928800087E07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A00B0A2661928800087E07 /* Assets.xcassets */; };
+		84A40CFC2671FF8200FB6642 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A40CFB2671FF8200FB6642 /* PlayerManager.swift */; };
+		84A40CFE267230B800FB6642 /* ControlPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A40CFD267230B800FB6642 /* ControlPanelManager.swift */; };
 		84ACEBD12664F0790097A719 /* GroupScreenSubgroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACEBCF2664F0790097A719 /* GroupScreenSubgroupCell.swift */; };
 		84ACEBD22664F07A0097A719 /* GroupScreenSubgroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ACEBD02664F0790097A719 /* GroupScreenSubgroupCell.xib */; };
 		84ACEBD42664F5630097A719 /* GroupNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */; };
@@ -198,7 +200,7 @@
 		843F0B802655345A004DE5A8 /* Date+StringPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+StringPresentation.swift"; sourceTree = "<group>"; };
 		843F0B89265680B1004DE5A8 /* ReadContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadContentManager.swift; sourceTree = "<group>"; };
 		843F0B8E265682BF004DE5A8 /* TypeOfChangeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfChangeDocument.swift; sourceTree = "<group>"; };
-		843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		843F0B9226579F49004DE5A8 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		8453C6222667902600875A69 /* GroupScreenDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenDataSourceProtocol.swift; sourceTree = "<group>"; };
 		8453C62526679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenSubgroupCellViewModel.swift; sourceTree = "<group>"; };
 		848CF73F26369F270070A3C6 /* Hemitage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hemitage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +267,8 @@
 		84A00B0626611EEB00087E07 /* GroupNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupNavigationView.xib; sourceTree = "<group>"; };
 		84A00B0826611F2100087E07 /* GroupNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationView.swift; sourceTree = "<group>"; };
 		84A00B0A2661928800087E07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84A40CFB2671FF8200FB6642 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		84A40CFD267230B800FB6642 /* ControlPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelManager.swift; sourceTree = "<group>"; };
 		84ACEBCF2664F0790097A719 /* GroupScreenSubgroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenSubgroupCell.swift; sourceTree = "<group>"; };
 		84ACEBD02664F0790097A719 /* GroupScreenSubgroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenSubgroupCell.xib; sourceTree = "<group>"; };
 		84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationViewModel.swift; sourceTree = "<group>"; };
@@ -653,7 +657,7 @@
 		84A00ABC265B897C00087E07 /* ImageManager */ = {
 			isa = PBXGroup;
 			children = (
-				843F0B9226579F49004DE5A8 /* ImageCacheManager.swift */,
+				843F0B9226579F49004DE5A8 /* CacheManager.swift */,
 				84A00ABA265B897000087E07 /* ImageFileManager.swift */,
 				84A00ABE265B910400087E07 /* ImageManagerModel.swift */,
 			);
@@ -750,6 +754,22 @@
 			path = Templates;
 			sourceTree = "<group>";
 		};
+		84A40CF92671FC4A00FB6642 /* PlayerManager */ = {
+			isa = PBXGroup;
+			children = (
+				84A40CFB2671FF8200FB6642 /* PlayerManager.swift */,
+				84A40CFD267230B800FB6642 /* ControlPanelManager.swift */,
+			);
+			path = PlayerManager;
+			sourceTree = "<group>";
+		};
+		84A40CFA2671FF2E00FB6642 /* OfflineModeStrategy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OfflineModeStrategy;
+			sourceTree = "<group>";
+		};
 		84ACEBCC2664EDE90097A719 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,6 +853,8 @@
 		84BE17D12664DA8000AF1CD4 /* Managers & Services */ = {
 			isa = PBXGroup;
 			children = (
+				84A40CFA2671FF2E00FB6642 /* OfflineModeStrategy */,
+				84A40CF92671FC4A00FB6642 /* PlayerManager */,
 				848CF7802636A2D60070A3C6 /* FirebaseManager */,
 				84BE17D32664DADC00AF1CD4 /* ContentManager */,
 				84A00ABC265B897C00087E07 /* ImageManager */,
@@ -1422,7 +1444,7 @@
 				84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */,
 				84D662CA26678942009BE13A /* GroupScreenCollectionViewDatasource.swift in Sources */,
 				843F0B812655345A004DE5A8 /* Date+StringPresentation.swift in Sources */,
-				843F0B9326579F4A004DE5A8 /* ImageCacheManager.swift in Sources */,
+				843F0B9326579F4A004DE5A8 /* CacheManager.swift in Sources */,
 				8453C62626679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
 				84DDE7332636CECE005D91C8 /* RootViewController.swift in Sources */,
@@ -1432,6 +1454,7 @@
 				849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */,
 				84926F54264D0A89005E9074 /* MapCollectionViewCellModelView.swift in Sources */,
 				84D7F79E263C404D004B2DB0 /* AuthObserver.swift in Sources */,
+				84A40CFE267230B800FB6642 /* ControlPanelManager.swift in Sources */,
 				84A00ABF265B910400087E07 /* ImageManagerModel.swift in Sources */,
 				84AFCF0C266F735D00115159 /* GroupScreenHeaderView.swift in Sources */,
 				84926F56264D0D1F005E9074 /* MainScreenCollectionViewCellModelViewProtocol.swift in Sources */,
@@ -1474,6 +1497,7 @@
 				849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */,
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
+				84A40CFC2671FF8200FB6642 /* PlayerManager.swift in Sources */,
 				841BE5112668CEB000B5709C /* FireStoreDataManagerProtocol.swift in Sources */,
 				84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */,
 				84D7F78D263AF8E9004B2DB0 /* AuthProtocol.swift in Sources */,
@@ -1504,7 +1528,7 @@
 			files = (
 				843F0B6E26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				843F0B822655345A004DE5A8 /* Date+StringPresentation.swift in Sources */,
-				843F0B9426579F4A004DE5A8 /* ImageCacheManager.swift in Sources */,
+				843F0B9426579F4A004DE5A8 /* CacheManager.swift in Sources */,
 				848CF75D26369F2C0070A3C6 /* HemitageTests.swift in Sources */,
 				843F0B752655232E004DE5A8 /* DataStoreManager.swift in Sources */,
 				843F0B8B265680B1004DE5A8 /* ReadContentManager.swift in Sources */,
@@ -1517,7 +1541,7 @@
 			files = (
 				843F0B6F26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				843F0B832655345A004DE5A8 /* Date+StringPresentation.swift in Sources */,
-				843F0B9526579F4B004DE5A8 /* ImageCacheManager.swift in Sources */,
+				843F0B9526579F4B004DE5A8 /* CacheManager.swift in Sources */,
 				848CF76826369F2C0070A3C6 /* HemitageUITests.swift in Sources */,
 				843F0B762655232E004DE5A8 /* DataStoreManager.swift in Sources */,
 				843F0B8C265680B1004DE5A8 /* ReadContentManager.swift in Sources */,

@@ -30,7 +30,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     private var blogData: [MainScreenModelWrapper] = []
     
     private var contentManager = ReadContentManager()
-    private let cacheManager   = ImageCacheManager()
+    private let cacheManager   = CacheManager()
     
     init() {
         manageContent()
@@ -52,7 +52,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
                     
                     if let imageName = dataItem.previewImageName {
                         
-                        self.cacheManager.cacheObject(imageName: imageName, documentID: dataItem.id, from: .blog, typeOFUpdate: result.typeOfChange) { data in
+                        self.cacheManager.cacheImageObject(imageName: imageName, documentID: dataItem.id, from: .blog, typeOFUpdate: result.typeOfChange) { data in
                             let item = MainScreenModelWrapper.blog(BlogCollectionViewCellModelView(model: dataItem, imageData: data.imageData))
                             self.updateItems(typeOfChange: data.typeOfCahnge, with: item, at: &self.blogData, section: .blog)
                         }
@@ -150,6 +150,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             }
             
         case .blog:
+//            PlayerManager.shared.pauseSound()
             break
 //            return blogData[indexPath.row]
         }

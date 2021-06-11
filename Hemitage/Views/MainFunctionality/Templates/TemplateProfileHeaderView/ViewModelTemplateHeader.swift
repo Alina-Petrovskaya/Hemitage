@@ -22,6 +22,10 @@ class ViewModelTemplateHeader: ViewModelConfigurator {
         
     }
     
+    func getID() -> String {
+        return name
+    }
+    
     func getData() -> DataType {
         return (name: name, image: image, isNewNotificatoins: isNewNotificatoins)
     }

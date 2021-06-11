@@ -30,6 +30,11 @@ class GroupNavigationViewModel: ViewModelConfigurator {
     }
     
     
+    func getID() -> String {
+        return title
+    }
+    
+    
     func setData(with data: DataType ) {
         self.title      = data.title
         self.imageURL   = data.imageURL

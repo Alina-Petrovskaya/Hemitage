@@ -30,6 +30,9 @@ class GroupScreenSubgroupCellViewModel: ViewModelConfigurator, Hashable {
         self.title = data.title
     }
     
+    func getID() -> String {
+        return id
+    }
     
     static func == (lhs: GroupScreenSubgroupCellViewModel, rhs: GroupScreenSubgroupCellViewModel) -> Bool {
         return lhs.id == rhs.id

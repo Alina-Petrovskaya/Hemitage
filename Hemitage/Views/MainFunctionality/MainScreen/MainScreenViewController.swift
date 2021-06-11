@@ -59,6 +59,7 @@ class MainScreenViewController: UIViewController {
         
         dataSourceManager?.headerCallback = {
             print("Present blog VC")
+//            PlayerManager.shared.playSound(with: 0)
         }
     }
     

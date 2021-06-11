@@ -12,4 +12,5 @@ protocol ViewModelConfigurator {
     
     func getData() -> DataType
     func setData(with data: DataType)
+    func getID() -> String
 }

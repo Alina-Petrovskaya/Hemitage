@@ -8,7 +8,7 @@
 import Foundation
 
 class ViewModelTemplateSong: ViewModelConfigurator, Hashable {
-    
+
     typealias DataType = (title: String, subtitle: String?, isPlaying: Bool, isHideCloseButton: Bool, imageURL: URL?)
     
     private let id: String
@@ -17,12 +17,14 @@ class ViewModelTemplateSong: ViewModelConfigurator, Hashable {
     private var isPlaying: Bool = false
     private let isHideCloseButton: Bool
     private var imageURL: URL?
+    private var songURL: URL?
     
     
     init(songModel: SongModel, isPlaying: Bool = false, isHideCloseButton: Bool = false ) {
         id                     = songModel.id ?? "nil"
         title                  = songModel.songName
         subtitle               = songModel.singer
+        songURL                = songModel.songURL
         imageURL               = songModel.imageURL
         self.isPlaying         = isPlaying
         self.isHideCloseButton = isHideCloseButton
@@ -41,6 +43,14 @@ class ViewModelTemplateSong: ViewModelConfigurator, Hashable {
         isPlaying              = data.isPlaying
     }
     
+    
+    func getSongURL() -> URL? {
+        return songURL
+    }
+    
+    func getID() -> String {
+        return id
+    }
     
     static func == (lhs: ViewModelTemplateSong, rhs: ViewModelTemplateSong) -> Bool {
         return lhs.id                == rhs.id
