@@ -9,16 +9,6 @@ import Foundation
 import AVFoundation
 import MediaPlayer
 
-protocol PlayerManagerProtocol {
-    associatedtype SongData
-    
-    var  currentSong: SongData? { get }
-    
-    func playSound(at index: Int) -> ()
-    func configureSongList(with songs: [SongData], isNeedToClearCurrentPlayList: Bool) -> ()
-    func pauseSong()
-    func stopSong()
-}
 
 class PlayerManager: NSObject, PlayerManagerProtocol {
     

@@ -10,8 +10,9 @@ import FirebaseStorage
 
 protocol FirebaseStorage {
     
-    func getData(fileName: String, from directory: StorageDirectory, completion: ((Result<Data, FirebaseError>) -> ())?)
+    func getData(fileName: String, from directory: StorageDirectory, completion: @escaping (Data) -> ())
     func getPathToFile(fileName: String, at directory: StorageDirectory, completion: @escaping (Result<URL, FirebaseError>) -> ())
+    func getDataWithURL(_ url: URL, completion: @escaping (Data) -> ())
 }
 
 
@@ -19,20 +20,36 @@ class FirebaseStorageManager: FirebaseStorage {
     
     private let storage = Storage.storage()
     
-    func getData(fileName: String, from directory: StorageDirectory, completion: ((Result<Data, FirebaseError>) -> ())?) {
+    func getData(fileName: String, from directory: StorageDirectory, completion: @escaping (Data) -> ()) {
         let childPath     = "\(directory.rawValue)/\(fileName)"
         let pathReference = storage.reference()
         let fileReference = pathReference.child(childPath)
         
         fileReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if error != nil {
-                completion?(.failure(.unableToDownloadFileFromStorage))
+                print(error!.localizedDescription)
                 
             } else if let safeData = data {
-                completion?(.success(safeData))
+                completion(safeData)
             }
         }
     }
+    
+    
+    func getDataWithURL(_ url: URL, completion: @escaping (Data) -> ()) {
+        let path = storage.reference(forURL: url.absoluteString)
+        
+        path.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard let safeData = data else { return }
+            completion(safeData)
+        }
+    }
+    
     
     func getPathToFile(fileName: String, at directory: StorageDirectory, completion: @escaping (Result<URL, FirebaseError>) -> ()) {
         let childPath     = "\(directory.rawValue)/\(fileName)"

@@ -150,9 +150,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             }
             
         case .blog:
-//            PlayerManager.shared.pauseSound()
             break
-//            return blogData[indexPath.row]
         }
     }
 }

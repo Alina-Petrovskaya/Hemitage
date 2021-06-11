@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class Cache: NSCache<NSString, NSData> {
     static let shared = NSCache<NSString, NSData>()
     
@@ -18,13 +19,10 @@ class Cache: NSCache<NSString, NSData> {
 
 
 class CacheManager {
-    private let cache = Cache.shared
-    var imageManager: ImageFileManagerProtocol = ImageFileManager()
     
-    let sdsdsf = (2, "")
-    let sddsf = (3, "4")
-
-   
+    private let cache = Cache.shared
+    private var storageManager: FileManagerProtocol = InnerStorageManager()
+    
     
     func cacheImageObject(imageName: String,
                      documentID: String,
@@ -37,7 +35,7 @@ class CacheManager {
         
         if object == nil || typeOFUpdate == .removed {
             
-            imageManager.getData(with: documentID, imageName: imageName, for: typeOFUpdate, from: category) { [weak self] result in
+            storageManager.getImageData(with: documentID, imageName: imageName, for: typeOFUpdate, from: category) { [weak self] result in
                 
                 completion((imageData: result, typeOfCahnge: .modified))
                 self?.cache.setObject(result as NSData, forKey: "\(documentID)\(imageName)" as NSString)
@@ -46,5 +44,30 @@ class CacheManager {
         }
     }
     
+    
+    func cacheSongObject(songURL: URL,
+                         requestType: RequestType,
+                         completion: @escaping (Data) -> ()) {
+        
+        switch requestType {
+        case .save, .delete:
+            storageManager.manageSongData(songURL: songURL, requestType: requestType)
+            
+        case .get:
+            let dataSong = cache.object(forKey: "\(songURL.absoluteString)" as NSString) as Data?
+            if dataSong != nil {
+                completion(dataSong!)
+                
+            } else {
+                storageManager.callback = { [weak self] data in
+                    completion(data)
+                    self?.cache.setObject(data as NSData, forKey: "\(songURL.absoluteString)" as NSString)
+                }
+                
+                storageManager.manageSongData(songURL: songURL, requestType: requestType)
+            }
+        }
+        
+    }
     
 }
