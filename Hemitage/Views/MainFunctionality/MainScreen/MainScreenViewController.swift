@@ -29,7 +29,7 @@ class MainScreenViewController: UIViewController {
         songBottomView.topBorder.isHidden = false
         handlingCollectionViewDelegateEvents()
         handlingViewModelEvents()
-        manageHeadeScreen()
+        manageHeaderScreen()
     }
     
     
@@ -65,7 +65,7 @@ class MainScreenViewController: UIViewController {
     
     
     
-    private func manageHeadeScreen() {
+    private func manageHeaderScreen() {
         headerView.configureContent(with: ViewModelTemplateHeader(
                                         model: ProfileModel(imageName: "Sleep",
                                                             name: "Tatiana",

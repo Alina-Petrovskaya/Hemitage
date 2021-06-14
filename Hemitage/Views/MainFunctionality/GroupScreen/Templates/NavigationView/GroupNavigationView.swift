@@ -77,10 +77,16 @@ class GroupNavigationView: UIView {
     }
     
     
-    func regulateElementsTransparency() {
-        
-        topTitle.isHidden    = !topTitle.isHidden
-        mediumTitle.isHidden = !mediumTitle.isHidden
-        subtitle.isHidden    = !subtitle.isHidden
+    func regulateElementsTransparency(_ islarge: Bool) {
+        if islarge {
+            topTitle.isHidden    = true
+            mediumTitle.isHidden = false
+            subtitle.isHidden    = false
+            
+        } else {
+            topTitle.isHidden    = false
+            mediumTitle.isHidden = true
+            subtitle.isHidden    = true
+        }
     }
 }

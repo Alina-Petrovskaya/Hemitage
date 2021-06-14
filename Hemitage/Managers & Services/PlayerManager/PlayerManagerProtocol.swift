@@ -8,12 +8,12 @@
 import Foundation
 
 protocol PlayerManagerProtocol {
-    associatedtype SongData
     
-    var  currentSong: SongData? { get }
+    var currentSong: ViewModelTemplateSong? { get }
+    var songData: ((URL) -> ())? { get set }
     
-    func playSound(at index: Int) -> ()
-    func configureSongList(with songs: [SongData], isNeedToClearCurrentPlayList: Bool) -> ()
-    func pauseSong()
+    func playSong(at index: Int) -> ()
+    func playSong(with data: Data)
+    func configureSongList(with songs: [ViewModelTemplateSong]) -> ()
     func stopSong()
 }

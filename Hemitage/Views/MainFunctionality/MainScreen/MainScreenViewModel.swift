@@ -95,14 +95,14 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             itemsInserted?((items: [item], section: section))
             
         case .modified:
-            if let index = self.getElementIndex(newData: item, currentData: dataArray) {
+            if let index = dataArray.indexBy(hashvalue: item.hashValue) {
                 self.itemsReloaded?((newData: item, section: section, index: index))
             }
             
         case .removed:
             itemsDeleted?([item])
             
-            if let index = getElementIndex(newData: item, currentData: dataArray) {
+            if let index = dataArray.indexBy(hashvalue: item.hashValue) {
                 dataArray.remove(at: index)
             }
         }

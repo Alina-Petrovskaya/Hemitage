@@ -25,6 +25,22 @@ extension UINavigationController {
         ]
     }
     
+    
+    func observeState(completion: @escaping (Bool) -> ()) -> NSKeyValueObservation {
+      return self.navigationBar.observe(\.bounds, options: [.new]) { navigationBar, changes in
+        
+            guard let height = changes.newValue?.height else { return }
+            if height > 120 {
+                completion(true)
+                
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    
+    
     func updateSubview(with view: inout GroupNavigationView) {
         navigationBar.addSubview(view)
         

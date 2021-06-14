@@ -45,12 +45,8 @@ class GroupScreenViewController: UIViewController {
     
     
     private func observeNavBarState() {
-        kvoNavBar = navigationController?.navigationBar.observe(\.bounds, options: [.new]) { [weak self] navigationBar, changes in
-            guard let height = changes.newValue?.height else { return }
-            
-            self?.viewModel?.heightNavBarHandling(height: Double(height), completion: {
-                self?.navigationView.regulateElementsTransparency()
-            })
+        kvoNavBar = navigationController?.observeState() { [weak self] isLarge in
+            self?.navigationView.regulateElementsTransparency(isLarge)
         }
     }
     
@@ -66,9 +62,7 @@ class GroupScreenViewController: UIViewController {
         tableDelegate?.rowTapped = { print("Present song \($0) detail screen") }
         
         collectionDelegate?.rowTapped = { [weak self] index in
-            if let title = self?.viewModel?.newSubcategoryTapped(with: index) {
-                tableDelegate?.subGroup = title
-            }
+            self?.viewModel?.newSubcategoryTapped(with: index)
         }
     }
   
@@ -98,6 +92,9 @@ extension GroupScreenViewController: GroupScreenViewModelDelegate {
         let dataSourse: GroupScreenDataSourceProtocol? = (section == .subGroup) ? collectionViewDataSourse : tableViewDataSource
         if let viewModel = viewModel as? GroupScreenViewModel {
             dataSourse?.reloadData(with: viewModel)
+            if section == .subGroup {
+                collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .right)
+            }
         }
     }
     

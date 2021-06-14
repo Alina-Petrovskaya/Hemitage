@@ -58,8 +58,11 @@ class DataStoreManager: CoreDataManager {
             guard let request = articleRequest as? NSFetchRequest<NSManagedObject> else {
                     fatalError("Can't create request")
             }
-        
+            
             return request
+            
+        case .songs:
+            break
             
         default: break
         }

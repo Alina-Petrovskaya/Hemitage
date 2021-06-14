@@ -20,7 +20,10 @@ protocol FileManagerProtocol {
      - parameter directory: Optional parameter need to download image from storage
      */
     func getImageData(with documentID: String, imageName: String, for typeOfChange: TypeOfChangeDocument, from directory: StorageDirectory?, completion: @escaping (Data) -> ())
+    
     func manageSongData(songURL: URL, requestType: RequestType)
+    
+    func isSavedSong(for url: URL) -> Bool
 }
 
 
@@ -118,6 +121,7 @@ class InnerStorageManager: FileManagerProtocol {
     
     func getSongItem(with url: URL) {
         if let savedData = decodeData(with: url, model: SongManagerModel.self) {
+            urlToGet = nil
             callback?(savedData.songData)
             
         } else {
@@ -150,7 +154,14 @@ class InnerStorageManager: FileManagerProtocol {
         }
     }
     
-    
+    func isSavedSong(for url: URL) -> Bool {
+        guard let path = getPath(with: url.absoluteString)?.path else { return false }
+        if fileManager.fileExists(atPath: path) {
+            return true
+        }
+        
+        return false
+    }
     
  // MARK: - Decode / Encode Data
     private func getPath(with documentID: String) -> URL? {

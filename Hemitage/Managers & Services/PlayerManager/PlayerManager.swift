@@ -8,27 +8,26 @@
 import Foundation
 import AVFoundation
 import MediaPlayer
+import SDWebImage
 
 
-class PlayerManager: NSObject, PlayerManagerProtocol {
-    
-    typealias SongData = (id: String, image: UIImage, song: Data, name: String, singer: String)
+class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     
     static var shared: some PlayerManagerProtocol = PlayerManager()
     
-    private(set) var currentSong: SongData?
+    var songData: ((URL) -> ())?
     
-    private var songsList: [SongData]?
+    private(set) var currentSong:  ViewModelTemplateSong?
+    private var songsList: [ViewModelTemplateSong]?
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundIndex: Int = 0
-    private var player: AVAudioPlayer?
+    private var player: AVAudioPlayer!
     
     
     private override init() {
         super.init()
-        
+        player?.delegate = self
         configureSession()
-        songsList = [(id: "String", image: #imageLiteral(resourceName: "Group 257"), song: Data(), name: "Name", singer: "Singer")]
     }
     
     
@@ -43,15 +42,33 @@ class PlayerManager: NSObject, PlayerManagerProtocol {
     }
     
     
-    func playSound(at index: Int) {
-        
-        guard currentSong?.id != songsList?[index].id else { player?.play(); return }
-        guard let songData = songsList?[index] else { print("Song not found"); return }
-        
-        currentSong = songData
-        
+    func playSong(at index: Int) {
+        if currentSong?.getID() == songsList?[index].getID() {
+            if player.isPlaying {
+                player?.pause()
+                
+            } else {
+                player?.play()
+            }
+            
+        } else {
+            guard let song      = songsList?[index],
+                  let songURL   = song.getData().imageURL
+            else {
+                print("Song not found")
+                return
+            }
+            
+            soundIndex  = index
+            currentSong = song
+            songData?(songURL)
+        }
+    }
+    
+    
+    func playSong(with data: Data) {
         do {
-            player = try AVAudioPlayer(data: songData.song)
+            player = try AVAudioPlayer(data: data)
             player?.play()
             
             setupNowPlaying()
@@ -64,17 +81,8 @@ class PlayerManager: NSObject, PlayerManagerProtocol {
     
     
     
-    func configureSongList(with songs: [SongData], isNeedToClearCurrentPlayList: Bool = false) {
-        if isNeedToClearCurrentPlayList {
-            songsList = songs
-        } else {
-            songsList?.append(contentsOf: songs)
-        }
-    }
-    
-    
-    func pauseSong() {
-        player?.pause()
+    func configureSongList(with songs: [ViewModelTemplateSong]) {
+        songsList = songs
     }
     
     
@@ -85,20 +93,26 @@ class PlayerManager: NSObject, PlayerManagerProtocol {
     
     private func setupNowPlaying() {
         // Define Now Playing Info
-        guard let songData = currentSong else { print("No songs to setup player"); return }
+        guard let songData = currentSong?.getData() else { print("No songs to setup player"); return }
         
-        let image = MPMediaItemArtwork(boundsSize: songData.image.size) {  (_) -> UIImage in
-            return songData.image
+        let image: UIImage = {
+            let view = UIImageView()
+            view.sd_setImage(with: songData.imageURL)
+            return view.image ?? #imageLiteral(resourceName: "Picture Placeholder")
+        }()
+        
+        let playerImage = MPMediaItemArtwork(boundsSize: image.size) {  (_) -> UIImage in
+            return image
         }
         
         var nowPlayingInfo = [String : Any]()
         
-        nowPlayingInfo[MPMediaItemPropertyTitle]                    = songData.name
-        nowPlayingInfo[MPMediaItemPropertyArtist]                   = songData.singer
+        nowPlayingInfo[MPMediaItemPropertyTitle]                    = songData.title
+        nowPlayingInfo[MPMediaItemPropertyArtist]                   = songData.subtitle
         nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player?.currentTime
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration]         = player?.duration
         nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate]        = player?.rate
-        nowPlayingInfo[MPMediaItemPropertyArtwork]                  = image
+        nowPlayingInfo[MPMediaItemPropertyArtwork]                  = playerImage
         
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
@@ -128,7 +142,8 @@ class PlayerManager: NSObject, PlayerManagerProtocol {
             commandCenter.nextTrackCommand.isEnabled = true
             commandCenter.nextTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
                 guard let self = self else { return .commandFailed }
-                self.playSound(at: self.soundIndex + 1)
+                self.soundIndex += 1
+                self.playSong(at: self.soundIndex + 1)
                 
                 return .success
             }
@@ -139,7 +154,8 @@ class PlayerManager: NSObject, PlayerManagerProtocol {
             commandCenter.previousTrackCommand.isEnabled = true
             commandCenter.previousTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
                 guard let self = self else { return .commandFailed }
-                self.playSound(at: self.soundIndex - 1)
+                self.playSong(at: self.soundIndex - 1)
+                self.soundIndex -= 1
                 
                 return .success
             }
@@ -165,6 +181,11 @@ class PlayerManager: NSObject, PlayerManagerProtocol {
         }
     }
     
-    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if songsList?[soundIndex + 1] != nil {
+            self.playSong(at: self.soundIndex + 1)
+            self.soundIndex += 1
+        }
+    }
     
 }

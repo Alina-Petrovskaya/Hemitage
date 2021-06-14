@@ -70,4 +70,9 @@ class CacheManager {
         
     }
     
+    
+    func isSongSaved(songURL: URL) -> Bool {
+        return storageManager.isSavedSong(for: songURL)
+    }
+    
 }

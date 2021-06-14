@@ -38,7 +38,7 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
               let item = data as? GroupScreenSubgroupCellViewModel else { return }
          
         let itemForReload = snapshot.itemIdentifiers[index]
-      
+        
         itemForReload.setData(with: item.getData())
         
         snapshot.reloadItems([itemForReload])

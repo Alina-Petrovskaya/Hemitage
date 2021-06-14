@@ -11,10 +11,9 @@ protocol GroupScreenViewModelProtocol {
     
     var delegate: GroupScreenViewModelDelegate? { get set }
     
-    func heightNavBarHandling(height: Double?, completion: () -> ())
     func getDataContent<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> [T]?
-    func querySongItems() -> ()
-    func newSubcategoryTapped(with index: Int) -> String
+    func querySongItems()
+    func newSubcategoryTapped(with index: Int) 
   
 }
 
