@@ -75,9 +75,6 @@ class GroupScreenSongManager {
     }
     
     
-    
-    
-    
     private func manageDataMusic() {
         PlayerManager.shared.songData = { [weak self] dataFromPlayer in
             self?.cacheManager.cacheSongObject(songURL: dataFromPlayer.url, requestType: .get) { result in
@@ -93,6 +90,5 @@ class GroupScreenSongManager {
             }
         }
     }
-    
     
 }

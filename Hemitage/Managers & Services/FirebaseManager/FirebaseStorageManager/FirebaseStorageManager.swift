@@ -37,7 +37,7 @@ class FirebaseStorageManager: FirebaseStorage {
     
     
     func getDataWithURL(_ url: URL, completion: @escaping (Result<Data, Error>) -> ()) {
-        let path = storage.reference(forURL: "https://firebasestorage.googleapis.com/v0/b/hemitage-60f4a.appspot.com/o/SongsData%2FSongs%2FJust_Because_-_Martin_Dupont.mp3?alt=media&token=c0c7df1a-866e-4d5a-8051-a9306e720edb")
+        let path = storage.reference(forURL: url.relativeString)
         
         path.getData(maxSize: 15 * 1024 * 1024) { data, error in
             guard error == nil else {

@@ -48,16 +48,19 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         guard songsList != nil,
               index <= songsList!.count - 1,
               index >= 0 else {
-            player?.pause()
-           
+            player?.stop()
+            setupNowPlaying(.stopped)
             return
         }
         
         if currentSong?.getID() == songsList?[index].getID() {
             if player?.isPlaying == true {
                 player?.pause()
+                setupNowPlaying(.paused)
             } else {
+                setupNowPlaying(.playing)
                 player?.play()
+                
             }
             
         } else {
@@ -86,7 +89,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
                 self.player?.play()
                 
                 self.currentSong = self.songsList?[self.soundIndex]
-                self.setupNowPlaying()
+                self.setupNowPlaying(.playing)
                 
                 
             } catch let error {
@@ -104,10 +107,12 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     
     func stopSong() {
         player?.stop()
+        setupNowPlaying(.stopped)
+        
     }
     
     
-    private func setupNowPlaying() {
+    private func setupNowPlaying(_ state: MPNowPlayingPlaybackState) {
         // Define Now Playing Info
         guard let songData = currentSong?.getData() else { print("No songs to setup player"); return }
         
@@ -132,7 +137,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-        MPNowPlayingInfoCenter.default().playbackState = .playing
+        MPNowPlayingInfoCenter.default().playbackState = state
     }
     
     
@@ -154,9 +159,18 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         let commandCenter = MPRemoteCommandCenter.shared()
     
         commandCenter.pauseCommand.addTarget { [weak self] event in
+            self?.setupNowPlaying(.paused)
             self?.player?.pause()
             return .success
         }
+        
+        
+        commandCenter.playCommand.addTarget { [weak self] event in
+            self?.setupNowPlaying(.playing)
+            self?.player?.play()
+            return .success
+        }
+        
         
         commandCenter.nextTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
             guard let self = self else { return .commandFailed }
@@ -166,10 +180,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
             return .success
         }
         
-        commandCenter.playCommand.addTarget { [weak self] event in
-            self?.player?.play()
-            return .success
-        }
+        
         
         commandCenter.previousTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
             guard let self = self else { return .commandFailed }
@@ -187,7 +198,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
                 let positionTime = changePlaybackPositionCommandEvent.positionTime
                 
                 self?.player?.currentTime = positionTime
-                self?.setupNowPlaying()
+                self?.setupNowPlaying(.interrupted)
                 
                 return .success
             }
