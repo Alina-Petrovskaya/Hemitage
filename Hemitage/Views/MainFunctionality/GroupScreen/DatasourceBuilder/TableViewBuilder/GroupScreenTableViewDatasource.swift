@@ -63,6 +63,7 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
         
         
         DispatchQueue.main.async { [weak self] in
+            self?.dataSource?.defaultRowAnimation = .fade
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }

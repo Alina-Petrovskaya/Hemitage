@@ -59,7 +59,9 @@ class GroupScreenViewController: UIViewController {
             self?.viewModel?.querySongItems()
         }
         
-        tableDelegate?.rowTapped = { print("Present song \($0) detail screen") }
+        tableDelegate?.rowTapped = { [weak self] index in
+            self?.viewModel?.playSong(at: index, category: .songList)
+        }
         
         collectionDelegate?.rowTapped = { [weak self] index in
             self?.viewModel?.newSubcategoryTapped(with: index)

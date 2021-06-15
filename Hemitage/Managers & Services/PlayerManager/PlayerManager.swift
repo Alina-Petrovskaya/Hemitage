@@ -15,23 +15,25 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     
     static var shared: some PlayerManagerProtocol = PlayerManager()
     
-    var songData: ((URL) -> ())?
+    var songData: (((index: Int, url: URL)) -> ())?
     
     private(set) var currentSong:  ViewModelTemplateSong?
     private var songsList: [ViewModelTemplateSong]?
     private let audioSession = AVAudioSession.sharedInstance()
     private var soundIndex: Int = 0
-    private var player: AVAudioPlayer!
+    private var player: AVAudioPlayer?
     
     
     private override init() {
         super.init()
-        player?.delegate = self
+        
+        setupTargets()
         configureSession()
     }
     
     
     private func configureSession() {
+    
         do {
             try audioSession.setCategory(.playback)
             try audioSession.setActive(true)
@@ -43,42 +45,56 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     
     
     func playSong(at index: Int) {
+        guard songsList != nil,
+              index <= songsList!.count - 1,
+              index >= 0 else {
+            player?.pause()
+           
+            return
+        }
+        
         if currentSong?.getID() == songsList?[index].getID() {
-            if player.isPlaying {
+            if player?.isPlaying == true {
                 player?.pause()
-                
             } else {
                 player?.play()
             }
             
         } else {
-            guard let song      = songsList?[index],
-                  let songURL   = song.getData().imageURL
+            guard let song = songsList?[index], let songURL = song.getSongURL()
             else {
                 print("Song not found")
                 return
             }
             
-            soundIndex  = index
-            currentSong = song
-            songData?(songURL)
+            soundIndex = index
+            songData?((index: index, url: songURL))
+            setupRemoteCommandCenter()
         }
     }
     
     
     func playSong(with data: Data) {
-        do {
-            player = try AVAudioPlayer(data: data)
-            player?.play()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             
-            setupNowPlaying()
-            setupRemoteCommandCenter()
+            do {
+                self.player = try AVAudioPlayer(data: data)
+                self.player?.delegate = self
+                
+                self.player?.prepareToPlay()
+                self.player?.play()
+                
+                self.currentSong = self.songsList?[self.soundIndex]
+                self.setupNowPlaying()
+                
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
             
-        } catch let error {
-            print(error.localizedDescription)
         }
     }
-    
     
     
     func configureSongList(with songs: [ViewModelTemplateSong]) {
@@ -101,7 +117,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
             return view.image ?? #imageLiteral(resourceName: "Picture Placeholder")
         }()
         
-        let playerImage = MPMediaItemArtwork(boundsSize: image.size) {  (_) -> UIImage in
+        let playerImage = MPMediaItemArtwork(boundsSize: CGSize(width: 200, height: 200)) {  (_) -> UIImage in
             return image
         }
         
@@ -111,8 +127,8 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         nowPlayingInfo[MPMediaItemPropertyArtist]                   = songData.subtitle
         nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player?.currentTime
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration]         = player?.duration
-        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate]        = player?.rate
         nowPlayingInfo[MPMediaItemPropertyArtwork]                  = playerImage
+        
         
         // Set the metadata
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
@@ -122,70 +138,67 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     
     
     private func setupRemoteCommandCenter() {
+        guard songsList != nil else { return }
         let commandCenter = MPRemoteCommandCenter.shared()
         
         commandCenter.playCommand.isEnabled = true
-        commandCenter.playCommand.addTarget { [weak self] event in
-            self?.player?.play()
-            return .success
-        }
-        
-        
         commandCenter.pauseCommand.isEnabled = true
+        
+        commandCenter.nextTrackCommand.isEnabled = songsList!.count - 1 > soundIndex ? true : false
+        commandCenter.previousTrackCommand.isEnabled = soundIndex > 0 ? true : false
+        commandCenter.changePlaybackPositionCommand.isEnabled = true
+    }
+    
+    
+    private func setupTargets() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+    
         commandCenter.pauseCommand.addTarget { [weak self] event in
             self?.player?.pause()
             return .success
         }
         
-        
-        if songsList?[soundIndex + 1] != nil {
-            commandCenter.nextTrackCommand.isEnabled = true
-            commandCenter.nextTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
-                guard let self = self else { return .commandFailed }
-                self.soundIndex += 1
-                self.playSong(at: self.soundIndex + 1)
-                
-                return .success
-            }
-        }
-        
-        
-        if songsList?[soundIndex - 1] != nil {
-            commandCenter.previousTrackCommand.isEnabled = true
-            commandCenter.previousTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
-                guard let self = self else { return .commandFailed }
-                self.playSong(at: self.soundIndex - 1)
-                self.soundIndex -= 1
-                
-                return .success
-            }
-        }
-        
-        
-        commandCenter.changePlaybackPositionCommand.isEnabled = true
-        commandCenter.changePlaybackPositionCommand.addTarget { [weak self] event in
+        commandCenter.nextTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
+            guard let self = self else { return .commandFailed }
+            self.soundIndex += 1
+            self.playSong(at: self.soundIndex)
             
-            self?.player?.currentTime = event.timestamp
             return .success
+        }
+        
+        commandCenter.playCommand.addTarget { [weak self] event in
+            self?.player?.play()
+            return .success
+        }
+        
+        commandCenter.previousTrackCommand.addTarget { [weak self] event -> MPRemoteCommandHandlerStatus in
+            guard let self = self else { return .commandFailed }
             
-            //            if let event = event as? MPChangePlaybackPositionCommandEvent,
-            //               let playerRate = self?.player?.rate {
-            //                self?.player?
-            //                self?.player?.seek(to: CMTime(seconds: event.positionTime, preferredTimescale: CMTimeScale(1000))) { [weak self] (success) in
-            //
-            //                    if success {
-            //                        self?.player?.rate = playerRate
-            //                    }
-            //                }
+            self.soundIndex -= 1
+            self.playSong(at: self.soundIndex)
             
+            return .success
+        }
+        
+        
+        commandCenter.changePlaybackPositionCommand.addTarget { [weak self] event in
+            if let changePlaybackPositionCommandEvent = event as? MPChangePlaybackPositionCommandEvent {
+
+                let positionTime = changePlaybackPositionCommandEvent.positionTime
+                
+                self?.player?.currentTime = positionTime
+                self?.setupNowPlaying()
+                
+                return .success
+            }
+            return .commandFailed
         }
     }
     
+    
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if songsList?[soundIndex + 1] != nil {
-            self.playSong(at: self.soundIndex + 1)
-            self.soundIndex += 1
-        }
+        self.playSong(at: self.soundIndex + 1)
+        self.soundIndex += 1
     }
     
 }

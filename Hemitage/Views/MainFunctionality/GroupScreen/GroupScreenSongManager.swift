@@ -8,14 +8,16 @@
 import Foundation
 import Network
 
+
+
 class GroupScreenSongManager {
     
-    var getDataFromFB: ((SubscriptionAndNetworkStatus) -> ())?
+    var getData: (() -> ())?
     var songList: [ViewModelTemplateSong] = []
+    var callBack: ( ((items: [ViewModelTemplateSong], section: GroupScreenTypeOfContent, typeOfChange: TypeOfChangeDocument, index: Int?)) -> () )?
     
     private let monitor = NWPathMonitor()
     private var status: SubscriptionAndNetworkStatus = .unowned
-    
     private var premiumMusic: [ViewModelTemplateSong] = []
     private var canPlaySong: Bool = true
     private let cacheManager = CacheManager()
@@ -24,6 +26,7 @@ class GroupScreenSongManager {
     init() {
         monitorNetwork()
         canPlaySong = status.isCanPlayMusic()
+        manageDataMusic()
     }
     
     
@@ -31,19 +34,18 @@ class GroupScreenSongManager {
         monitor.pathUpdateHandler = { [weak self] path in
             if path.status == .satisfied {
                 self?.status = .standart
-                self?.monitor.cancel()
-                
                 self?.songList.removeAll()
-                self?.getDataFromFB?(.standart)
+                self?.getData?()
                 
             } else {
-                self?.status = .noNetworkSubscription
+                self?.status = .noNetworkNoSubscription
             }
         }
         
         let queue = DispatchQueue.global()
         monitor.start(queue: queue)
     }
+    
     
     func playSong(at index: Int) {
         PlayerManager.shared.configureSongList(with: songList)
@@ -57,7 +59,9 @@ class GroupScreenSongManager {
             
             return ViewModelTemplateSong(songModel: model,
                                          isPlaying: currentSongID == model.id,
-                                         isHideCloseButton: true)
+                                         isHideCloseButton: true,
+                                         isCanPlay: status.isCanPlayMusic(),
+                                         isSaved: cacheManager.isSongSaved(songURL: model.songURL))
         }
         
         if songList.count == 0 {
@@ -71,11 +75,21 @@ class GroupScreenSongManager {
     }
     
     
-    private func manageMusic(with: [ViewModelTemplateSong], index: Int?) {
-        PlayerManager.shared.songData = { [weak self] url in
-            
-            self?.cacheManager.cacheSongObject(songURL: url, requestType: .get) { data in
-                PlayerManager.shared.playSong(with: data)
+    
+    
+    
+    private func manageDataMusic() {
+        PlayerManager.shared.songData = { [weak self] dataFromPlayer in
+            self?.cacheManager.cacheSongObject(songURL: dataFromPlayer.url, requestType: .get) { result in
+                //
+                switch result {
+                
+                case .success(let data):
+                    PlayerManager.shared.playSong(with: data)
+                    
+                case .failure(_):
+                    PlayerManager.shared.playSong(at: dataFromPlayer.index + 1)
+                }
             }
         }
     }

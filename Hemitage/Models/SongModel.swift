@@ -13,7 +13,7 @@ struct SongModel: Hashable, Codable, Identifiable {
     let songName: String
     let singer: String
     let imageURL: URL?
-    let songURL: URL?
+    let songURL: URL
     let raiting: Int
     
     func hash(into hasher: inout Hasher) {

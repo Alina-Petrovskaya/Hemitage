@@ -27,6 +27,10 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     init(with categoriesModel: CategoriesModel) {
         self.categoriesModel = categoriesModel
         manageSubcollections(for: categoriesModel.id)
+        
+        songManager.getData = { [weak self] in
+            self?.querySongItems()
+        }
     }
  
     // MARK: - Manage Content
@@ -74,7 +78,8 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     
     
     func querySongItems() {
-        contentManager.queryItemsFromFirebase(value: selectedSubCategory!, field: "subCategories", from: .songs, with: SongModel.self, sortField: "raiting",
+        guard let documentID = selectedSubCategory else { return }
+        contentManager.queryItemsFromFirebase(value: documentID, field: "subCategories", from: .songs, with: SongModel.self, sortField: "raiting",
                                               currentNamberOfItems: songManager.songList.count) { [weak self] data in
             
             guard let songData = self?.songManager.addSongs(songs: data) else { return }
@@ -115,6 +120,10 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     func newSubcategoryTapped(with index: Int) {
         let data = subcategoryList[index].getData()
         selectedSubCategory = data.id
+    }
+    
+    func playSong(at index: Int, category: GroupScreenTypeOfContent) {
+        songManager.playSong(at: index)
     }
     
 }

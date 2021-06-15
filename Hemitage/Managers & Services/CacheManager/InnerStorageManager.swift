@@ -9,7 +9,7 @@ import Foundation
 import Network
 
 protocol FileManagerProtocol {
-    var callback: ((Data) -> ())? { get set }
+    var callback: ((Result<Data, Error>) -> ())? { get set }
     
     /**
      The result of function returns in the "callback" closure
@@ -29,7 +29,7 @@ protocol FileManagerProtocol {
 
 class InnerStorageManager: FileManagerProtocol {
     
-    var callback: ((Data) -> ())?
+    var callback: ((Result<Data, Error>) -> ())?
     
     private let monitor = NWPathMonitor()
     private let fileManager = FileManager.default
@@ -108,7 +108,6 @@ class InnerStorageManager: FileManagerProtocol {
             saveSongs(with: [songURL])
             
         case .get:
-            urlToGet = songURL
             getSongItem(with: songURL)
             
         case .delete:
@@ -122,13 +121,22 @@ class InnerStorageManager: FileManagerProtocol {
     func getSongItem(with url: URL) {
         if let savedData = decodeData(with: url, model: SongManagerModel.self) {
             urlToGet = nil
-            callback?(savedData.songData)
+            callback?(.success(savedData.songData))
             
         } else {
             if internetStatus == .satisfied {
-                firebaseStorage.getDataWithURL(url) { [weak self] loadedData in
-                    self?.callback?(loadedData)
-                    self?.urlToGet = nil
+                firebaseStorage.getDataWithURL(url) { [weak self] result in
+                    switch result {
+                    
+                    case .success(let loadedData):
+                        self?.callback?(.success(loadedData))
+                        self?.urlToGet = nil
+                        
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        self?.urlToGet = url
+                    }
+
                 }
             }
         }
@@ -141,12 +149,20 @@ class InnerStorageManager: FileManagerProtocol {
             if internetStatus == .satisfied {
                 guard let path = getPath(with: url.absoluteString) else { print("Can't create path to song storage"); return }
                 
-                firebaseStorage.getDataWithURL(url) { [weak self] loadedData in
-                    let item = SongManagerModel(songUrl: url, songData: loadedData)
-                    let dataToSave = self?.encodeData(with: item)
+                firebaseStorage.getDataWithURL(url) { [weak self] result in
+                    switch result {
                     
-                    try? dataToSave?.write(to: path)
-                    self?.urlToSave.remove(url)
+                    case .success(let loadedData):
+                        let item = SongManagerModel(songUrl: url, songData: loadedData)
+                        let dataToSave = self?.encodeData(with: item)
+                        
+                        try? dataToSave?.write(to: path)
+                        self?.urlToSave.remove(url)
+                        
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                    
                 }
             } else {
                 urlToSave.insert(url)

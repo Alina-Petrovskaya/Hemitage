@@ -12,7 +12,7 @@ protocol FirebaseStorage {
     
     func getData(fileName: String, from directory: StorageDirectory, completion: @escaping (Data) -> ())
     func getPathToFile(fileName: String, at directory: StorageDirectory, completion: @escaping (Result<URL, FirebaseError>) -> ())
-    func getDataWithURL(_ url: URL, completion: @escaping (Data) -> ())
+    func getDataWithURL(_ url: URL, completion: @escaping (Result<Data, Error>) -> ())
 }
 
 
@@ -36,17 +36,18 @@ class FirebaseStorageManager: FirebaseStorage {
     }
     
     
-    func getDataWithURL(_ url: URL, completion: @escaping (Data) -> ()) {
-        let path = storage.reference(forURL: url.absoluteString)
+    func getDataWithURL(_ url: URL, completion: @escaping (Result<Data, Error>) -> ()) {
+        let path = storage.reference(forURL: "https://firebasestorage.googleapis.com/v0/b/hemitage-60f4a.appspot.com/o/SongsData%2FSongs%2FJust_Because_-_Martin_Dupont.mp3?alt=media&token=c0c7df1a-866e-4d5a-8051-a9306e720edb")
         
-        path.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        path.getData(maxSize: 15 * 1024 * 1024) { data, error in
             guard error == nil else {
-                print(error!.localizedDescription)
+                completion(.failure(error!))
+                
                 return
             }
             
             guard let safeData = data else { return }
-            completion(safeData)
+            completion(.success(safeData))
         }
     }
     

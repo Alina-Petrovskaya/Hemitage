@@ -13,7 +13,8 @@ protocol GroupScreenViewModelProtocol {
     
     func getDataContent<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> [T]?
     func querySongItems()
-    func newSubcategoryTapped(with index: Int) 
+    func newSubcategoryTapped(with index: Int)
+    func playSong(at index: Int, category: GroupScreenTypeOfContent)
   
 }
 
