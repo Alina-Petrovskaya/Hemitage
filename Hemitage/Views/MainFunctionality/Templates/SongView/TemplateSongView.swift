@@ -61,7 +61,7 @@ class TemplateSongView: UIView {
         imageSong.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: [.delayPlaceholder], context: nil)
                   
         
-        let imageForPlayButton = data.isPlaying ? UIImage(systemName: "play") : UIImage(systemName: "pause")
+        let imageForPlayButton = data.isPlaying ? UIImage(systemName: "pause") : UIImage(systemName: "play")
         playButton.setImage(imageForPlayButton, for: .normal)
         
         contentView.alpha = isCanPlay ? 1 : 0.5

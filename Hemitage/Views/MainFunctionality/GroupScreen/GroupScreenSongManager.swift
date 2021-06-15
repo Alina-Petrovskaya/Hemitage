@@ -57,6 +57,8 @@ class GroupScreenSongManager {
         let currentSongID = PlayerManager.shared.currentSong?.getID()
         let items = songs.compactMap { model -> ViewModelTemplateSong in
             
+            //let isSaved = cacheManager.isSongSaved(songURL: model.songURL)
+            
             return ViewModelTemplateSong(songModel: model,
                                          isPlaying: currentSongID == model.id,
                                          isHideCloseButton: true,
@@ -76,9 +78,9 @@ class GroupScreenSongManager {
     
     
     private func manageDataMusic() {
-        PlayerManager.shared.songData = { [weak self] dataFromPlayer in
+        PlayerManager.shared.callForSongData = { [weak self] dataFromPlayer in
             self?.cacheManager.cacheSongObject(songURL: dataFromPlayer.url, requestType: .get) { result in
-                //
+                
                 switch result {
                 
                 case .success(let data):

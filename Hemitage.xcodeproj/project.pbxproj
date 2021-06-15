@@ -165,6 +165,8 @@
 		84EBB83F26739E9C007FABE4 /* GroupScreenSongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB83E26739E9C007FABE4 /* GroupScreenSongManager.swift */; };
 		84EBB8412677407E007FABE4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB8402677407E007FABE4 /* Array.swift */; };
 		84EBB84326775FBB007FABE4 /* SubscriptionAndNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */; };
+		84EBB8492678AF1D007FABE4 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */; };
+		84EBB84D2678BFC5007FABE4 /* MediaPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */; };
 		84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */; };
 		84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
@@ -343,6 +345,8 @@
 		84EBB83E26739E9C007FABE4 /* GroupScreenSongManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenSongManager.swift; sourceTree = "<group>"; };
 		84EBB8402677407E007FABE4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAndNetworkStatus.swift; sourceTree = "<group>"; };
+		84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
+		84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerManager.swift; sourceTree = "<group>"; };
 		84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenHeaderView.xib; sourceTree = "<group>"; };
 		84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDatasource.swift; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -772,16 +776,11 @@
 			isa = PBXGroup;
 			children = (
 				84A40CFB2671FF8200FB6642 /* PlayerManager.swift */,
+				84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */,
 				84EBB8372673568D007FABE4 /* PlayerManagerProtocol.swift */,
+				84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */,
 			);
 			path = PlayerManager;
-			sourceTree = "<group>";
-		};
-		84A40CFA2671FF2E00FB6642 /* OfflineModeMusicStrategy */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OfflineModeMusicStrategy;
 			sourceTree = "<group>";
 		};
 		84ACEBCC2664EDE90097A719 /* Cells */ = {
@@ -868,7 +867,6 @@
 		84BE17D12664DA8000AF1CD4 /* Managers & Services */ = {
 			isa = PBXGroup;
 			children = (
-				84A40CFA2671FF2E00FB6642 /* OfflineModeMusicStrategy */,
 				84A40CF92671FC4A00FB6642 /* PlayerManager */,
 				848CF7802636A2D60070A3C6 /* FirebaseManager */,
 				84BE17D32664DADC00AF1CD4 /* ContentManager */,
@@ -1426,7 +1424,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84926F88264D3D14005E9074 /* MainScreenBuilder.swift in Sources */,
+				84EBB8492678AF1D007FABE4 /* PlayerObserver.swift in Sources */,
 				84EB44EA2638026400828222 /* LoginViewController.swift in Sources */,
+				84EBB84D2678BFC5007FABE4 /* MediaPlayerManager.swift in Sources */,
 				84EBB83A26735726007FABE4 /* SongManagerModel.swift in Sources */,
 				84926F5A264D1389005E9074 /* BlogCollectionViewCellModelView.swift in Sources */,
 				84926F8A264D48D3005E9074 /* MainScreenCollectionViewSetup.swift in Sources */,

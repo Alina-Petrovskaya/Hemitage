@@ -7,7 +7,14 @@
 
 import Foundation
 
-class ViewModelTemplateSong: ViewModelConfigurator, Hashable {
+protocol ViewModelTemplateSongProtocol {
+    
+    func getSongURL() -> URL?
+    func updateState(isPlaying: Bool, isCanPlay: Bool, isSaved: Bool)
+    
+}
+
+class ViewModelTemplateSong: ViewModelConfigurator, ViewModelTemplateSongProtocol, Hashable {
 
     typealias DataType = (title: String, subtitle: String?, isPlaying: Bool, isHideCloseButton: Bool, imageURL: URL?, isCanPlay: Bool, isSaved: Bool)
     
@@ -56,6 +63,12 @@ class ViewModelTemplateSong: ViewModelConfigurator, Hashable {
     
     func getID() -> String {
         return id
+    }
+    
+    func updateState(isPlaying: Bool, isCanPlay: Bool, isSaved: Bool) {
+        self.isPlaying = isPlaying
+        self.isCanPlay = isCanPlay
+        self.isSaved   = isSaved
     }
     
     static func == (lhs: ViewModelTemplateSong, rhs: ViewModelTemplateSong) -> Bool {
