@@ -38,7 +38,9 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
             self?.delegate?.updateData(items: items, section: data.section, typeOfChange: data.typeOfChange, index: data.index)
         }
         
-//        songManager.getData
+        songManager.reloadData = { [weak self] in
+            self?.querySongItems()
+        }
     
     }
     
@@ -150,6 +152,11 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
                 completion?(songManager.premiumMusic[index])
             }
         }
+    }
+    
+    
+    func isPremiumContenHidden() -> Bool {
+     return songManager.status.isPremiumContentHidden()
     }
     
 }

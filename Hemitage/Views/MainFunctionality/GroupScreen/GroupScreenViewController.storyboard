@@ -59,9 +59,6 @@
                             <constraint firstItem="FZ0-53-3Mk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="51" id="sgI-Xm-gyI"/>
                             <constraint firstItem="FZ0-53-3Mk" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="xnM-wg-zK8"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Sn9-t1-SRP" appends="YES" id="i4N-cA-OQk"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="CRR-3c-PDT" id="2Ax-pt-jxS"/>
@@ -71,11 +68,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="Sn9-t1-SRP">
-                    <connections>
-                        <action selector="swipedBack:" destination="Y6W-OH-hqX" id="uYG-ps-R8s"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="138.61607142857142"/>
         </scene>

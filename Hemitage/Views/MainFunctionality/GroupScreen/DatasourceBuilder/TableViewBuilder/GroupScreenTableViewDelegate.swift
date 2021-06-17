@@ -14,6 +14,8 @@ protocol GroupScreenTableDelegateProtocol {
     var canLoadMoreData: Bool { get set }
     var currentSongScreen: GroupScreenTypeOfContent { get }
     
+    func showPremiumScreen(isHidden: Bool)
+    
 }
 
 class GroupScreenTableViewDelegate: NSObject, UITableViewDelegate, GroupScreenTableDelegateProtocol {
@@ -38,6 +40,9 @@ class GroupScreenTableViewDelegate: NSObject, UITableViewDelegate, GroupScreenTa
         }
     }
     
+    func showPremiumScreen(isHidden: Bool) {
+        headerView.contentSwitcher.isHidden = isHidden
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y

@@ -20,17 +20,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     private var songsList: [ViewModelTemplateSongProtocol] = []
     private var soundIndex   = 0
     private let mediaPlayer  = MediaPlayerManager()
-    
-    private var playerState: MPNowPlayingPlaybackState = .unknown {
-        didSet { notify(playerState: playerState, currentsong: currentSong, previousSong: nil) }
-    }
-    
-    private var currentSong: ViewModelTemplateSongProtocol? {
-        didSet {
-            notify(playerState: playerState, currentsong: currentSong, previousSong: oldValue)
-            mediaPlayer.songData = currentSong
-        }
-    }
+    private var currentSong: ViewModelTemplateSongProtocol?
     
     
     private override init() {
@@ -50,21 +40,28 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
             if mediaPlayer.player?.isPlaying == true {
                 mediaPlayer.setupNowPlaying(.paused)
                 mediaPlayer.player?.pause()
+                notify(playerState: .paused, currentsong: currentSong, previousSong: nil)
                 
             } else {
                 mediaPlayer.setupNowPlaying(.playing)
                 mediaPlayer.player?.play()
+                notify(playerState: .playing, currentsong: currentSong, previousSong: nil)
             }
+            
             return
         }
         
         guard let songURL = songsList[index].getSongData().songURL else {
             print("Song not found")
+            notify(playerState: .paused, currentsong: currentSong, previousSong: nil)
             return
         }
         
-        soundIndex = index
+        
+        notify(playerState: .playing, currentsong: songsList[index], previousSong: currentSong)
+        soundIndex  = index
         currentSong = songsList[soundIndex]
+        mediaPlayer.songData = currentSong
         callForSongData?((index: index, url: songURL, id: songsList[index].getSongData().id))
         mediaPlayer.setupRemoteCommandCenter(numberOfSongs: songsList.count, soundIndex: soundIndex)
     }
@@ -92,7 +89,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     
     
     func getIdOfPlayingSong() -> String? {
-        if playerState == .playing {
+        if mediaPlayer.player?.isPlaying == true {
             return currentSong?.getSongData().id
         }
         return nil
@@ -138,7 +135,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         }
         
         mediaPlayer.setupTargets { [weak self] state in
-            self?.playerState = state
+            self?.notify(playerState: state, currentsong: self?.currentSong, previousSong: nil)
         }
         
     }

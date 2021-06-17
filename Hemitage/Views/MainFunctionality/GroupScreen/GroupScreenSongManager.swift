@@ -10,15 +10,15 @@ import Network
 
 class GroupScreenSongManager: PlayerObserver {
     
-    var getData: (() -> ())?
+    var reloadData: (() -> ())?
     var songList: [ViewModelTemplateSongProtocol] = []
     var premiumMusic: [ViewModelTemplateSongProtocol] = []
     var callBack: ( ((items: [ViewModelTemplateSongProtocol], section: GroupScreenTypeOfContent, typeOfChange: TypeOfChangeDocument, index: Int?)) -> () )?
     var currentSongSection: GroupScreenTypeOfContent = .songList
+    var status: SubscriptionAndNetworkStatus = .unowned
     
     private let monitor = NWPathMonitor()
     private let cacheManager = CacheManager()
-    private var status: SubscriptionAndNetworkStatus = .unowned
     private var canPlaySong: Bool = true
     private var networkstatus: NWPath.Status = .requiresConnection
     
@@ -43,10 +43,10 @@ class GroupScreenSongManager: PlayerObserver {
             if path.status == .satisfied {
                 self?.status = .standart
                 self?.songList.removeAll()
-                self?.getData?()
+                self?.reloadData?()
                 
             } else {
-                self?.status = .noNetworkNoSubscription
+                self?.status = .noNetworkSubscriptionGold
             }
         }
         
@@ -84,12 +84,10 @@ class GroupScreenSongManager: PlayerObserver {
     
     
     func manageSongSaving(index: Int, section: GroupScreenTypeOfContent) {
-        let songModel = (section == .songList)
-            ? songList[index]
-            : premiumMusic[index]
-        
+        let songModel = (section == .songList) ? songList[index] : premiumMusic[index]
         guard let songURL = songModel.getSongData().songURL else { return }
         let id = songModel.getSongData().id
+        
         if cacheManager.isSongSaved(docimentID: id) {
             cacheManager.cacheSongObject(songURL: songURL, documentID: id, requestType: .delete, completion: nil)
             songModel.updateSavingState(isSaved: false)
@@ -99,7 +97,7 @@ class GroupScreenSongManager: PlayerObserver {
             songModel.updateSavingState(isSaved: true)
         }
 
-        callBack?((items: [songModel], section: .songList, typeOfChange: .modified, index: nil))
+        callBack?((items: [songModel], section: .songList, typeOfChange: .modified, index: index))
     }
     
     
@@ -130,23 +128,23 @@ class GroupScreenSongManager: PlayerObserver {
     func playerStateChanged(isPlaying: Bool, currentSong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?) {
         
         if currentSong != nil {
-            
-            
             currentSong?.updatePlayingState(isPlay: isPlaying)
-            if currentSongSection == .songList {
-                let index = modifireSong(at: &songList, newItem: currentSong!)
-                callBack?((items: [currentSong!], section: .songList, typeOfChange: .modified, index: index))
-                
-            } else {
-                let index = modifireSong(at: &premiumMusic, newItem: currentSong!)
-                callBack?((items: [currentSong!], section: .songList, typeOfChange: .modified, index: index))
-            }
-           
+            
+            let index = currentSongSection == .songList
+                ? modifireSong(at: &songList, newItem: currentSong!)
+                : modifireSong(at: &premiumMusic, newItem: currentSong!)
+            
+            callBack?((items: [currentSong!], section: .songList, typeOfChange: .modified, index: index))
             
         }
         if previousSong != nil {
             previousSong?.updatePlayingState(isPlay: false)
-            callBack?((items: [previousSong!], section: .songList, typeOfChange: .modified, index: nil))
+            
+            let index = currentSongSection == .songList
+                ? modifireSong(at: &songList, newItem: previousSong!)
+                : modifireSong(at: &premiumMusic, newItem: previousSong!)
+            
+            callBack?((items: [previousSong!], section: .songList, typeOfChange: .modified, index: index))
         }
     }
     

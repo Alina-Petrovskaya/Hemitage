@@ -13,6 +13,6 @@ protocol GroupScreenViewModelProtocol {
     
     func getDataContent<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> [T]?
     func handleInteraction(interactionType: SongTemplateTypeOfInteraction, completion: ((ViewModelTemplateSongProtocol) -> ())?)
-  
+    func isPremiumContenHidden() -> Bool
 }
 

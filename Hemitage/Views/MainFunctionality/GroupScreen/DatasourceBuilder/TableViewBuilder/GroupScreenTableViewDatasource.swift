@@ -39,13 +39,16 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
     
     
     func reloadItems<T: ViewModelConfigurator>(data: T, with index: Int) {
-        guard let snapshot = dataSource?.snapshot(),
+        guard var snapshot = dataSource?.snapshot(),
               let newItem = data as? ViewModelTemplateSong else { return }
-        
+
         let item = snapshot.itemIdentifiers[index]
         item.setData(with: newItem.getData())
+        snapshot.reloadItems([item])
         
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        }
     }
     
     
@@ -68,7 +71,7 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
                 groupScreenDelegate.tableView.tableFooterView = nil
             }
         }
-        
+        groupScreenDelegate.showPremiumScreen(isHidden: viewModel.isPremiumContenHidden())
         
         DispatchQueue.main.async { [weak self] in
             self?.dataSource?.defaultRowAnimation = .fade

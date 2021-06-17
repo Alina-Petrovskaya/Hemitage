@@ -9,27 +9,30 @@ import Foundation
 
 enum SubscriptionAndNetworkStatus {
     case unowned
+    case free
     case noNetworkNoSubscription
-    case noNetworkSubscription
+    case noNetworkSubscriptionStandart
+    case noNetworkSubscriptionGold
     case standart
     case gold
-    
-    func isNeedToLoadDataFromFareStore() -> Bool {
-        switch self {
-        case .unowned, .noNetworkNoSubscription, .noNetworkSubscription:
-            return false
-            
-        case .standart, .gold:
-            return true
-        }
-    }
     
     func isCanPlayMusic() -> Bool {
         switch self {
         case .unowned, .noNetworkNoSubscription:
             return false
             
-        case .standart, .gold, .noNetworkSubscription:
+        case .standart, .gold, .noNetworkSubscriptionStandart, .noNetworkSubscriptionGold, .free:
+            return true
+        }
+    }
+    
+    func isPremiumContentHidden() -> Bool {
+        switch self {
+        
+        case .gold, .noNetworkSubscriptionGold:
+            return false
+            
+        default:
             return true
         }
     }
