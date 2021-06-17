@@ -14,7 +14,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
 
     static var shared: some PlayerManagerProtocol = PlayerManager()
     
-    var callForSongData: (((index: Int, url: URL)) -> ())?
+    var callForSongData: (((index: Int, url: URL, id: String)) -> ())?
     
     private var observers: [PlayerObserver] = []
     private var songsList: [ViewModelTemplateSongProtocol] = []
@@ -65,7 +65,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         
         soundIndex = index
         currentSong = songsList[soundIndex]
-        callForSongData?((index: index, url: songURL))
+        callForSongData?((index: index, url: songURL, id: songsList[index].getSongData().id))
         mediaPlayer.setupRemoteCommandCenter(numberOfSongs: songsList.count, soundIndex: soundIndex)
     }
     

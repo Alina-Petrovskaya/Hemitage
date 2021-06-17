@@ -21,9 +21,9 @@ protocol FileManagerProtocol {
      */
     func getImageData(with documentID: String, imageName: String, for typeOfChange: TypeOfChangeDocument, from directory: StorageDirectory?, completion: @escaping (Data) -> ())
     
-    func manageSongData(songURL: URL, requestType: RequestType)
+    func manageSongData(documentID: String, songURL: URL, requestType: RequestType)
     
-    func isSavedSong(for url: URL) -> Bool
+    func isSavedSong(for documentID: String) -> Bool
 }
 
 
@@ -34,19 +34,19 @@ class InnerStorageManager: FileManagerProtocol {
     private let monitor = NWPathMonitor()
     private let fileManager = FileManager.default
     private let firebaseStorage: FirebaseStorage = FirebaseStorageManager()
-    private var urlToGet: URL?
-    private var urlToSave: Set<URL> = []
+    private var songData: (id: String, url: URL)?
+    private var dataToSave: [(id: String, url: URL)] = []
     
     private var internetStatus: NWPath.Status = .unsatisfied {
         didSet {
             if oldValue != internetStatus, internetStatus == .satisfied {
                 
-                if urlToGet != nil {
-                    getSongItem(with: urlToGet!)
+                if songData != nil {
+                    getSongItem(for: songData!.id, url: songData!.url)
                 }
                 
-                if urlToSave.count != 0 {
-                    saveSongs(with: Array(urlToSave))
+                if dataToSave.count != 0 {
+                    saveSongs(with: dataToSave)
                 }
             }
         }
@@ -100,27 +100,36 @@ class InnerStorageManager: FileManagerProtocol {
     
     
     // MARK: - Manage songs
-    func manageSongData(songURL: URL, requestType: RequestType) {
-        guard let path = getPath(with: songURL.absoluteString) else { print("Can't create path to song storage"); return }
+    func manageSongData(documentID: String, songURL: URL, requestType: RequestType) {
+        guard let path = getPath(with: documentID) else { print("Can't create path to song storage"); return }
         
         switch requestType {
         case .save:
-            saveSongs(with: [songURL])
+            saveSongs(with: [(id: documentID, url: songURL)])
             
         case .get:
-            getSongItem(with: songURL)
+            getSongItem(for: documentID, url: songURL)
             
         case .delete:
             print("Song removed")
             try? fileManager.removeItem(at: path)
-            urlToSave.remove(songURL)
+            let index = dataToSave.firstIndex(where: { data in
+                data.id == documentID
+            })
+            
+            if index != nil {
+                dataToSave.remove(at: index!)
+            }
+                
         }
     }
     
     
-    func getSongItem(with url: URL) {
-        if let savedData = decodeData(with: url, model: SongManagerModel.self) {
-            urlToGet = nil
+    func getSongItem(for id: String, url: URL) {
+        guard let path = getPath(with: id) else { print("Can't create path to song storage"); return }
+        
+        if let savedData = decodeData(with: path, model: SongManagerModel.self) {
+            songData = nil
             callback?(.success(savedData.songData))
             
         } else {
@@ -130,11 +139,11 @@ class InnerStorageManager: FileManagerProtocol {
                     
                     case .success(let loadedData):
                         self?.callback?(.success(loadedData))
-                        self?.urlToGet = nil
+                        self?.songData = nil
                         
                     case .failure(let error):
                         print(error.localizedDescription)
-                        self?.urlToGet = url
+                        self?.songData = (id: id, url: url)
                     }
 
                 }
@@ -143,21 +152,21 @@ class InnerStorageManager: FileManagerProtocol {
     }
     
     
-    func saveSongs(with urls: [URL]) {
-        urls.forEach { url in
+    func saveSongs(with data: [(id: String, url: URL)]) {
+        data.enumerated().forEach { (index, item) in
             
             if internetStatus == .satisfied {
-                guard let path = getPath(with: url.absoluteString) else { print("Can't create path to song storage"); return }
+                guard let path = getPath(with: item.id) else { print("Can't create path to song storage"); return }
                 
-                firebaseStorage.getDataWithURL(url) { [weak self] result in
+                firebaseStorage.getDataWithURL(item.url) { [weak self] result in
                     switch result {
                     
                     case .success(let loadedData):
-                        let item = SongManagerModel(songUrl: url, songData: loadedData)
-                        let dataToSave = self?.encodeData(with: item)
+                        let saveItem = SongManagerModel(songUrl: item.url, songData: loadedData)
+                        let encodedItem = self?.encodeData(with: saveItem)
                         
-                        try? dataToSave?.write(to: path)
-                        self?.urlToSave.remove(url)
+                        try? encodedItem?.write(to: path)
+                        print("Song saved")
                         
                     case .failure(let error):
                         print(error.localizedDescription)
@@ -165,14 +174,15 @@ class InnerStorageManager: FileManagerProtocol {
                     
                 }
             } else {
-                urlToSave.insert(url)
+                dataToSave.append((id: item.id, url: item.url))
             }
         }
     }
     
-    func isSavedSong(for url: URL) -> Bool {
-        guard let path = getPath(with: url.absoluteString)?.path else { return false }
-        if fileManager.fileExists(atPath: path) {
+    
+    func isSavedSong(for documentID: String) -> Bool {
+        guard let path = getPath(with: documentID) else { return false }
+        if decodeData(with: path, model: SongManagerModel.self) != nil {
             return true
         }
         

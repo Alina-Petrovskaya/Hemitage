@@ -47,12 +47,13 @@ class CacheManager {
     
     
     func cacheSongObject(songURL: URL,
+                         documentID: String,
                          requestType: RequestType,
                          completion: ((Result<Data, Error>) -> ())?) {
         
         switch requestType {
         case .save, .delete:
-            storageManager.manageSongData(songURL: songURL, requestType: requestType)
+            storageManager.manageSongData(documentID: documentID, songURL: songURL, requestType: requestType)
             
         case .get:
             let dataSong = cache.object(forKey: "\(songURL.absoluteString)" as NSString) as Data?
@@ -72,15 +73,15 @@ class CacheManager {
                     }
                 }
                 
-                storageManager.manageSongData(songURL: songURL, requestType: requestType)
+                storageManager.manageSongData(documentID: documentID, songURL: songURL, requestType: requestType)
             }
         }
         
     }
     
     
-    func isSongSaved(songURL: URL) -> Bool {
-        return storageManager.isSavedSong(for: songURL)
+    func isSongSaved(docimentID: String) -> Bool {
+        return storageManager.isSavedSong(for: docimentID)
     }
     
 }

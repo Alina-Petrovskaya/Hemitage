@@ -27,6 +27,7 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     init(with categoriesModel: CategoriesModel) {
         self.categoriesModel = categoriesModel
         manageSubcollections(for: categoriesModel.id)
+        manageMusicCallback()
 
     }
  

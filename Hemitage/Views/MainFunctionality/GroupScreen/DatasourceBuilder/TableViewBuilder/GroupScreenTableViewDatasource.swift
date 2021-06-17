@@ -42,7 +42,7 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
         guard let snapshot = dataSource?.snapshot(),
               let newItem = data as? ViewModelTemplateSong else { return }
         
-        let item = snapshot.itemIdentifiers(inSection: index)[0]
+        let item = snapshot.itemIdentifiers[index]
         item.setData(with: newItem.getData())
         
         dataSource?.apply(snapshot, animatingDifferences: true)
