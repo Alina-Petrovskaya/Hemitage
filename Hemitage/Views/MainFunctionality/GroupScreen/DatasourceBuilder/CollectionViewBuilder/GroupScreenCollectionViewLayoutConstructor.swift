@@ -10,32 +10,21 @@ import UIKit
 class GroupScreenCollectionViewLayoutConstructor {
     
     func createLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { [self] sectionIndex, layoutEnvironment in
-            
-            return generateSection()
-        }
-        
-        return layout
+        return  UICollectionViewCompositionalLayout(section: generateSubGroubSection())
     }
     
-    
-    private func generateSection() -> NSCollectionLayoutSection {
+    private func generateSubGroubSection() -> NSCollectionLayoutSection {
         // item
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
                                             widthDimension: .estimated(100),
                                             heightDimension: .fractionalHeight(0.7)))
         
-        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil,
-                                                         top: nil,
-                                                         trailing: .flexible(10),
-                                                         bottom: nil)
-        
-        
-
+        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: nil, trailing: .flexible(10), bottom: nil)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
         
         // Group
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
-                                                        widthDimension: .fractionalWidth(2),
+                                                        widthDimension: .fractionalWidth(10),
                                                         heightDimension: .fractionalHeight(1)),
                                                        subitems: [item])
  

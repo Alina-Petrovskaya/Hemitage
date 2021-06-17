@@ -11,26 +11,44 @@ import SDWebImage
 
 class MediaPlayerManager {
     
-    var songData: ViewModelTemplateSong.DataType?
-    var player: AVAudioPlayer?
+    var songData: ViewModelTemplateSongProtocol?
+    var player: AVAudioPlayer!
+    private let audioSession = AVAudioSession.sharedInstance()
+    
+    
+    init() {
+        
+        do {
+            try audioSession.setCategory(.playback)
+            try audioSession.setActive(true)
+        }
+        catch {
+            fatalError("playback failed")
+        }
+    }
     
     func setupNowPlaying(_ state: MPNowPlayingPlaybackState?) {
         // Define Now Playing Info
+        let song = songData?.getSongData()
         
         let image: UIImage = {
             let view = UIImageView()
-            view.sd_setImage(with: songData?.imageURL)
+            view.sd_setImage(with: song?.imageURL)
             return view.image ?? #imageLiteral(resourceName: "Picture Placeholder")
         }()
         
-        let playerImage = MPMediaItemArtwork(boundsSize: CGSize(width: 200, height: 200)) {  (_) -> UIImage in
+        let playerImage = MPMediaItemArtwork(boundsSize: image.size) {  (_) -> UIImage in
             return image
         }
         
         var nowPlayingInfo = [String : Any]()
         
-        nowPlayingInfo[MPMediaItemPropertyTitle]                    = songData?.title
-        nowPlayingInfo[MPMediaItemPropertyArtist]                   = songData?.subtitle
+        if state != .playing {
+            nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+        }
+        
+        nowPlayingInfo[MPMediaItemPropertyTitle]                    = song?.title
+        nowPlayingInfo[MPMediaItemPropertyArtist]                   = song?.subtitle
         nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player?.currentTime
         nowPlayingInfo[MPMediaItemPropertyPlaybackDuration]         = player?.duration
         nowPlayingInfo[MPMediaItemPropertyArtwork]                  = playerImage
@@ -59,7 +77,7 @@ class MediaPlayerManager {
         commandCenter.togglePlayPauseCommand.addTarget { [weak self] event in
             if self?.player?.isPlaying == true {
                 self?.setupNowPlaying(.paused)
-                MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+                
                 self?.player?.pause()
                 completion(.paused)
                 

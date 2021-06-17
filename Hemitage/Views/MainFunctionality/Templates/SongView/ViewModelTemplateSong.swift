@@ -9,8 +9,9 @@ import Foundation
 
 protocol ViewModelTemplateSongProtocol {
     
-    func getSongURL() -> URL?
-    func updateState(isPlaying: Bool, isCanPlay: Bool, isSaved: Bool)
+    func getSongData() -> (id: String, title: String, subtitle: String, songURL: URL?, imageURL: URL?)
+    func updatePlayingState(isPlay: Bool)
+    func updateSavingState(isSaved: Bool)
     
 }
 
@@ -57,18 +58,21 @@ class ViewModelTemplateSong: ViewModelConfigurator, ViewModelTemplateSongProtoco
     }
     
     
-    func getSongURL() -> URL? {
-        return songURL
+    func getSongData() -> (id: String, title: String, subtitle: String, songURL: URL?, imageURL: URL?) {
+        return (id, title, subtitle ?? "", songURL, imageURL)
     }
+    
     
     func getID() -> String {
         return id
     }
     
-    func updateState(isPlaying: Bool, isCanPlay: Bool, isSaved: Bool) {
-        self.isPlaying = isPlaying
-        self.isCanPlay = isCanPlay
-        self.isSaved   = isSaved
+    func updatePlayingState(isPlay: Bool) {
+        isPlaying = isPlay
+    }
+    
+    func updateSavingState(isSaved: Bool) {
+        self.isSaved = isSaved
     }
     
     static func == (lhs: ViewModelTemplateSong, rhs: ViewModelTemplateSong) -> Bool {

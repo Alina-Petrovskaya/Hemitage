@@ -10,14 +10,14 @@ import UIKit
 protocol GroupScreenCollectionDelegateProtocol {
     
     var collectionView: UICollectionView { get }
-    var rowTapped: ((Int) -> ())? { get set }
+    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())? { get set }
     
 }
 
 
 class GroupScreenCollectionViewDelegate: NSObject, UICollectionViewDelegate, GroupScreenCollectionDelegateProtocol {
     
-    var rowTapped: ((Int) -> ())?
+    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())?
     var requestForMoreItems: (() -> ())?
     var collectionView: UICollectionView
     
@@ -31,7 +31,7 @@ class GroupScreenCollectionViewDelegate: NSObject, UICollectionViewDelegate, Gro
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        rowTapped?(indexPath.row)
+        interactionCallback?(.reload(indexPath.row, .subGroup))
     }
     
 }

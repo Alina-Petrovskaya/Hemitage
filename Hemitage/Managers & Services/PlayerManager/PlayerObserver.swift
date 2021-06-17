@@ -8,7 +8,7 @@
 import Foundation
 import MediaPlayer
 
-protocol PlayerObserver: class {
-    func playerStateChanged(state: MPNowPlayingPlaybackState, currentSong: ViewModelTemplateSong?, previousSong: ViewModelTemplateSong?)
+protocol PlayerObserver: AnyObject {
+    func playerStateChanged(isPlaying: Bool, currentSong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?)
 }
 

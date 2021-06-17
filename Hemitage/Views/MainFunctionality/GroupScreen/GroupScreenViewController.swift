@@ -12,6 +12,7 @@ class GroupScreenViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     var kvoNavBar: NSKeyValueObservation?
     var viewModel: GroupScreenViewModelProtocol?
@@ -55,16 +56,14 @@ class GroupScreenViewController: UIViewController {
         var tableDelegate: GroupScreenTableDelegateProtocol? = tableViewDataSource?.getDelegateObject()
         var collectionDelegate: GroupScreenCollectionDelegateProtocol? = collectionViewDataSourse?.getDelegateObject()
         
-        tableDelegate?.requestForMoreItems = { [weak self] in
-            self?.viewModel?.querySongItems()
+        tableDelegate?.interactionCallback = { [weak self] result in
+            self?.viewModel?.handleInteraction(interactionType: result, completion: nil)
         }
         
-        tableDelegate?.rowTapped = { [weak self] index in
-            self?.viewModel?.playSong(at: index, category: .songList)
-        }
-        
-        collectionDelegate?.rowTapped = { [weak self] index in
-            self?.viewModel?.newSubcategoryTapped(with: index)
+        collectionDelegate?.interactionCallback = { [weak self] result in
+            self?.viewModel?.handleInteraction(interactionType: result) { viewModel in
+                print("Present detail song screen")
+            }
         }
     }
   
@@ -85,13 +84,20 @@ class GroupScreenViewController: UIViewController {
         }
     }
     
+    @IBAction func swipedBack(_ sender: UISwipeGestureRecognizer) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 
 extension GroupScreenViewController: GroupScreenViewModelDelegate {
     
     func reloadData(section: GroupScreenTypeOfContent) {
-        let dataSourse: GroupScreenDataSourceProtocol? = (section == .subGroup) ? collectionViewDataSourse : tableViewDataSource
+        let dataSourse: GroupScreenDataSourceProtocol? = (section == .subGroup)
+            ? collectionViewDataSourse
+            : tableViewDataSource
+        
         if let viewModel = viewModel as? GroupScreenViewModel {
             dataSourse?.reloadData(with: viewModel)
             if section == .subGroup {
@@ -103,7 +109,9 @@ extension GroupScreenViewController: GroupScreenViewModelDelegate {
     
     func updateData<T: ViewModelConfigurator>(items: [T], section: GroupScreenTypeOfContent, typeOfChange: TypeOfChangeDocument, index: Int? = nil)  {
         
-        let dataSourse: GroupScreenDataSourceProtocol? = (section == .subGroup) ? collectionViewDataSourse : tableViewDataSource
+        let dataSourse: GroupScreenDataSourceProtocol? = (section == .subGroup)
+            ? collectionViewDataSourse
+            : tableViewDataSource
         
         switch typeOfChange {
         case .added:

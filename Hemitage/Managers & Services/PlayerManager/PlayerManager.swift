@@ -17,26 +17,24 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     var callForSongData: (((index: Int, url: URL)) -> ())?
     
     private var observers: [PlayerObserver] = []
-    private var songsList: [ViewModelTemplateSong] = []
-    private let audioSession = AVAudioSession.sharedInstance()
+    private var songsList: [ViewModelTemplateSongProtocol] = []
     private var soundIndex   = 0
     private let mediaPlayer  = MediaPlayerManager()
     
-    var playerState: MPNowPlayingPlaybackState = .unknown {
+    private var playerState: MPNowPlayingPlaybackState = .unknown {
         didSet { notify(playerState: playerState, currentsong: currentSong, previousSong: nil) }
     }
     
-    var currentSong: ViewModelTemplateSong? {
+    private var currentSong: ViewModelTemplateSongProtocol? {
         didSet {
             notify(playerState: playerState, currentsong: currentSong, previousSong: oldValue)
-            mediaPlayer.songData = currentSong?.getData()
+            mediaPlayer.songData = currentSong
         }
     }
     
     
     private override init() {
         super.init()
-        configureSession()
         setupPlayer()
     }
     
@@ -48,9 +46,9 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
             return
         }
         
-        guard currentSong?.getID() != songsList[index].getID() else {
+        guard currentSong?.getSongData().id != songsList[index].getSongData().id else {
             if mediaPlayer.player?.isPlaying == true {
-                mediaPlayer.setupNowPlaying(.interrupted)
+                mediaPlayer.setupNowPlaying(.paused)
                 mediaPlayer.player?.pause()
                 
             } else {
@@ -60,7 +58,7 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
             return
         }
         
-        guard let songURL = songsList[index].getSongURL() else {
+        guard let songURL = songsList[index].getSongData().songURL else {
             print("Song not found")
             return
         }
@@ -73,27 +71,31 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
     
     
     func playSong(with data: Data) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
+        do {
+            self.mediaPlayer.player = try AVAudioPlayer(data: data)
+            self.mediaPlayer.player?.delegate = self
             
-            do {
-                self.mediaPlayer.player = try AVAudioPlayer(data: data)
-                self.mediaPlayer.player?.delegate = self
-                
-                self.mediaPlayer.player?.prepareToPlay()
-                self.mediaPlayer.player?.play()
-                self.mediaPlayer.setupNowPlaying(.playing)
-                
-                
-            } catch let error {
-                print(error.localizedDescription)
-            }
+            self.mediaPlayer.player?.prepareToPlay()
+            self.mediaPlayer.player?.play()
+            self.mediaPlayer.setupNowPlaying(.playing)
+            
+            
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
     
-    func configureSongList(with songs: [ViewModelTemplateSong]) {
+    func configureSongList(with songs: [ViewModelTemplateSongProtocol]) {
         songsList = songs
+    }
+    
+    
+    func getIdOfPlayingSong() -> String? {
+        if playerState == .playing {
+            return currentSong?.getSongData().id
+        }
+        return nil
     }
     
     
@@ -112,29 +114,19 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         observers.append(observer)
     }
     
+    
     func unSubscribe(_ observer: PlayerObserver) {
         if let index = observers.firstIndex(where: { $0 === observer }) {
             observers.remove(at: index)
         }
     }
     
-    private func notify(playerState: MPNowPlayingPlaybackState, currentsong: ViewModelTemplateSong?, previousSong: ViewModelTemplateSong?) {
-        observers.forEach { $0.playerStateChanged(state: playerState, currentSong: currentsong, previousSong: previousSong) }
+    
+    private func notify(playerState: MPNowPlayingPlaybackState, currentsong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?) {
+        observers.forEach { $0.playerStateChanged(isPlaying: playerState == .playing, currentSong: currentsong, previousSong: previousSong) }
     }
     
    // MARK: - Player Setup
-    private func configureSession() {
-        do {
-            try audioSession.setCategory(.playback)
-            try audioSession.setActive(true)
-        }
-        catch {
-            fatalError("playback failed")
-        }
-    
-    }
-    
-    
     private func setupPlayer() {
         mediaPlayer.setupControls { [weak self] tappedNexSong in
             guard let safeIndex = self?.soundIndex else { return }

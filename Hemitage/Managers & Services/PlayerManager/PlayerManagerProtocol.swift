@@ -9,12 +9,15 @@ import Foundation
 
 protocol PlayerManagerProtocol {
     
-    var currentSong: ViewModelTemplateSong? { get }
     var callForSongData: ( ((index: Int, url: URL)) -> () )? { get set }
-    
+
     func playSong(at index: Int) -> ()
     func playSong(with data: Data)
-    func configureSongList(with songs: [ViewModelTemplateSong]) -> ()
+    func configureSongList(with songs: [ViewModelTemplateSongProtocol]) -> ()
     func stopSong()
+    func getIdOfPlayingSong() -> String?
+    func subscribe(_ observer: PlayerObserver)
+    func unSubscribe(_ observer: PlayerObserver)
+    
     
 }

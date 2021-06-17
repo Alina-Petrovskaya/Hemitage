@@ -12,9 +12,7 @@ protocol GroupScreenViewModelProtocol {
     var delegate: GroupScreenViewModelDelegate? { get set }
     
     func getDataContent<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> [T]?
-    func querySongItems()
-    func newSubcategoryTapped(with index: Int)
-    func playSong(at index: Int, category: GroupScreenTypeOfContent)
+    func handleInteraction(interactionType: SongTemplateTypeOfInteraction, completion: ((ViewModelTemplateSongProtocol) -> ())?)
   
 }
 

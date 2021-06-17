@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="50" width="414" height="751"/>
                                         <sections/>
                                     </tableView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CRR-3c-PDT">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CRR-3c-PDT">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -52,20 +52,30 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FZ0-53-3Mk" secondAttribute="trailing" id="bLZ-7L-gEB"/>
                             <constraint firstAttribute="bottom" secondItem="FZ0-53-3Mk" secondAttribute="bottom" id="fRp-n4-ho5"/>
                             <constraint firstItem="FZ0-53-3Mk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="51" id="sgI-Xm-gyI"/>
                             <constraint firstItem="FZ0-53-3Mk" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="xnM-wg-zK8"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Sn9-t1-SRP" appends="YES" id="i4N-cA-OQk"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="CRR-3c-PDT" id="2Ax-pt-jxS"/>
+                        <outlet property="collectionViewHeight" destination="WfB-2d-pel" id="alW-Sd-U6a"/>
                         <outlet property="contentView" destination="FZ0-53-3Mk" id="t5y-Ht-WxO"/>
                         <outlet property="tableView" destination="zXU-8j-tAY" id="yaw-bl-dIg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Sn9-t1-SRP">
+                    <connections>
+                        <action selector="swipedBack:" destination="Y6W-OH-hqX" id="uYG-ps-R8s"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="138.61607142857142"/>
         </scene>

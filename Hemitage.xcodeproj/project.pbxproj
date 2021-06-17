@@ -72,7 +72,6 @@
 		849C4E77264B0E4D00C26C53 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E76264B0E4D00C26C53 /* MapModel.swift */; };
 		849C4E79264B102800C26C53 /* MainScreenModelWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E78264B102800C26C53 /* MainScreenModelWrapper.swift */; };
 		849C4E7B264BBEB000C26C53 /* ViewModelTemplateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */; };
-		849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */; };
 		849C4E7F264BD11900C26C53 /* ViewModelTemplateSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E7E264BD11900C26C53 /* ViewModelTemplateSong.swift */; };
 		849C4E84264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */; };
 		84A00ABB265B897000087E07 /* InnerStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A00ABA265B897000087E07 /* InnerStorageManager.swift */; };
@@ -167,6 +166,7 @@
 		84EBB84326775FBB007FABE4 /* SubscriptionAndNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */; };
 		84EBB8492678AF1D007FABE4 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */; };
 		84EBB84D2678BFC5007FABE4 /* MediaPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */; };
+		84EBB84F2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84E2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift */; };
 		84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */; };
 		84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
@@ -254,7 +254,6 @@
 		849C4E76264B0E4D00C26C53 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		849C4E78264B102800C26C53 /* MainScreenModelWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModelWrapper.swift; sourceTree = "<group>"; };
 		849C4E7A264BBEB000C26C53 /* ViewModelTemplateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTemplateHeader.swift; sourceTree = "<group>"; };
-		849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewModelProtocol.swift; sourceTree = "<group>"; };
 		849C4E7E264BD11900C26C53 /* ViewModelTemplateSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTemplateSong.swift; sourceTree = "<group>"; };
 		849C4E83264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		84A00ABA265B897000087E07 /* InnerStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerStorageManager.swift; sourceTree = "<group>"; };
@@ -347,6 +346,7 @@
 		84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAndNetworkStatus.swift; sourceTree = "<group>"; };
 		84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
 		84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerManager.swift; sourceTree = "<group>"; };
+		84EBB84E2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTemplateTypeOfInteraction.swift; sourceTree = "<group>"; };
 		84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenHeaderView.xib; sourceTree = "<group>"; };
 		84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDatasource.swift; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -908,6 +908,7 @@
 				84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */,
 				84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */,
 				8453C6222667902600875A69 /* GroupScreenDataSourceProtocol.swift */,
+				84EBB84E2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift */,
 				84D662C626677AF9009BE13A /* CollectionViewBuilder */,
 				84D662C526677AEB009BE13A /* TableViewBuilder */,
 			);
@@ -1013,7 +1014,6 @@
 		84D7F8162643CFAF004B2DB0 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				849C4E7C264BC01400C26C53 /* TemplatesViewModelProtocol.swift */,
 				84D7F8102642B9A3004B2DB0 /* TemplateProfileHeaderView */,
 				849C4E362646C9A400C26C53 /* SongView */,
 			);
@@ -1493,7 +1493,6 @@
 				84A00AD2265D1BE400087E07 /* PasswordManagerProtocol.swift in Sources */,
 				84D7F7A1263C490F004B2DB0 /* KeyboardStateObserver.swift in Sources */,
 				84A00ADD265E905A00087E07 /* NewPasscodeViewModel.swift in Sources */,
-				849C4E7D264BC01400C26C53 /* TemplatesViewModelProtocol.swift in Sources */,
 				84D7F8142642C481004B2DB0 /* TemplateProfileHeaderView.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */,
@@ -1536,6 +1535,7 @@
 				8453C6232667902600875A69 /* GroupScreenDataSourceProtocol.swift in Sources */,
 				843F0B6D26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
+				84EBB84F2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift in Sources */,
 				849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */,
 				84D24F692670F2F400205C1E /* PaymentViewController.swift in Sources */,
 				843F0B56264EB90F004DE5A8 /* FirebaseStorageManager.swift in Sources */,

@@ -59,11 +59,10 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     func reloadData<T: GroupScreenViewModelProtocol>(with viewModel: T) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, GroupScreenSubgroupCellViewModel>()
         snapshot.appendSections([0])
-        
-        
-            if let items: [GroupScreenSubgroupCellViewModel] = viewModel.getDataContent(for: .subGroup) {
-                snapshot.appendItems(items, toSection: 0)
-            }
+        if let groupItems: [GroupScreenSubgroupCellViewModel] = viewModel.getDataContent(for: .subGroup) {
+            
+            snapshot.appendItems(groupItems, toSection: 0)
+        }
         
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -71,7 +70,7 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
     
    
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, GroupScreenSubgroupCellViewModel>(collectionView: groupScreenDelegate.collectionView) { collectionView, indexPath, model in
+        dataSource = UICollectionViewDiffableDataSource(collectionView: groupScreenDelegate.collectionView) { collectionView, indexPath, model in
             let cellId = String(describing: GroupScreenSubgroupCell.self)
             
             
@@ -81,9 +80,7 @@ class GroupScreenCollectionViewDatasource: GroupScreenDataSourceProtocol {
             }
             cell.updateContent(with: model)
             
-            
             return cell
-            
         }
     }
 

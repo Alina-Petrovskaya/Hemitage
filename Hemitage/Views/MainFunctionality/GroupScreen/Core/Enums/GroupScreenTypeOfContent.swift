@@ -8,8 +8,10 @@
 import Foundation
 
 enum GroupScreenTypeOfContent {
-    case navigationBar
+    
     case subGroup
-    case songList
     case premiumContent
+    case songList
+    case navigationBar
+
 }

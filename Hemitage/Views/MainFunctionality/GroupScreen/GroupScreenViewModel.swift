@@ -27,13 +27,20 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     init(with categoriesModel: CategoriesModel) {
         self.categoriesModel = categoriesModel
         manageSubcollections(for: categoriesModel.id)
-        
-        songManager.getData = { [weak self] in
-            self?.querySongItems()
-        }
+
     }
  
     // MARK: - Manage Content
+    private func manageMusicCallback() {
+        songManager.callBack = { [weak self] data in
+            guard let items = data.items as? [ViewModelTemplateSong]  else { return }
+            self?.delegate?.updateData(items: items, section: data.section, typeOfChange: data.typeOfChange, index: data.index)
+        }
+        
+//        songManager.getData
+    
+    }
+    
     private func manageSubcollections(for collectionID: String?) {
         contentManager.callback = { [weak self] result in
             
@@ -68,7 +75,6 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
                     self.subcategoryList.remove(at: index)
                 }
             }
-            
         }
 
         if let documentId = categoriesModel.id {
@@ -77,7 +83,7 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     }
     
     
-    func querySongItems() {
+   private func querySongItems(section: GroupScreenTypeOfContent = .songList) {
         guard let documentID = selectedSubCategory else { return }
         contentManager.queryItemsFromFirebase(value: documentID, field: "subCategories", from: .songs, with: SongModel.self, sortField: "raiting",
                                               currentNamberOfItems: songManager.songList.count) { [weak self] data in
@@ -95,35 +101,54 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     // MARK: - Actions
     func getDataContent<T: ViewModelConfigurator>(for contentType: GroupScreenTypeOfContent) -> [T]? {
         switch contentType {
-    
+        
         case .navigationBar:
             let navigationViewModel: some ViewModelConfigurator = GroupNavigationViewModel(with: (title: categoriesModel.name,
-                                                                                           imageURL: categoriesModel.detailImageURL,
-                                                                                           subtitle: categoriesModel.subTitle,
-                                                                                           isDarkText: categoriesModel.isDarkText))
+                                                                                                  imageURL: categoriesModel.detailImageURL,
+                                                                                                  subtitle: categoriesModel.subTitle,
+                                                                                                  isDarkText: categoriesModel.isDarkText))
             return [navigationViewModel] as? [T]
-           
+            
         case .subGroup:
             return subcategoryList as? [T]
             
         case .songList:
             return songManager.songList as? [T]
-        
+            
         case .premiumContent:
-            break
+            return songManager.premiumMusic as? [T]
         }
+    }
+    
+    
+    func handleInteraction(interactionType: SongTemplateTypeOfInteraction, completion: ((ViewModelTemplateSongProtocol) -> ())? = nil) {
+        switch interactionType {
         
-        return []
-    }
-    
-    
-    func newSubcategoryTapped(with index: Int) {
-        let data = subcategoryList[index].getData()
-        selectedSubCategory = data.id
-    }
-    
-    func playSong(at index: Int, category: GroupScreenTypeOfContent) {
-        songManager.playSong(at: index)
+        case .reload(let index, let section):
+            if section == .subGroup {
+                selectedSubCategory = subcategoryList[index].getID()
+            } else {
+                delegate?.reloadData(section: section)
+            }
+            
+        case .save(let index, let section):
+            
+            songManager.manageSongSaving(index: index, section: section)
+            
+        case .requestForMoreItems(let section):
+            querySongItems(section: section)
+        
+        case .play(let index, let section):
+            songManager.playSong(at: index, section)
+        
+            
+        case .showDetail(let index, let section):
+            if section == .songList {
+                completion?(songManager.songList[index])
+            } else {
+                completion?(songManager.premiumMusic[index])
+            }
+        }
     }
     
 }

@@ -22,6 +22,9 @@ class TemplateSongView: UIView {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var topBorder: UIView!
     
+    var saveCallback: (() -> ())?
+    var playCallBack: (() -> ())?
+    
     private var isCanPlay: Bool = true
     
     // MARK: - Life cycle
@@ -76,6 +79,7 @@ class TemplateSongView: UIView {
         if isCanPlay {
             let nameImageForButton = sender.currentImage == UIImage(systemName: "pause") ? "play" : "pause"
             sender.setImage(UIImage(systemName: nameImageForButton), for: .normal)
+            playCallBack?()
         }
     }
     
@@ -88,7 +92,7 @@ class TemplateSongView: UIView {
             
             saveButton.setImage(UIImage(systemName: saveButtonImageName), for: .normal)
             saveButton.tintColor = saveButton.image(for: .normal) == UIImage(systemName: "arrow.down.circle") ? #colorLiteral(red: 0.902816236, green: 0.729167521, blue: 0.6777408719, alpha: 1) : #colorLiteral(red: 0.09411764706, green: 0.09803921569, blue: 0.1019607843, alpha: 1)
-            
+            saveCallback?()
         }
     }
     

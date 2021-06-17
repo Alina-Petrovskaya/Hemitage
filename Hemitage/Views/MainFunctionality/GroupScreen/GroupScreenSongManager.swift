@@ -8,30 +8,37 @@
 import Foundation
 import Network
 
-
-
-class GroupScreenSongManager {
+class GroupScreenSongManager: PlayerObserver {
     
     var getData: (() -> ())?
-    var songList: [ViewModelTemplateSong] = []
-    var callBack: ( ((items: [ViewModelTemplateSong], section: GroupScreenTypeOfContent, typeOfChange: TypeOfChangeDocument, index: Int?)) -> () )?
+    var songList: [ViewModelTemplateSongProtocol] = []
+    var premiumMusic: [ViewModelTemplateSongProtocol] = []
+    var callBack: ( ((items: [ViewModelTemplateSongProtocol], section: GroupScreenTypeOfContent, typeOfChange: TypeOfChangeDocument, index: Int?)) -> () )?
     
     private let monitor = NWPathMonitor()
-    private var status: SubscriptionAndNetworkStatus = .unowned
-    private var premiumMusic: [ViewModelTemplateSong] = []
-    private var canPlaySong: Bool = true
     private let cacheManager = CacheManager()
+    private var status: SubscriptionAndNetworkStatus = .unowned
+    private var canPlaySong: Bool = true
+    private var networkstatus: NWPath.Status = .requiresConnection
+    var currentSongSection: GroupScreenTypeOfContent = .songList
     
     
     init() {
         monitorNetwork()
         canPlaySong = status.isCanPlayMusic()
         manageDataMusic()
+        
+        PlayerManager.shared.subscribe(self)
     }
     
+    deinit {
+        PlayerManager.shared.unSubscribe(self)
+    }
     
     private func monitorNetwork() {
         monitor.pathUpdateHandler = { [weak self] path in
+            self?.networkstatus = path.status
+            
             if path.status == .satisfied {
                 self?.status = .standart
                 self?.songList.removeAll()
@@ -46,24 +53,21 @@ class GroupScreenSongManager {
         monitor.start(queue: queue)
     }
     
-    
-    func playSong(at index: Int) {
-        PlayerManager.shared.configureSongList(with: songList)
-        PlayerManager.shared.playSong(at: index)
-    }
-    
-    
+    // MARK: - Configure Playlist
     func addSongs(songs: [SongModel]) -> (songs: [ViewModelTemplateSong], isNeedReload: Bool) {
-        let currentSongID = PlayerManager.shared.currentSong?.getID()
+        let currentSongID = PlayerManager.shared.getIdOfPlayingSong()
         let items = songs.compactMap { model -> ViewModelTemplateSong in
             
-            //let isSaved = cacheManager.isSongSaved(songURL: model.songURL)
+            let isSaved = cacheManager.isSongSaved(songURL: model.songURL)
+            let isCanPlay = networkstatus == .satisfied
+                ? true
+                : status.isCanPlayMusic() && isSaved
             
             return ViewModelTemplateSong(songModel: model,
                                          isPlaying: currentSongID == model.id,
                                          isHideCloseButton: true,
-                                         isCanPlay: status.isCanPlayMusic(),
-                                         isSaved: cacheManager.isSongSaved(songURL: model.songURL))
+                                         isCanPlay: isCanPlay,
+                                         isSaved: isSaved)
         }
         
         if songList.count == 0 {
@@ -74,6 +78,33 @@ class GroupScreenSongManager {
             songList.append(contentsOf: items)
             return (songs: items, isNeedReload: false)
         }
+    }
+    
+    
+    func manageSongSaving(index: Int, section: GroupScreenTypeOfContent) {
+        let songModel = (section == .songList)
+            ? songList[index]
+            : premiumMusic[index]
+        
+        guard let songURL = songModel.getSongData().songURL else { return }
+        
+        if cacheManager.isSongSaved(songURL: songURL) {
+            cacheManager.cacheSongObject(songURL: songURL, requestType: .delete, completion: nil)
+            songModel.updateSavingState(isSaved: false)
+            
+        } else {
+            cacheManager.cacheSongObject(songURL: songURL, requestType: .save, completion: nil)
+            songModel.updateSavingState(isSaved: true)
+        }
+
+        callBack?((items: [songModel], section: .songList, typeOfChange: .modified, index: nil))
+    }
+    
+    
+    // MARK: - Music control
+    func playSong(at index: Int, _ section: GroupScreenTypeOfContent) {
+        PlayerManager.shared.configureSongList(with: section == .songList ? songList : premiumMusic)
+        PlayerManager.shared.playSong(at: index)
     }
     
     
@@ -90,6 +121,34 @@ class GroupScreenSongManager {
                     PlayerManager.shared.playSong(at: dataFromPlayer.index + 1)
                 }
             }
+        }
+    }
+    
+    func playerStateChanged(isPlaying: Bool, currentSong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?) {
+        
+        if currentSong != nil {
+            
+            currentSong?.updatePlayingState(isPlay: isPlaying)
+            if currentSongSection == .songList {
+                modifireSong(at: &songList, newItem: currentSong!)
+            }
+           
+            callBack?((items: [currentSong!], section: .songList, typeOfChange: .modified, index: nil))
+        }
+        if previousSong != nil {
+            previousSong?.updatePlayingState(isPlay: false)
+            callBack?((items: [previousSong!], section: .songList, typeOfChange: .modified, index: nil))
+        }
+    }
+    
+    
+    private func modifireSong(at list: inout [ViewModelTemplateSongProtocol], newItem: ViewModelTemplateSongProtocol) {
+        let index = list.firstIndex(where: { item in
+            item.getSongData() == newItem.getSongData()
+        })
+        
+        if index != nil {
+            list[index!] = newItem
         }
     }
     

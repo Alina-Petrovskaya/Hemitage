@@ -48,7 +48,7 @@ class CacheManager {
     
     func cacheSongObject(songURL: URL,
                          requestType: RequestType,
-                         completion: @escaping (Result<Data, Error>) -> ()) {
+                         completion: ((Result<Data, Error>) -> ())?) {
         
         switch requestType {
         case .save, .delete:
@@ -57,18 +57,18 @@ class CacheManager {
         case .get:
             let dataSong = cache.object(forKey: "\(songURL.absoluteString)" as NSString) as Data?
             if dataSong != nil {
-                completion(.success(dataSong!))
+                completion?(.success(dataSong!))
                 
             } else {
                 storageManager.callback = { [weak self] result in
                     switch result {
                     
                     case .success(let data):
-                        completion(.success(data))
+                        completion?(.success(data))
                         self?.cache.setObject(data as NSData, forKey: "\(songURL.absoluteString)" as NSString)
                         
                     case .failure(let error):
-                        completion(.failure(error))
+                        completion?(.failure(error))
                     }
                 }
                 
