@@ -45,42 +45,36 @@ class CacheManager {
     }
     
     
+    func manageSongSaving(songURL: URL, documentID: String, completion: @escaping (Bool) -> ()) {
+        storageManager.manageSongSaving(id: documentID, url: songURL, isSaved: completion)
+    }
     
-    func cacheSongObject(songURL: URL,
-                         requestType: RequestType,
-                         completion: ((Result<Data, Error>) -> ())?) {
+    func cacheSongObject(songURL: URL, documentID: String, completion: ((Result<Data, Error>) -> ())?) {
+        let dataSong = cache.object(forKey: "\(songURL.absoluteString)" as NSString) as Data?
         
-        switch requestType {
-        case .save, .delete:
-            storageManager.manageSongData(songURL: songURL, requestType: requestType)
+        if dataSong != nil {
+            completion?(.success(dataSong!))
             
-        case .get:
-            let dataSong = cache.object(forKey: "\(songURL.absoluteString)" as NSString) as Data?
-            if dataSong != nil {
-                completion?(.success(dataSong!))
+        } else {
+            storageManager.callback = { [weak self] result in
+                switch result {
                 
-            } else {
-                storageManager.callback = { [weak self] result in
-                    switch result {
+                case .success(let data):
+                    completion?(.success(data))
+                    self?.cache.setObject(data as NSData, forKey: "\(songURL.absoluteString)" as NSString)
                     
-                    case .success(let data):
-                        completion?(.success(data))
-                        self?.cache.setObject(data as NSData, forKey: "\(songURL.absoluteString)" as NSString)
-                        
-                    case .failure(let error):
-                        completion?(.failure(error))
-                    }
+                case .failure(let error):
+                    completion?(.failure(error))
                 }
-                
-                storageManager.manageSongData(songURL: songURL, requestType: requestType)
             }
+            
+            storageManager.getSongItem(for: documentID, url: songURL)
         }
-        
     }
     
     
-    func isSongSaved(songURL: URL) -> Bool {
-        return storageManager.isSavedSong(for: songURL)
+    func isSongSaved(docimentID: String) -> Bool {
+        return storageManager.isSavedSong(for: docimentID)
     }
     
 }

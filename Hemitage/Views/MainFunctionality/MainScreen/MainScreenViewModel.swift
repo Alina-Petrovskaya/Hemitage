@@ -13,29 +13,37 @@ protocol MainScreenViewModelProtocol {
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())? { get set }
     var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())? { get set }
     var itemsDeleted:  (([MainScreenModelWrapper]) -> ())? { get set }
+    var songChanged:   ((TemplateSongView.DataType) -> ())? { get set }
     
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
     func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
+    func changePlayerState(action: MainScreenSongManagering)
 }
 
 
-class MainScreenViewModel: MainScreenViewModelProtocol {
+class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
     
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())?
     var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())?
     var itemsDeleted: (([MainScreenModelWrapper]) -> ())?
+    var songChanged:  ((TemplateSongView.DataType) -> ())?
+    var songData: TemplateSongView.DataType?
     
     private var categoriesData: [MainScreenModelWrapper] = []
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(model: MapModel(allUsers: 15, usersOnline: 5)))]
     private var blogData: [MainScreenModelWrapper] = []
-    
     private var contentManager = ReadContentManager()
     private let cacheManager   = CacheManager()
     
+    
     init() {
         manageContent()
+        PlayerManager.shared.subscribe(self)
     }
     
+    deinit {
+        PlayerManager.shared.unSubscribe(self)
+    }
     
     // MARK: - Manage row content
     private func manageContent() {
@@ -109,18 +117,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     }
     
     
-    private func getElementIndex(newData: MainScreenModelWrapper, currentData: [MainScreenModelWrapper]) -> Int? {
-        
-        for (index, item) in currentData.enumerated() {
-            if item.hashValue == newData.hashValue {
-                return index
-            }
-        }
-        return nil
-    }
-    
-    
-    // Actions
+    // MARK: - Actions
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper] {
         switch sectionType {
         case .map:
@@ -143,15 +140,34 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
             break
             
         case .categories:
-            contentManager.queryItemsFromFirebase(value: categoriesData[indexPath.row].getItemId(),
-                                                  from: .categories,
-                                                  with: CategoriesModel.self) { items in
-                completion((model: items[0], section: .categories))
-            }
+            contentManager.getDocumentFromFirebase(id: categoriesData[indexPath.row].getItemId(),
+                                                   from: .categories,
+                                                   model: CategoriesModel.self) { completion((model: $0[0], section: .categories)) }
             
         case .blog:
             break
         }
     }
+    
+    // MARK: - Player manager
+    func playerStateChanged(isPlaying: Bool, currentSong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?) {
+        guard let song = currentSong as? ViewModelTemplateSong  else { return }
+        song.updatePlayingState(isPlay: isPlaying)
+        songChanged?(song.getData())
+    }
+    
+    
+    func changePlayerState(action: MainScreenSongManagering) {
+      
+        switch action {
+        case .play:
+            PlayerManager.shared.pause()
+            
+        case .stop:
+            PlayerManager.shared.stopSong()
+        }
+    }
+    
+    
 }
 

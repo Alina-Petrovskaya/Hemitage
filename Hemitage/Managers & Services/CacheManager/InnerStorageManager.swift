@@ -21,9 +21,16 @@ protocol FileManagerProtocol {
      */
     func getImageData(with documentID: String, imageName: String, for typeOfChange: TypeOfChangeDocument, from directory: StorageDirectory?, completion: @escaping (Data) -> ())
     
-    func manageSongData(songURL: URL, requestType: RequestType)
     
-    func isSavedSong(for url: URL) -> Bool
+    func getSongItem(for id: String, url: URL)
+    
+    /**
+     Deletes or saves item depends of current status of song
+     - returns: Returns in completion current state of song
+     */
+    func manageSongSaving(id: String, url: URL, isSaved: @escaping (Bool) -> ())
+    
+    func isSavedSong(for documentID: String) -> Bool
 }
 
 
@@ -34,19 +41,14 @@ class InnerStorageManager: FileManagerProtocol {
     private let monitor = NWPathMonitor()
     private let fileManager = FileManager.default
     private let firebaseStorage: FirebaseStorage = FirebaseStorageManager()
-    private var urlToGet: URL?
-    private var urlToSave: Set<URL> = []
+    private var songData: (id: String, url: URL)?
     
     private var internetStatus: NWPath.Status = .unsatisfied {
         didSet {
             if oldValue != internetStatus, internetStatus == .satisfied {
                 
-                if urlToGet != nil {
-                    getSongItem(with: urlToGet!)
-                }
-                
-                if urlToSave.count != 0 {
-                    saveSongs(with: Array(urlToSave))
+                if songData != nil {
+                    getSongItem(for: songData!.id, url: songData!.url)
                 }
             }
         }
@@ -61,6 +63,7 @@ class InnerStorageManager: FileManagerProtocol {
         let queue = DispatchQueue.global()
         monitor.start(queue: queue)
     }
+    
     
     // MARK: - Manage images
     func getImageData(with document: String, imageName: String, for typeOfChange: TypeOfChangeDocument, from directory: StorageDirectory? = nil,
@@ -100,27 +103,12 @@ class InnerStorageManager: FileManagerProtocol {
     
     
     // MARK: - Manage songs
-    func manageSongData(songURL: URL, requestType: RequestType) {
-        guard let path = getPath(with: songURL.absoluteString) else { print("Can't create path to song storage"); return }
+    func getSongItem(for id: String, url: URL) {
+        guard let path = getPath(with: id) else { print("Can't create path to song storage"); return }
+        songData = (id: id, url: url)
         
-        switch requestType {
-        case .save:
-            saveSongs(with: [songURL])
-            
-        case .get:
-            getSongItem(with: songURL)
-            
-        case .delete:
-            print("Song removed")
-            try? fileManager.removeItem(at: path)
-            urlToSave.remove(songURL)
-        }
-    }
-    
-    
-    func getSongItem(with url: URL) {
-        if let savedData = decodeData(with: url, model: SongManagerModel.self) {
-            urlToGet = nil
+        if let savedData = decodeData(with: path, model: SongManagerModel.self) {
+            songData = nil
             callback?(.success(savedData.songData))
             
         } else {
@@ -129,50 +117,56 @@ class InnerStorageManager: FileManagerProtocol {
                     switch result {
                     
                     case .success(let loadedData):
+                        self?.songData = nil
                         self?.callback?(.success(loadedData))
-                        self?.urlToGet = nil
                         
                     case .failure(let error):
                         print(error.localizedDescription)
-                        self?.urlToGet = url
+                        self?.songData = (id: id, url: url)
                     }
-
                 }
             }
         }
     }
     
     
-    func saveSongs(with urls: [URL]) {
-        urls.forEach { url in
+    func manageSongSaving(id: String, url: URL, isSaved: @escaping (Bool) -> ()) {
+        guard let path = getPath(with: id) else { print("Can't create path to song storage"); return }
+        
+        if isSavedSong(for: id) {
+            try? fileManager.removeItem(at: path)
+            print("Song removed")
+            isSaved(false)
             
+        } else {
             if internetStatus == .satisfied {
-                guard let path = getPath(with: url.absoluteString) else { print("Can't create path to song storage"); return }
-                
                 firebaseStorage.getDataWithURL(url) { [weak self] result in
                     switch result {
                     
                     case .success(let loadedData):
-                        let item = SongManagerModel(songUrl: url, songData: loadedData)
-                        let dataToSave = self?.encodeData(with: item)
+                        let saveItem = SongManagerModel(songUrl: url, songData: loadedData)
+                        let encodedItem = self?.encodeData(with: saveItem)
                         
-                        try? dataToSave?.write(to: path)
-                        self?.urlToSave.remove(url)
+                        try? encodedItem?.write(to: path)
+                        print("Song saved")
+                        isSaved(true)
                         
                     case .failure(let error):
                         print(error.localizedDescription)
+                        isSaved(false)
                     }
-                    
                 }
-            } else {
-                urlToSave.insert(url)
+                
+            } else if internetStatus != .satisfied {
+                isSaved(isSavedSong(for: id))
             }
         }
     }
+        
     
-    func isSavedSong(for url: URL) -> Bool {
-        guard let path = getPath(with: url.absoluteString)?.path else { return false }
-        if fileManager.fileExists(atPath: path) {
+    func isSavedSong(for documentID: String) -> Bool {
+        guard let path = getPath(with: documentID) else { return false }
+        if decodeData(with: path, model: SongManagerModel.self) != nil {
             return true
         }
         

@@ -19,7 +19,8 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
         didSet {
             if selectedSubCategory != nil, oldValue != selectedSubCategory {
                 songManager.songList.removeAll()
-                querySongItems()
+                songManager.premiumMusic.removeAll()
+                querySongItems(section: songManager.currentSongSection)
             }
         }
     }
@@ -27,6 +28,7 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     init(with categoriesModel: CategoriesModel) {
         self.categoriesModel = categoriesModel
         manageSubcollections(for: categoriesModel.id)
+        manageMusicCallback()
 
     }
  
@@ -37,7 +39,10 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
             self?.delegate?.updateData(items: items, section: data.section, typeOfChange: data.typeOfChange, index: data.index)
         }
         
-//        songManager.getData
+        songManager.reloadData = { [weak self] in
+            guard let self = self else { return }
+            self.querySongItems(section: self.songManager.currentSongSection)
+        }
     
     }
     
@@ -76,22 +81,33 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
                 }
             }
         }
-
+        
         if let documentId = categoriesModel.id {
             contentManager.getItemsFromSubgroup(from: .categories, with: SubcollectionModel.self, document: documentId)
         }
     }
     
     
-   private func querySongItems(section: GroupScreenTypeOfContent = .songList) {
+    private func querySongItems(section: GroupScreenTypeOfContent = .songList) {
         guard let documentID = selectedSubCategory else { return }
-        contentManager.queryItemsFromFirebase(value: documentID, field: "subCategories", from: .songs, with: SongModel.self, sortField: "raiting",
-                                              currentNamberOfItems: songManager.songList.count) { [weak self] data in
+        
+        let numberOfItems = section == .songList ? songManager.songList.count : songManager.premiumMusic.count
+        let serchingData: [(field: String, value: Any)] =  [
+            (field: "subCategories", value: documentID),
+            (field: "isPremium", value: section == .premiumContent)
+        ]
+        
+        contentManager.queryItemsFromFirebase(fieldsToSerchBy: serchingData,
+                                              from: .songs,
+                                              with: SongModel.self,
+                                              sortField: "raiting",
+                                              currentNumberOfItems: numberOfItems) { [weak self] data in
             
             guard let songData = self?.songManager.addSongs(songs: data) else { return }
             
             if songData.isNeedReload {
-                self?.delegate?.reloadData(section: .songList)
+                self?.delegate?.reloadData(section: section)
+                
             } else {
                 self?.delegate?.updateData(items: songData.songs, section: .songList, typeOfChange: .added, index: nil)
             }
@@ -121,34 +137,57 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     }
     
     
-    func handleInteraction(interactionType: SongTemplateTypeOfInteraction, completion: ((ViewModelTemplateSongProtocol) -> ())? = nil) {
+    func handleInteraction(interactionType: GroupScreenCellsTypeOfInteraction,
+                           completion: (((viewModel: ViewModelTemplateSongProtocol?, isNeedToByeMore: Bool)) -> ())? = nil) {
+        
+        let isCanPlay       = songManager.status.isCanPlayMusic()
+        let isNeedToByeMore = songManager.status.isNeedToByeContent()
+        
         switch interactionType {
         
         case .reload(let index, let section):
             if section == .subGroup {
                 selectedSubCategory = subcategoryList[index].getID()
             } else {
-                delegate?.reloadData(section: section)
+                songManager.currentSongSection = section
+                songManager.songList.removeAll()
+                songManager.premiumMusic.removeAll()
+                querySongItems(section: section)
             }
             
-        case .save(let index, let section):
+        case .save(let index, let section, let isCanPlay):
+            if isCanPlay {
+                songManager.currentSongSection = section
+                songManager.manageSongSaving(index: index, section: section)
+            } else {
+                completion?((viewModel: nil, isNeedToByeMore: true))
+            }
             
-            songManager.manageSongSaving(index: index, section: section)
             
         case .requestForMoreItems(let section):
+            songManager.currentSongSection = section
             querySongItems(section: section)
-        
-        case .play(let index, let section):
+            
+        case .play(let index, let section, let isCanPlay):
+        if isCanPlay {
+            songManager.currentSongSection = section
             songManager.playSong(at: index, section)
-        
+        } else {
+            completion?((viewModel: nil, isNeedToByeMore: true))
+        }
             
         case .showDetail(let index, let section):
-            if section == .songList {
-                completion?(songManager.songList[index])
-            } else {
-                completion?(songManager.premiumMusic[index])
-            }
+            songManager.currentSongSection = section
+            let model = section == .songList ? songManager.songList[index] : songManager.premiumMusic[index]
+            
+            completion?((viewModel: model, isNeedToByeMore: isNeedToByeMore && !isCanPlay))
+            
         }
+    }
+    
+    
+    func isPremiumContenHidden() -> Bool {
+     return songManager.status.isPremiumContentHidden()
     }
     
 }

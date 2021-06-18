@@ -30,17 +30,21 @@ class GroupScreenViewController: UIViewController {
         
         collectionViewDataSourse = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenCollectionViewBuilder(), object: collectionView)
         tableViewDataSource = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenTableViewBuilder(), object: tableView)
-        
-        updateNavigationBarView()
-        observeNavBarState()
         backButtonTaped()
         observeDataSourceDelegates()
+    }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateNavigationBarView()
+        observeNavBarState()
+        
     }
     
     
     override func viewDidDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         kvoNavBar?.invalidate()
     }
     
@@ -57,13 +61,17 @@ class GroupScreenViewController: UIViewController {
         var collectionDelegate: GroupScreenCollectionDelegateProtocol? = collectionViewDataSourse?.getDelegateObject()
         
         tableDelegate?.interactionCallback = { [weak self] result in
-            self?.viewModel?.handleInteraction(interactionType: result, completion: nil)
+            self?.viewModel?.handleInteraction(interactionType: result) { data in
+                if data.isNeedToByeMore {
+                    print("Present vc with tarifs")
+                } else {
+                    print("Present detail song vc")
+                }
+            }
         }
         
         collectionDelegate?.interactionCallback = { [weak self] result in
-            self?.viewModel?.handleInteraction(interactionType: result) { viewModel in
-                print("Present detail song screen")
-            }
+            self?.viewModel?.handleInteraction(interactionType: result, completion: nil)
         }
     }
   
@@ -83,11 +91,6 @@ class GroupScreenViewController: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }
     }
-    
-    @IBAction func swipedBack(_ sender: UISwipeGestureRecognizer) {
-        navigationController?.popViewController(animated: true)
-    }
-    
 }
 
 

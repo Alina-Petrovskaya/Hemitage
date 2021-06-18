@@ -9,16 +9,18 @@ import UIKit
 
 protocol GroupScreenTableDelegateProtocol {
     
-    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())? { get set }
+    var interactionCallback: ((GroupScreenCellsTypeOfInteraction) -> ())? { get set }
     var tableView: UITableView { get }
     var canLoadMoreData: Bool { get set }
     var currentSongScreen: GroupScreenTypeOfContent { get }
+    
+    func showPremiumScreen(isHidden: Bool)
     
 }
 
 class GroupScreenTableViewDelegate: NSObject, UITableViewDelegate, GroupScreenTableDelegateProtocol {
     
-    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())?
+    var interactionCallback: ((GroupScreenCellsTypeOfInteraction) -> ())?
     
     let tableView: UITableView
     var canLoadMoreData = false
@@ -38,6 +40,9 @@ class GroupScreenTableViewDelegate: NSObject, UITableViewDelegate, GroupScreenTa
         }
     }
     
+    func showPremiumScreen(isHidden: Bool) {
+        headerView.contentSwitcher.isHidden = isHidden
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y

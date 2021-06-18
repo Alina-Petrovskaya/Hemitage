@@ -23,19 +23,22 @@ protocol ReadContentManagerProtocol {
      */
     func getContent<T: Codable & Hashable>(from collection: FireStoreCollectionName, with dbManager: DBManager, codableModel: T.Type)
     func getItemsFromSubgroup<T: Hashable & Codable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String)
+    
     /**
      Query items by value without listening of changes
      - parameter value: The parameter can act as a field value or as a document ID
      - parameter field: Optional
      - returns:  Data will be returned in completion -> Item or number of Items
      */
-    func queryItemsFromFirebase<T: Hashable & Codable>(value: String,
-                                                      field: String?,
+    func queryItemsFromFirebase<T: Hashable & Codable>(fieldsToSerchBy: [(field: String, value: Any)],
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
-                                                      sortField: String?,
-                                                      currentNamberOfItems: Int?,
+                                                      sortField: String,
+                                                      currentNumberOfItems: Int,
                                                       completion: @escaping ([T]) -> ())
+    
+    func getDocumentFromFirebase<T: Codable & Hashable>(id: String, from collection: FireStoreCollectionName, model: T.Type, completion: @escaping ([T]) -> ())
+    
 }
 
 
@@ -94,20 +97,22 @@ class ReadContentManager: NSObject, NSFetchedResultsControllerDelegate, ReadCont
     
     
     
-    func queryItemsFromFirebase<T: Hashable & Codable>(value: String,
-                                                      field: String? = nil,
+    func queryItemsFromFirebase<T: Hashable & Codable>(fieldsToSerchBy: [(field: String, value: Any)],
                                                       from collection: FireStoreCollectionName,
                                                       with model: T.Type,
-                                                      sortField: String? = nil,
-                                                      currentNamberOfItems: Int? = nil,
+                                                      sortField: String,
+                                                      currentNumberOfItems: Int,
                                                       completion: @escaping ([T]) -> ()) {
-        guard let safeField = field, let sort = sortField, let items = currentNamberOfItems
-        else {
-            fireBaseManager.queryItemByID(value, from: collection, model: model) { completion([$0]) }
-            return
-        }
+   
+        fireBaseManager.queryItems(queryData: (requestData: fieldsToSerchBy, sortField: sortField, currentNumberOfItems: currentNumberOfItems),
+                                   from: collection,
+                                   model: model) { completion($0) }
+    }
+    
+    
+    func getDocumentFromFirebase<T: Codable & Hashable>(id: String, from collection: FireStoreCollectionName, model: T.Type, completion: @escaping ([T]) -> ()) {
+        fireBaseManager.queryItemByID(id, from: collection, model: model) { completion([$0]) }
         
-        fireBaseManager.queryItems(queryData: (field: safeField, value: value, sortField: sort, currentNumberOfItems: items), from: collection, model: model) { completion($0) }
     }
     
     

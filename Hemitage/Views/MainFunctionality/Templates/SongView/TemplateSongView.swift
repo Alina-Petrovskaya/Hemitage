@@ -19,11 +19,15 @@ class TemplateSongView: UIView {
     @IBOutlet private weak var imageSong: UIImageView!
     @IBOutlet private weak var playButton: UIButton!
     @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var topBorder: UIView!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var topBorder: UIView!
+    @IBOutlet private weak var saveIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var saveView: UIView!
     
-    var saveCallback: (() -> ())?
-    var playCallBack: (() -> ())?
+    
+    var saveCallback: ((Bool) -> ())?
+    var playCallBack: ((Bool) -> ())?
+    var stopCallback: (() -> ())?
     
     private var isCanPlay: Bool = true
     
@@ -56,48 +60,65 @@ class TemplateSongView: UIView {
     
     // MARK: - Actions
     func updateUI(with data: DataType) {
-      
         songNameLabel.text   = data.title
         singerLabel.text     = data.subtitle
         closeButton.isHidden = data.isHideCloseButton
         isCanPlay            = data.isCanPlay
+        contentView.alpha    = isCanPlay ? 1 : 0.5
         imageSong.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: [.delayPlaceholder], context: nil)
-                  
         
-        let imageForPlayButton = data.isPlaying ? UIImage(systemName: "pause") : UIImage(systemName: "play")
-        playButton.setImage(imageForPlayButton, for: .normal)
+        updateIcons(isSaved: data.isSaved, isPlaying: data.isPlaying)
+    }
+    
+    
+    func updateSongData(with data: DataType) {
+        self.isHidden        = false
+        topBorder.isHidden   = false
+        saveView.isHidden    = true
         
-        contentView.alpha = isCanPlay ? 1 : 0.5
+        songNameLabel.text   = data.title
+        singerLabel.text     = data.subtitle
+        imageSong.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: [.delayPlaceholder], context: nil)
+        updateIcons(isSaved: nil, isPlaying: data.isPlaying)
         
-        let saveButtonImageName = data.isSaved ? "trash" : "arrow.down.circle"
-        saveButton.tintColor = data.isSaved ? #colorLiteral(red: 0.09411764706, green: 0.09803921569, blue: 0.1019607843, alpha: 1) : #colorLiteral(red: 0.902816236, green: 0.729167521, blue: 0.6777408719, alpha: 1)
-        saveButton.setImage(UIImage(systemName: saveButtonImageName), for: .normal)
     }
     
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
-        if isCanPlay {
-            let nameImageForButton = sender.currentImage == UIImage(systemName: "pause") ? "play" : "pause"
-            sender.setImage(UIImage(systemName: nameImageForButton), for: .normal)
-            playCallBack?()
-        }
+            updateIcons(isSaved: nil, isPlaying: sender.currentImage == UIImage(systemName: "play"))
+            playCallBack?(isCanPlay)
     }
     
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        if isCanPlay {
-            let saveButtonImageName = sender.currentImage == UIImage(systemName: "arrow.down.circle")
-                ? "trash"
-                : "arrow.down.circle"
+            saveButton.isHidden = true
+            saveIndicator.isHidden = false
             
-            saveButton.setImage(UIImage(systemName: saveButtonImageName), for: .normal)
-            saveButton.tintColor = saveButton.image(for: .normal) == UIImage(systemName: "arrow.down.circle") ? #colorLiteral(red: 0.902816236, green: 0.729167521, blue: 0.6777408719, alpha: 1) : #colorLiteral(red: 0.09411764706, green: 0.09803921569, blue: 0.1019607843, alpha: 1)
-            saveCallback?()
-        }
+            saveCallback?(isCanPlay)
     }
     
+    private func updateIcons(isSaved: Bool?, isPlaying: Bool?) {
+        if isSaved != nil {
+            saveButton.isHidden = false
+            saveIndicator.isHidden = true
+            
+            let saveButtonImage = isSaved! ?  UIImage(systemName: "trash") : UIImage(systemName: "arrow.down.circle")
+            
+            saveButton.tintColor = isSaved! ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0.902816236, green: 0.729167521, blue: 0.6777408719, alpha: 1) 
+            saveButton.setImage(saveButtonImage, for: .normal)
+        }
+        
+        if isPlaying != nil {
+            let playButtonImage = isPlaying! ? UIImage(systemName: "pause") : UIImage(systemName: "play")
+            playButton.setImage(playButtonImage, for: .normal)
+        }
+        
+    }
+    
+    
     @IBAction func closeButtonTapped(_ sender: UIButton) {
-        //self.isHidden = true
+        self.isHidden = true
+        stopCallback?()
     }
     
 }

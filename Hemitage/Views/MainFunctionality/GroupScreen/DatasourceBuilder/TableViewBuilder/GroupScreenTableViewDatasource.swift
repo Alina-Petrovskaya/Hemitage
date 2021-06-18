@@ -39,13 +39,16 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
     
     
     func reloadItems<T: ViewModelConfigurator>(data: T, with index: Int) {
-        guard let snapshot = dataSource?.snapshot(),
+        guard var snapshot = dataSource?.snapshot(),
               let newItem = data as? ViewModelTemplateSong else { return }
-        
-        let item = snapshot.itemIdentifiers(inSection: index)[0]
+
+        let item = snapshot.itemIdentifiers[index]
         item.setData(with: newItem.getData())
+        snapshot.reloadItems([item])
         
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        }
     }
     
     
@@ -68,7 +71,7 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
                 groupScreenDelegate.tableView.tableFooterView = nil
             }
         }
-        
+        groupScreenDelegate.showPremiumScreen(isHidden: viewModel.isPremiumContenHidden())
         
         DispatchQueue.main.async { [weak self] in
             self?.dataSource?.defaultRowAnimation = .fade
@@ -88,14 +91,14 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
             
             cell.updateContent(with: model)
             
-            cell.songView.playCallBack = {[weak self] in
+            cell.songView.playCallBack = {[weak self] isCanPlay in
                 guard let self = self else { return }
-                self.groupScreenDelegate.interactionCallback?(.play(indexPath.row, self.groupScreenDelegate.currentSongScreen))
+                self.groupScreenDelegate.interactionCallback?(.play(indexPath.row, self.groupScreenDelegate.currentSongScreen, isCanPlay))
             }
             
-            cell.songView.saveCallback = {[weak self] in
+            cell.songView.saveCallback = {[weak self] isCanPlay in
                 guard let self = self else { return }
-                self.groupScreenDelegate.interactionCallback?(.save(indexPath.row, self.groupScreenDelegate.currentSongScreen))
+                self.groupScreenDelegate.interactionCallback?(.save(indexPath.row, self.groupScreenDelegate.currentSongScreen, isCanPlay))
             }
             
             return cell

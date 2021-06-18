@@ -13,7 +13,6 @@ extension UINavigationController {
         self.navigationBar.prefersLargeTitles = true
         self.navigationBar.isHidden = false
         self.navigationItem.largeTitleDisplayMode = .automatic
-        self.interactivePopGestureRecognizer?.isEnabled = false
 
         let style = NSMutableParagraphStyle()
         style.lineHeightMultiple = 2
