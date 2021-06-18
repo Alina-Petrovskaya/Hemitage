@@ -9,10 +9,10 @@ import Foundation
 
 enum GroupScreenCellsTypeOfInteraction {
     
-    case save(Int, GroupScreenTypeOfContent)
-    case play(Int, GroupScreenTypeOfContent)
-    case showDetail(Int, GroupScreenTypeOfContent)
-    case reload(Int, GroupScreenTypeOfContent)
+    case save(_ index: Int, GroupScreenTypeOfContent, _ isCanPlay: Bool)
+    case play(_ index: Int, GroupScreenTypeOfContent, _ isCanPlay: Bool)
+    case showDetail(_ index: Int, GroupScreenTypeOfContent)
+    case reload(_ index: Int, GroupScreenTypeOfContent)
     case requestForMoreItems(GroupScreenTypeOfContent)
     
 }

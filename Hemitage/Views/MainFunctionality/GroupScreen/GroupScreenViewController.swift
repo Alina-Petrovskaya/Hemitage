@@ -30,8 +30,6 @@ class GroupScreenViewController: UIViewController {
         
         collectionViewDataSourse = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenCollectionViewBuilder(), object: collectionView)
         tableViewDataSource = GroupScreenDirector().buildData(with: safeViewModel, builder: GroupScreenTableViewBuilder(), object: tableView)
-        
-        
         backButtonTaped()
         observeDataSourceDelegates()
     }
@@ -63,8 +61,12 @@ class GroupScreenViewController: UIViewController {
         var collectionDelegate: GroupScreenCollectionDelegateProtocol? = collectionViewDataSourse?.getDelegateObject()
         
         tableDelegate?.interactionCallback = { [weak self] result in
-            self?.viewModel?.handleInteraction(interactionType: result) { viewModel in
-                print("Present detail song screen")
+            self?.viewModel?.handleInteraction(interactionType: result) { data in
+                if data.isNeedToByeMore {
+                    print("Present vc with tarifs")
+                } else {
+                    print("Present detail song vc")
+                }
             }
         }
         

@@ -91,14 +91,14 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
             
             cell.updateContent(with: model)
             
-            cell.songView.playCallBack = {[weak self] in
+            cell.songView.playCallBack = {[weak self] isCanPlay in
                 guard let self = self else { return }
-                self.groupScreenDelegate.interactionCallback?(.play(indexPath.row, self.groupScreenDelegate.currentSongScreen))
+                self.groupScreenDelegate.interactionCallback?(.play(indexPath.row, self.groupScreenDelegate.currentSongScreen, isCanPlay))
             }
             
-            cell.songView.saveCallback = {[weak self] in
+            cell.songView.saveCallback = {[weak self] isCanPlay in
                 guard let self = self else { return }
-                self.groupScreenDelegate.interactionCallback?(.save(indexPath.row, self.groupScreenDelegate.currentSongScreen))
+                self.groupScreenDelegate.interactionCallback?(.save(indexPath.row, self.groupScreenDelegate.currentSongScreen, isCanPlay))
             }
             
             return cell

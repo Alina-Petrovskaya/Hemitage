@@ -99,7 +99,7 @@ class MainScreenViewController: UIViewController {
     private func handleSongEvents() {
         PlayerManager.shared.getNotificationWithCurrentSong()
         
-        songBottomView.playCallBack = { [weak self] in
+        songBottomView.playCallBack = { [weak self] _ in
             self?.viewModel.changePlayerState(action: .play)
         }
         

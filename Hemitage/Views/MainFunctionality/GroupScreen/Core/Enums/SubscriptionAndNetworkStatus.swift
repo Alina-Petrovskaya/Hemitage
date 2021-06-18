@@ -36,4 +36,15 @@ enum SubscriptionAndNetworkStatus {
             return true
         }
     }
+    
+    
+    func isNeedToByeContent() -> Bool {
+        switch self {
+        case .noNetworkNoSubscription, .unowned:
+            return true
+            
+        default:
+            return false
+        }
+    }
 }

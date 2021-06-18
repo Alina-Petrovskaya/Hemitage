@@ -46,7 +46,7 @@ class GroupScreenSongManager: PlayerObserver {
                 self?.reloadData?()
                 
             } else {
-                self?.status = .noNetworkSubscriptionGold
+                self?.status = .noNetworkNoSubscription
             }
         }
         

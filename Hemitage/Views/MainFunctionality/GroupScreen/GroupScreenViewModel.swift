@@ -137,7 +137,12 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     }
     
     
-    func handleInteraction(interactionType: GroupScreenCellsTypeOfInteraction, completion: ((ViewModelTemplateSongProtocol) -> ())? = nil) {
+    func handleInteraction(interactionType: GroupScreenCellsTypeOfInteraction,
+                           completion: (((viewModel: ViewModelTemplateSongProtocol?, isNeedToByeMore: Bool)) -> ())? = nil) {
+        
+        let isCanPlay       = songManager.status.isCanPlayMusic()
+        let isNeedToByeMore = songManager.status.isNeedToByeContent()
+        
         switch interactionType {
         
         case .reload(let index, let section):
@@ -150,25 +155,33 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
                 querySongItems(section: section)
             }
             
-        case .save(let index, let section):
-            songManager.currentSongSection = section
-            songManager.manageSongSaving(index: index, section: section)
+        case .save(let index, let section, let isCanPlay):
+            if isCanPlay {
+                songManager.currentSongSection = section
+                songManager.manageSongSaving(index: index, section: section)
+            } else {
+                completion?((viewModel: nil, isNeedToByeMore: true))
+            }
+            
             
         case .requestForMoreItems(let section):
             songManager.currentSongSection = section
             querySongItems(section: section)
-        
-        case .play(let index, let section):
+            
+        case .play(let index, let section, let isCanPlay):
+        if isCanPlay {
             songManager.currentSongSection = section
             songManager.playSong(at: index, section)
+        } else {
+            completion?((viewModel: nil, isNeedToByeMore: true))
+        }
             
         case .showDetail(let index, let section):
-            if section == .songList {
-                songManager.currentSongSection = section
-                completion?(songManager.songList[index])
-            } else {
-                completion?(songManager.premiumMusic[index])
-            }
+            songManager.currentSongSection = section
+            let model = section == .songList ? songManager.songList[index] : songManager.premiumMusic[index]
+            
+            completion?((viewModel: model, isNeedToByeMore: isNeedToByeMore && !isCanPlay))
+            
         }
     }
     
