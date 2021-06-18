@@ -162,6 +162,8 @@
 		84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
 		84DDE7492636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
 		84DDE74A2636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
+		84E8192B267CDC6E006DEE02 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E81929267CDC6E006DEE02 /* PaymentCell.swift */; };
+		84E8192C267CDC6E006DEE02 /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E8192A267CDC6E006DEE02 /* PaymentCell.xib */; };
 		84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */; };
 		84EB44EA2638026400828222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E92638026400828222 /* LoginViewController.swift */; };
 		84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44EB2638027900828222 /* LoginViewController.storyboard */; };
@@ -348,6 +350,8 @@
 		84DDE7322636CECE005D91C8 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		84DDE7472636D509005D91C8 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		84E81929267CDC6E006DEE02 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		84E8192A267CDC6E006DEE02 /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
 		84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		84EB44E92638026400828222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84EB44EB2638027900828222 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
@@ -1001,6 +1005,7 @@
 			children = (
 				84D24F6A2670F30100205C1E /* PaymentViewController.storyboard */,
 				84D24F682670F2F400205C1E /* PaymentViewController.swift */,
+				84E81928267CDC37006DEE02 /* Cells */,
 			);
 			path = PaymentScreen;
 			sourceTree = "<group>";
@@ -1151,6 +1156,15 @@
 				84DDE72D2636CD6D005D91C8 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		84E81928267CDC37006DEE02 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84E8192A267CDC6E006DEE02 /* PaymentCell.xib */,
+				84E81929267CDC6E006DEE02 /* PaymentCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		84EB44E82638021900828222 /* LogInScreen */ = {
@@ -1325,6 +1339,7 @@
 				84D7F82C2644184F004B2DB0 /* BlogCollectionViewCell.xib in Resources */,
 				84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */,
 				84D7F82826441434004B2DB0 /* CategoriesCollectionViewCell.xib in Resources */,
+				84E8192C267CDC6E006DEE02 /* PaymentCell.xib in Resources */,
 				84A00AC7265BED5700087E07 /* PasscodeRecoveryViewController.storyboard in Resources */,
 				84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */,
 				848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */,
@@ -1524,6 +1539,7 @@
 				849C4E84264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift in Sources */,
 				4869F031267B4539008D6925 /* AuthObserver.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
+				84E8192B267CDC6E006DEE02 /* PaymentCell.swift in Sources */,
 				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,
 				84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
