@@ -21,8 +21,8 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         
         prepareUI()
         passwordManagerObserve()
-//        presentController()
-        presentContent()
+        presentController()
+//        presentContent()
     }
     
     private func passwordManagerObserve() {
@@ -57,7 +57,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
     
     private func presentController() {
-        guard let vc = PaymentViewController.instantiate() else { return }
+        guard let vc = ProfileController.instantiate() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
     

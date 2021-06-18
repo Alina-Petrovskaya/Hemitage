@@ -23,6 +23,13 @@
 		4869F030267B4539008D6925 /* ViewModelConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F026267B4539008D6925 /* ViewModelConfigurator.swift */; };
 		4869F031267B4539008D6925 /* AuthObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F028267B4539008D6925 /* AuthObserver.swift */; };
 		4869F032267B4539008D6925 /* AuthProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F029267B4539008D6925 /* AuthProtocol.swift */; };
+		48D0A41B267CD48400BA9A7A /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A41A267CD48400BA9A7A /* ProfileController.swift */; };
+		48D0A41D267CD49D00BA9A7A /* ProfileController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48D0A41C267CD49D00BA9A7A /* ProfileController.storyboard */; };
+		48D0A420267CD4D400BA9A7A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A41F267CD4D400BA9A7A /* ProfileViewModel.swift */; };
+		48D0A423267CD4FC00BA9A7A /* ProfileTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A421267CD4FC00BA9A7A /* ProfileTableCell.swift */; };
+		48D0A424267CD4FC00BA9A7A /* ProfileTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48D0A422267CD4FC00BA9A7A /* ProfileTableCell.xib */; };
+		48D0A426267CD67000BA9A7A /* ProfileTableConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A425267CD67000BA9A7A /* ProfileTableConfiguration.swift */; };
+		48D0A428267CD85000BA9A7A /* ProfileTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D0A427267CD85000BA9A7A /* ProfileTableCellViewModel.swift */; };
 		841BE5112668CEB000B5709C /* FireStoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BE5102668CEAF00B5709C /* FireStoreDataManagerProtocol.swift */; };
 		84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84205E56263832DB005264E8 /* UITextfield+View.swift */; };
 		843F0B56264EB90F004DE5A8 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B55264EB90F004DE5A8 /* FirebaseStorageManager.swift */; };
@@ -215,6 +222,13 @@
 		4869F026267B4539008D6925 /* ViewModelConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelConfigurator.swift; sourceTree = "<group>"; };
 		4869F028267B4539008D6925 /* AuthObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthObserver.swift; sourceTree = "<group>"; };
 		4869F029267B4539008D6925 /* AuthProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProtocol.swift; sourceTree = "<group>"; };
+		48D0A41A267CD48400BA9A7A /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		48D0A41C267CD49D00BA9A7A /* ProfileController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileController.storyboard; sourceTree = "<group>"; };
+		48D0A41F267CD4D400BA9A7A /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		48D0A421267CD4FC00BA9A7A /* ProfileTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCell.swift; sourceTree = "<group>"; };
+		48D0A422267CD4FC00BA9A7A /* ProfileTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableCell.xib; sourceTree = "<group>"; };
+		48D0A425267CD67000BA9A7A /* ProfileTableConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableConfiguration.swift; sourceTree = "<group>"; };
+		48D0A427267CD85000BA9A7A /* ProfileTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableCellViewModel.swift; sourceTree = "<group>"; };
 		55F992CFC66C9E73B0826643 /* Pods_HemitageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HemitageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1081C7998670EFECE87C53 /* Pods_Hemitage_HemitageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hemitage_HemitageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841BE5102668CEAF00B5709C /* FireStoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreDataManagerProtocol.swift; sourceTree = "<group>"; };
@@ -515,6 +529,28 @@
 			path = Collection;
 			sourceTree = "<group>";
 		};
+		48D0A419267CD46000BA9A7A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				48D0A41E267CD4C200BA9A7A /* Cells */,
+				48D0A41F267CD4D400BA9A7A /* ProfileViewModel.swift */,
+				48D0A425267CD67000BA9A7A /* ProfileTableConfiguration.swift */,
+				48D0A41A267CD48400BA9A7A /* ProfileController.swift */,
+				48D0A41C267CD49D00BA9A7A /* ProfileController.storyboard */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		48D0A41E267CD4C200BA9A7A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48D0A427267CD85000BA9A7A /* ProfileTableCellViewModel.swift */,
+				48D0A421267CD4FC00BA9A7A /* ProfileTableCell.swift */,
+				48D0A422267CD4FC00BA9A7A /* ProfileTableCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4E10E560D2AAA83C9EC7B97B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +741,7 @@
 			children = (
 				48D0A411267CCFF000BA9A7A /* Root */,
 				48D0A413267CD08600BA9A7A /* Main */,
+				48D0A419267CD46000BA9A7A /* Profile */,
 				84D7F80A2642B5E3004B2DB0 /* Authorization */,
 				848CF79E2636B6BC0070A3C6 /* Splash */,
 			);
@@ -1320,6 +1357,7 @@
 				84A00B0726611EEC00087E07 /* GroupNavigationView.xib in Resources */,
 				84D7F8242643F606004B2DB0 /* MapCollectionViewCell.xib in Resources */,
 				848CF75226369F2C0070A3C6 /* LaunchScreen.storyboard in Resources */,
+				48D0A424267CD4FC00BA9A7A /* ProfileTableCell.xib in Resources */,
 				84A00AE4265F9F4300087E07 /* GroupScreenViewController.storyboard in Resources */,
 				848CF78F2636B1A40070A3C6 /* Inter-Bold.ttf in Resources */,
 				84D7F82C2644184F004B2DB0 /* BlogCollectionViewCell.xib in Resources */,
@@ -1327,6 +1365,7 @@
 				84D7F82826441434004B2DB0 /* CategoriesCollectionViewCell.xib in Resources */,
 				84A00AC7265BED5700087E07 /* PasscodeRecoveryViewController.storyboard in Resources */,
 				84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */,
+				48D0A41D267CD49D00BA9A7A /* ProfileController.storyboard in Resources */,
 				848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */,
 				849C4E65264A77C000C26C53 /* MainScreenHeaderView.xib in Resources */,
 				84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */,
@@ -1508,6 +1547,7 @@
 				84D662C226677ACE009BE13A /* GroupScreenTableViewBuilder.swift in Sources */,
 				843F0B5826525EDE004DE5A8 /* StorageDirectory.swift in Sources */,
 				84D7F82726441434004B2DB0 /* CategoriesCollectionViewCell.swift in Sources */,
+				48D0A426267CD67000BA9A7A /* ProfileTableConfiguration.swift in Sources */,
 				84A00ABB265B897000087E07 /* InnerStorageManager.swift in Sources */,
 				849A510026399CE80047340A /* AuthorizationTypeQualifier.swift in Sources */,
 				4837327B267C9D9400B3DE80 /* DiffableDataSourceManager.swift in Sources */,
@@ -1536,6 +1576,7 @@
 				84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */,
 				84D662CA26678942009BE13A /* GroupScreenCollectionViewDatasource.swift in Sources */,
 				843F0B812655345A004DE5A8 /* Date+StringPresentation.swift in Sources */,
+				48D0A428267CD85000BA9A7A /* ProfileTableCellViewModel.swift in Sources */,
 				843F0B9326579F4A004DE5A8 /* CacheManager.swift in Sources */,
 				8453C62626679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift in Sources */,
 				849A50F82639861E0047340A /* SignInViewModel.swift in Sources */,
@@ -1559,6 +1600,7 @@
 				84AFCEFB266E535100115159 /* FireStoreWriteDataManager.swift in Sources */,
 				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
 				84AFCF05266E6B9D00115159 /* GroupScreenViewModelProtocol.swift in Sources */,
+				48D0A41B267CD48400BA9A7A /* ProfileController.swift in Sources */,
 				849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */,
 				4869F02C267B4539008D6925 /* PasswordManagerProtocol.swift in Sources */,
 				843F0B8A265680B1004DE5A8 /* ContentManager.swift in Sources */,
@@ -1570,10 +1612,12 @@
 				84A00ADD265E905A00087E07 /* NewPasscodeViewModel.swift in Sources */,
 				84D7F8142642C481004B2DB0 /* TemplateProfileHeaderView.swift in Sources */,
 				4869F02D267B4539008D6925 /* KeyboardManagerProtocol.swift in Sources */,
+				48D0A420267CD4D400BA9A7A /* ProfileViewModel.swift in Sources */,
 				84D7F785263AB5C2004B2DB0 /* LoginStatus.swift in Sources */,
 				84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */,
 				849C4E75264ACC6600C26C53 /* BlogModel.swift in Sources */,
 				849A50F626397FF10047340A /* SignInManager.swift in Sources */,
+				48D0A423267CD4FC00BA9A7A /* ProfileTableCell.swift in Sources */,
 				84DB77EA26384AEE0094483E /* SignInViewController.swift in Sources */,
 				84A00ADB265E5A3900087E07 /* PasswordObbCodeManager.swift in Sources */,
 				84926F58264D1378005E9074 /* CategoriesCollectionViewCellModelView.swift in Sources */,
