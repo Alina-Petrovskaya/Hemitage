@@ -9,8 +9,7 @@ import Foundation
 import FirebaseFirestore
 
 class FireStoreWriteDataManager {
-    private let db = Firestore.firestore()
-    
-
+  
     
 }
+

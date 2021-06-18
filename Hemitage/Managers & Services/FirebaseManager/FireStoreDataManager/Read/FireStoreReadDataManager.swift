@@ -7,7 +7,7 @@
 import Foundation
 import FirebaseFirestore
 
-typealias QueryData = (field: String, value: String, sortField: String, currentNumberOfItems: Int)
+typealias QueryData = (requestData: [(field: String, value: Any)], sortField: String, currentNumberOfItems: Int)
 
 
 class FireStoreReadDataManager: FireStoreDataManagerProtocol {
@@ -35,8 +35,14 @@ class FireStoreReadDataManager: FireStoreDataManagerProtocol {
     
     
     func queryItems<T: Codable & Hashable>(queryData: QueryData, from collection: FireStoreCollectionName, model: T.Type,completion: @escaping ([T]) -> ()) {
-        let query = db.collection(collection.rawValue).whereField(queryData.field, arrayContains: queryData.value).order(by: queryData.sortField, descending: true)
+        let collectionReference = db.collection(collection.rawValue)
+
+        guard let query = queryData.requestData.getQuery(for: collectionReference)?
+                .order(by: queryData.sortField, descending: true)
+        else { return }
         
+//        let query = db.collection(collection.rawValue).whereField(queryData.requestData[0].field, arrayContains: queryData.requestData[0].value).whereField(queryData.requestData[1].field, isEqualTo: queryData.requestData[1].value)
+     
         guard queryData.currentNumberOfItems != 0
         else {
             fetchQuery(with: model, query: query.limit(to: 10)) { completion($0) }

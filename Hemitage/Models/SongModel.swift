@@ -15,6 +15,7 @@ struct SongModel: Hashable, Codable, Identifiable {
     let imageURL: URL?
     let songURL: URL
     let raiting: Int
+    let isPremium: Bool
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

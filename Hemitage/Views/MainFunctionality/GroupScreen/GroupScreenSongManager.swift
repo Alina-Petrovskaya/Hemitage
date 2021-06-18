@@ -41,7 +41,7 @@ class GroupScreenSongManager: PlayerObserver {
             self?.networkstatus = path.status
             
             if path.status == .satisfied {
-                self?.status = .standart
+                self?.status = .gold
                 self?.songList.removeAll()
                 self?.reloadData?()
                 
@@ -57,6 +57,7 @@ class GroupScreenSongManager: PlayerObserver {
     // MARK: - Configure Content
     func addSongs(songs: [SongModel]) -> (songs: [ViewModelTemplateSong], isNeedReload: Bool) {
         let currentSongID = PlayerManager.shared.getIdOfPlayingSong()
+        
         let items = songs.compactMap { model -> ViewModelTemplateSong? in
             guard let id = model.id else { return nil }
             
@@ -72,14 +73,17 @@ class GroupScreenSongManager: PlayerObserver {
                                          isSaved: isSaved)
         }
         
-        if songList.count == 0 {
+        let needToReload = currentSongSection == .songList
+            ? songList.count == 0
+            : premiumMusic.count == 0
+        
+        if currentSongSection == .songList {
             songList.append(contentsOf: items)
-            return (songs: items, isNeedReload: true)
-            
         } else {
-            songList.append(contentsOf: items)
-            return (songs: items, isNeedReload: false)
+            premiumMusic.append(contentsOf: items)
         }
+        
+        return (songs: items, isNeedReload: needToReload)
     }
     
     

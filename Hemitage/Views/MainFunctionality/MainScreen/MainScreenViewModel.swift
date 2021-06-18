@@ -140,11 +140,9 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
             break
             
         case .categories:
-            contentManager.queryItemsFromFirebase(value: categoriesData[indexPath.row].getItemId(),
-                                                  from: .categories,
-                                                  with: CategoriesModel.self) { items in
-                completion((model: items[0], section: .categories))
-            }
+            contentManager.getDocumentFromFirebase(id: categoriesData[indexPath.row].getItemId(),
+                                                   from: .categories,
+                                                   model: CategoriesModel.self) { completion((model: $0[0], section: .categories)) }
             
         case .blog:
             break
