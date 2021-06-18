@@ -406,32 +406,6 @@
 			path = DiffableTableView;
 			sourceTree = "<group>";
 		};
-		48373277267C9D4500B3DE80 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				48373278267C9D5A00B3DE80 /* TableCellType.swift */,
-			);
-			path = TableViewCell;
-			sourceTree = "<group>";
-		};
-		4837327C267C9DCB00B3DE80 /* CoreUI */ = {
-			isa = PBXGroup;
-			children = (
-				48373283267CA11F00B3DE80 /* Extensions */,
-				48373277267C9D4500B3DE80 /* TableViewCell */,
-				48373276267C9D2B00B3DE80 /* DiffableTableView */,
-			);
-			path = CoreUI;
-			sourceTree = "<group>";
-		};
-		48373283267CA11F00B3DE80 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				4837328A267CC80C00B3DE80 /* UITableView.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		4869F01D267B4539008D6925 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +444,75 @@
 				4869F029267B4539008D6925 /* AuthProtocol.swift */,
 			);
 			path = AuthObserver;
+			sourceTree = "<group>";
+		};
+		48D0A410267CCF1700BA9A7A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				848CF74226369F270070A3C6 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		48D0A411267CCFF000BA9A7A /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				84DDE7322636CECE005D91C8 /* RootViewController.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		48D0A413267CD08600BA9A7A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F8152642DE02004B2DB0 /* MainScreen */,
+				84A00AE0265F9EE600087E07 /* GroupScreen */,
+				84D24F672670F26100205C1E /* PaymentScreen */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		48D0A414267CD0EE00BA9A7A /* CoreUI */ = {
+			isa = PBXGroup;
+			children = (
+				48D0A415267CD13900BA9A7A /* Views */,
+				48D0A416267CD14400BA9A7A /* Cells */,
+				48373276267C9D2B00B3DE80 /* DiffableTableView */,
+			);
+			path = CoreUI;
+			sourceTree = "<group>";
+		};
+		48D0A415267CD13900BA9A7A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84D7F8102642B9A3004B2DB0 /* TemplateProfileHeaderView */,
+				849C4E362646C9A400C26C53 /* SongView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		48D0A416267CD14400BA9A7A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48D0A417267CD15600BA9A7A /* Table */,
+				48D0A418267CD16600BA9A7A /* Collection */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		48D0A417267CD15600BA9A7A /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				48373278267C9D5A00B3DE80 /* TableCellType.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		48D0A418267CD16600BA9A7A /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Collection;
 			sourceTree = "<group>";
 		};
 		4E10E560D2AAA83C9EC7B97B /* Pods */ = {
@@ -537,13 +580,12 @@
 		848CF74126369F270070A3C6 /* Hemitage */ = {
 			isa = PBXGroup;
 			children = (
-				4837327C267C9DCB00B3DE80 /* CoreUI */,
-				84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */,
-				84DDE7222636CCF0005D91C8 /* Localization */,
+				48D0A410267CCF1700BA9A7A /* Application */,
 				848CF79A2636B3E00070A3C6 /* Core */,
 				848CF7812636AABE0070A3C6 /* Models */,
-				848CF79D2636B49E0070A3C6 /* Views */,
-				84BE17D12664DA8000AF1CD4 /* Managers & Services */,
+				84BE17D12664DA8000AF1CD4 /* Services */,
+				848CF79D2636B49E0070A3C6 /* Modules */,
+				84DDE7222636CCF0005D91C8 /* Localization */,
 				848CF77C2636A0510070A3C6 /* Resourses */,
 				848CF77826369FFA0070A3C6 /* Settings */,
 			);
@@ -571,7 +613,7 @@
 		848CF77826369FFA0070A3C6 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				848CF74226369F270070A3C6 /* AppDelegate.swift */,
+				84D7F792263BF6A9004B2DB0 /* Hemitage.entitlements */,
 				84D7F795263C0946004B2DB0 /* GoogleService-Info.plist */,
 				848CF75326369F2C0070A3C6 /* Info.plist */,
 			);
@@ -637,6 +679,7 @@
 			isa = PBXGroup;
 			children = (
 				84A00ABD265B8D7100087E07 /* Enums */,
+				48D0A414267CD0EE00BA9A7A /* CoreUI */,
 				848CF79C2636B3EE0070A3C6 /* Extensions */,
 				4869F01D267B4539008D6925 /* Protocols */,
 			);
@@ -652,19 +695,20 @@
 				843F0B802655345A004DE5A8 /* Date+StringPresentation.swift */,
 				84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */,
 				84EBB8402677407E007FABE4 /* Array.swift */,
+				4837328A267CC80C00B3DE80 /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		848CF79D2636B49E0070A3C6 /* Views */ = {
+		848CF79D2636B49E0070A3C6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				84DDE7322636CECE005D91C8 /* RootViewController.swift */,
-				84D7F80B2642B610004B2DB0 /* MainFunctionality */,
+				48D0A411267CCFF000BA9A7A /* Root */,
+				48D0A413267CD08600BA9A7A /* Main */,
 				84D7F80A2642B5E3004B2DB0 /* Authorization */,
 				848CF79E2636B6BC0070A3C6 /* Splash */,
 			);
-			path = Views;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		848CF79E2636B6BC0070A3C6 /* Splash */ = {
@@ -923,7 +967,7 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		84BE17D12664DA8000AF1CD4 /* Managers & Services */ = {
+		84BE17D12664DA8000AF1CD4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				84A40CF92671FC4A00FB6642 /* PlayerManager */,
@@ -933,7 +977,7 @@
 				848CF7992636B38F0070A3C6 /* CoreDataManager */,
 				84BE17D22664DAB300AF1CD4 /* KeyboardManager */,
 			);
-			path = "Managers & Services";
+			path = Services;
 			sourceTree = "<group>";
 		};
 		84BE17D22664DAB300AF1CD4 /* KeyboardManager */ = {
@@ -1026,17 +1070,6 @@
 			path = Authorization;
 			sourceTree = "<group>";
 		};
-		84D7F80B2642B610004B2DB0 /* MainFunctionality */ = {
-			isa = PBXGroup;
-			children = (
-				84D7F8152642DE02004B2DB0 /* MainScreen */,
-				84A00AE0265F9EE600087E07 /* GroupScreen */,
-				84D24F672670F26100205C1E /* PaymentScreen */,
-				84D7F8162643CFAF004B2DB0 /* Templates */,
-			);
-			path = MainFunctionality;
-			sourceTree = "<group>";
-		};
 		84D7F8102642B9A3004B2DB0 /* TemplateProfileHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1059,15 +1092,6 @@
 				849C4E63264A777000C26C53 /* Templates */,
 			);
 			path = MainScreen;
-			sourceTree = "<group>";
-		};
-		84D7F8162643CFAF004B2DB0 /* Templates */ = {
-			isa = PBXGroup;
-			children = (
-				84D7F8102642B9A3004B2DB0 /* TemplateProfileHeaderView */,
-				849C4E362646C9A400C26C53 /* SongView */,
-			);
-			path = Templates;
 			sourceTree = "<group>";
 		};
 		84D7F81D2643F536004B2DB0 /* CollectionViewCells */ = {
@@ -1565,7 +1589,6 @@
 				84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */,
 				849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */,
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
-				84EBB83C26739985007FABE4 /* RequestType.swift in Sources */,
 				48373285267CC73E00B3DE80 /* DiffableCellViewModel.swift in Sources */,
 				84EBB8382673568D007FABE4 /* PlayerManagerProtocol.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
@@ -1793,7 +1816,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Hemitage/Hemitage.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Hemitage/Settings/Hemitage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X76T92HD6;
 				INFOPLIST_FILE = Hemitage/Settings/Info.plist;
@@ -1815,7 +1838,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Hemitage/Hemitage.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Hemitage/Settings/Hemitage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2X76T92HD6;
 				INFOPLIST_FILE = Hemitage/Settings/Info.plist;
