@@ -101,6 +101,11 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         mediaPlayer.setupNowPlaying(.stopped)
     }
     
+    func getCurrentSong()  {
+        let playing = mediaPlayer.player?.isPlaying == true ? true : false
+        notify(playerState: playing ? .playing : .paused, currentsong: currentSong, previousSong: nil)
+    }
+    
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         self.playSong(at: self.soundIndex + 1)

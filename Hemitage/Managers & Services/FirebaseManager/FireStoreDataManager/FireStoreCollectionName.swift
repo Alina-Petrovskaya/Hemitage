@@ -8,11 +8,11 @@
 import Foundation
 
 enum FireStoreCollectionName: String {
-    case blog       = "Blog"
-    case categories = "Categories"
-    case songs      = "Songs"
+    case blog           = "Blog"
+    case categories     = "Categories"
+    case songs          = "Songs"
+    case premiumContent = "Premium"
     
-
     func getSubcollectionName() -> String? {
         switch self {
         

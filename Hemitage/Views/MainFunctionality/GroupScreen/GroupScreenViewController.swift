@@ -41,6 +41,7 @@ class GroupScreenViewController: UIViewController {
         super.viewWillAppear(animated)
         updateNavigationBarView()
         observeNavBarState()
+        
     }
     
     

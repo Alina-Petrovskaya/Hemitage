@@ -160,7 +160,6 @@
 		84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44EB2638027900828222 /* LoginViewController.storyboard */; };
 		84EBB8382673568D007FABE4 /* PlayerManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB8372673568D007FABE4 /* PlayerManagerProtocol.swift */; };
 		84EBB83A26735726007FABE4 /* SongManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB83926735726007FABE4 /* SongManagerModel.swift */; };
-		84EBB83C26739985007FABE4 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB83B26739985007FABE4 /* RequestType.swift */; };
 		84EBB83F26739E9C007FABE4 /* GroupScreenSongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB83E26739E9C007FABE4 /* GroupScreenSongManager.swift */; };
 		84EBB8412677407E007FABE4 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB8402677407E007FABE4 /* Array.swift */; };
 		84EBB84326775FBB007FABE4 /* SubscriptionAndNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */; };
@@ -340,7 +339,6 @@
 		84EB44EB2638027900828222 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		84EBB8372673568D007FABE4 /* PlayerManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManagerProtocol.swift; sourceTree = "<group>"; };
 		84EBB83926735726007FABE4 /* SongManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongManagerModel.swift; sourceTree = "<group>"; };
-		84EBB83B26739985007FABE4 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		84EBB83E26739E9C007FABE4 /* GroupScreenSongManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenSongManager.swift; sourceTree = "<group>"; };
 		84EBB8402677407E007FABE4 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAndNetworkStatus.swift; sourceTree = "<group>"; };
@@ -676,7 +674,6 @@
 				84A00ABA265B897000087E07 /* InnerStorageManager.swift */,
 				84A00ABE265B910400087E07 /* ImageManagerModel.swift */,
 				84EBB83926735726007FABE4 /* SongManagerModel.swift */,
-				84EBB83B26739985007FABE4 /* RequestType.swift */,
 			);
 			path = CacheManager;
 			sourceTree = "<group>";
@@ -1513,7 +1510,6 @@
 				84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */,
 				849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */,
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
-				84EBB83C26739985007FABE4 /* RequestType.swift in Sources */,
 				84EBB8382673568D007FABE4 /* PlayerManagerProtocol.swift in Sources */,
 				848CF74D26369F270070A3C6 /* Hemitage.xcdatamodeld in Sources */,
 				84A40CFC2671FF8200FB6642 /* PlayerManager.swift in Sources */,

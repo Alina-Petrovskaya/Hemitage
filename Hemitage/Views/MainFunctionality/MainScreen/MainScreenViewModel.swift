@@ -13,17 +13,20 @@ protocol MainScreenViewModelProtocol {
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())? { get set }
     var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())? { get set }
     var itemsDeleted:  (([MainScreenModelWrapper]) -> ())? { get set }
+    var songChanged:   ((TemplateSongView.DataType) -> ())? { get set }
     
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
     func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
 }
 
 
-class MainScreenViewModel: MainScreenViewModelProtocol {
-    
+class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
+ 
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())?
     var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())?
     var itemsDeleted: (([MainScreenModelWrapper]) -> ())?
+    var songChanged:  ((TemplateSongView.DataType) -> ())?
+    var songData: TemplateSongView.DataType?
     
     private var categoriesData: [MainScreenModelWrapper] = []
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(model: MapModel(allUsers: 15, usersOnline: 5)))]
@@ -34,8 +37,12 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
     
     init() {
         manageContent()
+        PlayerManager.shared.subscribe(self)
     }
     
+    deinit {
+        PlayerManager.shared.unSubscribe(self)
+    }
     
     // MARK: - Manage row content
     private func manageContent() {
@@ -152,6 +159,12 @@ class MainScreenViewModel: MainScreenViewModelProtocol {
         case .blog:
             break
         }
+    }
+    
+    func playerStateChanged(isPlaying: Bool, currentSong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?) {
+        guard let song = currentSong as? ViewModelTemplateSong  else { return }
+        song.updatePlayingState(isPlay: isPlaying)
+        songChanged?(song.getData())
     }
 }
 

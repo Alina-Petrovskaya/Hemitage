@@ -54,7 +54,7 @@ class GroupScreenSongManager: PlayerObserver {
         monitor.start(queue: queue)
     }
     
-    // MARK: - Configure Playlist
+    // MARK: - Configure Content
     func addSongs(songs: [SongModel]) -> (songs: [ViewModelTemplateSong], isNeedReload: Bool) {
         let currentSongID = PlayerManager.shared.getIdOfPlayingSong()
         let items = songs.compactMap { model -> ViewModelTemplateSong? in
@@ -85,19 +85,14 @@ class GroupScreenSongManager: PlayerObserver {
     
     func manageSongSaving(index: Int, section: GroupScreenTypeOfContent) {
         let songModel = (section == .songList) ? songList[index] : premiumMusic[index]
+        
         guard let songURL = songModel.getSongData().songURL else { return }
         let id = songModel.getSongData().id
-        
-        if cacheManager.isSongSaved(docimentID: id) {
-            cacheManager.cacheSongObject(songURL: songURL, documentID: id, requestType: .delete, completion: nil)
-            songModel.updateSavingState(isSaved: false)
-            
-        } else {
-            cacheManager.cacheSongObject(songURL: songURL, documentID: id, requestType: .save, completion: nil)
-            songModel.updateSavingState(isSaved: true)
+       
+        cacheManager.manageSongSaving(songURL: songURL, documentID: id) { [weak self] isSaved in
+            songModel.updateSavingState(isSaved: isSaved)
+            self?.callBack?((items: [songModel], section: .songList, typeOfChange: .modified, index: index))
         }
-
-        callBack?((items: [songModel], section: .songList, typeOfChange: .modified, index: index))
     }
     
     
@@ -110,10 +105,9 @@ class GroupScreenSongManager: PlayerObserver {
     
     private func manageDataMusic() {
         PlayerManager.shared.callForSongData = { [weak self] dataFromPlayer in
-            self?.cacheManager.cacheSongObject(songURL: dataFromPlayer.url, documentID: dataFromPlayer.id, requestType: .get) { result in
-                
+            
+            self?.cacheManager.cacheSongObject(songURL: dataFromPlayer.url, documentID: dataFromPlayer.id) { result in
                 switch result {
-                
                 case .success(let data):
                     PlayerManager.shared.playSong(with: data)
                     
@@ -150,17 +144,16 @@ class GroupScreenSongManager: PlayerObserver {
     
     
     private func modifireSong(at list: inout [ViewModelTemplateSongProtocol], newItem: ViewModelTemplateSongProtocol) -> Int? {
-        let index = list.firstIndex(where: { item in
-            item.getSongData() == newItem.getSongData()
-        })
+        var itemIndex: Int? = nil
         
-        if index != nil {
-            list[index!] = newItem
-            
-            return index
+        list.enumerated().forEach { (index, item) in
+            if item.getSongData() == newItem.getSongData() {
+                list[index] = newItem
+                itemIndex = index
+            }
         }
         
-        return nil
+        return itemIndex
     }
     
 }

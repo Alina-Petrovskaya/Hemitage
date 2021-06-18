@@ -18,6 +18,6 @@ protocol PlayerManagerProtocol {
     func getIdOfPlayingSong() -> String?
     func subscribe(_ observer: PlayerObserver)
     func unSubscribe(_ observer: PlayerObserver)
-    
+    func getCurrentSong()
     
 }

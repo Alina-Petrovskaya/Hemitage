@@ -19,7 +19,7 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
         didSet {
             if selectedSubCategory != nil, oldValue != selectedSubCategory {
                 songManager.songList.removeAll()
-                querySongItems()
+                querySongItems(section: songManager.currentSongSection)
             }
         }
     }
@@ -39,7 +39,8 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
         }
         
         songManager.reloadData = { [weak self] in
-            self?.querySongItems()
+            guard let self = self else { return }
+            self.querySongItems(section: self.songManager.currentSongSection)
         }
     
     }
@@ -88,13 +89,14 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     
    private func querySongItems(section: GroupScreenTypeOfContent = .songList) {
         guard let documentID = selectedSubCategory else { return }
+    
         contentManager.queryItemsFromFirebase(value: documentID, field: "subCategories", from: .songs, with: SongModel.self, sortField: "raiting",
                                               currentNamberOfItems: songManager.songList.count) { [weak self] data in
             
             guard let songData = self?.songManager.addSongs(songs: data) else { return }
             
             if songData.isNeedReload {
-                self?.delegate?.reloadData(section: .songList)
+                self?.delegate?.reloadData(section: section)
             } else {
                 self?.delegate?.updateData(items: songData.songs, section: .songList, typeOfChange: .added, index: nil)
             }
@@ -131,22 +133,26 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
             if section == .subGroup {
                 selectedSubCategory = subcategoryList[index].getID()
             } else {
+                songManager.currentSongSection = section
                 delegate?.reloadData(section: section)
             }
             
         case .save(let index, let section):
-            
+            songManager.currentSongSection = section
             songManager.manageSongSaving(index: index, section: section)
             
         case .requestForMoreItems(let section):
+            songManager.currentSongSection = section
             querySongItems(section: section)
         
         case .play(let index, let section):
+            songManager.currentSongSection = section
             songManager.playSong(at: index, section)
         
             
         case .showDetail(let index, let section):
             if section == .songList {
+                songManager.currentSongSection = section
                 completion?(songManager.songList[index])
             } else {
                 completion?(songManager.premiumMusic[index])

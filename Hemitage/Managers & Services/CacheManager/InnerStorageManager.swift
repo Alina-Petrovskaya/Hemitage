@@ -21,7 +21,14 @@ protocol FileManagerProtocol {
      */
     func getImageData(with documentID: String, imageName: String, for typeOfChange: TypeOfChangeDocument, from directory: StorageDirectory?, completion: @escaping (Data) -> ())
     
-    func manageSongData(documentID: String, songURL: URL, requestType: RequestType)
+    
+    func getSongItem(for id: String, url: URL)
+    
+    /**
+     Deletes or saves item depends of current status of song
+     - returns: Returns in completion current state of song
+     */
+    func manageSongSaving(id: String, url: URL, isSaved: @escaping (Bool) -> ())
     
     func isSavedSong(for documentID: String) -> Bool
 }
@@ -35,7 +42,6 @@ class InnerStorageManager: FileManagerProtocol {
     private let fileManager = FileManager.default
     private let firebaseStorage: FirebaseStorage = FirebaseStorageManager()
     private var songData: (id: String, url: URL)?
-    private var dataToSave: [(id: String, url: URL)] = []
     
     private var internetStatus: NWPath.Status = .unsatisfied {
         didSet {
@@ -43,10 +49,6 @@ class InnerStorageManager: FileManagerProtocol {
                 
                 if songData != nil {
                     getSongItem(for: songData!.id, url: songData!.url)
-                }
-                
-                if dataToSave.count != 0 {
-                    saveSongs(with: dataToSave)
                 }
             }
         }
@@ -61,6 +63,7 @@ class InnerStorageManager: FileManagerProtocol {
         let queue = DispatchQueue.global()
         monitor.start(queue: queue)
     }
+    
     
     // MARK: - Manage images
     func getImageData(with document: String, imageName: String, for typeOfChange: TypeOfChangeDocument, from directory: StorageDirectory? = nil,
@@ -100,33 +103,9 @@ class InnerStorageManager: FileManagerProtocol {
     
     
     // MARK: - Manage songs
-    func manageSongData(documentID: String, songURL: URL, requestType: RequestType) {
-        guard let path = getPath(with: documentID) else { print("Can't create path to song storage"); return }
-        
-        switch requestType {
-        case .save:
-            saveSongs(with: [(id: documentID, url: songURL)])
-            
-        case .get:
-            getSongItem(for: documentID, url: songURL)
-            
-        case .delete:
-            print("Song removed")
-            try? fileManager.removeItem(at: path)
-            let index = dataToSave.firstIndex(where: { data in
-                data.id == documentID
-            })
-            
-            if index != nil {
-                dataToSave.remove(at: index!)
-            }
-                
-        }
-    }
-    
-    
     func getSongItem(for id: String, url: URL) {
         guard let path = getPath(with: id) else { print("Can't create path to song storage"); return }
+        songData = (id: id, url: url)
         
         if let savedData = decodeData(with: path, model: SongManagerModel.self) {
             songData = nil
@@ -138,47 +117,52 @@ class InnerStorageManager: FileManagerProtocol {
                     switch result {
                     
                     case .success(let loadedData):
-                        self?.callback?(.success(loadedData))
                         self?.songData = nil
+                        self?.callback?(.success(loadedData))
                         
                     case .failure(let error):
                         print(error.localizedDescription)
                         self?.songData = (id: id, url: url)
                     }
-
                 }
             }
         }
     }
     
     
-    func saveSongs(with data: [(id: String, url: URL)]) {
-        data.enumerated().forEach { (index, item) in
+    func manageSongSaving(id: String, url: URL, isSaved: @escaping (Bool) -> ()) {
+        guard let path = getPath(with: id) else { print("Can't create path to song storage"); return }
+        
+        if isSavedSong(for: id) {
+            try? fileManager.removeItem(at: path)
+            print("Song removed")
+            isSaved(false)
             
+        } else {
             if internetStatus == .satisfied {
-                guard let path = getPath(with: item.id) else { print("Can't create path to song storage"); return }
-                
-                firebaseStorage.getDataWithURL(item.url) { [weak self] result in
+                firebaseStorage.getDataWithURL(url) { [weak self] result in
                     switch result {
                     
                     case .success(let loadedData):
-                        let saveItem = SongManagerModel(songUrl: item.url, songData: loadedData)
+                        let saveItem = SongManagerModel(songUrl: url, songData: loadedData)
                         let encodedItem = self?.encodeData(with: saveItem)
                         
                         try? encodedItem?.write(to: path)
                         print("Song saved")
+                        isSaved(true)
                         
                     case .failure(let error):
                         print(error.localizedDescription)
+                        isSaved(false)
                     }
-                    
                 }
-            } else {
-                dataToSave.append((id: item.id, url: item.url))
+                
+            } else if internetStatus != .satisfied {
+                isSaved(isSavedSong(for: id))
             }
         }
     }
-    
+        
     
     func isSavedSong(for documentID: String) -> Bool {
         guard let path = getPath(with: documentID) else { return false }

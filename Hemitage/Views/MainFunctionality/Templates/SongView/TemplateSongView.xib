@@ -24,6 +24,7 @@
                 <outlet property="imageSong" destination="8sa-7Q-h6e" id="MDP-9C-uCP"/>
                 <outlet property="playButton" destination="QYe-J2-otx" id="FNW-yk-9VE"/>
                 <outlet property="saveButton" destination="i1j-kc-QgZ" id="q8Y-bd-XNA"/>
+                <outlet property="saveIndicator" destination="zt0-Vr-cRv" id="nRk-U6-0ly"/>
                 <outlet property="singerLabel" destination="lhC-ey-htp" id="foD-hS-3Hy"/>
                 <outlet property="songNameLabel" destination="pNa-IQ-jkS" id="k87-q7-vxX"/>
                 <outlet property="topBorder" destination="lMy-f8-MEH" id="hML-36-MRX"/>
@@ -31,36 +32,36 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="552" height="162"/>
+            <rect key="frame" x="0.0" y="0.0" width="471" height="135"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMy-f8-MEH" userLabel="Border">
-                    <rect key="frame" x="0.0" y="0.0" width="552" height="1"/>
+                    <rect key="frame" x="0.0" y="0.0" width="471" height="1"/>
                     <color key="backgroundColor" name="Border #EEEEEE"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="LTa-Eo-sYd"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="999" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="999" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-2G-cfQ">
-                    <rect key="frame" x="20" y="13" width="380" height="137"/>
+                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-2G-cfQ">
+                    <rect key="frame" x="20" y="13" width="299" height="110"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="999" verticalCompressionResistancePriority="999" image="Group 257" translatesAutoresizingMaskIntoConstraints="NO" id="8sa-7Q-h6e">
-                            <rect key="frame" x="0.0" y="0.0" width="137" height="137"/>
+                            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="8sa-7Q-h6e" secondAttribute="height" multiplier="1:1" id="3ea-CN-JJg"/>
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-ZB-GHv">
-                            <rect key="frame" x="147" y="0.0" width="233" height="137"/>
+                            <rect key="frame" x="120" y="0.0" width="179" height="110"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Rain &amp; Tunder Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-IQ-jkS">
-                                    <rect key="frame" x="0.0" y="0.0" width="233" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="179" height="58"/>
                                     <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="13"/>
                                     <color key="textColor" name="DarkText #18191A"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nature sound Emporium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhC-ey-htp">
-                                    <rect key="frame" x="0.0" y="72" width="233" height="65"/>
+                                    <rect key="frame" x="0.0" y="58" width="179" height="52"/>
                                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                     <color key="textColor" name="GrayText #9B9B9B"/>
                                     <nil key="highlightedColor"/>
@@ -69,8 +70,8 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-AY-Ttm">
-                    <rect key="frame" x="420" y="13" width="112" height="24"/>
+                <stackView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-AY-Ttm">
+                    <rect key="frame" x="339" y="13" width="112" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYe-J2-otx" userLabel="Stop/play">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -83,19 +84,38 @@
                                 <action selector="stopButtonTapped:" destination="-1" eventType="touchUpInside" id="5uv-jb-kIq"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1j-kc-QgZ" userLabel="Close">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z64-HV-ATt" userLabel="Save">
                             <rect key="frame" x="44" y="0.0" width="24" height="24"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zt0-Vr-cRv">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                </activityIndicatorView>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1j-kc-QgZ" userLabel="save">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="HKa-MJ-guH"/>
+                                        <constraint firstAttribute="width" secondItem="i1j-kc-QgZ" secondAttribute="height" multiplier="1:1" id="NWa-Ks-1oE"/>
+                                    </constraints>
+                                    <color key="tintColor" name="Main color #DFAB9D"/>
+                                    <state key="normal" image="arrow.down.circle" catalog="system"/>
+                                    <connections>
+                                        <action selector="saveButtonTapped:" destination="-1" eventType="touchUpInside" id="2Cl-Hn-W2m"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="24" id="HKa-MJ-guH"/>
-                                <constraint firstAttribute="width" secondItem="i1j-kc-QgZ" secondAttribute="height" multiplier="1:1" id="NWa-Ks-1oE"/>
+                                <constraint firstAttribute="bottom" secondItem="zt0-Vr-cRv" secondAttribute="bottom" id="3p8-lx-zBn"/>
+                                <constraint firstAttribute="trailing" secondItem="zt0-Vr-cRv" secondAttribute="trailing" id="CpV-c8-S94"/>
+                                <constraint firstItem="i1j-kc-QgZ" firstAttribute="width" secondItem="i1j-kc-QgZ" secondAttribute="height" multiplier="1:1" id="Qlh-3b-KVA"/>
+                                <constraint firstAttribute="trailing" secondItem="i1j-kc-QgZ" secondAttribute="trailing" id="RgK-5T-hzY"/>
+                                <constraint firstItem="zt0-Vr-cRv" firstAttribute="leading" secondItem="Z64-HV-ATt" secondAttribute="leading" id="hD1-kk-par"/>
+                                <constraint firstItem="zt0-Vr-cRv" firstAttribute="top" secondItem="Z64-HV-ATt" secondAttribute="top" id="jQZ-LZ-qt1"/>
+                                <constraint firstItem="i1j-kc-QgZ" firstAttribute="leading" secondItem="Z64-HV-ATt" secondAttribute="leading" id="uPy-DQ-Lmd"/>
+                                <constraint firstItem="i1j-kc-QgZ" firstAttribute="top" secondItem="Z64-HV-ATt" secondAttribute="top" id="x8y-FE-2GU"/>
+                                <constraint firstAttribute="bottom" secondItem="i1j-kc-QgZ" secondAttribute="bottom" id="ycW-CG-SVf"/>
                             </constraints>
-                            <color key="tintColor" name="Main color #DFAB9D"/>
-                            <state key="normal" image="arrow.down.circle" catalog="system"/>
-                            <connections>
-                                <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="6Fd-8M-gGq"/>
-                                <action selector="saveButtonTapped:" destination="-1" eventType="touchUpInside" id="2Cl-Hn-W2m"/>
-                            </connections>
-                        </button>
+                        </view>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-at-maA" userLabel="Close">
                             <rect key="frame" x="88" y="0.0" width="24" height="24"/>
                             <constraints>
@@ -111,7 +131,6 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="QYe-J2-otx" firstAttribute="width" secondItem="Ysp-at-maA" secondAttribute="width" id="BPC-im-B8s"/>
-                        <constraint firstItem="i1j-kc-QgZ" firstAttribute="width" secondItem="i1j-kc-QgZ" secondAttribute="height" multiplier="1:1" id="kwp-0g-Hmb"/>
                     </constraints>
                 </stackView>
             </subviews>
@@ -129,7 +148,7 @@
                 <constraint firstItem="BIg-AY-Ttm" firstAttribute="top" secondItem="lMy-f8-MEH" secondAttribute="bottom" constant="12" id="xd4-qn-yLp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="327.536231884058" y="-393.08035714285711"/>
+            <point key="canvasLocation" x="267.39130434782612" y="-402.12053571428572"/>
         </view>
     </objects>
     <resources>
