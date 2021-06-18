@@ -17,11 +17,12 @@ protocol MainScreenViewModelProtocol {
     
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
     func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
+    func changePlayerState(action: MainScreenSongManagering)
 }
 
 
 class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
- 
+    
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())?
     var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())?
     var itemsDeleted: (([MainScreenModelWrapper]) -> ())?
@@ -31,9 +32,9 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
     private var categoriesData: [MainScreenModelWrapper] = []
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(model: MapModel(allUsers: 15, usersOnline: 5)))]
     private var blogData: [MainScreenModelWrapper] = []
-    
     private var contentManager = ReadContentManager()
     private let cacheManager   = CacheManager()
+    
     
     init() {
         manageContent()
@@ -116,18 +117,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
     }
     
     
-    private func getElementIndex(newData: MainScreenModelWrapper, currentData: [MainScreenModelWrapper]) -> Int? {
-        
-        for (index, item) in currentData.enumerated() {
-            if item.hashValue == newData.hashValue {
-                return index
-            }
-        }
-        return nil
-    }
-    
-    
-    // Actions
+    // MARK: - Actions
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper] {
         switch sectionType {
         case .map:
@@ -161,10 +151,25 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
         }
     }
     
+    // MARK: - Player manager
     func playerStateChanged(isPlaying: Bool, currentSong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?) {
         guard let song = currentSong as? ViewModelTemplateSong  else { return }
         song.updatePlayingState(isPlay: isPlaying)
         songChanged?(song.getData())
     }
+    
+    
+    func changePlayerState(action: MainScreenSongManagering) {
+      
+        switch action {
+        case .play:
+            PlayerManager.shared.pause()
+            
+        case .stop:
+            PlayerManager.shared.stopSong()
+        }
+    }
+    
+    
 }
 

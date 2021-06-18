@@ -19,12 +19,15 @@ class TemplateSongView: UIView {
     @IBOutlet private weak var imageSong: UIImageView!
     @IBOutlet private weak var playButton: UIButton!
     @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var topBorder: UIView!
-    @IBOutlet weak var saveIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var topBorder: UIView!
+    @IBOutlet private weak var saveIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var saveView: UIView!
+    
     
     var saveCallback: (() -> ())?
     var playCallBack: (() -> ())?
+    var stopCallback: (() -> ())?
     
     private var isCanPlay: Bool = true
     
@@ -57,7 +60,6 @@ class TemplateSongView: UIView {
     
     // MARK: - Actions
     func updateUI(with data: DataType) {
-        self.isHidden        = false
         songNameLabel.text   = data.title
         singerLabel.text     = data.subtitle
         closeButton.isHidden = data.isHideCloseButton
@@ -71,16 +73,19 @@ class TemplateSongView: UIView {
     
     func updateSongData(with data: DataType) {
         self.isHidden        = false
+        topBorder.isHidden   = false
+        saveView.isHidden    = true
+        
         songNameLabel.text   = data.title
         singerLabel.text     = data.subtitle
         imageSong.sd_setImage(with: data.imageURL, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: [.delayPlaceholder], context: nil)
-        updateIcons(isSaved: data.isSaved, isPlaying: data.isPlaying)
+        updateIcons(isSaved: nil, isPlaying: data.isPlaying)
+        
     }
     
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
         if isCanPlay {
-            
             updateIcons(isSaved: nil, isPlaying: sender.currentImage == UIImage(systemName: "play"))
             playCallBack?()
         }
@@ -117,6 +122,7 @@ class TemplateSongView: UIView {
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         self.isHidden = true
+        stopCallback?()
     }
     
 }

@@ -10,14 +10,14 @@ import UIKit
 protocol GroupScreenCollectionDelegateProtocol {
     
     var collectionView: UICollectionView { get }
-    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())? { get set }
+    var interactionCallback: ((GroupScreenCellsTypeOfInteraction) -> ())? { get set }
     
 }
 
 
 class GroupScreenCollectionViewDelegate: NSObject, UICollectionViewDelegate, GroupScreenCollectionDelegateProtocol {
     
-    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())?
+    var interactionCallback: ((GroupScreenCellsTypeOfInteraction) -> ())?
     var requestForMoreItems: (() -> ())?
     var collectionView: UICollectionView
     

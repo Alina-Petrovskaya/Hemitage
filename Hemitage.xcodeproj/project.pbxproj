@@ -32,6 +32,7 @@
 		843F0B9526579F4B004DE5A8 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F0B9226579F49004DE5A8 /* CacheManager.swift */; };
 		8453C6232667902600875A69 /* GroupScreenDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453C6222667902600875A69 /* GroupScreenDataSourceProtocol.swift */; };
 		8453C62626679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453C62526679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift */; };
+		847350B1267C8C8800F2C2CD /* MainScreenSongManagering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847350B0267C8C8800F2C2CD /* MainScreenSongManagering.swift */; };
 		848CF74326369F270070A3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74226369F270070A3C6 /* AppDelegate.swift */; };
 		848CF74726369F270070A3C6 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CF74626369F270070A3C6 /* WelcomeViewController.swift */; };
 		848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848CF74826369F270070A3C6 /* WelcomeViewController.storyboard */; };
@@ -165,7 +166,7 @@
 		84EBB84326775FBB007FABE4 /* SubscriptionAndNetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */; };
 		84EBB8492678AF1D007FABE4 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */; };
 		84EBB84D2678BFC5007FABE4 /* MediaPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */; };
-		84EBB84F2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84E2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift */; };
+		84EBB84F2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84E2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift */; };
 		84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */; };
 		84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
@@ -209,6 +210,7 @@
 		843F0B9226579F49004DE5A8 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		8453C6222667902600875A69 /* GroupScreenDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenDataSourceProtocol.swift; sourceTree = "<group>"; };
 		8453C62526679B5200875A69 /* GroupScreenSubgroupCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenSubgroupCellViewModel.swift; sourceTree = "<group>"; };
+		847350B0267C8C8800F2C2CD /* MainScreenSongManagering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenSongManagering.swift; sourceTree = "<group>"; };
 		848CF73F26369F270070A3C6 /* Hemitage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hemitage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848CF74226369F270070A3C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848CF74626369F270070A3C6 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -344,7 +346,7 @@
 		84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionAndNetworkStatus.swift; sourceTree = "<group>"; };
 		84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
 		84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerManager.swift; sourceTree = "<group>"; };
-		84EBB84E2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTemplateTypeOfInteraction.swift; sourceTree = "<group>"; };
+		84EBB84E2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenCellsTypeOfInteraction.swift; sourceTree = "<group>"; };
 		84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenHeaderView.xib; sourceTree = "<group>"; };
 		84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDatasource.swift; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -846,6 +848,7 @@
 		84AFCF1E2670BE2800115159 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				84EBB84E2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift */,
 				84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */,
 				84EBB84226775FBA007FABE4 /* SubscriptionAndNetworkStatus.swift */,
 			);
@@ -905,7 +908,6 @@
 				84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */,
 				84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */,
 				8453C6222667902600875A69 /* GroupScreenDataSourceProtocol.swift */,
-				84EBB84E2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift */,
 				84D662C626677AF9009BE13A /* CollectionViewBuilder */,
 				84D662C526677AEB009BE13A /* TableViewBuilder */,
 			);
@@ -1001,6 +1003,7 @@
 				84D7F80C2642B7E8004B2DB0 /* MainScreenViewController.storyboard */,
 				84D7F80E2642B80C004B2DB0 /* MainScreenViewController.swift */,
 				849C4E6C264A922A00C26C53 /* MainScreenViewModel.swift */,
+				847350B0267C8C8800F2C2CD /* MainScreenSongManagering.swift */,
 				849C4E372646C9E700C26C53 /* DataSourceManager */,
 				84D7F81D2643F536004B2DB0 /* CollectionViewCells */,
 				849C4E63264A777000C26C53 /* Templates */,
@@ -1531,9 +1534,10 @@
 				8453C6232667902600875A69 /* GroupScreenDataSourceProtocol.swift in Sources */,
 				843F0B6D26551D52004DE5A8 /* Article+CoreDataClass copy.swift in Sources */,
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
-				84EBB84F2679F112007FABE4 /* SongTemplateTypeOfInteraction.swift in Sources */,
+				84EBB84F2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift in Sources */,
 				849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */,
 				84D24F692670F2F400205C1E /* PaymentViewController.swift in Sources */,
+				847350B1267C8C8800F2C2CD /* MainScreenSongManagering.swift in Sources */,
 				843F0B56264EB90F004DE5A8 /* FirebaseStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

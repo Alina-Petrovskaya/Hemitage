@@ -25,6 +25,7 @@
                 <outlet property="playButton" destination="QYe-J2-otx" id="FNW-yk-9VE"/>
                 <outlet property="saveButton" destination="i1j-kc-QgZ" id="q8Y-bd-XNA"/>
                 <outlet property="saveIndicator" destination="zt0-Vr-cRv" id="nRk-U6-0ly"/>
+                <outlet property="saveView" destination="Z64-HV-ATt" id="lyn-pB-gRY"/>
                 <outlet property="singerLabel" destination="lhC-ey-htp" id="foD-hS-3Hy"/>
                 <outlet property="songNameLabel" destination="pNa-IQ-jkS" id="k87-q7-vxX"/>
                 <outlet property="topBorder" destination="lMy-f8-MEH" id="hML-36-MRX"/>

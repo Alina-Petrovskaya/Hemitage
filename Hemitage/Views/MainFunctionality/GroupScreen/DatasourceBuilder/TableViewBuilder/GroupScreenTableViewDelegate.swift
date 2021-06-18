@@ -9,7 +9,7 @@ import UIKit
 
 protocol GroupScreenTableDelegateProtocol {
     
-    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())? { get set }
+    var interactionCallback: ((GroupScreenCellsTypeOfInteraction) -> ())? { get set }
     var tableView: UITableView { get }
     var canLoadMoreData: Bool { get set }
     var currentSongScreen: GroupScreenTypeOfContent { get }
@@ -20,7 +20,7 @@ protocol GroupScreenTableDelegateProtocol {
 
 class GroupScreenTableViewDelegate: NSObject, UITableViewDelegate, GroupScreenTableDelegateProtocol {
     
-    var interactionCallback: ((SongTemplateTypeOfInteraction) -> ())?
+    var interactionCallback: ((GroupScreenCellsTypeOfInteraction) -> ())?
     
     let tableView: UITableView
     var canLoadMoreData = false

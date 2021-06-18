@@ -24,19 +24,12 @@ class MainScreenViewController: UIViewController {
         let builder = MainScreenBuilder()
         dataSourceManager = builder.build(with: collectionView, with: viewModel)
         
-        songBottomView.topBorder.isHidden = false
         handlingCollectionViewDelegateEvents()
         handlingViewModelEvents()
         manageHeaderScreen()
         
+        handleSongEvents()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    
-        PlayerManager.shared.getCurrentSong()
-    }
-    
     
     private func handlingCollectionViewDelegateEvents() {
         
@@ -100,6 +93,18 @@ class MainScreenViewController: UIViewController {
         
         viewModel.songChanged = { [weak self] data in
             self?.songBottomView.updateSongData(with: data)
+        }
+    }
+    
+    private func handleSongEvents() {
+        PlayerManager.shared.getNotificationWithCurrentSong()
+        
+        songBottomView.playCallBack = { [weak self] in
+            self?.viewModel.changePlayerState(action: .play)
+        }
+        
+        songBottomView.stopCallback = { [weak self] in
+            self?.viewModel.changePlayerState(action: .stop)
         }
     }
 }

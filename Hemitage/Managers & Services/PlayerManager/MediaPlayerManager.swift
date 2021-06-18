@@ -29,6 +29,7 @@ class MediaPlayerManager {
     
     func setupNowPlaying(_ state: MPNowPlayingPlaybackState?) {
         // Define Now Playing Info
+        var nowPlayingInfo = [String : Any]()
         let song = songData?.getSongData()
         
         let image: UIImage = {
@@ -41,20 +42,25 @@ class MediaPlayerManager {
             return image
         }
         
-        var nowPlayingInfo = [String : Any]()
+        
+        if state == .stopped {
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = [:]
+            
+        } else {
+            nowPlayingInfo[MPMediaItemPropertyTitle]                    = song?.title
+            nowPlayingInfo[MPMediaItemPropertyArtist]                   = song?.subtitle
+            nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player?.currentTime
+            nowPlayingInfo[MPMediaItemPropertyPlaybackDuration]         = player?.duration
+            nowPlayingInfo[MPMediaItemPropertyArtwork]                  = playerImage
+            
+            // Set the metadata
+            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+        }
         
         if state != .playing {
             nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
         }
         
-        nowPlayingInfo[MPMediaItemPropertyTitle]                    = song?.title
-        nowPlayingInfo[MPMediaItemPropertyArtist]                   = song?.subtitle
-        nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player?.currentTime
-        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration]         = player?.duration
-        nowPlayingInfo[MPMediaItemPropertyArtwork]                  = playerImage
-        
-        // Set the metadata
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
         if let safeState = state {
             MPNowPlayingInfoCenter.default().playbackState = safeState
         }
@@ -98,7 +104,8 @@ class MediaPlayerManager {
 
                 let positionTime = changePlaybackPositionCommandEvent.positionTime
                 self.player?.currentTime = positionTime
-                self.setupNowPlaying(nil)
+                let playerState: MPNowPlayingPlaybackState = self.player.isPlaying == true ? .playing : .paused
+                self.setupNowPlaying(playerState)
 
                 return .success
             }

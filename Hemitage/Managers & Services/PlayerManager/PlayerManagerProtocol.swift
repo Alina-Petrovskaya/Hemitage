@@ -15,9 +15,11 @@ protocol PlayerManagerProtocol {
     func playSong(with data: Data)
     func configureSongList(with songs: [ViewModelTemplateSongProtocol]) -> ()
     func stopSong()
+    func pause()
     func getIdOfPlayingSong() -> String?
     func subscribe(_ observer: PlayerObserver)
     func unSubscribe(_ observer: PlayerObserver)
-    func getCurrentSong()
+    func getNotificationWithCurrentSong()
+    
     
 }

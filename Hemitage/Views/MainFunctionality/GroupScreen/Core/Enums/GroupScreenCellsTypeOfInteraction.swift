@@ -1,5 +1,5 @@
 //
-//  SongTemplateTypeOfInteraction.swift
+//  GroupScreenCellsTypeOfInteraction.swift
 //  Hemitage
 //
 //  Created by Alina Petrovskaya on 16.06.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SongTemplateTypeOfInteraction {
+enum GroupScreenCellsTypeOfInteraction {
     
     case save(Int, GroupScreenTypeOfContent)
     case play(Int, GroupScreenTypeOfContent)

@@ -31,23 +31,12 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
 
     func playSong(at index: Int) {
         guard index <= songsList.count - 1, index >= 0 else {
-            mediaPlayer.player?.stop()
-            mediaPlayer.setupNowPlaying(.stopped)
+            stopSong() 
             return
         }
         
         guard currentSong?.getSongData().id != songsList[index].getSongData().id else {
-            if mediaPlayer.player?.isPlaying == true {
-                mediaPlayer.setupNowPlaying(.paused)
-                mediaPlayer.player?.pause()
-                notify(playerState: .paused, currentsong: currentSong, previousSong: nil)
-                
-            } else {
-                mediaPlayer.setupNowPlaying(.playing)
-                mediaPlayer.player?.play()
-                notify(playerState: .playing, currentsong: currentSong, previousSong: nil)
-            }
-            
+            pause()
             return
         }
         
@@ -95,13 +84,29 @@ class PlayerManager: NSObject, PlayerManagerProtocol, AVAudioPlayerDelegate {
         return nil
     }
     
+    func pause() {
+        if mediaPlayer.player.isPlaying == true {
+            mediaPlayer.setupNowPlaying(.paused)
+            mediaPlayer.player?.pause()
+            notify(playerState: .paused, currentsong: currentSong, previousSong: nil)
+            
+        } else {
+            mediaPlayer.setupNowPlaying(.playing)
+            mediaPlayer.player?.play()
+            notify(playerState: .playing, currentsong: currentSong, previousSong: nil)
+        }
+         
+    }
     
     func stopSong() {
         mediaPlayer.player?.stop()
         mediaPlayer.setupNowPlaying(.stopped)
+        currentSong = nil
+        mediaPlayer.player = nil
+        notify(playerState: .stopped, currentsong: currentSong, previousSong: nil)
     }
     
-    func getCurrentSong()  {
+    func getNotificationWithCurrentSong()  {
         let playing = mediaPlayer.player?.isPlaying == true ? true : false
         notify(playerState: playing ? .playing : .paused, currentsong: currentSong, previousSong: nil)
     }

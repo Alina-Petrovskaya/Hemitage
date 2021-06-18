@@ -126,7 +126,7 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
     }
     
     
-    func handleInteraction(interactionType: SongTemplateTypeOfInteraction, completion: ((ViewModelTemplateSongProtocol) -> ())? = nil) {
+    func handleInteraction(interactionType: GroupScreenCellsTypeOfInteraction, completion: ((ViewModelTemplateSongProtocol) -> ())? = nil) {
         switch interactionType {
         
         case .reload(let index, let section):
