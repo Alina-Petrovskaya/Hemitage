@@ -85,16 +85,21 @@ class TemplateSongView: UIView {
     
     
     @IBAction func stopButtonTapped(_ sender: UIButton) {
+        if isCanPlay {
             updateIcons(isSaved: nil, isPlaying: sender.currentImage == UIImage(systemName: "play"))
-            playCallBack?(isCanPlay)
+        }
+        
+        playCallBack?(isCanPlay)
     }
     
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        if isCanPlay {
             saveButton.isHidden = true
             saveIndicator.isHidden = false
-            
-            saveCallback?(isCanPlay)
+        }
+        
+        saveCallback?(isCanPlay)
     }
     
     private func updateIcons(isSaved: Bool?, isPlaying: Bool?) {
