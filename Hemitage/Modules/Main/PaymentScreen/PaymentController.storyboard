@@ -24,26 +24,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want more?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNN-ai-ck3">
-                                <rect key="frame" x="20" y="94" width="374" height="45.666666666666657"/>
+                                <rect key="frame" x="20" y="104.33333333333333" width="374" height="45.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="39"/>
                                 <color key="textColor" name="DarkText #18191A"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-pL-517">
-                                <rect key="frame" x="0.0" y="139.66666666666669" width="414" height="722.33333333333326"/>
+                                <rect key="frame" x="20" y="170" width="374" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRE-XM-gAb">
+                                <rect key="frame" x="186.33333333333334" y="69.333333333333329" width="41.333333333333343" height="10.333333333333329"/>
+                                <color key="tintColor" red="0.87450980389999999" green="0.6705882353" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="chevron.down" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bT1-pL-517" firstAttribute="top" secondItem="cNN-ai-ck3" secondAttribute="bottom" id="53p-pf-cHm"/>
+                            <constraint firstItem="cNN-ai-ck3" firstAttribute="top" secondItem="YRE-XM-gAb" secondAttribute="bottom" constant="20" id="3Jn-dl-5C9"/>
+                            <constraint firstItem="bT1-pL-517" firstAttribute="top" secondItem="cNN-ai-ck3" secondAttribute="bottom" constant="20" id="53p-pf-cHm"/>
+                            <constraint firstItem="YRE-XM-gAb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="8Pa-4Z-v4o"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bT1-pL-517" secondAttribute="bottom" id="BTf-A5-1U1"/>
-                            <constraint firstItem="cNN-ai-ck3" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="PBN-Pq-4tU"/>
+                            <constraint firstItem="YRE-XM-gAb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="OUS-dU-OWP"/>
                             <constraint firstAttribute="trailing" secondItem="cNN-ai-ck3" secondAttribute="trailing" constant="20" id="f0v-f6-nbu"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bT1-pL-517" secondAttribute="trailing" id="fKP-vO-PeD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bT1-pL-517" secondAttribute="trailing" constant="20" id="fKP-vO-PeD"/>
                             <constraint firstItem="cNN-ai-ck3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="h56-m8-FXU"/>
-                            <constraint firstItem="bT1-pL-517" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="q9w-TI-HXP"/>
+                            <constraint firstItem="YRE-XM-gAb" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.1" id="jPZ-w6-vNc"/>
+                            <constraint firstItem="bT1-pL-517" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="q9w-TI-HXP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -56,6 +64,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <namedColor name="DarkText #18191A">
             <color red="0.093999996781349182" green="0.097999997437000275" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

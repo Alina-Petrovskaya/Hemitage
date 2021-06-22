@@ -30,12 +30,11 @@ class PaymentTableConfiguration: DiffableDataSourceConfiguration {
             }
             
             cell.configure(with: viewModel)
+            return cell
             
         default:
             return nil
         }
-        
-       return nil
     }
     
 }

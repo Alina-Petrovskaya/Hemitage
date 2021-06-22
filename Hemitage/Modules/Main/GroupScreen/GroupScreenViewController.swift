@@ -64,6 +64,7 @@ class GroupScreenViewController: UIViewController {
             self?.viewModel?.handleInteraction(interactionType: result) { data in
                 if data.isNeedToByeMore {
                     guard let vc = PaymentController.instantiate() else { return }
+                    
                     self?.present(vc, animated: true, completion: nil)
                     
                 } else {

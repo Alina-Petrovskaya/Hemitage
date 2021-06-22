@@ -10,6 +10,7 @@ import SDWebImage
 
 class PaymentCell: UITableViewCell {
     
+    
     @IBOutlet private weak var view: UIView!
     @IBOutlet private weak var productImage: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -33,11 +34,11 @@ class PaymentCell: UITableViewCell {
     
     func configure<T: ViewModelConfigurator>(with viewModel: T) {
         
-        guard let data = (viewModel as? PaymentCellViewModel)?.getData() else { return }
-        
-        titleLabel.text = data.title
-        priceLabel.text = data.price
-        productImage.sd_setImage(with: data.image, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: [.delayPlaceholder], context: nil)
+//        guard let data = (viewModel as? PaymentCellViewModel)?.getData() else { return }
+//        
+//        titleLabel.text = data.title
+//        priceLabel.text = data.price
+//        productImage.sd_setImage(with: data.image, placeholderImage: #imageLiteral(resourceName: "Picture Placeholder"), options: [.delayPlaceholder], context: nil)
         
     }
     

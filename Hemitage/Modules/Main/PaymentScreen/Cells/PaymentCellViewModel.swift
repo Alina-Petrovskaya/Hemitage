@@ -14,8 +14,8 @@ class PaymentCellViewModel: DiffableCellViewModel, ViewModelConfigurator {
     override var type: TableCellType { .payment }
     
     var id: String    = ""
-    var title: String = ""
-    var price: String = ""
+    var title: String = "jshkjsdhfkjhsd sdfgh"
+    var price: String = "3.99 / month"
     var image: URL?   = nil
     
     

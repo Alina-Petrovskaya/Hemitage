@@ -42,12 +42,14 @@ class GroupScreenSongManager: PlayerObserver {
             
             if path.status == .satisfied {
                 self?.status = .gold
-                self?.songList.removeAll()
-                self?.reloadData?()
                 
             } else {
-                self?.status = .noNetworkNoSubscription
+                self?.status = .noNetworkSubscriptionGold
             }
+            
+            self?.songList.removeAll()
+            self?.premiumMusic.removeAll()
+            self?.reloadData?()
         }
         
         let queue = DispatchQueue.global()
