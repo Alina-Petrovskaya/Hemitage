@@ -7,6 +7,28 @@
 
 import Foundation
 
-class PaymentViewModel {
+protocol PaymentViewModelProtocol {
+    func getSections() -> [DiffableSectionViewModel<PaymentSection>]
+}
+
+class PaymentViewModel: PaymentViewModelProtocol {
     
+    private var cells: [PaymentCellViewModel] = [PaymentCellViewModel(), PaymentCellViewModel(), PaymentCellViewModel()]
+    private let contentManager: some ReadContentManagerProtocol = ReadContentManager()
+    
+    init() {
+        getCellsData()
+    }
+    
+    
+    private func getCellsData() {
+        
+    }
+    
+    
+    func getSections() -> [DiffableSectionViewModel<PaymentSection>] {
+        let sections: [DiffableSectionViewModel<PaymentSection>] = [DiffableSectionViewModel(type: .main, cells: cells)]
+        
+        return sections
+    }
 }

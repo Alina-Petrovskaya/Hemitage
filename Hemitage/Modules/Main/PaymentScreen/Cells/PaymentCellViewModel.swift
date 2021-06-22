@@ -16,15 +16,15 @@ class PaymentCellViewModel: DiffableCellViewModel, ViewModelConfigurator {
     var id: String    = ""
     var title: String = ""
     var price: String = ""
-    var image: URL = URL(string: "")!
+    var image: URL?   = nil
     
     
-    func getData() -> (title: String, price: String, image: URL) {
+    func getData() -> (title: String, price: String, image: URL?) {
         return (title, price, image)
     }
     
     
-    func setData(with data: (title: String, price: String, image: URL)) {
+    func setData(with data: (title: String, price: String, image: URL?)) {
         title = data.title
         price = data.price
         image = data.image

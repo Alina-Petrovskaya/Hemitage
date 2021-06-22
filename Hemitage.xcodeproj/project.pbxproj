@@ -1008,8 +1008,8 @@
 			children = (
 				84D24F6A2670F30100205C1E /* PaymentController.storyboard */,
 				84D24F682670F2F400205C1E /* PaymentController.swift */,
-				84E819332681D372006DEE02 /* PaymentTableConfiguration.swift */,
 				84E819372681DB7E006DEE02 /* PaymentViewModel.swift */,
+				84E819332681D372006DEE02 /* PaymentTableConfiguration.swift */,
 				84E81928267CDC37006DEE02 /* Cells */,
 			);
 			path = PaymentScreen;

@@ -57,7 +57,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
     
     private func presentController() {
-        guard let vc = PaymentViewController.instantiate() else { return }
+        guard let vc = PaymentController.instantiate() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }
     
