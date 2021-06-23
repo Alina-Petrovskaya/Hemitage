@@ -32,7 +32,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
     private var categoriesData: [MainScreenModelWrapper] = []
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(model: MapModel(allUsers: 15, usersOnline: 5)))]
     private var blogData: [MainScreenModelWrapper] = []
-    private var contentManager = ReadContentManager()
+    private var contentManager: ReadContentManagerProtocol = ReadContentManager()
     private let cacheManager   = CacheManager()
     
     

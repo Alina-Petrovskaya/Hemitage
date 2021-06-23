@@ -10,24 +10,36 @@ import Foundation
 
 
 class PaymentCellViewModel: DiffableCellViewModel, ViewModelConfigurator {
-
+    
     override var type: TableCellType { .payment }
     
-    var id: String    = ""
-    var title: String = "jshkjsdhfkjhsd sdfgh"
-    var price: String = "3.99 / month"
-    var image: URL?   = nil
+    let id: String
+    var title: String
+    var price: String
+    var image: String
+    var description: String
     
     
-    func getData() -> (title: String, price: String, image: URL?) {
-        return (title, price, image)
+    init(with model: PaymentModel) {
+        id          = model.id ?? "nil"
+        title       = model.title
+        price       = ("\(model.price) / month")
+        image       = model.image
+        description = model.description
     }
     
     
-    func setData(with data: (title: String, price: String, image: URL?)) {
-        title = data.title
-        price = data.price
-        image = data.image
+    func getData() -> (title: String, price: String, image: String, description: String) {
+        return (title, price, image, description)
+    }
+    
+    
+    func setData(with data: (title: String, price: String, image: String, description: String)) {
+        title       = data.title
+        price       = data.price
+        image       = data.image
+        description = data.description
+        
     }
     
     func getID() -> String {

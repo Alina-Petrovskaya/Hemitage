@@ -8,9 +8,9 @@
 import Foundation
 
 struct MapModel: Hashable {
-    var uuid = UUID()
-    var allUsers: Int
-    var usersOnline: Int
+    let uuid = UUID()
+    let allUsers: Int
+    let usersOnline: Int
     
     static func == (lhs: MapModel, rhs: MapModel) -> Bool {
         return lhs.uuid == rhs.uuid

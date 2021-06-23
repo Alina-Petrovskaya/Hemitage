@@ -166,6 +166,7 @@
 		84E819342681D372006DEE02 /* PaymentTableConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E819332681D372006DEE02 /* PaymentTableConfiguration.swift */; };
 		84E819362681D4A9006DEE02 /* PaymentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E819352681D4A9006DEE02 /* PaymentCellViewModel.swift */; };
 		84E819382681DB7E006DEE02 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E819372681DB7E006DEE02 /* PaymentViewModel.swift */; };
+		84E8193A26823017006DEE02 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8193926823016006DEE02 /* PaymentModel.swift */; };
 		84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */; };
 		84EB44EA2638026400828222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E92638026400828222 /* LoginViewController.swift */; };
 		84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44EB2638027900828222 /* LoginViewController.storyboard */; };
@@ -356,6 +357,7 @@
 		84E819332681D372006DEE02 /* PaymentTableConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableConfiguration.swift; sourceTree = "<group>"; };
 		84E819352681D4A9006DEE02 /* PaymentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCellViewModel.swift; sourceTree = "<group>"; };
 		84E819372681DB7E006DEE02 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		84E8193926823016006DEE02 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		84EB44E92638026400828222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84EB44EB2638027900828222 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 				849C4E74264ACC6600C26C53 /* BlogModel.swift */,
 				849C4E76264B0E4D00C26C53 /* MapModel.swift */,
 				84D662B8266675B9009BE13A /* SubcollectionModel.swift */,
+				84E8193926823016006DEE02 /* PaymentModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1620,6 +1623,7 @@
 				48373289267CC78A00B3DE80 /* DiffableDataSourceConfiguration.swift in Sources */,
 				841BE5112668CEB000B5709C /* FireStoreDataManagerProtocol.swift in Sources */,
 				4869F032267B4539008D6925 /* AuthProtocol.swift in Sources */,
+				84E8193A26823017006DEE02 /* PaymentModel.swift in Sources */,
 				84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */,
 				84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */,
 				843F0B5B26526E43004DE5A8 /* FireStoreCollectionName.swift in Sources */,

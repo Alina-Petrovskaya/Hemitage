@@ -50,20 +50,15 @@ class MediaPlayerManager {
             nowPlayingInfo[MPMediaItemPropertyTitle]                    = song?.title
             nowPlayingInfo[MPMediaItemPropertyArtist]                   = song?.subtitle
             nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = player?.currentTime
+            nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate]        = state != .playing ? 0.0 : 1.0
             nowPlayingInfo[MPMediaItemPropertyPlaybackDuration]         = player?.duration
             nowPlayingInfo[MPMediaItemPropertyArtwork]                  = playerImage
-            
-            // Set the metadata
-            MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
         }
         
-        if state != .playing {
-            nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
-        }
         
-        if let safeState = state {
-            MPNowPlayingInfoCenter.default().playbackState = safeState
-        }
+        
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     
     
@@ -82,9 +77,11 @@ class MediaPlayerManager {
         
         commandCenter.togglePlayPauseCommand.addTarget { [weak self] event in
             if self?.player?.isPlaying == true {
-                self?.setupNowPlaying(.paused)
                 
+                self?.setupNowPlaying(.paused)
                 self?.player?.pause()
+                
+                
                 completion(.paused)
                 
             } else {

@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol PaymentTableConfigurationDelegate {
+    
+    func buyButtonTapped(viewModel: PaymentCellViewModel)
+    
+}
+
 enum PaymentSection {
     case main
 }
@@ -16,7 +22,7 @@ class PaymentTableConfiguration: DiffableDataSourceConfiguration {
     typealias Section = PaymentSection
     
     var cellTypes: [UITableViewCell.Type] = [PaymentCell.self]
-    
+    var delegate: PaymentTableConfigurationDelegate?
     
     func provideCell(tableView: UITableView, indexPath: IndexPath, viewModel: DiffableCellViewModel) -> UITableViewCell? {
         
@@ -30,6 +36,10 @@ class PaymentTableConfiguration: DiffableDataSourceConfiguration {
             }
             
             cell.configure(with: viewModel)
+            cell.buyButtonTapped = { [weak self] in
+                self?.delegate?.buyButtonTapped(viewModel: viewModel)
+            }
+            
             return cell
             
         default:

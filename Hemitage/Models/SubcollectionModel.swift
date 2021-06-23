@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 
 struct SubcollectionModel: Hashable, Codable, Identifiable {
     @DocumentID var id: String?
-    var name: String
+    let name: String
     
     
     static func == (lhs: SubcollectionModel, rhs: SubcollectionModel) -> Bool {

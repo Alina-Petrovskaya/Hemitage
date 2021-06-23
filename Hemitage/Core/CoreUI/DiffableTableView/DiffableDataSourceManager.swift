@@ -45,7 +45,10 @@ class DiffableDataSourceManager<Configuration: DiffableDataSourceConfiguration> 
             snapshot.appendItems(section.cells, toSection: section.type)
         }
 
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        DispatchQueue.main.async { [weak self] in
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        }
+        
     }
     
 }

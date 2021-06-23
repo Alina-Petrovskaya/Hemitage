@@ -9,8 +9,11 @@ import Foundation
 import CoreData
 
 
+enum DBManager {
+    case fireBaseManager, coreDataManager
+}
+
 protocol ReadContentManagerProtocol {
-    associatedtype DBManager
     
     var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())? { get set }
     
@@ -22,6 +25,7 @@ protocol ReadContentManagerProtocol {
      - returns: Data will be returned to callback
      */
     func getContent<T: Codable & Hashable>(from collection: FireStoreCollectionName, with dbManager: DBManager, codableModel: T.Type)
+    
     func getItemsFromSubgroup<T: Hashable & Codable>(from collection: FireStoreCollectionName, with model: T.Type, document id: String)
     
     /**
@@ -43,10 +47,6 @@ protocol ReadContentManagerProtocol {
 
 
 class ReadContentManager: NSObject, NSFetchedResultsControllerDelegate, ReadContentManagerProtocol {
-    
-    enum DBManager {
-        case fireBaseManager, coreDataManager
-    }
     
     var callback: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     

@@ -41,10 +41,10 @@ class GroupScreenSongManager: PlayerObserver {
             self?.networkstatus = path.status
             
             if path.status == .satisfied {
-                self?.status = .gold
+                self?.status = .noNetworkNoSubscription
                 
             } else {
-                self?.status = .noNetworkSubscriptionGold
+                self?.status = .noNetworkNoSubscription
             }
             
             self?.songList.removeAll()
