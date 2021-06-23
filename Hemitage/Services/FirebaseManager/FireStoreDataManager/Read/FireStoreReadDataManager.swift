@@ -15,6 +15,9 @@ class FireStoreReadDataManager: FireStoreDataManagerProtocol {
     private let db = Firestore.firestore()
     var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     
+    init() {
+        // get data for payment to display it when user becomes offline
+    }
     
     func fetchData<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
         
@@ -40,8 +43,6 @@ class FireStoreReadDataManager: FireStoreDataManagerProtocol {
         guard let query = queryData.requestData.getQuery(for: collectionReference)?
                 .order(by: queryData.sortField, descending: true)
         else { return }
-        
-//        let query = db.collection(collection.rawValue).whereField(queryData.requestData[0].field, arrayContains: queryData.requestData[0].value).whereField(queryData.requestData[1].field, isEqualTo: queryData.requestData[1].value)
      
         guard queryData.currentNumberOfItems != 0
         else {

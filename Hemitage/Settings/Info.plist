@@ -47,6 +47,8 @@
 	<string>NO</string>
 	<key>FacebookDisplayName</key>
 	<string>Hemitage</string>
+	<key>FacebookClientToken</key>
+	<string>Hemitage</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

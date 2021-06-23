@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -46,7 +47,7 @@
                                     <constraint firstItem="CRR-3c-PDT" firstAttribute="top" secondItem="FZ0-53-3Mk" secondAttribute="top" id="Y3w-aI-dy7"/>
                                     <constraint firstItem="CRR-3c-PDT" firstAttribute="leading" secondItem="FZ0-53-3Mk" secondAttribute="leading" id="kZP-Y9-jZ7"/>
                                     <constraint firstAttribute="bottom" secondItem="zXU-8j-tAY" secondAttribute="bottom" id="ks6-Sb-jzy"/>
-                                    <constraint firstItem="zXU-8j-tAY" firstAttribute="top" secondItem="CRR-3c-PDT" secondAttribute="bottom" id="pC7-Hd-kCq"/>
+                                    <constraint firstItem="zXU-8j-tAY" firstAttribute="top" secondItem="CRR-3c-PDT" secondAttribute="bottom" priority="999" id="pC7-Hd-kCq"/>
                                 </constraints>
                             </view>
                         </subviews>
