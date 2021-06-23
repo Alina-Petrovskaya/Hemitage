@@ -31,9 +31,12 @@ class MainScreenViewController: UIViewController {
         handleSongEvents()
     }
     
+    
     private func handlingCollectionViewDelegateEvents() {
         
         dataSourceManager?.collectionViewDelegate.callBack = { [weak self] indexPath in
+            self?.dataSourceManager?.collectionViewDelegate.callBack = nil
+            
             self?.viewModel.getItem(for: indexPath) { result in
                 switch result.section {
                 
