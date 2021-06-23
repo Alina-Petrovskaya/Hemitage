@@ -1,0 +1,54 @@
+{
+  "identifier" : "7F3A9CDD",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "C144451E",
+      "localizations" : [
+
+      ],
+      "name" : "Hemitage - Offline mode",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "3.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "CDEF3BAB",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unblocks offline music listening",
+              "displayName" : "Offline mode",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Прослушивание композиций в оффлайне",
+              "displayName" : "Оффлайн модуль",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "hemitage_399_month_subscribe",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : null,
+          "subscriptionGroupID" : "C144451E",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}
