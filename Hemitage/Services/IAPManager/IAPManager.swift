@@ -11,19 +11,22 @@ import StoreKit
 protocol IAPManagerProtocol {
     
     func fetchProducts()
-    func purchase(product: Products)
+    func purchase(product: Products, completion: @escaping ((Int) -> ()) )
     
 }
 
 class IAPManager: NSObject, IAPManagerProtocol, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    
+ 
     static let shared: IAPManagerProtocol = IAPManager()
+    
+    private var products: [SKProduct] = []
+    private var copmpletion: ((Int) -> ())?
     
     private override init() {
         super.init()
     }
     
-    var products: [SKProduct] = []
+    
     
     func fetchProducts() {
         let request = SKProductsRequest(productIdentifiers: Set(Products.allCases.compactMap{ $0.rawValue }))
@@ -32,12 +35,14 @@ class IAPManager: NSObject, IAPManagerProtocol, SKProductsRequestDelegate, SKPay
     }
     
     
-    func purchase(product: Products) {
+    func purchase(product: Products, completion: @escaping ((Int) -> ())) {
         guard SKPaymentQueue.canMakePayments(),
               let storeKitProduct = products.first( where: { $0.productIdentifier == product.rawValue } )
         else {
             return
         }
+        
+        self.copmpletion   = completion
         
         let paymentRequest = SKPayment(product: storeKitProduct)
         SKPaymentQueue.default().add(self)

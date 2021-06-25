@@ -14,8 +14,8 @@ protocol PaymentViewModelProtocol {
 class PaymentViewModel: PaymentViewModelProtocol, PaymentTableConfigurationDelegate {
    
     private var cells: [PaymentCellViewModel] = []
-    private var contentManager: some ReadContentManagerProtocol = ReadContentManager()
-    
+    private var contentManager: ReadContentManagerProtocol = ReadContentManager()
+    private var userManager: FireStoreUserManagerProtocol  = FireStoreUserManager()
     
     init() {
         getCellsData()
@@ -52,6 +52,6 @@ class PaymentViewModel: PaymentViewModelProtocol, PaymentTableConfigurationDeleg
         guard let product = Products(rawValue: viewModel.getID())
         else { return }
         
-        IAPManager.shared.purchase(product: product)
+//        IAPManager.shared.purchase(product: product, completion: <#() -> ()#>)
     }
 }
