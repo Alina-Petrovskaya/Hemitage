@@ -34,6 +34,13 @@ class AuthorizationTypeQualifier: AuthResultDelegate {
     }
     
     
+    func logOut() {
+        FacebookFirebaseLoginManager().logOut()
+        EmailFireBaseLogInManager(email: "", password: "").logOut()
+        AppleFirebaseLoginManager().logOut()
+    }
+    
+    
     func getAuthResult(result: Result<Bool, Error>) {
         switch result {
         case .success(_):

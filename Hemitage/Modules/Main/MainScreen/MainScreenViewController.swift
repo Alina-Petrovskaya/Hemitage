@@ -34,43 +34,38 @@ class MainScreenViewController: UIViewController {
     
     private func handlingCollectionViewDelegateEvents() {
         
-        dataSourceManager?.collectionViewDelegate.callBack = { [weak self] indexPath in
-            self?.dataSourceManager?.collectionViewDelegate.callBack = nil
+        viewModel.manageCollectionActions(with: dataSourceManager?.collectionViewDelegate) { [weak self] result in
             
-            self?.viewModel.getItem(for: indexPath) { result in
-                switch result.section {
+            switch result.section {
+            case .map:
+                break
                 
-                case .map:
-                    break
-                    
-                case .categories:
-                    guard let groupScreenVC = GroupScreenViewController.instantiate(),
-                          let model = result.model as? CategoriesModel
-                    else { return }
-                    
-                    groupScreenVC.viewModel = GroupScreenViewModel(with: model)
-                    self?.navigationController?.pushViewController(groupScreenVC, animated: true)
-                    
-                case .blog:
-                    print("Present article detail VC")
-                }
+            case .categories:
+                guard let groupScreenVC = GroupScreenViewController.instantiate(),
+                      let model = result.model as? CategoriesModel
+                else { return }
+                
+                groupScreenVC.viewModel = GroupScreenViewModel(with: model)
+                self?.navigationController?.pushViewController(groupScreenVC, animated: true)
+                
+            case .blog:
+                print("Present article detail VC")
             }
         }
         
         
         dataSourceManager?.headerCallback = {
-            print("Present blog VC")
+            AuthorizationTypeQualifier().logOut()
             
         }
     }
     
-    private func manageHeaderScreen() {
-        headerView.configureContent(with: ViewModelTemplateHeader(
-                                        model: ProfileModel(imageName: "Sleep",
-                                                            name: "Tatiana",
-                                                            isNewNotificatoins: true)))
-    }
     
+    private func manageHeaderScreen() {
+        viewModel.getUserData { [weak self] headerViewModel in
+            self?.headerView.configureContent(with: headerViewModel)
+        }
+    }
     
     
     private func handlingViewModelEvents() {

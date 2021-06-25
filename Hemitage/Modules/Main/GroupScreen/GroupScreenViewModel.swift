@@ -29,7 +29,8 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
         self.categoriesModel = categoriesModel
         manageSubcollections(for: categoriesModel.id)
         manageMusicCallback()
-
+        
+        contentManager.getContent(from: .products, with: .fireBaseManager, codableModel: PaymentModel.self)
     }
  
     // MARK: - Manage Content

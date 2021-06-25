@@ -49,6 +49,9 @@ class PaymentViewModel: PaymentViewModelProtocol, PaymentTableConfigurationDeleg
     
     
     func buyButtonTapped(viewModel: PaymentCellViewModel) {
-        print("Buy button tapped")
+        guard let product = Products(rawValue: viewModel.getID())
+        else { return }
+        
+        IAPManager.shared.purchase(product: product)
     }
 }

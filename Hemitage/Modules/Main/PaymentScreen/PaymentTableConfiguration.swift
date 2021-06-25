@@ -24,6 +24,7 @@ class PaymentTableConfiguration: DiffableDataSourceConfiguration {
     var cellTypes: [UITableViewCell.Type] = [PaymentCell.self]
     var delegate: PaymentTableConfigurationDelegate?
     
+    
     func provideCell(tableView: UITableView, indexPath: IndexPath, viewModel: DiffableCellViewModel) -> UITableViewCell? {
         
         switch viewModel.type {

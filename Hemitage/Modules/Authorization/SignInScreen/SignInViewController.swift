@@ -65,7 +65,7 @@ class SignInViewController: UIViewController {
             
             switch result {
             case .success(let result):
-                print(result)
+                self?.navigationController?.popToRootViewController(animated: true)
                 
             case .failure(let error):
                 self?.showErrorAlert(with: error.localizedDescription)

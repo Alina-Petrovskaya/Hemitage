@@ -9,6 +9,8 @@ import UIKit
 
 class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
+    private let userManager: FireStoreUserManagerProtocol = FireStoreUserManager()
+    
     private func prepareUI() {
         navigationController?.navigationBar.isHidden = true
         
@@ -21,8 +23,13 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
         
         prepareUI()
         passwordManagerObserve()
-//        presentController()
-        presentContent()
+        
+        if userManager.isUserOnline() {
+            presentContent()
+            
+        } else {
+            presentAuthController()
+        }
     }
     
     private func passwordManagerObserve() {
@@ -46,6 +53,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     
     
     private func presentContent() {
+
         guard let mainVC = MainScreenViewController.instantiate()
               else { return }
         
@@ -56,7 +64,7 @@ class RootViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     
-    private func presentController() {
+    private func presentAuthController() {
         guard let vc = WelcomeViewController.instantiate() else { return }
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -8,24 +8,28 @@
 import Foundation
 
 
-
 class PaymentCellViewModel: DiffableCellViewModel, ViewModelConfigurator {
     
     override var type: TableCellType { .payment }
     
-    let id: String
-    var title: String
+    var id: String
+    var title: String = ""
     var price: String
     var image: String
     var description: String
     
     
     init(with model: PaymentModel) {
+        
         id          = model.id ?? "nil"
-        title       = model.title
         price       = ("\(model.price) / month")
         image       = model.image
         description = model.description
+        
+        super.init()
+        
+        title = convertTitleHTMLToString(title: model.title)
+        
     }
     
     
@@ -35,6 +39,7 @@ class PaymentCellViewModel: DiffableCellViewModel, ViewModelConfigurator {
     
     
     func setData(with data: (title: String, price: String, image: String, description: String)) {
+       
         title       = data.title
         price       = data.price
         image       = data.image
@@ -44,6 +49,15 @@ class PaymentCellViewModel: DiffableCellViewModel, ViewModelConfigurator {
     
     func getID() -> String {
         return id
+    }
+    
+    
+    private func convertTitleHTMLToString(title: String) -> String {
+      
+        let newTitle = title.replacingOccurrences(of: "<[^>]+>", with: "\n",
+                                                options: .regularExpression,
+                                                range: nil)
+        return newTitle
     }
     
 }

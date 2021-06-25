@@ -10,6 +10,7 @@ import FirebaseAuth
 
 
 class EmailFireBaseLogInManager: LoginManagerProtocol {
+  
     var delegate: AuthResultDelegate?
     
     let email: String
@@ -32,4 +33,10 @@ class EmailFireBaseLogInManager: LoginManagerProtocol {
             }
         }
     }
+    
+    
+    func logOut() {
+        try? Auth.auth().signOut()
+    }
+    
 }

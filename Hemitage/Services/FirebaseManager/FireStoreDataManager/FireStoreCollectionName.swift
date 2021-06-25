@@ -12,6 +12,7 @@ enum FireStoreCollectionName: String {
     case categories = "Categories"
     case songs      = "Songs"
     case products   = "Products"
+    case users      = "Users"
     
     func getSubcollectionName() -> String? {
         switch self {

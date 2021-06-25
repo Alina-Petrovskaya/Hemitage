@@ -8,31 +8,73 @@
 import Foundation
 import StoreKit
 
-class IAPManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+protocol IAPManagerProtocol {
     
-    enum Product: String, CaseIterable {
-        case offlineMonthMode = "hemitage_399_month_subscribe"
-    }
+    func fetchProducts()
+    func purchase(product: Products)
+    
+}
 
-    static let shared = IAPManager()
+class IAPManager: NSObject, IAPManagerProtocol, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    
+    static let shared: IAPManagerProtocol = IAPManager()
+    
+    private override init() {
+        super.init()
+    }
     
     var products: [SKProduct] = []
     
-    
     func fetchProducts() {
-        let request = SKProductsRequest(productIdentifiers: Set(Product.allCases.compactMap{ $0.rawValue }))
+        let request = SKProductsRequest(productIdentifiers: Set(Products.allCases.compactMap{ $0.rawValue }))
         request.delegate = self
         request.start()
     }
     
     
+    func purchase(product: Products) {
+        guard SKPaymentQueue.canMakePayments(),
+              let storeKitProduct = products.first( where: { $0.productIdentifier == product.rawValue } )
+        else {
+            return
+        }
+        
+        let paymentRequest = SKPayment(product: storeKitProduct)
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(paymentRequest)
+    }
+    
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print(response.products.count)
+        print("All products \(response.products.count)")
         products = response.products
     }
     
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
+        transactions.forEach { transaction in
+            switch transaction.transactionState {
+            
+            case .purchasing:
+                break
+                
+            case .purchased:
+                print("Payed")
+                SKPaymentQueue.default().remove(self)
+                SKPaymentQueue.default().finishTransaction(transaction)
+                
+            case .failed:
+                break
+                
+            case .restored:
+                break
+                
+            case .deferred:
+                break
+                
+            @unknown default:
+                break
+            }
+        }
     }
 }

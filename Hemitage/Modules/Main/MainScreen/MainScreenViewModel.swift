@@ -16,8 +16,10 @@ protocol MainScreenViewModelProtocol {
     var songChanged:   ((TemplateSongView.DataType) -> ())? { get set }
     
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
-    func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
     func changePlayerState(action: MainScreenSongManagering)
+    func getUserData(completion: @escaping (ViewModelTemplateHeader) -> ())
+    func manageCollectionActions(with delegate: MainScreenCollectionViewDelegate?,
+                                 completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
 }
 
 
@@ -34,6 +36,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
     private var blogData: [MainScreenModelWrapper] = []
     private var contentManager: ReadContentManagerProtocol = ReadContentManager()
     private let cacheManager   = CacheManager()
+    private let userManager: FireStoreUserManagerProtocol = FireStoreUserManager()
     
     
     init() {
@@ -131,21 +134,35 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
         }
     }
     
+
+    func manageCollectionActions(with delegate: MainScreenCollectionViewDelegate?,
+                                 completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ()) {
+        delegate?.callBack = { [weak self] indexPath in
+            delegate?.callBack = nil
+            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section),
+                  let self = self else { return }
+            
+            switch section {
+            case .map:
+                break
+                
+            case .categories:
+                self.contentManager.getDocumentFromFirebase(id: self.categoriesData[indexPath.row].getItemId(),
+                                                             from: .categories,
+                                                             model: CategoriesModel.self) { completion((model: $0[0], section: .categories)) }
+                
+            case .blog:
+                break
+            }
+        }
+    }
     
-    func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ()) {
-        guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return }
-        
-        switch section {
-        case .map:
-            break
+    
+    func getUserData(completion: @escaping (ViewModelTemplateHeader) -> ()) {
+        userManager.getUserData { model in
             
-        case .categories:
-            contentManager.getDocumentFromFirebase(id: categoriesData[indexPath.row].getItemId(),
-                                                   from: .categories,
-                                                   model: CategoriesModel.self) { completion((model: $0[0], section: .categories)) }
+            completion(ViewModelTemplateHeader(model: model))
             
-        case .blog:
-            break
         }
     }
     

@@ -35,10 +35,10 @@ class PaymentCell: UITableViewCell {
     func configure<T: ViewModelConfigurator>(with viewModel: T) {
         guard let data = (viewModel as? PaymentCellViewModel)?.getData() else { return }
         
-        titleLabel.text       = data.title
-        priceLabel.text       = data.price
-        productImage.image    = UIImage(systemName: data.image)
-        descriptionLabel.text = data.description
+        titleLabel.text        = data.title
+        priceLabel.text        = data.price
+        productImage.image     = UIImage(systemName: data.image)
+        descriptionLabel.text  = data.description
         
     }
     

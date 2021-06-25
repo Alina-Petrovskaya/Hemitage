@@ -15,9 +15,6 @@ class FireStoreReadDataManager: FireStoreDataManagerProtocol {
     private let db = Firestore.firestore()
     var callBack: (((data: [AnyHashable], typeOfChange: TypeOfChangeDocument, collection: FireStoreCollectionName)) -> ())?
     
-    init() {
-        // get data for payment to display it when user becomes offline
-    }
     
     func fetchData<T: Codable & Hashable>(from collection: FireStoreCollectionName, with model: T.Type) {
         
