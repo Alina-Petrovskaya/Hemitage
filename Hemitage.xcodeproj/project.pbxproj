@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -181,6 +181,11 @@
 		84FA04D2268382BF0055F666 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04D1268382BE0055F666 /* Products.swift */; };
 		84FA04D426838E3D0055F666 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 84FA04D326838E3C0055F666 /* Configuration.storekit */; };
 		84FA04D72684908C0055F666 /* FireStoreUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04D62684908C0055F666 /* FireStoreUserManager.swift */; };
+		84FA04E92685D8AE0055F666 /* IAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04E82685D8AE0055F666 /* IAPError.swift */; };
+		84FA04EB2685E2F70055F666 /* ResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04EA2685E2F70055F666 /* ResultProtocol.swift */; };
+		84FA04EE2685E3B50055F666 /* ResultObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04ED2685E3B50055F666 /* ResultObserver.swift */; };
+		84FA04F1268602920055F666 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA04F0268602920055F666 /* SwiftyStoreKit */; };
+		84FA04F32686077D0055F666 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FA04F22686077C0055F666 /* StoreKit.framework */; };
 		84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */; };
 		84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
@@ -375,6 +380,10 @@
 		84FA04D1268382BE0055F666 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		84FA04D326838E3C0055F666 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		84FA04D62684908C0055F666 /* FireStoreUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreUserManager.swift; sourceTree = "<group>"; };
+		84FA04E82685D8AE0055F666 /* IAPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPError.swift; sourceTree = "<group>"; };
+		84FA04EA2685E2F70055F666 /* ResultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultProtocol.swift; sourceTree = "<group>"; };
+		84FA04ED2685E3B50055F666 /* ResultObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultObserver.swift; sourceTree = "<group>"; };
+		84FA04F22686077C0055F666 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenHeaderView.xib; sourceTree = "<group>"; };
 		84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDatasource.swift; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -388,7 +397,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FA04F32686077D0055F666 /* StoreKit.framework in Frameworks */,
 				DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */,
+				84FA04F1268602920055F666 /* SwiftyStoreKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +436,7 @@
 		4869F01D267B4539008D6925 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				84FA04EC2685E38A0055F666 /* ResultObserver */,
 				4869F027267B4539008D6925 /* AuthObserver */,
 				4869F01F267B4539008D6925 /* PasswordObserver */,
 				4869F022267B4539008D6925 /* KeyboardObserver */,
@@ -1191,6 +1203,7 @@
 				84FA04D326838E3C0055F666 /* Configuration.storekit */,
 				84FA04CE268360E40055F666 /* IAPManager.swift */,
 				84FA04D1268382BE0055F666 /* Products.swift */,
+				84FA04E82685D8AE0055F666 /* IAPError.swift */,
 			);
 			path = IAPManager;
 			sourceTree = "<group>";
@@ -1201,6 +1214,15 @@
 				84FA04D62684908C0055F666 /* FireStoreUserManager.swift */,
 			);
 			path = ManageUsers;
+			sourceTree = "<group>";
+		};
+		84FA04EC2685E38A0055F666 /* ResultObserver */ = {
+			isa = PBXGroup;
+			children = (
+				84FA04EA2685E2F70055F666 /* ResultProtocol.swift */,
+				84FA04ED2685E3B50055F666 /* ResultObserver.swift */,
+			);
+			path = ResultObserver;
 			sourceTree = "<group>";
 		};
 		84FD54CC266E010E00C89D96 /* NavigationView */ = {
@@ -1225,6 +1247,7 @@
 		A8F3CBBB0AAC7A76744ACFAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84FA04F22686077C0055F666 /* StoreKit.framework */,
 				F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */,
 				5A1081C7998670EFECE87C53 /* Pods_Hemitage_HemitageUITests.framework */,
 				55F992CFC66C9E73B0826643 /* Pods_HemitageTests.framework */,
@@ -1251,6 +1274,9 @@
 			dependencies = (
 			);
 			name = Hemitage;
+			packageProductDependencies = (
+				84FA04F0268602920055F666 /* SwiftyStoreKit */,
+			);
 			productName = Hemitage;
 			productReference = 848CF73F26369F270070A3C6 /* Hemitage.app */;
 			productType = "com.apple.product-type.application";
@@ -1327,6 +1353,9 @@
 				"ru-RU",
 			);
 			mainGroup = 848CF73626369F270070A3C6;
+			packageReferences = (
+				84FA04EF268602910055F666 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+			);
 			productRefGroup = 848CF74026369F270070A3C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1569,6 +1598,7 @@
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
 				84E8192F267CE867006DEE02 /* PaymentCell.swift in Sources */,
 				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,
+				84FA04EB2685E2F70055F666 /* ResultProtocol.swift in Sources */,
 				84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84D662BE26677A8B009BE13A /* GroupScreenDirector.swift in Sources */,
@@ -1603,6 +1633,7 @@
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
 				84FA04D2268382BF0055F666 /* Products.swift in Sources */,
 				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
+				84FA04E92685D8AE0055F666 /* IAPError.swift in Sources */,
 				84E819362681D4A9006DEE02 /* PaymentCellViewModel.swift in Sources */,
 				84AFCF05266E6B9D00115159 /* GroupScreenViewModelProtocol.swift in Sources */,
 				849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */,
@@ -1633,6 +1664,7 @@
 				84EBB84326775FBB007FABE4 /* SubscriptionAndNetworkStatus.swift in Sources */,
 				84A00AC5265BED3E00087E07 /* PasscodeRecoveryViewController.swift in Sources */,
 				84937A96266A540700672BAB /* GroupScreenSongCell.swift in Sources */,
+				84FA04EE2685E3B50055F666 /* ResultObserver.swift in Sources */,
 				84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */,
 				849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */,
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
@@ -2030,6 +2062,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84FA04EF268602910055F666 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84FA04F0268602920055F666 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84FA04EF268602910055F666 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */ = {

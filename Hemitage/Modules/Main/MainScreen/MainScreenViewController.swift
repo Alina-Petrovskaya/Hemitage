@@ -35,6 +35,7 @@ class MainScreenViewController: UIViewController {
     private func handlingCollectionViewDelegateEvents() {
         
         viewModel.manageCollectionActions(with: dataSourceManager?.collectionViewDelegate) { [weak self] result in
+            print("Section: \(result.section)")
             
             switch result.section {
             case .map:
@@ -54,10 +55,7 @@ class MainScreenViewController: UIViewController {
         }
         
         
-        dataSourceManager?.headerCallback = {
-            AuthorizationTypeQualifier().logOut()
-            
-        }
+        dataSourceManager?.headerCallback = { print("Present all news") }
     }
     
     
@@ -89,8 +87,9 @@ class MainScreenViewController: UIViewController {
             }
         }
         
-        viewModel.songChanged = { [weak self] data in
-            self?.songBottomView.updateSongData(with: data)
+        viewModel.songChanged = { [weak self] result in
+            self?.songBottomView.isHidden = result.isHidden
+            self?.songBottomView.updateSongData(with: result.data)
         }
     }
     

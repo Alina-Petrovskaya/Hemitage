@@ -72,7 +72,6 @@ class TemplateSongView: UIView {
     
     
     func updateSongData(with data: DataType) {
-        self.isHidden        = false
         topBorder.isHidden   = false
         saveView.isHidden    = true
         

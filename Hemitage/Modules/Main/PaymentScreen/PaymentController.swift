@@ -7,12 +7,15 @@
 
 import UIKit
 
-class PaymentController: UIViewController {
-
+class PaymentController: UIViewController, ResultObserver {
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var dataSourceManager: DiffableDataSourceManager<PaymentTableConfiguration>!
-    private var viewModel: PaymentViewModelProtocol & PaymentTableConfigurationDelegate = PaymentViewModel()
+    private var viewModel: PaymentViewModelProtocol & PaymentTableConfigurationDelegate & ResultProtocol = PaymentViewModel()
+    
+    var kvoSuccess: NSKeyValueObservation?
+    var kvoError: NSKeyValueObservation?
     
     
     override func viewDidLoad() {

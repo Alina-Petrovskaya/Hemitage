@@ -7,10 +7,7 @@
 
 import Foundation
 
-@objc protocol AuthProtocol: AnyObject {
-    
-    @objc dynamic var sucssesResult: String? { get }
-    @objc dynamic var errorMessage: String? { get }
+@objc protocol AuthProtocol: ResultProtocol {
     
     func login(email: String?, password: String?, autorizationType: AuthorizationType)
 }

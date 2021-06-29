@@ -11,38 +11,33 @@ import StoreKit
 protocol IAPManagerProtocol {
     
     func fetchProducts()
-    func purchase(product: Products, completion: @escaping ((Int) -> ()) )
+    func purchase(product: Products )
     
 }
 
 class IAPManager: NSObject, IAPManagerProtocol, SKProductsRequestDelegate, SKPaymentTransactionObserver {
  
     static let shared: IAPManagerProtocol = IAPManager()
-    
+    var callback: ((Result<String, Error>) -> ())?
     private var products: [SKProduct] = []
-    private var copmpletion: ((Int) -> ())?
+    
     
     private override init() {
         super.init()
     }
     
     
-    
     func fetchProducts() {
-        let request = SKProductsRequest(productIdentifiers: Set(Products.allCases.compactMap{ $0.rawValue }))
+        let request = SKProductsRequest(productIdentifiers: Set(Products.allCases.compactMap { $0.rawValue } ))
         request.delegate = self
         request.start()
     }
     
     
-    func purchase(product: Products, completion: @escaping ((Int) -> ())) {
+    func purchase(product: Products) {
         guard SKPaymentQueue.canMakePayments(),
               let storeKitProduct = products.first( where: { $0.productIdentifier == product.rawValue } )
-        else {
-            return
-        }
-        
-        self.copmpletion   = completion
+        else { return }
         
         let paymentRequest = SKPayment(product: storeKitProduct)
         SKPaymentQueue.default().add(self)
@@ -51,8 +46,8 @@ class IAPManager: NSObject, IAPManagerProtocol, SKProductsRequestDelegate, SKPay
     
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("All products \(response.products.count)")
         products = response.products
+        
     }
     
     
@@ -64,9 +59,12 @@ class IAPManager: NSObject, IAPManagerProtocol, SKProductsRequestDelegate, SKPay
                 break
                 
             case .purchased:
-                print("Payed")
-                SKPaymentQueue.default().remove(self)
+                if let product = Products(rawValue: transaction.payment.productIdentifier) {
+                    
+                }
+                
                 SKPaymentQueue.default().finishTransaction(transaction)
+                SKPaymentQueue.default().remove(self)
                 
             case .failed:
                 break

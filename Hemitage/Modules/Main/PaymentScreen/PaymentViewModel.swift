@@ -11,13 +11,18 @@ protocol PaymentViewModelProtocol {
     func getSections() -> [DiffableSectionViewModel<PaymentSection>]
 }
 
-class PaymentViewModel: PaymentViewModelProtocol, PaymentTableConfigurationDelegate {
+class PaymentViewModel: NSObject, PaymentViewModelProtocol, PaymentTableConfigurationDelegate, ResultProtocol {
    
     private var cells: [PaymentCellViewModel] = []
     private var contentManager: ReadContentManagerProtocol = ReadContentManager()
     private var userManager: FireStoreUserManagerProtocol  = FireStoreUserManager()
     
-    init() {
+    @objc dynamic private(set) var sucssesResult: String?
+    @objc dynamic private(set) var errorMessage: String?
+    
+    override init() {
+        super.init()
+        
         getCellsData()
     }
     
@@ -49,9 +54,40 @@ class PaymentViewModel: PaymentViewModelProtocol, PaymentTableConfigurationDeleg
     
     
     func buyButtonTapped(viewModel: PaymentCellViewModel) {
-        guard let product = Products(rawValue: viewModel.getID())
-        else { return }
         
-//        IAPManager.shared.purchase(product: product, completion: <#() -> ()#>)
+        
+        userManager.getUserData { [weak self] model in
+            if viewModel.getID() == model.id, model.subscriptionExpirationDate < Date() {
+                self?.errorMessage = IAPError.alreadySubscribed.localizedDescription
+                
+                
+            } else  {
+                guard let product = Products(rawValue: viewModel.getID())
+                else { return }
+                
+                IAPManager.shared.purchase(product: product)
+                
+            }
+        }
+        
+
+    }
+    
+    
+    private func checkSubscriptionStatus() {
+        // Get the receipt if it's available
+        if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+            FileManager.default.fileExists(atPath: appStoreReceiptURL.path) {
+
+            do {
+                let receiptData = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
+                print(receiptData)
+
+                let receiptString = receiptData.base64EncodedString(options: [])
+                
+                print(receiptString)
+            }
+            catch { print("Couldn't read receipt data with error: " + error.localizedDescription) }
+        }
     }
 }

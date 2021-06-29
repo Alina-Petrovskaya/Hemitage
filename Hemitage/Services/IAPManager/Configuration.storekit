@@ -40,7 +40,34 @@
           ],
           "productID" : "hemitage_399_month_subscribe",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : null,
+          "referenceName" : "Offline Mode",
+          "subscriptionGroupID" : "C144451E",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "5.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "FB18E3D1",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "Unlock all",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "",
+              "displayName" : "Разблокируй все",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "hemitage_599_premium_1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Uclock all",
           "subscriptionGroupID" : "C144451E",
           "type" : "RecurringSubscription"
         }
