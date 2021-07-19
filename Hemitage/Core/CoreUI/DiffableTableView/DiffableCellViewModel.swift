@@ -21,6 +21,7 @@ class DiffableCellViewModel: DiffableCellViewModelProtocol {
         lhs.type == rhs.type
     }
 
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(type)
     }

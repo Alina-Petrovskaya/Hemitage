@@ -9,30 +9,32 @@ import Foundation
 import FirebaseAuth
 
 class SignInManager {
-    
-    let email: String
-    let password: String
-    let name: String
-    
-    init(email: String, password: String, name: String) {
-        self.email    = email
-        self.password = password
-        self.name     = name
-    }
-    
-    func register(completion: @escaping (Result<Bool, Error>) -> ()) {
-        Auth.auth().createUser(withEmail: email, password: password)  { [weak self] _, error in
+
+    func register(data: (email: String, password: String, name: String),
+                  completion: @escaping (Result<Bool, Error>) -> ()) {
+        
+        Auth.auth().createUser(withEmail: data.email, password: data.password)  { _, error in
             guard error == nil else {
                 completion(.failure(error!))
                 return
             }
             
-            completion(.success(true))
-            self?.savePrivateDataIntoDataBase()
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = data.name
+            
+            changeRequest?.commitChanges() { error in
+                if error == nil {
+                    
+                    Auth.auth().signIn(withEmail: data.email, password: data.password) { AuthResult, error in
+                        if error == nil {
+                            completion(.success(true))
+                        } else {
+                            completion(.failure(error!))
+                        }
+                    }
+                }
+            }
         }
     }
     
-    private func savePrivateDataIntoDataBase() {
-        
-    }
 }

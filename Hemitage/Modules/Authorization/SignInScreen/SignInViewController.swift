@@ -64,8 +64,8 @@ class SignInViewController: UIViewController {
                          name: nameField.text) { [weak self] result in
             
             switch result {
-            case .success(let result):
-                print(result)
+            case .success(_):
+                self?.navigationController?.popToRootViewController(animated: true)
                 
             case .failure(let error):
                 self?.showErrorAlert(with: error.localizedDescription)

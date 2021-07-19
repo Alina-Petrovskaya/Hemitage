@@ -17,9 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        IAPManager.shared.fetchProducts()
         
-        window = UIWindow(frame: UIScreen.main.bounds)
+        window    = UIWindow(frame: UIScreen.main.bounds)
         let navVC = UINavigationController(rootViewController: RootViewController())
+        
         window?.rootViewController = navVC
         window?.backgroundColor    = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         window?.makeKeyAndVisible()

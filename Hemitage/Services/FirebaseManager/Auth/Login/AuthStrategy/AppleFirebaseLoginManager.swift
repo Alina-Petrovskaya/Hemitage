@@ -24,6 +24,12 @@ class AppleFirebaseLoginManager: NSObject, LoginManagerProtocol {
         logInVC.performRequests()
     }
     
+    
+    func logOut() {
+        
+    }
+    
+    
     func createAppleIdREquest() -> ASAuthorizationAppleIDRequest {
         let appleProvider = ASAuthorizationAppleIDProvider()
         let request       = appleProvider.createRequest()
@@ -102,14 +108,18 @@ extension AppleFirebaseLoginManager: ASAuthorizationControllerDelegate {
             
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             
+            
+            
             Auth.auth().signIn(with: credential) { [weak self] result, error in
                 guard error == nil else {
                     self?.delegate?.getAuthResult(result: .failure(error!))
                     return
                 }
                 
+                
                 self?.delegate?.getAuthResult(result: .success(true))
             }
         }
     }
+    
 }

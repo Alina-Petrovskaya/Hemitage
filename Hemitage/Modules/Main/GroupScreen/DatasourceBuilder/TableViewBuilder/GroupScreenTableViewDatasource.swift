@@ -41,13 +41,16 @@ class GroupScreenTableViewDatasource: GroupScreenDataSourceProtocol {
     func reloadItems<T: ViewModelConfigurator>(data: T, with index: Int) {
         guard var snapshot = dataSource?.snapshot(),
               let newItem = data as? ViewModelTemplateSong else { return }
-
-        let item = snapshot.itemIdentifiers[index]
-        item.setData(with: newItem.getData())
-        snapshot.reloadItems([item])
         
-        DispatchQueue.main.async { [weak self] in
-            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        if snapshot.itemIdentifiers.count >= index {
+            
+            let item = snapshot.itemIdentifiers[index]
+            item.setData(with: newItem.getData())
+            snapshot.reloadItems([item])
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.dataSource?.apply(snapshot, animatingDifferences: true)
+            }
         }
     }
     

@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct ProfileModel: Hashable {
-    let imageName: String
+struct ProfileModel: Hashable, Codable, Identifiable {
+    
+    @DocumentID var id: String?
+    let image: URL?
     let name: String
-    let isNewNotificatoins: Bool
+    let subscriptionID: String?
+    let subscriptionExpirationDate: Date
+    
 }

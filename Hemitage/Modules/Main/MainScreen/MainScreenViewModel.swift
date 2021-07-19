@@ -13,11 +13,13 @@ protocol MainScreenViewModelProtocol {
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())? { get set }
     var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())? { get set }
     var itemsDeleted:  (([MainScreenModelWrapper]) -> ())? { get set }
-    var songChanged:   ((TemplateSongView.DataType) -> ())? { get set }
+    var songChanged:   (((data: TemplateSongView.DataType, isHidden: Bool)) -> ())? { get set }
     
     func getSectionContent(for sectionType: MainScreenTypeOfSection) -> [MainScreenModelWrapper]
-    func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
     func changePlayerState(action: MainScreenSongManagering)
+    func getUserData(completion: @escaping (ViewModelTemplateHeader) -> ())
+    func manageCollectionActions(with delegate: MainScreenCollectionViewDelegate?,
+                                 completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ())
 }
 
 
@@ -26,14 +28,15 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
     var itemsInserted: (((items: [MainScreenModelWrapper], section: MainScreenTypeOfSection)) -> ())?
     var itemsReloaded: (((newData: MainScreenModelWrapper, section: MainScreenTypeOfSection, index: Int)) -> ())?
     var itemsDeleted: (([MainScreenModelWrapper]) -> ())?
-    var songChanged:  ((TemplateSongView.DataType) -> ())?
+    var songChanged:  (((data: TemplateSongView.DataType, isHidden: Bool) )-> ())?
     var songData: TemplateSongView.DataType?
     
     private var categoriesData: [MainScreenModelWrapper] = []
     private var mapData: [MainScreenModelWrapper] = [MainScreenModelWrapper.map(MapCollectionViewCellModelView(model: MapModel(allUsers: 15, usersOnline: 5)))]
     private var blogData: [MainScreenModelWrapper] = []
-    private var contentManager = ReadContentManager()
+    private var contentManager: ReadContentManagerProtocol = ReadContentManager()
     private let cacheManager   = CacheManager()
+    private let userManager: FireStoreUserManagerProtocol = FireStoreUserManager()
     
     
     init() {
@@ -131,21 +134,37 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
         }
     }
     
+
+    func manageCollectionActions(with delegate: MainScreenCollectionViewDelegate?,
+                                 completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ()) {
+        delegate?.callBack = { [weak self] indexPath in
+            
+            
+            guard let section = MainScreenTypeOfSection(rawValue: indexPath.section),
+                  let self = self else { return }
+            
+            switch section {
+            case .map:
+                break
+                
+            case .categories:
+                delegate?.callBack = nil
+                self.contentManager.getDocumentFromFirebase(id: self.categoriesData[indexPath.row].getItemId(),
+                                                             from: .categories,
+                                                             model: CategoriesModel.self) { completion((model: $0[0], section: .categories)) }
+                
+            case .blog:
+                break
+            }
+        }
+    }
     
-    func getItem(for indexPath: IndexPath, completion: @escaping ((model: AnyHashable, section: MainScreenTypeOfSection)) -> ()) {
-        guard let section = MainScreenTypeOfSection(rawValue: indexPath.section) else { return }
-        
-        switch section {
-        case .map:
-            break
+    
+    func getUserData(completion: @escaping (ViewModelTemplateHeader) -> ()) {
+        userManager.getUserData { model in
             
-        case .categories:
-            contentManager.getDocumentFromFirebase(id: categoriesData[indexPath.row].getItemId(),
-                                                   from: .categories,
-                                                   model: CategoriesModel.self) { completion((model: $0[0], section: .categories)) }
+            completion(ViewModelTemplateHeader(model: model))
             
-        case .blog:
-            break
         }
     }
     
@@ -153,7 +172,7 @@ class MainScreenViewModel: MainScreenViewModelProtocol, PlayerObserver {
     func playerStateChanged(isPlaying: Bool, currentSong: ViewModelTemplateSongProtocol?, previousSong: ViewModelTemplateSongProtocol?) {
         guard let song = currentSong as? ViewModelTemplateSong  else { return }
         song.updatePlayingState(isPlay: isPlaying)
-        songChanged?(song.getData())
+        songChanged?((data: song.getData(), isHidden: !isPlaying))
     }
     
     

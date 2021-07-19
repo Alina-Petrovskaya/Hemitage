@@ -33,8 +33,8 @@ class SignInViewModel: SignInViewModelProtocol {
            validation.validateName(name),
            validation.validatePassword(password) {
             
-           let manager = SignInManager(email: email!, password: password!, name: name!)
-            manager.register { completion($0) }
+           let manager = SignInManager()
+            manager.register(data: (email: email!, password: password!, name: name!)) { completion($0) }
             
         } else {
             completion(.failure(FirebaseError.unableToRegistrateWithFields))

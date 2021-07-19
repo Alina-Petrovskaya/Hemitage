@@ -29,7 +29,8 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
         self.categoriesModel = categoriesModel
         manageSubcollections(for: categoriesModel.id)
         manageMusicCallback()
-
+        
+        contentManager.getContent(from: .products, with: .fireBaseManager, codableModel: PaymentModel.self)
     }
  
     // MARK: - Manage Content
@@ -172,7 +173,7 @@ class GroupScreenViewModel: GroupScreenViewModelProtocol {
         if isCanPlay {
             songManager.currentSongSection = section
             songManager.playSong(at: index, section)
-        } else {
+        } else if !isCanPlay, isNeedToByeMore {
             completion?((viewModel: nil, isNeedToByeMore: true))
         }
             

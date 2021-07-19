@@ -19,12 +19,25 @@ protocol PasswordResetManagerProtocol {
 class PasswordResetManager: PasswordResetManagerProtocol {
     
     func resetPassword(for userEmail: String, completion: @escaping (Result<String, Error>) -> ()) {
-        Auth.auth().sendPasswordReset(withEmail: userEmail) { error in
+        
+        Auth.auth().fetchSignInMethods(forEmail: userEmail) { providers, error in
+
             if let error = error {
                 completion(.failure(error))
                 
+            } else if let safeproviders = providers, safeproviders.contains(where: { $0 == "password" }) {
+                
+                Auth.auth().sendPasswordReset(withEmail: userEmail) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                        
+                    } else {
+                        completion(.success("Password recovery link have been sent to your email \(userEmail). Please check it"))
+                    }
+                }
+                
             } else {
-                completion(.success("Password recovery link have been sent to your email \(userEmail). Please check it"))
+                completion(.failure(FirebaseError.differentSignInCredential))
             }
         }
     }
@@ -38,6 +51,7 @@ class PasswordResetManager: PasswordResetManagerProtocol {
     
     
     func setNewPasswordWithObbCode(_ password: String, oobCode: String, completion: @escaping (Result<String, Error>) -> ()) {
+        
         Auth.auth().confirmPasswordReset(withCode: oobCode, newPassword: password) { error in
             if let error = error {
                 completion(.failure(error))
@@ -46,6 +60,7 @@ class PasswordResetManager: PasswordResetManagerProtocol {
             }
         }
     }
+    
     
     
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 @IBDesignable
 class TemplateProfileHeaderView: UIView {
@@ -46,10 +47,10 @@ class TemplateProfileHeaderView: UIView {
     
     func configureContent<T: ViewModelConfigurator>(with model: T) {
         
-        let data = model.getData() as? (name: String, image: String, isNewNotificatoins: Bool)
+        let data = model.getData() as? (name: String, image: URL?, isNewNotificatoins: Bool)
 
         welcomeLabel.text              = data?.name
-        profilePhoto.image             = UIImage(named: data?.image ?? "user-line")
+        profilePhoto.sd_setImage(with: data?.image, placeholderImage: UIImage(named: "user-line"), options: [.delayPlaceholder], context: nil)
         notificationIndicator.isHidden = !(data?.isNewNotificatoins ?? false)
     }
 

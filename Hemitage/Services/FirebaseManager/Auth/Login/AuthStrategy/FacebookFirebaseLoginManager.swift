@@ -11,7 +11,7 @@ import FirebaseAuth
 
 
 class FacebookFirebaseLoginManager: LoginManagerProtocol {
-    
+  
     var delegate: AuthResultDelegate?
     
     func logIn() -> () {
@@ -35,10 +35,15 @@ class FacebookFirebaseLoginManager: LoginManagerProtocol {
                     self?.delegate?.getAuthResult(result: .failure(error!))
                     return
                 }
+                
                 self?.delegate?.getAuthResult(result: .success(true))
             }
         }
     }
     
+    
+    func logOut() {
+        LoginManager().logOut()
+    }
 }
 

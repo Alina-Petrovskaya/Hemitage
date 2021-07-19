@@ -31,43 +31,39 @@ class MainScreenViewController: UIViewController {
         handleSongEvents()
     }
     
+    
     private func handlingCollectionViewDelegateEvents() {
         
-        dataSourceManager?.collectionViewDelegate.callBack = { [weak self] indexPath in
-            self?.viewModel.getItem(for: indexPath) { result in
-                switch result.section {
+        viewModel.manageCollectionActions(with: dataSourceManager?.collectionViewDelegate) { [weak self] result in
+            print("Section: \(result.section)")
+            
+            switch result.section {
+            case .map:
+                break
                 
-                case .map:
-                    break
-                    
-                case .categories:
-                    guard let groupScreenVC = GroupScreenViewController.instantiate(),
-                          let model = result.model as? CategoriesModel
-                    else { return }
-                    
-                    groupScreenVC.viewModel = GroupScreenViewModel(with: model)
-                    self?.navigationController?.pushViewController(groupScreenVC, animated: true)
-                    
-                case .blog:
-                    print("Present article detail VC")
-                }
+            case .categories:
+                guard let groupScreenVC = GroupScreenViewController.instantiate(),
+                      let model = result.model as? CategoriesModel
+                else { return }
+                
+                groupScreenVC.viewModel = GroupScreenViewModel(with: model)
+                self?.navigationController?.pushViewController(groupScreenVC, animated: true)
+                
+            case .blog:
+                print("Present article detail VC")
             }
         }
         
         
-        dataSourceManager?.headerCallback = {
-            print("Present blog VC")
-            
-        }
+        dataSourceManager?.headerCallback = { print("Present all news") }
     }
+    
     
     private func manageHeaderScreen() {
-        headerView.configureContent(with: ViewModelTemplateHeader(
-                                        model: ProfileModel(imageName: "Sleep",
-                                                            name: "Tatiana",
-                                                            isNewNotificatoins: true)))
+        viewModel.getUserData { [weak self] headerViewModel in
+            self?.headerView.configureContent(with: headerViewModel)
+        }
     }
-    
     
     
     private func handlingViewModelEvents() {
@@ -91,8 +87,9 @@ class MainScreenViewController: UIViewController {
             }
         }
         
-        viewModel.songChanged = { [weak self] data in
-            self?.songBottomView.updateSongData(with: data)
+        viewModel.songChanged = { [weak self] result in
+            self?.songBottomView.isHidden = result.isHidden
+            self?.songBottomView.updateSongData(with: result.data)
         }
     }
     

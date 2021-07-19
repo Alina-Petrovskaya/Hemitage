@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,6 @@
 		48373287267CC75200B3DE80 /* DiffableSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48373286267CC75200B3DE80 /* DiffableSectionViewModel.swift */; };
 		48373289267CC78A00B3DE80 /* DiffableDataSourceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48373288267CC78A00B3DE80 /* DiffableDataSourceConfiguration.swift */; };
 		4837328B267CC80C00B3DE80 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4837328A267CC80C00B3DE80 /* UITableView.swift */; };
-		4869F02A267B4539008D6925 /* UpdatingCellInformationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F01E267B4539008D6925 /* UpdatingCellInformationDelegate.swift */; };
 		4869F02B267B4539008D6925 /* PasswordRecoveryObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F020267B4539008D6925 /* PasswordRecoveryObserver.swift */; };
 		4869F02C267B4539008D6925 /* PasswordManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F021267B4539008D6925 /* PasswordManagerProtocol.swift */; };
 		4869F02D267B4539008D6925 /* KeyboardManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869F023267B4539008D6925 /* KeyboardManagerProtocol.swift */; };
@@ -108,7 +107,6 @@
 		84ACEBD12664F0790097A719 /* GroupScreenSubgroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACEBCF2664F0790097A719 /* GroupScreenSubgroupCell.swift */; };
 		84ACEBD22664F07A0097A719 /* GroupScreenSubgroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84ACEBD02664F0790097A719 /* GroupScreenSubgroupCell.xib */; };
 		84ACEBD42664F5630097A719 /* GroupNavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */; };
-		84AFCEFB266E535100115159 /* FireStoreWriteDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCEFA266E535100115159 /* FireStoreWriteDataManager.swift */; };
 		84AFCF03266E6B6300115159 /* GroupScreenViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF02266E6B6300115159 /* GroupScreenViewModelDelegate.swift */; };
 		84AFCF05266E6B9D00115159 /* GroupScreenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF04266E6B9D00115159 /* GroupScreenViewModelProtocol.swift */; };
 		84AFCF0C266F735D00115159 /* GroupScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF0B266F735D00115159 /* GroupScreenHeaderView.swift */; };
@@ -119,8 +117,8 @@
 		84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */; };
 		84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */; };
 		84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */; };
-		84D24F692670F2F400205C1E /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D24F682670F2F400205C1E /* PaymentViewController.swift */; };
-		84D24F6B2670F30100205C1E /* PaymentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D24F6A2670F30100205C1E /* PaymentViewController.storyboard */; };
+		84D24F692670F2F400205C1E /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D24F682670F2F400205C1E /* PaymentController.swift */; };
+		84D24F6B2670F30100205C1E /* PaymentController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D24F6A2670F30100205C1E /* PaymentController.storyboard */; };
 		84D662B9266675B9009BE13A /* SubcollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662B8266675B9009BE13A /* SubcollectionModel.swift */; };
 		84D662BE26677A8B009BE13A /* GroupScreenDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */; };
 		84D662C026677A9C009BE13A /* GroupScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */; };
@@ -162,6 +160,12 @@
 		84DDE7482636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
 		84DDE7492636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
 		84DDE74A2636D509005D91C8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84DDE7472636D509005D91C8 /* Inter-Regular.ttf */; };
+		84E8192F267CE867006DEE02 /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8192D267CE867006DEE02 /* PaymentCell.swift */; };
+		84E81930267CE867006DEE02 /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E8192E267CE867006DEE02 /* PaymentCell.xib */; };
+		84E819342681D372006DEE02 /* PaymentTableConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E819332681D372006DEE02 /* PaymentTableConfiguration.swift */; };
+		84E819362681D4A9006DEE02 /* PaymentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E819352681D4A9006DEE02 /* PaymentCellViewModel.swift */; };
+		84E819382681DB7E006DEE02 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E819372681DB7E006DEE02 /* PaymentViewModel.swift */; };
+		84E8193A26823017006DEE02 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8193926823016006DEE02 /* PaymentModel.swift */; };
 		84EB44E52637EEA400828222 /* UIViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */; };
 		84EB44EA2638026400828222 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB44E92638026400828222 /* LoginViewController.swift */; };
 		84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84EB44EB2638027900828222 /* LoginViewController.storyboard */; };
@@ -173,6 +177,15 @@
 		84EBB8492678AF1D007FABE4 /* PlayerObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */; };
 		84EBB84D2678BFC5007FABE4 /* MediaPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */; };
 		84EBB84F2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB84E2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift */; };
+		84FA04CF268360E40055F666 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04CE268360E40055F666 /* IAPManager.swift */; };
+		84FA04D2268382BF0055F666 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04D1268382BE0055F666 /* Products.swift */; };
+		84FA04D426838E3D0055F666 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 84FA04D326838E3C0055F666 /* Configuration.storekit */; };
+		84FA04D72684908C0055F666 /* FireStoreUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04D62684908C0055F666 /* FireStoreUserManager.swift */; };
+		84FA04E92685D8AE0055F666 /* IAPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04E82685D8AE0055F666 /* IAPError.swift */; };
+		84FA04EB2685E2F70055F666 /* ResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04EA2685E2F70055F666 /* ResultProtocol.swift */; };
+		84FA04EE2685E3B50055F666 /* ResultObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FA04ED2685E3B50055F666 /* ResultObserver.swift */; };
+		84FA04F1268602920055F666 /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84FA04F0268602920055F666 /* SwiftyStoreKit */; };
+		84FA04F32686077D0055F666 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FA04F22686077C0055F666 /* StoreKit.framework */; };
 		84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */; };
 		84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */; };
 		DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */; };
@@ -206,7 +219,6 @@
 		48373286267CC75200B3DE80 /* DiffableSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableSectionViewModel.swift; sourceTree = "<group>"; };
 		48373288267CC78A00B3DE80 /* DiffableDataSourceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourceConfiguration.swift; sourceTree = "<group>"; };
 		4837328A267CC80C00B3DE80 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
-		4869F01E267B4539008D6925 /* UpdatingCellInformationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatingCellInformationDelegate.swift; sourceTree = "<group>"; };
 		4869F020267B4539008D6925 /* PasswordRecoveryObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryObserver.swift; sourceTree = "<group>"; };
 		4869F021267B4539008D6925 /* PasswordManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordManagerProtocol.swift; sourceTree = "<group>"; };
 		4869F023267B4539008D6925 /* KeyboardManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardManagerProtocol.swift; sourceTree = "<group>"; };
@@ -296,7 +308,6 @@
 		84ACEBCF2664F0790097A719 /* GroupScreenSubgroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenSubgroupCell.swift; sourceTree = "<group>"; };
 		84ACEBD02664F0790097A719 /* GroupScreenSubgroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenSubgroupCell.xib; sourceTree = "<group>"; };
 		84ACEBD32664F5630097A719 /* GroupNavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationViewModel.swift; sourceTree = "<group>"; };
-		84AFCEFA266E535100115159 /* FireStoreWriteDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreWriteDataManager.swift; sourceTree = "<group>"; };
 		84AFCF02266E6B6300115159 /* GroupScreenViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModelDelegate.swift; sourceTree = "<group>"; };
 		84AFCF04266E6B9D00115159 /* GroupScreenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModelProtocol.swift; sourceTree = "<group>"; };
 		84AFCF0B266F735D00115159 /* GroupScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenHeaderView.swift; sourceTree = "<group>"; };
@@ -307,8 +318,8 @@
 		84AFCF1C2670BE0C00115159 /* GroupScreenTypeOfContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTypeOfContent.swift; sourceTree = "<group>"; };
 		84BE17CF2664C6EA00AF1CD4 /* GroupScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenViewModel.swift; sourceTree = "<group>"; };
 		84BE17D42664DBCF00AF1CD4 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
-		84D24F682670F2F400205C1E /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
-		84D24F6A2670F30100205C1E /* PaymentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentViewController.storyboard; sourceTree = "<group>"; };
+		84D24F682670F2F400205C1E /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentController.swift; sourceTree = "<group>"; };
+		84D24F6A2670F30100205C1E /* PaymentController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentController.storyboard; sourceTree = "<group>"; };
 		84D662B8266675B9009BE13A /* SubcollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcollectionModel.swift; sourceTree = "<group>"; };
 		84D662BD26677A8B009BE13A /* GroupScreenDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenDirector.swift; sourceTree = "<group>"; };
 		84D662BF26677A9C009BE13A /* GroupScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenBuilder.swift; sourceTree = "<group>"; };
@@ -348,6 +359,12 @@
 		84DDE7322636CECE005D91C8 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		84DDE7402636D4AE005D91C8 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		84DDE7472636D509005D91C8 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		84E8192D267CE867006DEE02 /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		84E8192E267CE867006DEE02 /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
+		84E819332681D372006DEE02 /* PaymentTableConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableConfiguration.swift; sourceTree = "<group>"; };
+		84E819352681D4A9006DEE02 /* PaymentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCellViewModel.swift; sourceTree = "<group>"; };
+		84E819372681DB7E006DEE02 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		84E8193926823016006DEE02 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		84EB44E42637EEA400828222 /* UIViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Navigation.swift"; sourceTree = "<group>"; };
 		84EB44E92638026400828222 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84EB44EB2638027900828222 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
@@ -359,6 +376,14 @@
 		84EBB8482678AF1B007FABE4 /* PlayerObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerObserver.swift; sourceTree = "<group>"; };
 		84EBB84C2678BFC5007FABE4 /* MediaPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerManager.swift; sourceTree = "<group>"; };
 		84EBB84E2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenCellsTypeOfInteraction.swift; sourceTree = "<group>"; };
+		84FA04CE268360E40055F666 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
+		84FA04D1268382BE0055F666 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		84FA04D326838E3C0055F666 /* Configuration.storekit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		84FA04D62684908C0055F666 /* FireStoreUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreUserManager.swift; sourceTree = "<group>"; };
+		84FA04E82685D8AE0055F666 /* IAPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPError.swift; sourceTree = "<group>"; };
+		84FA04EA2685E2F70055F666 /* ResultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultProtocol.swift; sourceTree = "<group>"; };
+		84FA04ED2685E3B50055F666 /* ResultObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultObserver.swift; sourceTree = "<group>"; };
+		84FA04F22686077C0055F666 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		84FD54CE266E016200C89D96 /* GroupScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupScreenHeaderView.xib; sourceTree = "<group>"; };
 		84FD54D2266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreenTableViewDatasource.swift; sourceTree = "<group>"; };
 		88A58A97CB67C0588BA66AD5 /* Pods-Hemitage-HemitageUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hemitage-HemitageUITests.release.xcconfig"; path = "Target Support Files/Pods-Hemitage-HemitageUITests/Pods-Hemitage-HemitageUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -372,7 +397,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FA04F32686077D0055F666 /* StoreKit.framework in Frameworks */,
 				DC9FB0F56C38F572D3BF4C65 /* Pods_Hemitage.framework in Frameworks */,
+				84FA04F1268602920055F666 /* SwiftyStoreKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,10 +436,10 @@
 		4869F01D267B4539008D6925 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				84FA04EC2685E38A0055F666 /* ResultObserver */,
 				4869F027267B4539008D6925 /* AuthObserver */,
 				4869F01F267B4539008D6925 /* PasswordObserver */,
 				4869F022267B4539008D6925 /* KeyboardObserver */,
-				4869F01E267B4539008D6925 /* UpdatingCellInformationDelegate.swift */,
 				4869F025267B4539008D6925 /* ConfiguringCell.swift */,
 				4869F026267B4539008D6925 /* ViewModelConfigurator.swift */,
 			);
@@ -531,7 +558,7 @@
 		843F0B52264EA0BB004DE5A8 /* FireStoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				84AFCEFD266E53F100115159 /* Write */,
+				84FA04D5268490610055F666 /* ManageUsers */,
 				84AFCEFC266E53DA00115159 /* Read */,
 				843F0B5A26526E43004DE5A8 /* FireStoreCollectionName.swift */,
 			);
@@ -650,6 +677,7 @@
 				849C4E74264ACC6600C26C53 /* BlogModel.swift */,
 				849C4E76264B0E4D00C26C53 /* MapModel.swift */,
 				84D662B8266675B9009BE13A /* SubcollectionModel.swift */,
+				84E8193926823016006DEE02 /* PaymentModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -922,14 +950,6 @@
 			path = Read;
 			sourceTree = "<group>";
 		};
-		84AFCEFD266E53F100115159 /* Write */ = {
-			isa = PBXGroup;
-			children = (
-				84AFCEFA266E535100115159 /* FireStoreWriteDataManager.swift */,
-			);
-			path = Write;
-			sourceTree = "<group>";
-		};
 		84AFCF00266E6B4F00115159 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -970,6 +990,7 @@
 		84BE17D12664DA8000AF1CD4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84FA04CD268360C80055F666 /* IAPManager */,
 				84A40CF92671FC4A00FB6642 /* PlayerManager */,
 				848CF7802636A2D60070A3C6 /* FirebaseManager */,
 				84BE17D32664DADC00AF1CD4 /* ContentManager */,
@@ -999,8 +1020,11 @@
 		84D24F672670F26100205C1E /* PaymentScreen */ = {
 			isa = PBXGroup;
 			children = (
-				84D24F6A2670F30100205C1E /* PaymentViewController.storyboard */,
-				84D24F682670F2F400205C1E /* PaymentViewController.swift */,
+				84D24F6A2670F30100205C1E /* PaymentController.storyboard */,
+				84D24F682670F2F400205C1E /* PaymentController.swift */,
+				84E819372681DB7E006DEE02 /* PaymentViewModel.swift */,
+				84E819332681D372006DEE02 /* PaymentTableConfiguration.swift */,
+				84E81928267CDC37006DEE02 /* Cells */,
 			);
 			path = PaymentScreen;
 			sourceTree = "<group>";
@@ -1153,6 +1177,16 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		84E81928267CDC37006DEE02 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84E8192E267CE867006DEE02 /* PaymentCell.xib */,
+				84E8192D267CE867006DEE02 /* PaymentCell.swift */,
+				84E819352681D4A9006DEE02 /* PaymentCellViewModel.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		84EB44E82638021900828222 /* LogInScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1161,6 +1195,34 @@
 				849A50F326397C250047340A /* LoginViewModel.swift */,
 			);
 			path = LogInScreen;
+			sourceTree = "<group>";
+		};
+		84FA04CD268360C80055F666 /* IAPManager */ = {
+			isa = PBXGroup;
+			children = (
+				84FA04D326838E3C0055F666 /* Configuration.storekit */,
+				84FA04CE268360E40055F666 /* IAPManager.swift */,
+				84FA04D1268382BE0055F666 /* Products.swift */,
+				84FA04E82685D8AE0055F666 /* IAPError.swift */,
+			);
+			path = IAPManager;
+			sourceTree = "<group>";
+		};
+		84FA04D5268490610055F666 /* ManageUsers */ = {
+			isa = PBXGroup;
+			children = (
+				84FA04D62684908C0055F666 /* FireStoreUserManager.swift */,
+			);
+			path = ManageUsers;
+			sourceTree = "<group>";
+		};
+		84FA04EC2685E38A0055F666 /* ResultObserver */ = {
+			isa = PBXGroup;
+			children = (
+				84FA04EA2685E2F70055F666 /* ResultProtocol.swift */,
+				84FA04ED2685E3B50055F666 /* ResultObserver.swift */,
+			);
+			path = ResultObserver;
 			sourceTree = "<group>";
 		};
 		84FD54CC266E010E00C89D96 /* NavigationView */ = {
@@ -1185,6 +1247,7 @@
 		A8F3CBBB0AAC7A76744ACFAC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84FA04F22686077C0055F666 /* StoreKit.framework */,
 				F2B0D95A759069A42BD1DCDF /* Pods_Hemitage.framework */,
 				5A1081C7998670EFECE87C53 /* Pods_Hemitage_HemitageUITests.framework */,
 				55F992CFC66C9E73B0826643 /* Pods_HemitageTests.framework */,
@@ -1211,6 +1274,9 @@
 			dependencies = (
 			);
 			name = Hemitage;
+			packageProductDependencies = (
+				84FA04F0268602920055F666 /* SwiftyStoreKit */,
+			);
 			productName = Hemitage;
 			productReference = 848CF73F26369F270070A3C6 /* Hemitage.app */;
 			productType = "com.apple.product-type.application";
@@ -1287,6 +1353,9 @@
 				"ru-RU",
 			);
 			mainGroup = 848CF73626369F270070A3C6;
+			packageReferences = (
+				84FA04EF268602910055F666 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
+			);
 			productRefGroup = 848CF74026369F270070A3C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1306,7 +1375,7 @@
 				84ACEBD22664F07A0097A719 /* GroupScreenSubgroupCell.xib in Resources */,
 				84EB44EC2638027900828222 /* LoginViewController.storyboard in Resources */,
 				84DB77EC26384B0A0094483E /* SignInViewController.storyboard in Resources */,
-				84D24F6B2670F30100205C1E /* PaymentViewController.storyboard in Resources */,
+				84D24F6B2670F30100205C1E /* PaymentController.storyboard in Resources */,
 				84A00B0B2661928800087E07 /* Assets.xcassets in Resources */,
 				84FD54CF266E016200C89D96 /* GroupScreenHeaderView.xib in Resources */,
 				84D7F8182643D01E004B2DB0 /* TemplateSongView.xib in Resources */,
@@ -1325,7 +1394,9 @@
 				84D7F82C2644184F004B2DB0 /* BlogCollectionViewCell.xib in Resources */,
 				84D7F796263C0947004B2DB0 /* GoogleService-Info.plist in Resources */,
 				84D7F82826441434004B2DB0 /* CategoriesCollectionViewCell.xib in Resources */,
+				84E81930267CE867006DEE02 /* PaymentCell.xib in Resources */,
 				84A00AC7265BED5700087E07 /* PasscodeRecoveryViewController.storyboard in Resources */,
+				84FA04D426838E3D0055F666 /* Configuration.storekit in Resources */,
 				84D7F80D2642B7E8004B2DB0 /* MainScreenViewController.storyboard in Resources */,
 				848CF74A26369F270070A3C6 /* WelcomeViewController.storyboard in Resources */,
 				849C4E65264A77C000C26C53 /* MainScreenHeaderView.xib in Resources */,
@@ -1523,14 +1594,16 @@
 				84A00AC9265CE1E800087E07 /* PasscodeRecoveryViewModel.swift in Sources */,
 				849C4E84264BEC1900C26C53 /* MainScreenCollectionViewDelegate.swift in Sources */,
 				4869F031267B4539008D6925 /* AuthObserver.swift in Sources */,
+				84FA04CF268360E40055F666 /* IAPManager.swift in Sources */,
 				849A50F426397C250047340A /* LoginViewModel.swift in Sources */,
+				84E8192F267CE867006DEE02 /* PaymentCell.swift in Sources */,
 				849C4E6D264A922A00C26C53 /* MainScreenViewModel.swift in Sources */,
+				84FA04EB2685E2F70055F666 /* ResultProtocol.swift in Sources */,
 				84FD54D3266E1B6F00C89D96 /* GroupScreenTableViewDatasource.swift in Sources */,
 				84D7F80F2642B80C004B2DB0 /* MainScreenViewController.swift in Sources */,
 				84D662BE26677A8B009BE13A /* GroupScreenDirector.swift in Sources */,
 				84BE17D52664DBCF00AF1CD4 /* UINavigationController.swift in Sources */,
 				84205E57263832DB005264E8 /* UITextfield+View.swift in Sources */,
-				4869F02A267B4539008D6925 /* UpdatingCellInformationDelegate.swift in Sources */,
 				84D7F798263C284D004B2DB0 /* AuthResultDelegate.swift in Sources */,
 				849A50FC26398E4A0047340A /* FirebaseError.swift in Sources */,
 				84A00B0926611F2100087E07 /* GroupNavigationView.swift in Sources */,
@@ -1544,7 +1617,9 @@
 				84D7F787263AB62F004B2DB0 /* AuthorizationType.swift in Sources */,
 				84D662C826678429009BE13A /* GroupScreenCollectionViewLayoutConstructor.swift in Sources */,
 				84AFCF13266FB12700115159 /* GroupScreenTableViewDelegate.swift in Sources */,
+				84E819342681D372006DEE02 /* PaymentTableConfiguration.swift in Sources */,
 				849C4E71264ACB8500C26C53 /* ProfileModel.swift in Sources */,
+				84FA04D72684908C0055F666 /* FireStoreUserManager.swift in Sources */,
 				4869F02F267B4539008D6925 /* ConfiguringCell.swift in Sources */,
 				84926F54264D0A89005E9074 /* MapCollectionViewCellModelView.swift in Sources */,
 				84A00ABF265B910400087E07 /* ImageManagerModel.swift in Sources */,
@@ -1556,11 +1631,14 @@
 				84AFCF172670A26600115159 /* GroupScreenCollectionViewDelegate.swift in Sources */,
 				843F0B742655232E004DE5A8 /* DataStoreManager.swift in Sources */,
 				84D7F783263AB17C004B2DB0 /* UIViewController+Alert.swift in Sources */,
-				84AFCEFB266E535100115159 /* FireStoreWriteDataManager.swift in Sources */,
+				84FA04D2268382BF0055F666 /* Products.swift in Sources */,
 				849C4E60264A71F900C26C53 /* MainScreenTypeOfSection.swift in Sources */,
+				84FA04E92685D8AE0055F666 /* IAPError.swift in Sources */,
+				84E819362681D4A9006DEE02 /* PaymentCellViewModel.swift in Sources */,
 				84AFCF05266E6B9D00115159 /* GroupScreenViewModelProtocol.swift in Sources */,
 				849C4E73264ACC2200C26C53 /* CategoriesModel.swift in Sources */,
 				4869F02C267B4539008D6925 /* PasswordManagerProtocol.swift in Sources */,
+				84E819382681DB7E006DEE02 /* PaymentViewModel.swift in Sources */,
 				843F0B8A265680B1004DE5A8 /* ContentManager.swift in Sources */,
 				84A00AE2265F9F1300087E07 /* GroupScreenViewController.swift in Sources */,
 				849A50FA2639874F0047340A /* Validation.swift in Sources */,
@@ -1586,6 +1664,7 @@
 				84EBB84326775FBB007FABE4 /* SubscriptionAndNetworkStatus.swift in Sources */,
 				84A00AC5265BED3E00087E07 /* PasscodeRecoveryViewController.swift in Sources */,
 				84937A96266A540700672BAB /* GroupScreenSongCell.swift in Sources */,
+				84FA04EE2685E3B50055F666 /* ResultObserver.swift in Sources */,
 				84AFCF1D2670BE0D00115159 /* GroupScreenTypeOfContent.swift in Sources */,
 				849C4E68264A8D3800C26C53 /* SongModel.swift in Sources */,
 				843F0B8F265682BF004DE5A8 /* TypeOfChangeDocument.swift in Sources */,
@@ -1596,6 +1675,7 @@
 				48373289267CC78A00B3DE80 /* DiffableDataSourceConfiguration.swift in Sources */,
 				841BE5112668CEB000B5709C /* FireStoreDataManagerProtocol.swift in Sources */,
 				4869F032267B4539008D6925 /* AuthProtocol.swift in Sources */,
+				84E8193A26823017006DEE02 /* PaymentModel.swift in Sources */,
 				84D7F789263AEAF4004B2DB0 /* FacebookFirebaseLoginManager.swift in Sources */,
 				84BE17D02664C6EA00AF1CD4 /* GroupScreenViewModel.swift in Sources */,
 				843F0B5B26526E43004DE5A8 /* FireStoreCollectionName.swift in Sources */,
@@ -1615,7 +1695,7 @@
 				84D7F81A2643D035004B2DB0 /* TemplateSongView.swift in Sources */,
 				84EBB84F2679F112007FABE4 /* GroupScreenCellsTypeOfInteraction.swift in Sources */,
 				849C4E62264A750C00C26C53 /* MainScreenHeaderType.swift in Sources */,
-				84D24F692670F2F400205C1E /* PaymentViewController.swift in Sources */,
+				84D24F692670F2F400205C1E /* PaymentController.swift in Sources */,
 				847350B1267C8C8800F2C2CD /* MainScreenSongManagering.swift in Sources */,
 				843F0B56264EB90F004DE5A8 /* FirebaseStorageManager.swift in Sources */,
 				4869F030267B4539008D6925 /* ViewModelConfigurator.swift in Sources */,
@@ -1982,6 +2062,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84FA04EF268602910055F666 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84FA04F0268602920055F666 /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84FA04EF268602910055F666 /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		848CF74B26369F270070A3C6 /* Hemitage.xcdatamodeld */ = {

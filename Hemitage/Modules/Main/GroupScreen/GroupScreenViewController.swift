@@ -63,7 +63,9 @@ class GroupScreenViewController: UIViewController {
         tableDelegate?.interactionCallback = { [weak self] result in
             self?.viewModel?.handleInteraction(interactionType: result) { data in
                 if data.isNeedToByeMore {
-                    print("Present vc with tarifs")
+                    guard let vc = PaymentController.instantiate() else { return }
+                    self?.present(vc, animated: true, completion: nil)
+                    
                 } else {
                     print("Present detail song vc")
                 }

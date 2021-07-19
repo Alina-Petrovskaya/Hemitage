@@ -9,16 +9,16 @@ import Foundation
 
 class ViewModelTemplateHeader: ViewModelConfigurator {
    
-    typealias DataType = (name: String, image: String, isNewNotificatoins: Bool)
+    typealias DataType = (name: String, image: URL?, isNewNotificatoins: Bool)
     
     var name: String
-    var image: String
+    var image: URL?
     var isNewNotificatoins: Bool
     
     init(model: ProfileModel) {
         name = model.name
-        image = model.imageName
-        isNewNotificatoins = model.isNewNotificatoins
+        image = model.image
+        isNewNotificatoins = true
         
     }
     

@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol LoginManagerProtocol {
     
-    func logIn() -> ()
-    
     var delegate: AuthResultDelegate? {get set}
+    
+    func logIn() -> ()
+    func logOut()
+    
 }

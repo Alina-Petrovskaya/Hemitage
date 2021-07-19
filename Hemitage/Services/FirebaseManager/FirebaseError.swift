@@ -14,6 +14,7 @@ enum FirebaseError: Error {
     case unableToGetAppleIdTokenToSignIn
     case unableToDownloadFileFromStorage
     case unableToCreateURLToFileInStorage
+    case differentSignInCredential
 }
 
 extension FirebaseError: LocalizedError {
@@ -36,6 +37,9 @@ extension FirebaseError: LocalizedError {
             
         case .unableToCreateURLToFileInStorage:
             return "Unable To Create URL To File In Storage"
+            
+        case .differentSignInCredential:
+            return "Account exists with using social media"
         }
     }
 }

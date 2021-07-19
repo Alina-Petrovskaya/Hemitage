@@ -1,0 +1,81 @@
+{
+  "identifier" : "7F3A9CDD",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "C144451E",
+      "localizations" : [
+
+      ],
+      "name" : "Hemitage - Offline mode",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "3.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "CDEF3BAB",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unblocks offline music listening",
+              "displayName" : "Offline mode",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Прослушивание композиций в оффлайне",
+              "displayName" : "Оффлайн модуль",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "hemitage_399_month_subscribe",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Offline Mode",
+          "subscriptionGroupID" : "C144451E",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "5.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "FB18E3D1",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "Unlock all",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "",
+              "displayName" : "Разблокируй все",
+              "locale" : "ru"
+            }
+          ],
+          "productID" : "hemitage_599_premium_1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Uclock all",
+          "subscriptionGroupID" : "C144451E",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

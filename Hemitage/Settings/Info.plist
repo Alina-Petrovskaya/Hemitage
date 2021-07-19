@@ -47,6 +47,8 @@
 	<string>NO</string>
 	<key>FacebookDisplayName</key>
 	<string>Hemitage</string>
+	<key>FacebookClientToken</key>
+	<string>Hemitage</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -97,5 +99,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>

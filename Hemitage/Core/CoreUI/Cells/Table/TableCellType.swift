@@ -11,5 +11,6 @@ enum TableCellType {
     
     case none
     case profile
+    case payment
     
 }
